@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Shield, Globe, MessageCircle, Share2, Rss, Mail, Phone, MapPin } from "lucide-react";
+import Image from "next/image";
+import { Globe, MessageCircle, Share2, Rss, Mail, Phone, MapPin } from "lucide-react";
 
 export function Footer() {
   return (
@@ -9,18 +10,14 @@ export function Footer() {
           
           {/* Brand & About */}
           <div className="flex flex-col gap-6">
-            <Link href="/" className="flex items-center gap-2 group w-fit">
-              <div className="bg-primary p-2 rounded-xl">
-                <Shield className="text-white w-6 h-6" />
-              </div>
-              <div className="flex flex-col">
-                <span className="font-poppins font-bold text-xl leading-tight text-white">
-                  Family Anchor
-                </span>
-                <span className="text-[10px] uppercase tracking-wider text-primary">
-                  Facilities Pvt. Ltd.
-                </span>
-              </div>
+            <Link href="/" className="flex items-center group w-fit">
+              <Image
+                src="/logo.png"
+                alt="Family Anchor Facilities"
+                width={100}
+                height={100}
+                className="h-20 w-auto object-contain"
+              />
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed pr-4">
               Your Trusted Partner in Comprehensive Security & Facilities. Delivering advanced solutions for over a decade.

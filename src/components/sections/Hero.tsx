@@ -42,7 +42,7 @@ export function Hero() {
         ))}
       </div>
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center pt-24">
+      <div className="container mx-auto px-4 md:px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center pt-32 lg:pt-36 pb-16">
         {/* Left Content */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
