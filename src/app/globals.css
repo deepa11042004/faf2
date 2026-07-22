@@ -1,31 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #11BDF2;
+  --color-primary: #4338CA;
   --color-primary-foreground: #FFFFFF;
   
-  --color-navy: #231F20;
-  --color-secondary: #62D3F6;
-  --color-secondary-foreground: #231F20;
+  --color-navy: #0F172A;
+  --color-secondary: #3B82F6;
+  --color-secondary-foreground: #FFFFFF;
   
-  --color-accent: #11BDF2;
+  --color-accent: #10B981;
   --color-accent-foreground: #FFFFFF;
   
-  --color-background: #FFFFFF;
-  --color-foreground: #231F20;
+  --color-background: #F8FAFC;
+  --color-foreground: #0F172A;
   
   --color-card: #FFFFFF;
-  --color-card-foreground: #231F20;
+  --color-card-foreground: #0F172A;
   
   --color-popover: #FFFFFF;
-  --color-popover-foreground: #231F20;
+  --color-popover-foreground: #0F172A;
   
-  --color-muted: #D2E8EF;
-  --color-muted-foreground: #282425;
+  --color-muted: #F1F5F9;
+  --color-muted-foreground: #64748B;
   
-  --color-border: #D2E8EF;
-  --color-input: #D2E8EF;
-  --color-ring: #11BDF2;
+  --color-border: #E2E8F0;
+  --color-input: #E2E8F0;
+  --color-ring: #4338CA;
   
   --radius-lg: 24px;
   --radius-md: 18px;
@@ -34,65 +35,32 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%; /* FFFFFF */
-    --foreground: 345 6% 13%; /* 231F20 */
+    --background: 210 40% 98%; /* #F8FAFC */
+    --foreground: 222 47% 11%; /* #0F172A */
 
-    --card: 0 0% 100%;
-    --card-foreground: 345 6% 13%;
+    --card: 0 0% 100%; /* #FFFFFF */
+    --card-foreground: 222 47% 11%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 345 6% 13%;
+    --popover-foreground: 222 47% 11%;
 
-    --primary: 194 90% 51%; /* 11BDF2 */
+    --primary: 243 75% 59%; /* #4338CA */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 194 88% 68%; /* 62D3F6 */
-    --secondary-foreground: 345 6% 13%;
-
-    --muted: 194 48% 88%; /* D2E8EF */
-    --muted-foreground: 345 5% 15%; /* 282425 */
-
-    --accent: 194 90% 51%; /* 11BDF2 */
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 194 48% 88%;
-    --input: 194 48% 88%;
-    --ring: 194 90% 51%;
-    
-    --radius: 1.5rem; /* 24px */
-  }
-
-  .dark {
-    --background: 345 6% 13%; /* 231F20 */
-    --foreground: 0 0% 100%; /* FFFFFF */
-
-    --card: 345 4% 17%; /* 2F2B2C */
-    --card-foreground: 0 0% 100%;
-
-    --popover: 345 4% 17%;
-    --popover-foreground: 0 0% 100%;
-
-    --primary: 194 90% 51%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 345 5% 15%; /* 282425 */
+    --secondary: 217 91% 60%; /* #3B82F6 */
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 345 5% 15%;
-    --muted-foreground: 194 48% 88%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 194 90% 51%;
+    --accent: 158 64% 52%; /* #10B981 */
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 345 5% 15%;
-    --input: 345 5% 15%;
-    --ring: 194 90% 51%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 243 75% 59%;
+    
+    --radius: 1.5rem;
   }
 }
 
@@ -101,14 +69,21 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-[#F8FAFC] text-[#0F172A];
+  }
+  h1, h2, button, .font-bebas, .bebas-neue-regular {
+    font-family: var(--font-bebas), "Bebas Neue", sans-serif;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
   }
 }
 
-/* Custom Utilities for Premium feel */
+/* Custom Utilities for Crisp Off-White Light Theme */
 .glass {
-  @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-[0_4px_30px_rgba(0,0,0,0.1)];
+  @apply bg-white/80 backdrop-blur-md border border-slate-200/80 shadow-xl;
 }
-.dark .glass {
-  @apply bg-black/20 backdrop-blur-md border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)];
+.bebas-neue-regular {
+  font-family: var(--font-bebas), "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }

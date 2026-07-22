@@ -36,7 +36,7 @@ export function Navbar() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? "bg-[#E0F2FE]/95 backdrop-blur-md border-b border-[#11BDF2]/30 shadow-md py-3"
+          ? "bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-md py-3"
           : "bg-transparent py-5"
       )}
     >
@@ -56,17 +56,12 @@ export function Navbar() {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center">
-            <ul className={cn(
-              "flex items-center gap-6 px-7 py-2.5 rounded-full border shadow-sm transition-all duration-300 backdrop-blur-md",
-              isScrolled
-                ? "bg-white/80 border-[#11BDF2]/40 text-[#0F172A]"
-                : "bg-[#E0F2FE]/90 border-[#11BDF2]/40 text-[#0F172A]"
-            )}>
+            <ul className="flex items-center gap-6 px-7 py-2 rounded-full border border-slate-200 bg-white/90 text-[#0F172A] hover:border-[#4338CA]/40 transition-all duration-300 shadow-md backdrop-blur-md">
               {NAV_LINKS.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm font-semibold text-[#0F172A] hover:text-[#0284C7] transition-colors relative after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary hover:after:w-full after:transition-all"
+                    className="font-bebas text-lg tracking-wider uppercase text-[#0F172A] hover:text-[#4338CA] transition-colors relative after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-[#4338CA] hover:after:w-full after:transition-all"
                   >
                     {link.label}
                   </Link>
@@ -77,7 +72,7 @@ export function Navbar() {
 
           {/* CTAs */}
           <div className="hidden lg:flex items-center gap-4">
-            <Button variant="outline" className="text-[#0F172A] border-[#11BDF2]/40 hover:bg-[#11BDF2]/10">
+            <Button variant="outline">
               Call Now
             </Button>
             <Button variant="premium">
@@ -102,14 +97,14 @@ export function Navbar() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 right-0 bg-[#F0F9FF] border-t border-[#11BDF2]/30 shadow-2xl p-4 lg:hidden"
+            className="absolute top-full left-0 right-0 bg-white border-t border-slate-200 shadow-2xl p-4 lg:hidden"
           >
             <ul className="flex flex-col gap-4">
               {NAV_LINKS.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="block text-[#0F172A] hover:text-[#0284C7] py-2 text-lg font-medium"
+                    className="block font-bebas text-xl tracking-wider uppercase text-[#0F172A] hover:text-[#4338CA] py-2"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {link.label}
@@ -118,7 +113,7 @@ export function Navbar() {
               ))}
             </ul>
             <div className="flex flex-col gap-3 mt-6">
-              <Button variant="outline" className="w-full text-[#0F172A] border-[#11BDF2]/40">
+              <Button variant="outline" className="w-full text-[#0F172A]">
                 Call Now
               </Button>
               <Button variant="premium" className="w-full">

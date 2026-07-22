@@ -16,16 +16,16 @@ const reasons = [
 
 export function WhyChooseUsSection() {
   return (
-    <section className="py-24 bg-[#2F2B2C] relative">
+    <section className="py-24 bg-[#F8FAFC] relative">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-[#11BDF2] font-semibold uppercase tracking-wider text-sm mb-2 block">
+          <span className="text-[#4338CA] font-bebas text-lg tracking-widest uppercase mb-2 block">
             Why Choose Us
           </span>
-          <h2 className="text-4xl md:text-5xl font-poppins font-bold text-white leading-tight mb-6">
+          <h2 className="text-4xl md:text-5xl font-poppins font-bold text-[#0F172A] leading-tight mb-6">
             The Family Anchor Advantage
           </h2>
-          <p className="text-slate-300 text-lg">
+          <p className="text-slate-600 text-lg">
             We don't just provide security; we provide peace of mind through a relentless 
             commitment to excellence, innovation, and customer satisfaction.
           </p>
@@ -39,12 +39,12 @@ export function WhyChooseUsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: idx * 0.1, duration: 0.5 }}
-              className="bg-[#231F20] p-6 rounded-[20px] shadow-sm hover:shadow-xl transition-all duration-300 border border-white/10 flex flex-col items-center text-center group"
+              className="bg-white/80 backdrop-blur-md p-6 rounded-[20px] shadow-xl hover:shadow-2xl transition-all duration-300 border border-slate-200/80 flex flex-col items-center text-center group"
             >
-              <div className="w-16 h-16 rounded-full bg-[#2F2B2C] flex items-center justify-center text-[#11BDF2] mb-4 group-hover:scale-110 group-hover:bg-[#11BDF2] group-hover:text-white transition-all duration-300">
+              <div className="w-16 h-16 rounded-full bg-emerald-50 flex items-center justify-center text-[#10B981] mb-4 group-hover:scale-110 group-hover:bg-[#10B981] group-hover:text-white transition-all duration-300">
                 {reason.icon}
               </div>
-              <h3 className="font-poppins font-semibold text-white group-hover:text-[#11BDF2] transition-colors">
+              <h3 className="font-poppins font-semibold text-[#0F172A] group-hover:text-[#4338CA] transition-colors">
                 {reason.title}
               </h3>
             </motion.div>

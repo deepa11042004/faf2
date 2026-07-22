@@ -26,15 +26,15 @@ const testimonials = [
 
 export function TestimonialsSection() {
   return (
-    <section className="py-24 bg-[#07192D] relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] -z-10" />
+    <section className="py-24 bg-[#F8FAFC] relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#4338CA]/5 rounded-full blur-[120px] -z-10" />
       
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-primary font-semibold uppercase tracking-wider text-sm mb-2 block">
+          <span className="text-[#4338CA] font-bebas text-lg tracking-widest uppercase mb-2 block">
             Testimonials
           </span>
-          <h2 className="text-4xl md:text-5xl font-poppins font-bold text-white leading-tight mb-6">
+          <h2 className="text-4xl md:text-5xl font-poppins font-bold text-[#0F172A] leading-tight mb-6">
             What Our Clients Say
           </h2>
         </div>
@@ -47,24 +47,24 @@ export function TestimonialsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1, duration: 0.5 }}
-              className="bg-white/5 border border-white/10 backdrop-blur-md p-8 rounded-[24px] relative group hover:bg-white/10 transition-colors"
+              className="bg-white/80 border border-slate-200/80 backdrop-blur-md p-8 rounded-[24px] relative group hover:shadow-2xl shadow-xl transition-all"
             >
-              <Quote className="absolute top-6 right-6 w-12 h-12 text-white/5 group-hover:text-primary/20 transition-colors" />
-              <div className="flex items-center gap-1 mb-6 text-[#D4AF37]">
+              <Quote className="absolute top-6 right-6 w-12 h-12 text-[#4338CA]/10 group-hover:text-[#4338CA]/20 transition-colors" />
+              <div className="flex items-center gap-1 mb-6 text-[#F59E0B]">
                 {[...Array(testi.rating)].map((_, i) => (
                   <Star key={i} className="w-5 h-5 fill-current" />
                 ))}
               </div>
-              <p className="text-slate-300 mb-8 leading-relaxed italic relative z-10">
+              <p className="text-slate-600 mb-8 leading-relaxed italic relative z-10">
                 "{testi.content}"
               </p>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold font-poppins">
+                <div className="w-12 h-12 rounded-full bg-emerald-50 text-[#10B981] flex items-center justify-center font-bold font-poppins shadow-sm">
                   {testi.name.charAt(0)}
                 </div>
                 <div>
-                  <h4 className="font-poppins font-semibold text-white">{testi.name}</h4>
-                  <p className="text-sm text-slate-400">{testi.role}</p>
+                  <h4 className="font-poppins font-semibold text-[#0F172A]">{testi.name}</h4>
+                  <p className="text-sm text-slate-500">{testi.role}</p>
                 </div>
               </div>
             </motion.div>

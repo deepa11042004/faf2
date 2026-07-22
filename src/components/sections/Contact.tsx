@@ -14,7 +14,7 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-slate-50 relative overflow-hidden">
+    <section id="contact" className="py-24 bg-[#F8FAFC] relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           
@@ -27,10 +27,10 @@ export function ContactSection() {
             className="flex flex-col gap-8"
           >
             <div>
-              <span className="text-primary font-semibold uppercase tracking-wider text-sm mb-2 block">
+              <span className="text-[#4338CA] font-bebas text-lg tracking-widest uppercase mb-2 block">
                 Get In Touch
               </span>
-              <h2 className="text-4xl md:text-5xl font-poppins font-bold text-slate-900 leading-tight mb-6">
+              <h2 className="text-4xl md:text-5xl font-poppins font-bold text-[#0F172A] leading-tight mb-6">
                 Ready to Secure Your World?
               </h2>
               <p className="text-slate-600 text-lg leading-relaxed">
@@ -41,31 +41,31 @@ export function ContactSection() {
 
             <div className="flex flex-col gap-6">
               <div className="flex items-start gap-4">
-                <div className="p-4 bg-white rounded-full text-primary shadow-sm">
+                <div className="p-4 bg-emerald-50 rounded-full text-[#10B981] shadow-sm">
                   <Phone className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="font-poppins font-semibold text-slate-900 mb-1">Phone</h4>
+                  <h4 className="font-poppins font-semibold text-[#0F172A] mb-1">Phone</h4>
                   <p className="text-slate-600 text-lg">+1 (800) 123-4567</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="p-4 bg-white rounded-full text-primary shadow-sm">
+                <div className="p-4 bg-emerald-50 rounded-full text-[#10B981] shadow-sm">
                   <Mail className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="font-poppins font-semibold text-slate-900 mb-1">Email</h4>
+                  <h4 className="font-poppins font-semibold text-[#0F172A] mb-1">Email</h4>
                   <p className="text-slate-600 text-lg">info@familyanchor.com</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="p-4 bg-white rounded-full text-primary shadow-sm">
+                <div className="p-4 bg-emerald-50 rounded-full text-[#10B981] shadow-sm">
                   <MapPin className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="font-poppins font-semibold text-slate-900 mb-1">Headquarters</h4>
+                  <h4 className="font-poppins font-semibold text-[#0F172A] mb-1">Headquarters</h4>
                   <p className="text-slate-600 text-lg">
                     123 Security Boulevard, Tech District <br />
                     New York, NY 10001
@@ -81,12 +81,12 @@ export function ContactSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-white p-8 md:p-10 rounded-[24px] shadow-[0_10px_40px_rgba(0,0,0,0.05)] border border-slate-100 relative"
+            className="bg-white/80 backdrop-blur-md p-8 md:p-10 rounded-[24px] shadow-2xl border border-slate-200/80 relative"
           >
             {/* Decorative background shape */}
-            <div className="absolute -top-10 -right-10 w-32 h-32 bg-primary/10 rounded-full blur-2xl pointer-events-none" />
+            <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#4338CA]/10 rounded-full blur-2xl pointer-events-none" />
             
-            <h3 className="text-2xl font-poppins font-bold text-slate-900 mb-6">Send us a Message</h3>
+            <h3 className="text-2xl font-poppins font-bold text-[#0F172A] mb-6">Send us a Message</h3>
             
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5 relative z-10">
               <div className="grid grid-cols-2 gap-5">
@@ -94,14 +94,14 @@ export function ContactSection() {
                   <input
                     {...register("name", { required: true })}
                     placeholder="Your Name"
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-[#4338CA] focus:ring-1 focus:ring-[#4338CA] transition-all text-[#0F172A]"
                   />
                 </div>
                 <div className="flex flex-col gap-1">
                   <input
                     {...register("phone", { required: true })}
                     placeholder="Phone Number"
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-[#4338CA] focus:ring-1 focus:ring-[#4338CA] transition-all text-[#0F172A]"
                   />
                 </div>
               </div>
@@ -111,14 +111,14 @@ export function ContactSection() {
                   {...register("email", { required: true })}
                   placeholder="Email Address"
                   type="email"
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-[#4338CA] focus:ring-1 focus:ring-[#4338CA] transition-all text-[#0F172A]"
                 />
               </div>
 
               <div className="flex flex-col gap-1">
                 <select
                   {...register("service")}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-600 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-600 focus:outline-none focus:border-[#4338CA] focus:ring-1 focus:ring-[#4338CA] transition-all"
                 >
                   <option value="">Select a Service</option>
                   <option value="cctv">CCTV Installation</option>
@@ -133,7 +133,7 @@ export function ContactSection() {
                   {...register("message", { required: true })}
                   placeholder="How can we help you?"
                   rows={4}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-[#4338CA] focus:ring-1 focus:ring-[#4338CA] transition-all resize-none text-[#0F172A]"
                 />
               </div>
 

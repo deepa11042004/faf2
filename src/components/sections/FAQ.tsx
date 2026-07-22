@@ -32,13 +32,13 @@ export function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-24 bg-white relative">
+    <section className="py-24 bg-[#F8FAFC] relative">
       <div className="container mx-auto px-4 md:px-6 max-w-4xl">
         <div className="text-center mb-16">
-          <span className="text-primary font-semibold uppercase tracking-wider text-sm mb-2 block">
+          <span className="text-[#4338CA] font-bebas text-lg tracking-widest uppercase mb-2 block">
             Common Questions
           </span>
-          <h2 className="text-4xl md:text-5xl font-poppins font-bold text-slate-900 leading-tight">
+          <h2 className="text-4xl md:text-5xl font-poppins font-bold text-[#0F172A] leading-tight">
             Frequently Asked Questions
           </h2>
         </div>
@@ -54,8 +54,10 @@ export function FAQSection() {
                 transition={{ delay: idx * 0.1, duration: 0.5 }}
                 key={idx}
                 className={cn(
-                  "border rounded-2xl overflow-hidden transition-all duration-300",
-                  isOpen ? "border-primary bg-slate-50 shadow-md" : "border-slate-200 bg-white hover:border-slate-300"
+                  "rounded-2xl overflow-hidden transition-all duration-300 backdrop-blur-md",
+                  isOpen 
+                    ? "border-2 border-[#4338CA] bg-white/90 shadow-2xl" 
+                    : "border border-slate-200/80 bg-white/80 hover:border-[#4338CA]/40 shadow-xl"
                 )}
               >
                 <button
@@ -64,14 +66,14 @@ export function FAQSection() {
                 >
                   <span className={cn(
                     "font-poppins font-semibold text-lg transition-colors",
-                    isOpen ? "text-primary" : "text-slate-800"
+                    isOpen ? "text-[#4338CA]" : "text-[#0F172A]"
                   )}>
                     {faq.question}
                   </span>
                   <ChevronDown
                     className={cn(
                       "w-5 h-5 text-slate-500 transition-transform duration-300 flex-shrink-0",
-                      isOpen && "transform rotate-180 text-primary"
+                      isOpen && "transform rotate-180 text-[#4338CA]"
                     )}
                   />
                 </button>

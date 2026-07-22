@@ -16,9 +16,9 @@ const clients = [
 
 export function TrustSection() {
   return (
-    <section className="py-12 bg-[#11BDF2] border-y border-border overflow-hidden text-white">
+    <section className="py-12 bg-gradient-to-r from-[#4338CA] to-[#3B82F6] border-y border-slate-200 overflow-hidden text-white shadow-inner">
       <div className="container mx-auto px-4 text-center mb-8">
-        <p className="text-sm font-semibold text-white/90 uppercase tracking-widest">
+        <p className="text-sm font-bold text-white/90 uppercase tracking-widest">
           Trusted By Industry Leaders Across Sectors
         </p>
       </div>

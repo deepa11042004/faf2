@@ -5,7 +5,7 @@ import { CheckCircle2, ShieldCheck, Target, Eye } from "lucide-react";
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-24 bg-[#62D3F6] overflow-hidden">
+    <section id="about" className="py-24 bg-[#F8FAFC] overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           
@@ -17,7 +17,7 @@ export function AboutSection() {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <div className="relative h-[600px] w-full rounded-[32px] overflow-hidden shadow-2xl border border-white/20">
+            <div className="relative h-[600px] w-full rounded-[32px] overflow-hidden shadow-2xl border border-slate-200">
               <img 
                 src="https://placehold.co/800x1200/282425/11bdf2?text=Security+Professionals" 
                 alt="Security Team"
@@ -30,11 +30,11 @@ export function AboutSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.4, duration: 0.6 }}
-                className="absolute bottom-10 left-10 z-20 bg-white p-6 rounded-2xl shadow-xl max-w-[250px]"
+                className="absolute bottom-10 left-10 z-20 bg-white/90 backdrop-blur-md p-6 rounded-2xl shadow-2xl border border-slate-200 max-w-[250px]"
               >
-                <div className="flex items-center gap-4 text-primary mb-2">
+                <div className="flex items-center gap-4 text-[#10B981] mb-2">
                   <ShieldCheck className="w-10 h-10" />
-                  <span className="text-3xl font-bold font-poppins text-slate-900">10+</span>
+                  <span className="text-3xl font-bold font-poppins text-[#0F172A]">10+</span>
                 </div>
                 <p className="text-sm font-medium text-slate-600">
                   Years of excellence in security and facility management
@@ -43,8 +43,8 @@ export function AboutSection() {
             </div>
             
             {/* Decorative Elements */}
-            <div className="absolute -top-10 -right-10 w-40 h-40 bg-accent/20 rounded-full blur-3xl -z-10" />
-            <div className="absolute -bottom-10 -left-10 w-60 h-60 bg-primary/20 rounded-full blur-3xl -z-10" />
+            <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#4338CA]/10 rounded-full blur-3xl -z-10" />
+            <div className="absolute -bottom-10 -left-10 w-60 h-60 bg-[#10B981]/10 rounded-full blur-3xl -z-10" />
           </motion.div>
 
           {/* Content Right Side */}
@@ -56,10 +56,10 @@ export function AboutSection() {
             className="flex flex-col gap-8"
           >
             <div>
-              <span className="text-primary font-semibold uppercase tracking-wider text-sm mb-2 block">
+              <span className="text-[#4338CA] font-bebas text-lg tracking-widest uppercase mb-2 block">
                 About Our Company
               </span>
-              <h2 className="text-4xl md:text-5xl font-poppins font-bold text-slate-900 leading-tight mb-6">
+              <h2 className="text-4xl md:text-5xl font-poppins font-bold text-[#0F172A] leading-tight mb-6">
                 Trusted Security Solutions Since Day One
               </h2>
               <p className="text-slate-600 text-lg leading-relaxed mb-4">
@@ -75,18 +75,18 @@ export function AboutSection() {
 
             <div className="grid sm:grid-cols-2 gap-6 mt-4">
               {/* Mission */}
-              <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
-                <Target className="w-8 h-8 text-primary mb-4" />
-                <h3 className="text-xl font-poppins font-semibold text-slate-900 mb-2">Our Mission</h3>
+              <div className="bg-white/80 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-slate-200/80 hover:shadow-2xl transition-all">
+                <Target className="w-8 h-8 text-[#4338CA] mb-4" />
+                <h3 className="text-xl font-poppins font-semibold text-[#0F172A] mb-2">Our Mission</h3>
                 <p className="text-slate-600 text-sm">
                   To provide unparalleled security solutions that ensure safety, protect assets, and build trust.
                 </p>
               </div>
 
               {/* Vision */}
-              <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
-                <Eye className="w-8 h-8 text-primary mb-4" />
-                <h3 className="text-xl font-poppins font-semibold text-slate-900 mb-2">Our Vision</h3>
+              <div className="bg-white/80 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-slate-200/80 hover:shadow-2xl transition-all">
+                <Eye className="w-8 h-8 text-[#10B981] mb-4" />
+                <h3 className="text-xl font-poppins font-semibold text-[#0F172A] mb-2">Our Vision</h3>
                 <p className="text-slate-600 text-sm">
                   To be the industry benchmark for innovative and reliable facility management globally.
                 </p>

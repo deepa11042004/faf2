@@ -13,9 +13,9 @@ const stats = [
 
 export function StatsSection() {
   return (
-    <section className="py-20 bg-[#FFFFFF] relative overflow-hidden">
+    <section className="py-20 bg-[#F8FAFC] relative overflow-hidden">
       {/* Background patterns */}
-      <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,rgba(17,189,242,0.8)_0%,transparent_70%)]" />
+      <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,rgba(67,56,202,0.15)_0%,transparent_70%)]" />
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 text-center">
@@ -26,16 +26,16 @@ export function StatsSection() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1, duration: 0.5 }}
-              className="flex flex-col items-center gap-4 group"
+              className="flex flex-col items-center gap-4 group bg-white/80 backdrop-blur-md p-8 rounded-3xl border border-slate-200/80 shadow-xl hover:shadow-2xl transition-all"
             >
-              <div className="p-4 bg-[#62D3F6]/20 rounded-2xl group-hover:bg-[#11BDF2]/20 transition-colors text-[#11BDF2] border border-[#11BDF2]/10 group-hover:border-[#11BDF2]/50">
+              <div className="p-4 bg-emerald-50 rounded-2xl text-[#10B981] border border-emerald-100 group-hover:bg-[#10B981] group-hover:text-white transition-colors">
                 {stat.icon}
               </div>
-              <div className="flex items-center text-4xl md:text-5xl font-poppins font-bold text-[#231F20]">
+              <div className="flex items-center text-4xl md:text-5xl font-poppins font-bold text-[#0F172A]">
                 <CountUp end={stat.value} duration={3} enableScrollSpy scrollSpyOnce />
-                <span className="text-[#11BDF2]">{stat.suffix}</span>
+                <span className="text-[#4338CA]">{stat.suffix}</span>
               </div>
-              <p className="text-[#2F2B2C]/80 font-medium uppercase tracking-widest text-sm">
+              <p className="text-slate-600 font-semibold uppercase tracking-wider text-sm">
                 {stat.label}
               </p>
             </motion.div>

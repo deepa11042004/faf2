@@ -5,18 +5,18 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:scale-105 active:scale-95",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-md font-bebas text-base tracking-wider uppercase font-normal ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:scale-105 active:scale-95",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground shadow-[0_0_20px_rgba(17,189,242,0.4)] hover:shadow-[0_0_30px_rgba(17,189,242,0.7)]",
+        default: "bg-[#4338CA] text-white font-bold shadow-[0_4px_15px_rgba(67,56,202,0.3)] hover:shadow-[0_6px_25px_rgba(67,56,202,0.6)] hover:bg-[#3730A3]",
         destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90 shadow",
-        outline: "border border-primary/50 bg-transparent hover:bg-primary/10 hover:text-primary shadow",
+        outline: "border border-slate-200 bg-white text-[#0F172A] hover:bg-indigo-50/50 hover:border-indigo-300 shadow-sm",
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80 shadow",
         ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
-        premium: "bg-gradient-to-r from-[#11BDF2] to-[#62D3F6] text-[#231F20] shadow-[0_4px_20px_rgba(17,189,242,0.5)] hover:shadow-[0_8px_30px_rgba(17,189,242,0.8)] border border-white/10 font-bold",
-        gold: "bg-gradient-to-r from-[#2F2B2C] to-[#231F20] text-white shadow-[0_4px_20px_rgba(35,31,32,0.4)] hover:shadow-[0_8px_30px_rgba(35,31,32,0.7)]",
+        link: "text-[#4338CA] underline-offset-4 hover:underline",
+        premium: "bg-gradient-to-r from-[#4338CA] to-[#3B82F6] text-white font-bold shadow-[0_4px_20px_rgba(67,56,202,0.4)] hover:shadow-[0_8px_30px_rgba(67,56,202,0.7)] border border-white/20",
+        gold: "bg-gradient-to-r from-[#4338CA] to-[#3B82F6] text-white font-bold shadow-[0_4px_20px_rgba(67,56,202,0.4)] hover:shadow-[0_8px_30px_rgba(67,56,202,0.7)]",
       },
       size: {
         default: "h-11 px-6 py-2 rounded-[18px]",
