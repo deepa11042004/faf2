@@ -8,46 +8,46 @@ const services = [
     icon: <Cctv className="w-10 h-10" />,
     title: "CCTV Installation",
     description: "High-definition surveillance systems with remote monitoring capabilities.",
-    image: "https://placehold.co/600x400/282425/11bdf2?text=CCTV",
+    image: "/cctv-service.png",
   },
   {
     icon: <Flame className="w-10 h-10" />,
     title: "Fire Alarm System",
     description: "Advanced fire detection and alarm systems to ensure maximum safety.",
-    image: "https://placehold.co/600x400/282425/11bdf2?text=Fire+Alarm",
+    image: "/fire-alarm-service.png",
   },
   {
     icon: <Fingerprint className="w-10 h-10" />,
     title: "Access Control System",
     description: "Biometric and card-based access control for restricted areas.",
-    image: "https://placehold.co/600x400/282425/11bdf2?text=Access+Control",
+    image: "/access-control-service.png",
   },
   {
     icon: <Mic className="w-10 h-10" />,
     title: "Public Address System",
     description: "Clear and reliable communication systems for large facilities.",
-    image: "https://placehold.co/600x400/282425/11bdf2?text=PA+System",
+    image: "/pa-system-service.png",
   },
   {
     icon: <Shield className="w-10 h-10" />,
     title: "Security Guard Services",
     description: "Highly trained and professional security personnel for all sectors.",
-    image: "https://placehold.co/600x400/282425/11bdf2?text=Security+Guards",
+    image: "/guards-service.png",
   },
 ];
 
 export function ServicesSection() {
   return (
-    <section id="services" className="py-24 bg-[#F8FAFC] relative">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="services" className="py-24 bg-[url('/services-blue-bg.png')] bg-cover bg-center bg-no-repeat relative text-white">
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-[#4338CA] font-bebas text-lg tracking-widest uppercase mb-2 block">
+          <span className="text-[#38BDF8] font-bebas text-xl tracking-widest uppercase mb-2 block drop-shadow">
             Our Core Services
           </span>
-          <h2 className="text-4xl md:text-5xl font-poppins font-bold text-[#0F172A] leading-tight mb-6">
+          <h2 className="text-4xl md:text-6xl font-bebas tracking-wide text-white leading-tight mb-6">
             Comprehensive Security & Facility Management
           </h2>
-          <p className="text-slate-600 text-lg">
+          <p className="text-blue-100/90 text-lg md:text-xl font-inter">
             We provide end-to-end solutions tailored to meet the unique challenges of your environment.
           </p>
         </div>
@@ -62,14 +62,18 @@ export function ServicesSection() {
               transition={{ delay: idx * 0.1, duration: 0.5 }}
               className="group relative bg-white/80 backdrop-blur-md rounded-[24px] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border border-slate-200/80 hover:border-[#4338CA]/30"
             >
-              <div className="relative h-64 overflow-hidden">
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-10" />
+              <div className="relative h-64 overflow-hidden bg-white flex items-center justify-center border-b border-slate-100">
+                {service.image.startsWith("http") && (
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-10" />
+                )}
                 <img 
                   src={service.image} 
                   alt={service.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  className={`w-full h-full group-hover:scale-105 transition-transform duration-700 ${
+                    service.image.startsWith("/") ? "object-contain p-4" : "object-cover"
+                  }`}
                 />
-                <div className="absolute top-6 left-6 z-20 bg-white/90 backdrop-blur-md p-4 rounded-2xl text-[#10B981] shadow-lg">
+                <div className="absolute top-6 left-6 z-20 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl text-[#10B981] shadow-lg border border-slate-200/80">
                   {service.icon}
                 </div>
               </div>
