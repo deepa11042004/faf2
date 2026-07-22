@@ -16,23 +16,25 @@ const clients = [
 
 export function TrustSection() {
   return (
-    <section className="py-12 bg-gradient-to-r from-[#4338CA] to-[#3B82F6] border-y border-slate-200 overflow-hidden text-white shadow-inner">
-      <div className="container mx-auto px-4 text-center mb-8">
-        <p className="text-sm font-bold text-white/90 uppercase tracking-widest">
+    <section className="py-16 md:py-20 bg-[#F8FAFC] border-y border-slate-200/80 overflow-hidden">
+      <div className="container mx-auto px-4 text-center mb-10">
+        <h2 className="font-bebas text-3xl md:text-5xl tracking-widest text-[#0F172A] uppercase">
           Trusted By Industry Leaders Across Sectors
-        </p>
+        </h2>
       </div>
 
-      <div className="relative flex overflow-x-hidden group">
+      <div className="relative flex overflow-x-hidden group py-2">
         <div className="flex w-[200%] animate-marquee">
-          <div className="flex w-1/2 justify-around items-center space-x-8 px-4">
+          <div className="flex w-1/2 justify-around items-center space-x-6 px-3">
             {[...clients, ...clients].map((client, idx) => (
               <div 
                 key={idx} 
-                className="flex items-center justify-center gap-2 text-white/80 hover:text-white transition-all duration-300 w-40 hover:scale-105 cursor-pointer"
+                className="w-36 h-36 md:w-40 md:h-40 rounded-2xl bg-white border border-slate-200/90 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center gap-3 cursor-pointer shrink-0"
               >
-                {client.icon}
-                <span className="font-poppins font-bold text-lg md:text-xl tracking-tight">
+                <div className="text-slate-800">
+                  {client.icon}
+                </div>
+                <span className="font-bebas text-xl md:text-2xl text-[#0F172A] tracking-wider">
                   {client.name}
                 </span>
               </div>
