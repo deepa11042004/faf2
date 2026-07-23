@@ -29,6 +29,7 @@ const DETAILED_SERVICES = [
   {
     id: "cctv",
     title: "CCTV Installation",
+    href: "/services/cctv-installation",
     icon: <Cctv className="w-10 h-10 text-[#0284C7]" />,
     image: "/about-cctv.png",
     description: "Protect your premises with advanced CCTV surveillance systems that provide 24/7 monitoring, high-definition video recording, remote access, and intelligent security solutions for homes, offices, factories, warehouses, and commercial properties.",
@@ -45,6 +46,7 @@ const DETAILED_SERVICES = [
   {
     id: "fire-alarm",
     title: "Fire Alarm System",
+    href: "/services/fire-alarm-system",
     icon: <Flame className="w-10 h-10 text-[#0284C7]" />,
     image: "/about-fire-alarm.jpg",
     description: "Safeguard lives and property with reliable fire detection and alarm systems designed to detect potential fire hazards quickly and initiate timely alerts for immediate response.",
@@ -61,6 +63,7 @@ const DETAILED_SERVICES = [
   {
     id: "access-control",
     title: "Access Control System",
+    href: "/services/access-control-system",
     icon: <Fingerprint className="w-10 h-10 text-[#0284C7]" />,
     image: "/about-access-control.png",
     description: "Control and monitor access to your premises with modern access control solutions that enhance security while simplifying employee and visitor management.",
@@ -77,6 +80,7 @@ const DETAILED_SERVICES = [
   {
     id: "pa-system",
     title: "Public Address (PA) System",
+    href: "/services/public-address-system",
     icon: <Mic className="w-10 h-10 text-[#0284C7]" />,
     image: "/about-pa-system.jpg",
     description: "Ensure clear and effective communication across your facility with professionally designed Public Address Systems for daily announcements and emergency broadcasting.",
@@ -93,6 +97,7 @@ const DETAILED_SERVICES = [
   {
     id: "security-guards",
     title: "Security Guard Services",
+    href: "/services/security-guard-services",
     icon: <Shield className="w-10 h-10 text-[#0284C7]" />,
     image: "/about-security-officer.jpg",
     description: "Our trained and disciplined security professionals provide reliable on-site protection, ensuring the safety of people, property, and business operations through vigilant monitoring and rapid response.",
@@ -245,12 +250,21 @@ export default function ServicesPage() {
                     </div>
 
                     {/* Ideal For Badge */}
-                    <div className="bg-sky-50/90 border border-sky-200/80 p-4 rounded-2xl">
+                    <div className="bg-sky-50/90 border border-sky-200/80 p-4 rounded-2xl mb-6">
                       <span className="font-bebas text-sm tracking-wider uppercase text-[#0284C7] block mb-1">Ideal For</span>
                       <p className="text-slate-700 text-xs md:text-sm font-inter font-medium leading-relaxed">
                         {srv.idealFor}
                       </p>
                     </div>
+
+                    {/* Dedicated Service Page Link */}
+                    <Link
+                      href={srv.href}
+                      className="inline-flex items-center gap-2 bg-[#0284C7] hover:bg-[#0369a1] text-white font-bebas text-lg tracking-wider uppercase px-6 py-3 rounded-full shadow-md hover:scale-105 transition-all"
+                    >
+                      <span>Explore {srv.title} Details</span>
+                      <ChevronRight className="w-4 h-4" />
+                    </Link>
                   </div>
 
                   {/* Visual Image */}
