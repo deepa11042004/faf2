@@ -117,32 +117,32 @@ const WHY_CHOOSE_SERVICES = [
   {
     title: "Customized Security Solutions",
     desc: "Every client has unique security requirements. We design solutions tailored to your property, industry, and operational needs.",
-    icon: <Sliders className="w-7 h-7 text-[#0284C7]" />
+    icon: <Sliders className="w-7 h-7 text-[#0070c0]" />
   },
   {
     title: "Advanced Technology",
     desc: "We use modern security equipment and industry-leading technologies to deliver reliable, efficient, and future-ready security systems.",
-    icon: <Cpu className="w-7 h-7 text-[#0284C7]" />
+    icon: <Cpu className="w-7 h-7 text-[#0070c0]" />
   },
   {
     title: "Professional Expertise",
     desc: "Our experienced technicians and trained security personnel ensure every project is completed with professionalism, precision, and attention to detail.",
-    icon: <Award className="w-7 h-7 text-[#0284C7]" />
+    icon: <Award className="w-7 h-7 text-[#0070c0]" />
   },
   {
     title: "End-to-End Service",
     desc: "From consultation and system design to installation, maintenance, and ongoing support, we provide complete security solutions under one roof.",
-    icon: <Wrench className="w-7 h-7 text-[#0284C7]" />
+    icon: <Wrench className="w-7 h-7 text-[#0070c0]" />
   },
   {
     title: "Quality & Reliability",
     desc: "We prioritize quality products, industry best practices, and dependable service to ensure long-term performance and customer satisfaction.",
-    icon: <ShieldCheck className="w-7 h-7 text-[#0284C7]" />
+    icon: <ShieldCheck className="w-7 h-7 text-[#0070c0]" />
   },
   {
     title: "24×7 Support",
     desc: "Our dedicated support team is always available to assist with technical issues, maintenance, and emergency service requirements.",
-    icon: <Headset className="w-7 h-7 text-[#0284C7]" />
+    icon: <Headset className="w-7 h-7 text-[#0070c0]" />
   }
 ];
 
@@ -305,7 +305,7 @@ export default function ServicesPage() {
                 transition={{ delay: idx * 0.08, duration: 0.5 }}
                 className="bg-[#0070c0] text-white p-8 rounded-[28px] border-2 border-[#38BDF8]/40 hover:border-white shadow-lg hover:shadow-2xl transition-all group"
               >
-                <div className="p-4 rounded-2xl bg-white/10 border border-white/20 w-fit mb-6 text-[#38BDF8] group-hover:bg-white group-hover:text-[#0070c0] transition-all shadow-sm">
+                <div className="p-4 rounded-2xl bg-white text-[#0070c0] w-fit mb-6 shadow-md border border-white/50 group-hover:scale-110 transition-transform">
                   {item.icon}
                 </div>
                 <h3 className="font-bebas text-2xl tracking-wide text-white mb-3">{item.title}</h3>
