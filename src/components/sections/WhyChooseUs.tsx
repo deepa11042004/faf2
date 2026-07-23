@@ -16,8 +16,12 @@ const reasons = [
 
 export function WhyChooseUsSection() {
   return (
-    <section className="py-24 bg-[#F8FAFC] relative">
-      <div className="container mx-auto px-4 md:px-6">
+    <section className="py-24 bg-[#F8FAFC] relative overflow-hidden">
+      {/* Ambient background glow shapes for backdrop blur effect */}
+      <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-[#0268aa]/20 rounded-full blur-3xl -translate-y-1/2 -z-10 pointer-events-none" />
+      <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-[#38BDF8]/20 rounded-full blur-3xl -translate-y-1/2 -z-10 pointer-events-none" />
+
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-[#4338CA] font-bebas text-lg tracking-widest uppercase mb-2 block">
             Why Choose Us
@@ -39,12 +43,12 @@ export function WhyChooseUsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: idx * 0.1, duration: 0.5 }}
-              className="bg-white/80 backdrop-blur-md p-6 rounded-[20px] shadow-xl hover:shadow-2xl transition-all duration-300 border border-slate-200/80 flex flex-col items-center text-center group"
+              className="bg-[#0268aa]/55 backdrop-blur-xl p-6 rounded-[20px] shadow-2xl hover:shadow-2xl hover:scale-105 hover:bg-[#0268aa]/75 transition-all duration-300 border-2 border-[#0268aa] flex flex-col items-center text-center group cursor-pointer"
             >
-              <div className="w-16 h-16 rounded-full bg-emerald-50 flex items-center justify-center text-[#10B981] mb-4 group-hover:scale-110 group-hover:bg-[#10B981] group-hover:text-white transition-all duration-300">
+              <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center text-[#0268aa] mb-4 group-hover:scale-110 group-hover:bg-[#0268aa] group-hover:text-white transition-all duration-300 shadow-md">
                 {reason.icon}
               </div>
-              <h3 className="font-poppins font-semibold text-[#0F172A] group-hover:text-[#4338CA] transition-colors">
+              <h3 className="font-bebas text-xl md:text-2xl text-white tracking-wider uppercase group-hover:text-white transition-colors drop-shadow">
                 {reason.title}
               </h3>
             </motion.div>
