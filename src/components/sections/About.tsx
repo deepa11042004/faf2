@@ -28,7 +28,7 @@ const aboutSlides = [
   {
     title: "Security Guard Services",
     alt: "Professional Security Guard Officer",
-    image: "/about-security-guard.jpg",
+    image: "/about-security-officer.jpg",
   },
 ];
 
