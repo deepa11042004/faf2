@@ -44,7 +44,7 @@ export function Footer() {
                 { label: "About Us", href: "/about" },
                 { label: "Our Services", href: "/services" },
                 { label: "Industries", href: "/industries" },
-                { label: "Featured Projects", href: "/#projects" },
+                { label: "Featured Projects", href: "/projects" },
                 { label: "Contact Us", href: "/#contact" }
               ].map((link, idx) => (
                 <li key={idx}>
