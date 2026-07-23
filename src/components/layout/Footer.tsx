@@ -45,7 +45,7 @@ export function Footer() {
                 { label: "Our Services", href: "/services" },
                 { label: "Industries", href: "/industries" },
                 { label: "Featured Projects", href: "/projects" },
-                { label: "Contact Us", href: "/#contact" }
+                { label: "Contact Us", href: "/contact" }
               ].map((link, idx) => (
                 <li key={idx}>
                   <Link href={link.href} className="text-zinc-400 hover:text-[#38BDF8] transition-colors text-sm font-inter">

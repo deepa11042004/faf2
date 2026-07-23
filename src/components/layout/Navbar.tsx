@@ -16,7 +16,7 @@ const NAV_LINKS = [
   { label: "Projects", href: "/projects" },
   { label: "Gallery", href: "/gallery" },
   { label: "Careers", href: "/careers" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export function Navbar() {
