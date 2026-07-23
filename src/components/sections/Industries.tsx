@@ -4,16 +4,16 @@ import { motion } from "framer-motion";
 import { Home, Briefcase, Hospital, School, Warehouse, Hotel, ShoppingBag, Building2, Factory, Landmark } from "lucide-react";
 
 const industries = [
-  { name: "Residential", icon: <Home className="w-8 h-8" />, image: "https://placehold.co/600x400/282425/11bdf2?text=Residential" },
-  { name: "Commercial", icon: <Briefcase className="w-8 h-8" />, image: "https://placehold.co/600x400/282425/11bdf2?text=Commercial" },
-  { name: "Healthcare", icon: <Hospital className="w-8 h-8" />, image: "https://placehold.co/600x400/282425/11bdf2?text=Healthcare" },
-  { name: "Education", icon: <School className="w-8 h-8" />, image: "https://placehold.co/600x400/282425/11bdf2?text=Education" },
-  { name: "Warehouses", icon: <Warehouse className="w-8 h-8" />, image: "https://placehold.co/600x400/282425/11bdf2?text=Warehouses" },
-  { name: "Hotels", icon: <Hotel className="w-8 h-8" />, image: "https://placehold.co/600x400/282425/11bdf2?text=Hotels" },
-  { name: "Retail", icon: <ShoppingBag className="w-8 h-8" />, image: "https://placehold.co/600x400/282425/11bdf2?text=Retail" },
-  { name: "Corporate Offices", icon: <Building2 className="w-8 h-8" />, image: "https://placehold.co/600x400/282425/11bdf2?text=Corporate+Offices" },
-  { name: "Factories", icon: <Factory className="w-8 h-8" />, image: "https://placehold.co/600x400/282425/11bdf2?text=Factories" },
-  { name: "Government", icon: <Landmark className="w-8 h-8" />, image: "https://placehold.co/600x400/282425/11bdf2?text=Government" },
+  { name: "Residential", icon: <Home className="w-8 h-8" />, image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80" },
+  { name: "Commercial", icon: <Briefcase className="w-8 h-8" />, image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" },
+  { name: "Healthcare", icon: <Hospital className="w-8 h-8" />, image: "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?auto=format&fit=crop&w=800&q=80" },
+  { name: "Education", icon: <School className="w-8 h-8" />, image: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80" },
+  { name: "Warehouses", icon: <Warehouse className="w-8 h-8" />, image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80" },
+  { name: "Hotels", icon: <Hotel className="w-8 h-8" />, image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80" },
+  { name: "Retail", icon: <ShoppingBag className="w-8 h-8" />, image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80" },
+  { name: "Corporate Offices", icon: <Building2 className="w-8 h-8" />, image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" },
+  { name: "Factories", icon: <Factory className="w-8 h-8" />, image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80" },
+  { name: "Government", icon: <Landmark className="w-8 h-8" />, image: "https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?auto=format&fit=crop&w=800&q=80" },
 ];
 
 export function IndustriesSection() {
@@ -29,27 +29,27 @@ export function IndustriesSection() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
           {industries.map((industry, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: idx * 0.05, duration: 0.4 }}
-              className="group relative rounded-2xl overflow-hidden h-48 md:h-56 shadow-xl hover:shadow-2xl transition-all cursor-pointer border border-white/20 hover:border-[#38BDF8]/60 bg-white/10 backdrop-blur-md"
+              transition={{ delay: idx * 0.05, duration: 0.5 }}
+              className="group relative bg-white/80 backdrop-blur-md rounded-[24px] overflow-hidden shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 border border-slate-200/80 hover:border-[#4338CA]/30 flex flex-col justify-between"
             >
-              <div className="absolute inset-0 bg-slate-950/60 group-hover:bg-slate-950/40 transition-colors z-10" />
-              <img
-                src={industry.image}
-                alt={industry.name}
-                className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-30"
-              />
-              <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-4 text-white text-center">
-                <div className="mb-3 text-[#38BDF8] transform group-hover:scale-110 transition-transform duration-300 drop-shadow-md">
-                  {industry.icon}
-                </div>
-                <h3 className="font-bebas tracking-wider text-xl md:text-2xl text-white leading-tight transform group-hover:text-[#38BDF8] transition-colors duration-300">
+              <div className="relative h-44 overflow-hidden bg-white flex items-center justify-center border-b border-slate-100">
+                <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors z-10" />
+                <img 
+                  src={industry.image} 
+                  alt={industry.name}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+              </div>
+              
+              <div className="p-5 text-center flex-1 flex items-center justify-center">
+                <h3 className="text-xl md:text-2xl font-bebas tracking-wider text-[#0F172A] group-hover:text-[#4338CA] transition-colors">
                   {industry.name}
                 </h3>
               </div>
