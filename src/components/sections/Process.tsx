@@ -1,20 +1,20 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ClipboardList, Map, PenTool, Wrench, ShieldAlert, Headphones } from "lucide-react";
+import { FileSearch, Compass, Layers, Cpu, ShieldCheck, Headset } from "lucide-react";
 
 const processSteps = [
-  { icon: <ClipboardList />, title: "Requirement Analysis" },
-  { icon: <Map />, title: "Site Survey" },
-  { icon: <PenTool />, title: "Planning" },
-  { icon: <Wrench />, title: "Installation" },
-  { icon: <ShieldAlert />, title: "Testing" },
-  { icon: <Headphones />, title: "Support" },
+  { icon: <FileSearch className="w-8 h-8 stroke-[1.75]" />, title: "Requirement Analysis" },
+  { icon: <Compass className="w-8 h-8 stroke-[1.75]" />, title: "Site Survey" },
+  { icon: <Layers className="w-8 h-8 stroke-[1.75]" />, title: "Planning" },
+  { icon: <Cpu className="w-8 h-8 stroke-[1.75]" />, title: "Installation" },
+  { icon: <ShieldCheck className="w-8 h-8 stroke-[1.75]" />, title: "Testing" },
+  { icon: <Headset className="w-8 h-8 stroke-[1.75]" />, title: "Support" },
 ];
 
 export function ProcessSection() {
   return (
-    <section className="py-24 bg-[#343a40] text-white">
+    <section className="py-24 bg-black text-white">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <span className="text-[#38BDF8] font-bebas text-xl tracking-widest uppercase mb-2 block">
@@ -26,14 +26,16 @@ export function ProcessSection() {
         </div>
 
         <div className="relative">
-          {/* Connecting Line (hidden on mobile) */}
-          <div className="hidden md:block absolute top-1/2 left-0 right-0 h-1 bg-slate-600 -translate-y-1/2 z-0" />
+          {/* Base Track Line centered at circle mid-height (top-10 / 40px) */}
+          <div className="hidden md:block absolute top-10 left-0 right-0 h-[3px] bg-zinc-800 -translate-y-1/2 z-0" />
+          
+          {/* Animated Blue Line moving left-to-right on scroll into view */}
           <motion.div 
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
-            className="hidden md:block absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-[#38BDF8] to-[#10B981] origin-left -translate-y-1/2 z-0"
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
+            className="hidden md:block absolute top-10 left-0 right-0 h-[4px] bg-[#0077ff] shadow-[0_0_20px_#0077ff,0_0_8px_#38BDF8] origin-left -translate-y-1/2 z-0"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-6 gap-8 relative z-10">
@@ -46,12 +48,8 @@ export function ProcessSection() {
                 transition={{ delay: idx * 0.2, duration: 0.5 }}
                 className="flex flex-col items-center text-center group"
               >
-                <div className="w-20 h-20 rounded-full bg-slate-800/90 backdrop-blur-md shadow-xl border border-slate-600 flex items-center justify-center text-[#38BDF8] group-hover:scale-110 transition-transform duration-300 mb-4 relative">
+                <div className="w-20 h-20 rounded-full bg-black backdrop-blur-xl border-2 border-[#11bdf2] shadow-[0_0_20px_rgba(0,119,255,0.35)] flex items-center justify-center text-[#0077ff] group-hover:scale-110 group-hover:bg-[#0077ff] group-hover:text-white transition-all duration-300 mb-4 relative">
                   {step.icon}
-                  {/* Number Badge */}
-                  <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-[#10B981] text-white flex items-center justify-center font-bold text-sm shadow-md">
-                    {idx + 1}
-                  </div>
                 </div>
                 <h3 className="font-bebas tracking-wider text-white text-base md:text-lg px-2">
                   {step.title}

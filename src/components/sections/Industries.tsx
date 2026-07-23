@@ -18,13 +18,13 @@ const industries = [
 
 export function IndustriesSection() {
   return (
-    <section id="industries" className="py-24 bg-[#F8FAFC]">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="industries" className="py-24 bg-[url('/services-blue-bg.png')] bg-cover bg-center bg-no-repeat relative text-white">
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-[#4338CA] font-bebas text-lg tracking-widest uppercase mb-2 block">
+          <span className="text-[#38BDF8] font-bebas text-xl tracking-widest uppercase mb-2 block drop-shadow">
             Industries We Serve
           </span>
-          <h2 className="text-4xl md:text-5xl font-poppins font-bold text-[#0F172A] leading-tight mb-6">
+          <h2 className="text-4xl md:text-6xl font-bebas tracking-wide text-white leading-tight mb-6">
             Tailored Solutions for Every Sector
           </h2>
         </div>
@@ -37,19 +37,19 @@ export function IndustriesSection() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: idx * 0.05, duration: 0.4 }}
-              className="group relative rounded-2xl overflow-hidden h-48 md:h-56 shadow-xl hover:shadow-2xl transition-all cursor-pointer border border-slate-200/80 bg-white/80 backdrop-blur-md"
+              className="group relative rounded-2xl overflow-hidden h-48 md:h-56 shadow-xl hover:shadow-2xl transition-all cursor-pointer border border-white/20 hover:border-[#38BDF8]/60 bg-white/10 backdrop-blur-md"
             >
-              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors z-10" />
+              <div className="absolute inset-0 bg-slate-950/60 group-hover:bg-slate-950/40 transition-colors z-10" />
               <img
                 src={industry.image}
                 alt={industry.name}
-                className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-30"
               />
               <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-4 text-white text-center">
-                <div className="mb-3 text-[#10B981] transform group-hover:-translate-y-2 transition-transform duration-300">
+                <div className="mb-3 text-[#38BDF8] transform group-hover:scale-110 transition-transform duration-300 drop-shadow-md">
                   {industry.icon}
                 </div>
-                <h3 className="font-poppins font-semibold text-lg leading-tight transform group-hover:translate-y-1 transition-transform duration-300">
+                <h3 className="font-bebas tracking-wider text-xl md:text-2xl text-white leading-tight transform group-hover:text-[#38BDF8] transition-colors duration-300">
                   {industry.name}
                 </h3>
               </div>
