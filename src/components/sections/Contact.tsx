@@ -14,8 +14,8 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-[#F8FAFC] relative overflow-hidden">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="contact" className="py-24 bg-[url('/services-blue-bg.png')] bg-cover bg-center bg-no-repeat relative text-white overflow-hidden">
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           
           {/* Contact Info */}
@@ -27,13 +27,13 @@ export function ContactSection() {
             className="flex flex-col gap-8"
           >
             <div>
-              <span className="text-[#4338CA] font-bebas text-lg tracking-widest uppercase mb-2 block">
+              <span className="text-[#38BDF8] font-bebas text-xl tracking-widest uppercase mb-2 block drop-shadow">
                 Get In Touch
               </span>
-              <h2 className="text-4xl md:text-5xl font-poppins font-bold text-[#0F172A] leading-tight mb-6">
+              <h2 className="text-4xl md:text-6xl font-bebas tracking-wide text-white leading-tight mb-6">
                 Ready to Secure Your World?
               </h2>
-              <p className="text-slate-600 text-lg leading-relaxed">
+              <p className="text-blue-100/90 text-lg leading-relaxed font-inter">
                 Contact our team of experts today for a free consultation. We are here to answer your 
                 questions and provide the perfect security solution for your needs.
               </p>
@@ -41,32 +41,32 @@ export function ContactSection() {
 
             <div className="flex flex-col gap-6">
               <div className="flex items-start gap-4">
-                <div className="p-4 bg-emerald-50 rounded-full text-[#10B981] shadow-sm">
+                <div className="p-4 bg-white/10 backdrop-blur-md rounded-full text-[#38BDF8] border border-white/20 shadow-lg">
                   <Phone className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="font-poppins font-semibold text-[#0F172A] mb-1">Phone</h4>
-                  <p className="text-slate-600 text-lg">+1 (800) 123-4567</p>
+                  <h4 className="font-bebas text-xl tracking-wide text-white mb-0.5">Phone</h4>
+                  <p className="text-blue-100 text-lg font-inter">+1 (800) 123-4567</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="p-4 bg-emerald-50 rounded-full text-[#10B981] shadow-sm">
+                <div className="p-4 bg-white/10 backdrop-blur-md rounded-full text-[#38BDF8] border border-white/20 shadow-lg">
                   <Mail className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="font-poppins font-semibold text-[#0F172A] mb-1">Email</h4>
-                  <p className="text-slate-600 text-lg">info@familyanchor.com</p>
+                  <h4 className="font-bebas text-xl tracking-wide text-white mb-0.5">Email</h4>
+                  <p className="text-blue-100 text-lg font-inter">info@familyanchor.com</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="p-4 bg-emerald-50 rounded-full text-[#10B981] shadow-sm">
+                <div className="p-4 bg-white/10 backdrop-blur-md rounded-full text-[#38BDF8] border border-white/20 shadow-lg">
                   <MapPin className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="font-poppins font-semibold text-[#0F172A] mb-1">Headquarters</h4>
-                  <p className="text-slate-600 text-lg">
+                  <h4 className="font-bebas text-xl tracking-wide text-white mb-0.5">Headquarters</h4>
+                  <p className="text-blue-100 text-lg font-inter leading-relaxed">
                     123 Security Boulevard, Tech District <br />
                     New York, NY 10001
                   </p>
@@ -81,27 +81,27 @@ export function ContactSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-white/80 backdrop-blur-md p-8 md:p-10 rounded-[24px] shadow-2xl border border-slate-200/80 relative"
+            className="bg-white/95 backdrop-blur-xl p-8 md:p-10 rounded-[28px] shadow-2xl border border-sky-200 relative text-slate-900"
           >
             {/* Decorative background shape */}
-            <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#4338CA]/10 rounded-full blur-2xl pointer-events-none" />
+            <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#0284C7]/20 rounded-full blur-2xl pointer-events-none" />
             
-            <h3 className="text-2xl font-poppins font-bold text-[#0F172A] mb-6">Send us a Message</h3>
+            <h3 className="text-3xl font-bebas tracking-wide text-slate-900 mb-6">Send us a Message</h3>
             
-            <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5 relative z-10">
+            <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5 relative z-10 font-inter">
               <div className="grid grid-cols-2 gap-5">
                 <div className="flex flex-col gap-1">
                   <input
                     {...register("name", { required: true })}
                     placeholder="Your Name"
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-[#4338CA] focus:ring-1 focus:ring-[#4338CA] transition-all text-[#0F172A]"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-[#0284C7] focus:ring-2 focus:ring-[#0284C7]/20 transition-all text-slate-900"
                   />
                 </div>
                 <div className="flex flex-col gap-1">
                   <input
                     {...register("phone", { required: true })}
                     placeholder="Phone Number"
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-[#4338CA] focus:ring-1 focus:ring-[#4338CA] transition-all text-[#0F172A]"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-[#0284C7] focus:ring-2 focus:ring-[#0284C7]/20 transition-all text-slate-900"
                   />
                 </div>
               </div>
@@ -111,14 +111,14 @@ export function ContactSection() {
                   {...register("email", { required: true })}
                   placeholder="Email Address"
                   type="email"
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-[#4338CA] focus:ring-1 focus:ring-[#4338CA] transition-all text-[#0F172A]"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-[#0284C7] focus:ring-2 focus:ring-[#0284C7]/20 transition-all text-slate-900"
                 />
               </div>
 
               <div className="flex flex-col gap-1">
                 <select
                   {...register("service")}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-600 focus:outline-none focus:border-[#4338CA] focus:ring-1 focus:ring-[#4338CA] transition-all"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-600 focus:outline-none focus:border-[#0284C7] focus:ring-2 focus:ring-[#0284C7]/20 transition-all"
                 >
                   <option value="">Select a Service</option>
                   <option value="cctv">CCTV Installation</option>
@@ -133,11 +133,11 @@ export function ContactSection() {
                   {...register("message", { required: true })}
                   placeholder="How can we help you?"
                   rows={4}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-[#4338CA] focus:ring-1 focus:ring-[#4338CA] transition-all resize-none text-[#0F172A]"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-[#0284C7] focus:ring-2 focus:ring-[#0284C7]/20 transition-all resize-none text-slate-900"
                 />
               </div>
 
-              <Button type="submit" variant="premium" size="lg" className="w-full mt-2 gap-2 text-base h-14">
+              <Button type="submit" variant="premium" size="lg" className="w-full mt-2 gap-2 text-base h-14 bg-[#0284C7] hover:bg-[#0369a1] text-white">
                 Submit Message <Send className="w-5 h-5" />
               </Button>
             </form>
