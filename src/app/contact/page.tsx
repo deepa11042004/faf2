@@ -349,7 +349,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <strong className="block text-slate-900 font-bold mb-0.5">Office Address</strong>
-                      <span>Delhi NCR, India (Registered Corporate Office)</span>
+                      <span>HIG DDA JASOLA, DELHI</span>
                     </div>
                   </div>
 
@@ -359,7 +359,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <strong className="block text-slate-900 font-bold mb-0.5">Phone Number</strong>
-                      <a href="tel:+919876543210" className="hover:text-[#0284C7] transition-colors">+91 98765 43210</a>
+                      <a href="tel:9386126258" className="hover:text-[#0284C7] transition-colors">9386126258</a>
                     </div>
                   </div>
 
@@ -369,7 +369,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <strong className="block text-slate-900 font-bold mb-0.5">Email Address</strong>
-                      <a href="mailto:info@familyanchor.com" className="hover:text-[#0284C7] transition-colors">info@familyanchor.com</a>
+                      <a href="mailto:familyanchorfacilities@gmail.com" className="hover:text-[#0284C7] transition-colors">familyanchorfacilities@gmail.com</a>
                     </div>
                   </div>
 
@@ -514,11 +514,11 @@ export default function ContactPage() {
           </p>
           <div className="flex justify-center">
             <a 
-              href="tel:+919876543210" 
+              href="tel:9386126258" 
               className="inline-flex items-center gap-3 bg-[#0284C7] hover:bg-[#0369a1] text-white font-bebas text-xl tracking-wider uppercase px-10 py-4 rounded-full shadow-xl hover:scale-105 transition-all"
             >
               <Phone className="w-5 h-5" />
-              <span>Call +91 98765 43210</span>
+              <span>Call 9386126258</span>
             </a>
           </div>
         </div>

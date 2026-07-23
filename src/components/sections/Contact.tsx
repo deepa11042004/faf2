@@ -46,7 +46,7 @@ export function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-bebas text-xl tracking-wide text-white mb-0.5">Phone</h4>
-                  <p className="text-blue-100 text-lg font-inter">+1 (800) 123-4567</p>
+                  <a href="tel:9386126258" className="text-blue-100 text-lg font-inter hover:underline">9386126258</a>
                 </div>
               </div>
 
@@ -56,7 +56,7 @@ export function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-bebas text-xl tracking-wide text-white mb-0.5">Email</h4>
-                  <p className="text-blue-100 text-lg font-inter">info@familyanchor.com</p>
+                  <a href="mailto:familyanchorfacilities@gmail.com" className="text-blue-100 text-lg font-inter hover:underline">familyanchorfacilities@gmail.com</a>
                 </div>
               </div>
 
@@ -65,10 +65,9 @@ export function ContactSection() {
                   <MapPin className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="font-bebas text-xl tracking-wide text-white mb-0.5">Headquarters</h4>
+                  <h4 className="font-bebas text-xl tracking-wide text-white mb-0.5">Headquarters Address</h4>
                   <p className="text-blue-100 text-lg font-inter leading-relaxed">
-                    123 Security Boulevard, Tech District <br />
-                    New York, NY 10001
+                    HIG DDA JASOLA, DELHI
                   </p>
                 </div>
               </div>
