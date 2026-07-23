@@ -1,9 +1,56 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { CheckCircle2, ShieldCheck, Target, Eye } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { CheckCircle2, ShieldCheck, Target, Eye, ChevronLeft, ChevronRight } from "lucide-react";
+
+const aboutSlides = [
+  {
+    title: "CCTV Surveillance System",
+    alt: "Advanced CCTV Surveillance Cameras",
+    image: "/about-cctv.png",
+  },
+  {
+    title: "Access Control System",
+    alt: "Smart Biometric Access Control Fingerprint Reader",
+    image: "/about-access-control.png",
+  },
+  {
+    title: "Public Address System",
+    alt: "Commercial PA System Microphones & Broadcast Console",
+    image: "/about-pa-system.jpg",
+  },
+  {
+    title: "Fire Alarm System",
+    alt: "Modern Ceiling Smoke Detector Fire Alarm System",
+    image: "/about-fire-alarm.jpg",
+  },
+  {
+    title: "Security Guard Services",
+    alt: "Professional Security Guard Officer",
+    image: "/about-security-guard.jpg",
+  },
+];
 
 export function AboutSection() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % aboutSlides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + aboutSlides.length) % aboutSlides.length);
+  };
+
+  // Auto slide every 5 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      nextSlide();
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section id="about" className="py-24 bg-black text-white overflow-hidden relative">
       {/* Abstract dark waves background texture */}
@@ -13,7 +60,7 @@ export function AboutSection() {
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           
-          {/* Image/Visual Left Side */}
+          {/* Image/Visual Left Side - Slider */}
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -21,20 +68,74 @@ export function AboutSection() {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <div className="relative h-[600px] w-full rounded-[32px] overflow-hidden shadow-2xl border border-zinc-800">
-              <img 
-                src="/about-cctv.png" 
-                alt="Advanced Surveillance Systems & Security Professionals"
-                className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-700"
-              />
+            <div className="relative h-[650px] lg:h-[720px] w-full rounded-[32px] overflow-hidden shadow-2xl border border-zinc-800 group">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentSlide}
+                  initial={{ opacity: 0, scale: 1.05 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                  className="absolute inset-0"
+                >
+                  <img 
+                    src={aboutSlides[currentSlide].image} 
+                    alt={aboutSlides[currentSlide].alt}
+                    className="w-full h-full object-cover object-center"
+                  />
+                  {/* Subtle dark gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Title Tag */}
+              <div className="absolute top-6 left-6 z-20 bg-black/60 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-[#38BDF8] animate-pulse" />
+                <span className="text-xs font-bebas tracking-wider text-white uppercase">
+                  {aboutSlides[currentSlide].title}
+                </span>
+              </div>
+
+              {/* Navigation Arrows */}
+              <button 
+                onClick={prevSlide}
+                aria-label="Previous Slide"
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-zinc-900/80 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:bg-[#38BDF8] hover:border-[#38BDF8] hover:text-black transition-all shadow-xl opacity-90 group-hover:opacity-100"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
               
+              <button 
+                onClick={nextSlide}
+                aria-label="Next Slide"
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-zinc-900/80 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:bg-[#38BDF8] hover:border-[#38BDF8] hover:text-black transition-all shadow-xl opacity-90 group-hover:opacity-100"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+
+              {/* Slide Indicators */}
+              <div className="absolute bottom-6 right-8 z-30 flex items-center gap-2">
+                {aboutSlides.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setCurrentSlide(idx)}
+                    aria-label={`Go to slide ${idx + 1}`}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      currentSlide === idx 
+                        ? "w-8 bg-[#38BDF8]" 
+                        : "w-2 bg-white/40 hover:bg-white/70"
+                    }`}
+                  />
+                ))}
+              </div>
+
               {/* Floating Badge */}
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.4, duration: 0.6 }}
-                className="absolute bottom-10 left-10 z-20 bg-zinc-900/90 backdrop-blur-md p-6 rounded-2xl shadow-2xl border border-zinc-800 max-w-[250px]"
+                className="absolute bottom-10 left-10 z-20 bg-zinc-900/90 backdrop-blur-md p-6 rounded-2xl shadow-2xl border border-zinc-800 max-w-[250px] hidden sm:block"
               >
                 <div className="flex items-center gap-4 text-[#38BDF8] mb-2">
                   <ShieldCheck className="w-10 h-10" />
