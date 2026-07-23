@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { Home, Briefcase, Hospital, School, Warehouse, Hotel, ShoppingBag, Building2, Factory, Landmark } from "lucide-react";
 
 const industries = [
@@ -31,29 +32,30 @@ export function IndustriesSection() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
           {industries.map((industry, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: idx * 0.05, duration: 0.5 }}
-              className="group relative bg-white/80 backdrop-blur-md rounded-[24px] overflow-hidden shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 border border-slate-200/80 hover:border-[#4338CA]/30 flex flex-col justify-between"
-            >
-              <div className="relative h-44 overflow-hidden bg-white flex items-center justify-center border-b border-slate-100">
-                <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors z-10" />
-                <img 
-                  src={industry.image} 
-                  alt={industry.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-              </div>
-              
-              <div className="p-5 text-center flex-1 flex items-center justify-center">
-                <h3 className="text-xl md:text-2xl font-bebas tracking-wider text-[#0F172A] group-hover:text-[#4338CA] transition-colors">
-                  {industry.name}
-                </h3>
-              </div>
-            </motion.div>
+            <Link key={idx} href="/industries">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ delay: idx * 0.05, duration: 0.5 }}
+                className="group relative bg-white/80 backdrop-blur-md rounded-[24px] overflow-hidden shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 border border-slate-200/80 hover:border-[#0284C7]/40 flex flex-col justify-between h-full cursor-pointer"
+              >
+                <div className="relative h-44 overflow-hidden bg-white flex items-center justify-center border-b border-slate-100">
+                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors z-10" />
+                  <img 
+                    src={industry.image} 
+                    alt={industry.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                </div>
+                
+                <div className="p-5 text-center flex-1 flex items-center justify-center">
+                  <h3 className="text-xl md:text-2xl font-bebas tracking-wider text-[#0F172A] group-hover:text-[#0284C7] transition-colors">
+                    {industry.name}
+                  </h3>
+                </div>
+              </motion.div>
+            </Link>
           ))}
         </div>
       </div>
