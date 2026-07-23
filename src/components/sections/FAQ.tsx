@@ -32,18 +32,21 @@ export function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-24 bg-[#F8FAFC] relative">
-      <div className="container mx-auto px-4 md:px-6 max-w-4xl">
+    <section className="py-24 bg-gradient-to-b from-sky-50/50 via-slate-50 to-sky-50/30 relative overflow-hidden">
+      {/* Ambient background light */}
+      <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_50%_50%,rgba(2,132,199,0.12)_0%,transparent_60%)]" />
+
+      <div className="container mx-auto px-4 md:px-6 max-w-4xl relative z-10">
         <div className="text-center mb-16">
-          <span className="text-[#4338CA] font-bebas text-lg tracking-widest uppercase mb-2 block">
+          <span className="text-[#0284C7] font-bebas text-xl tracking-widest uppercase mb-2 block">
             Common Questions
           </span>
-          <h2 className="text-4xl md:text-5xl font-poppins font-bold text-[#0F172A] leading-tight">
+          <h2 className="text-4xl md:text-5xl font-poppins font-bold text-slate-900 leading-tight">
             Frequently Asked Questions
           </h2>
         </div>
 
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-5">
           {faqs.map((faq, idx) => {
             const isOpen = openIndex === idx;
             return (
@@ -54,28 +57,35 @@ export function FAQSection() {
                 transition={{ delay: idx * 0.1, duration: 0.5 }}
                 key={idx}
                 className={cn(
-                  "rounded-2xl overflow-hidden transition-all duration-300 backdrop-blur-md",
+                  "rounded-3xl overflow-hidden transition-all duration-300 bg-sky-50/90 backdrop-blur-xl border-4 shadow-[0_8px_30px_rgba(2,132,199,0.08)]",
                   isOpen 
-                    ? "border-2 border-[#4338CA] bg-white/90 shadow-2xl" 
-                    : "border border-slate-200/80 bg-white/80 hover:border-[#4338CA]/40 shadow-xl"
+                    ? "border-sky-400 shadow-[0_20px_40px_rgba(2,132,199,0.18)]" 
+                    : "border-sky-300 hover:border-sky-400"
                 )}
               >
                 <button
-                  className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none"
+                  className="w-full px-8 py-6 flex items-center justify-between text-left focus:outline-none gap-4"
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
                 >
                   <span className={cn(
                     "font-poppins font-semibold text-lg transition-colors",
-                    isOpen ? "text-[#4338CA]" : "text-[#0F172A]"
+                    isOpen ? "text-[#0284C7]" : "text-slate-900"
                   )}>
                     {faq.question}
                   </span>
-                  <ChevronDown
-                    className={cn(
-                      "w-5 h-5 text-slate-500 transition-transform duration-300 flex-shrink-0",
-                      isOpen && "transform rotate-180 text-[#4338CA]"
-                    )}
-                  />
+                  <div className={cn(
+                    "w-8 h-8 rounded-full flex items-center justify-center border transition-all shrink-0",
+                    isOpen 
+                      ? "bg-[#0284C7] text-white border-[#0284C7]" 
+                      : "bg-white text-[#0284C7] border-sky-200"
+                  )}>
+                    <ChevronDown
+                      className={cn(
+                        "w-5 h-5 transition-transform duration-300",
+                        isOpen && "transform rotate-180"
+                      )}
+                    />
+                  </div>
                 </button>
                 <AnimatePresence>
                   {isOpen && (
@@ -85,7 +95,7 @@ export function FAQSection() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                     >
-                      <div className="px-6 pb-6 text-slate-600 leading-relaxed border-t border-slate-100 mt-2 pt-4">
+                      <div className="px-8 pb-6 text-slate-600 leading-relaxed border-t border-sky-200/60 mt-1 pt-4 font-inter">
                         {faq.answer}
                       </div>
                     </motion.div>
