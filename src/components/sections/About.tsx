@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2, ShieldCheck, Target, Eye, ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -199,7 +200,7 @@ export function AboutSection() {
               </div>
             </div>
 
-            <ul className="grid grid-cols-2 gap-4 mt-2">
+            <ul className="grid grid-cols-2 gap-4 mt-2 mb-4">
               {[
                 "Highly Trained Personnel",
                 "Advanced Technology",
@@ -212,6 +213,16 @@ export function AboutSection() {
                 </li>
               ))}
             </ul>
+
+            <div className="pt-2">
+              <Link 
+                href="/about" 
+                className="inline-flex items-center gap-3 bg-[#38BDF8] hover:bg-[#0284C7] text-white font-bebas text-lg tracking-wider uppercase px-8 py-3 rounded-full shadow-lg transition-all"
+              >
+                <span>Learn More About Us</span>
+                <ChevronRight className="w-5 h-5" />
+              </Link>
+            </div>
           </motion.div>
         </div>
       </div>

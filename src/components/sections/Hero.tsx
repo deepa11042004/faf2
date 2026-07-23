@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -57,12 +58,16 @@ export function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mt-6">
-            <Button variant="premium" size="lg" className="bg-[#0284C7] hover:bg-[#0369a1] text-white border-none shadow-xl">
-              Get Free Consultation
-            </Button>
-            <Button variant="outline" size="lg" className="border-slate-300 bg-white/80 text-slate-900 hover:bg-white hover:border-slate-400">
-              Explore Services
-            </Button>
+            <Link href="/contact">
+              <Button variant="premium" size="lg" className="bg-[#0284C7] hover:bg-[#0369a1] text-white border-none shadow-xl w-full sm:w-auto">
+                Get Free Consultation
+              </Button>
+            </Link>
+            <Link href="/services">
+              <Button variant="outline" size="lg" className="border-slate-300 bg-white/80 text-slate-900 hover:bg-white hover:border-slate-400 w-full sm:w-auto">
+                Explore Services
+              </Button>
+            </Link>
           </div>
         </motion.div>
       </div>
@@ -72,9 +77,9 @@ export function Hero() {
         initial={{ opacity: 0, scale: 0.95, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="absolute bottom-6 right-6 md:bottom-8 md:right-10 z-20 hidden md:flex items-center justify-end"
+        className="absolute bottom-6 right-3 md:bottom-8 md:right-5 lg:right-6 z-20 hidden md:flex items-center justify-end"
       >
-        <div className="bg-white/90 backdrop-blur-xl p-5 md:p-6 rounded-3xl border border-slate-200/90 shadow-2xl max-w-xs md:max-w-sm text-slate-900">
+        <div className="bg-white/80 backdrop-blur-md p-5 md:p-6 rounded-3xl border border-slate-300 shadow-xl max-w-xs md:max-w-sm text-slate-900">
           <div className="flex items-center gap-3 mb-2">
             <span className="relative flex h-3.5 w-3.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
