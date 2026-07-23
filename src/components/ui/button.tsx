@@ -9,14 +9,14 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-[#4338CA] text-white font-bold shadow-[0_4px_15px_rgba(67,56,202,0.3)] hover:shadow-[0_6px_25px_rgba(67,56,202,0.6)] hover:bg-[#3730A3]",
+        default: "bg-[#0070c0] text-white font-bold shadow-[0_4px_15px_rgba(0,112,192,0.3)] hover:shadow-[0_6px_25px_rgba(0,112,192,0.6)] hover:bg-[#005ba3]",
         destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90 shadow",
-        outline: "border border-slate-200 bg-white text-[#0F172A] hover:bg-indigo-50/50 hover:border-indigo-300 shadow-sm",
+        outline: "border border-slate-200 bg-white text-[#0F172A] hover:bg-sky-50/50 hover:border-sky-300 shadow-sm",
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80 shadow",
         ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-[#4338CA] underline-offset-4 hover:underline",
-        premium: "bg-gradient-to-r from-[#4338CA] to-[#3B82F6] text-white font-bold shadow-[0_4px_20px_rgba(67,56,202,0.4)] hover:shadow-[0_8px_30px_rgba(67,56,202,0.7)] border border-white/20",
-        gold: "bg-gradient-to-r from-[#4338CA] to-[#3B82F6] text-white font-bold shadow-[0_4px_20px_rgba(67,56,202,0.4)] hover:shadow-[0_8px_30px_rgba(67,56,202,0.7)]",
+        link: "text-[#0070c0] underline-offset-4 hover:underline",
+        premium: "bg-[#0070c0] text-white font-bold shadow-[0_4px_20px_rgba(0,112,192,0.4)] hover:shadow-[0_8px_30px_rgba(0,112,192,0.7)] hover:bg-[#005ba3] border border-white/20",
+        gold: "bg-[#0070c0] text-white font-bold shadow-[0_4px_20px_rgba(0,112,192,0.4)] hover:shadow-[0_8px_30px_rgba(0,112,192,0.7)] hover:bg-[#005ba3]",
       },
       size: {
         default: "h-11 px-6 py-2 rounded-[18px]",

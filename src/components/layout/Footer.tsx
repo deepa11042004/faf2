@@ -77,7 +77,7 @@ export function Footer() {
               />
               <button 
                 type="button" 
-                className="bg-[#4338CA] hover:bg-[#3730A3] text-white font-semibold rounded-xl py-3 transition-colors text-sm w-full shadow-md"
+                className="bg-[#0070c0] hover:bg-[#005ba3] text-white font-semibold rounded-xl py-3 transition-colors text-sm w-full shadow-md font-bebas uppercase tracking-wider text-base"
               >
                 Subscribe
               </button>
