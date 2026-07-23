@@ -39,10 +39,17 @@ export function Footer() {
           <div>
             <h4 className="font-poppins font-semibold text-lg mb-6">Quick Links</h4>
             <ul className="flex flex-col gap-3">
-              {["Home", "About Us", "Our Services", "Industries", "Featured Projects", "Contact Us"].map((link, idx) => (
+              {[
+                { label: "Home", href: "/" },
+                { label: "About Us", href: "/about" },
+                { label: "Our Services", href: "/#services" },
+                { label: "Industries", href: "/#industries" },
+                { label: "Featured Projects", href: "/#projects" },
+                { label: "Contact Us", href: "/#contact" }
+              ].map((link, idx) => (
                 <li key={idx}>
-                  <Link href="#" className="text-zinc-400 hover:text-[#4338CA] transition-colors text-sm">
-                    {link}
+                  <Link href={link.href} className="text-zinc-400 hover:text-[#38BDF8] transition-colors text-sm font-inter">
+                    {link.label}
                   </Link>
                 </li>
               ))}
