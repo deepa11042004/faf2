@@ -73,6 +73,12 @@ const FIRE_EQUIPMENT_CATEGORIES = [
     features: ["Long Detection Range", "Ideal for High Ceilings", "Low Maintenance", "Accurate Detection"]
   },
   {
+    title: "Fire Alarm Bell",
+    desc: "Fire alarm bells provide a traditional audible warning when the fire alarm system is activated.",
+    bestFor: ["School Corridors", "Commercial Buildings", "Industrial Warehouses", "Residential Buildings"],
+    features: ["High Sound Output", "Durable Metal Construction", "Reliable Operation"]
+  },
+  {
     title: "Fire Alarm Sounder & Strobe",
     desc: "Sounders emit loud alarm tones while strobe lights provide visual warnings, ensuring that all occupants—including those with hearing impairments—are alerted during emergencies.",
     bestFor: ["Noisy Factories", "Hospitals", "Public Venues", "Shopping Centers", "Commercial Buildings"],
@@ -119,12 +125,6 @@ const FIRE_EQUIPMENT_CATEGORIES = [
     desc: "Waterless gaseous fire suppression system discharging within 10 seconds to extinguish fires without damaging electronics.",
     bestFor: ["Data Centers", "Server Rooms", "Telecommunication Hubs", "Control Rooms"],
     features: ["Zero Ozone Depletion", "Fast 10s Discharge", "Electrically Non-Conductive", "No Residue Cleanup"]
-  },
-  {
-    title: "Clean Agent System",
-    desc: "Environmentally friendly gaseous suppression systems protecting high-value mission-critical assets.",
-    bestFor: ["Museums", "Archives", "Medical Imaging Rooms", "Substations"],
-    features: ["Novec 1230 / Inergen Gas", "Human-Safe Concentration", "Rapid Thermal Suppression"]
   }
 ];
 
@@ -153,7 +153,7 @@ const FIRE_INDUSTRIES = [
   { 
     title: "Government Fire Safety", 
     desc: "Code-compliant fire protection installations for public infrastructure, administrative centers, and heritage buildings.",
-    recommendedEquipment: ["Clean Agent System", "Fire Alarm Control Panel", "Emergency Exit Signs", "Fire Hydrant System"]
+    recommendedEquipment: ["FM-200 System", "Fire Alarm Control Panel", "Emergency Exit Signs", "Fire Hydrant System"]
   }
 ];
 
