@@ -216,6 +216,34 @@ function EquipmentCardSlider({ images, cardIndex, categoryTitle }: { images: str
   );
 }
 
+// Fire Safety Technologies & Protocols
+const FIRE_TECHNOLOGIES = [
+  "Addressable Fire Loop Wiring",
+  "Conventional Zone Signaling",
+  "Photoelectric Smoke Sensing",
+  "Rate-of-Rise Heat Sensing",
+  "UV/IR Optical Flame Sensing",
+  "Infrared Beam Smoke Detection",
+  "FM-200 Clean Gas Suppression",
+  "Dry & Wet Pipe Sprinkler Systems",
+  "Pressurized Fire Hydrant Ring",
+  "Emergency Dialer Integration"
+];
+
+// Intelligent Fire Safety & Smart Alerting Features
+const FIRE_SMART_FEATURES = [
+  "Pinpoint Sensor Addressing",
+  "Multi-Sensor Smoke & Heat Fusion",
+  "False Alarm Suppression Logic",
+  "Auto-Strobe & Siren Sync",
+  "HVAC Emergency Shutoff Control",
+  "Elevator Auto-Recall Integration",
+  "Gas Suppression Release Delay",
+  "24/7 Battery Backup Supervision",
+  "Central Monitoring Station Relay",
+  "Smart Phone Push Alerts"
+];
+
 // 1. Key Benefits
 const KEY_BENEFITS = [
   "Early Smoke & Heat Detection",
@@ -323,27 +351,82 @@ const FIRE_INDUSTRIES = [
   { 
     title: "Residential Fire Safety", 
     desc: "Protect homes, villas, apartments, and gated communities with reliable smoke detection and escape route lighting.",
-    recommendedEquipment: ["Smoke Detectors", "Fire Extinguishers", "Emergency Lights", "Hose Reel System"]
+    recommendedEquipment: ["Smoke Detectors", "Fire Extinguishers", "Emergency Lights", "Hose Reel System"],
+    images: [
+      "/images/services/fire-alarm/smoke-detector/img-4soj8cqs.jpg",
+      "/images/services/fire-alarm/fire-extinguisher/img-cd8qwitk.jpg",
+      "/images/services/fire-alarm/emergency-light/img-3i14ar2g.jpg"
+    ]
   },
   { 
     title: "Commercial Fire Safety", 
     desc: "Protect office buildings, retail malls, IT parks, and hotels with addressable fire alarm panels and sprinkler systems.",
-    recommendedEquipment: ["Fire Alarm Control Panel", "Smoke Detectors", "Fire Sprinkler System", "Emergency Exit Signs"]
+    recommendedEquipment: ["Fire Alarm Control Panel", "Smoke Detectors", "Fire Sprinkler System", "Emergency Exit Signs"],
+    images: [
+      "/images/services/fire-alarm/fire-alarm-control-panel-facp/img-41gyjfrk.jpg",
+      "/images/services/fire-alarm/smoke-detector/img-bhq2vety.jpg",
+      "/images/services/fire-alarm/fire-sprinkler-system/img-ehndt9ph.jpg"
+    ]
   },
   { 
     title: "Industrial Fire Safety", 
     desc: "Heavy-duty fire detection, flame sensors, deluge systems, and hydrant networks for factories and chemical plants.",
-    recommendedEquipment: ["Flame Detectors", "Fire Hydrant System", "Heat Detectors", "Fire Alarm Sounder & Strobe"]
+    recommendedEquipment: ["Flame Detectors", "Fire Hydrant System", "Heat Detectors", "Fire Alarm Sounder & Strobe"],
+    images: [
+      "/images/services/fire-alarm/flame-detector/img-0z408d2t.jpg",
+      "/images/services/fire-alarm/fire-hydrant-system/img-2ya0vqyi.jpg",
+      "/images/services/fire-alarm/heat-detector/img-empzt0kh.jpg"
+    ]
   },
   { 
-    title: "Healthcare Fire Safety", 
+    title: "Educational Institutions", 
+    desc: "Ensure campus safety with centralized fire alarm panels, emergency exit signs, and evacuation sounders.",
+    recommendedEquipment: ["Fire Alarm Control Panel", "Emergency Exit Signs", "Fire Alarm Sounder & Strobe", "Fire Extinguishers"],
+    images: [
+      "/images/services/fire-alarm/fire-alarm-control-panel-facp/img-5gpw193z.jpg",
+      "/images/services/fire-alarm/emergency-exit-sign/img-0aryxuoh.jpg",
+      "/images/services/fire-alarm/fire-alarm-sounder-strobe/img-8hrwvuu6.jpg"
+    ]
+  },
+  { 
+    title: "Healthcare Facilities", 
     desc: "Specialized early warning smoke detection, strobe visual alerts, and clean agent suppression for hospitals and clinics.",
-    recommendedEquipment: ["Smoke Detectors", "Fire Alarm Sounder & Strobe", "FM-200 System", "Fire Alarm Control Panel"]
+    recommendedEquipment: ["Smoke Detectors", "Fire Alarm Sounder & Strobe", "FM-200 System", "Fire Alarm Control Panel"],
+    images: [
+      "/images/services/fire-alarm/smoke-detector/img-dzobf4pq.jpg",
+      "/images/services/fire-alarm/fire-alarm-sounder-strobe/img-8hrwvuu6.jpg",
+      "/images/services/fire-alarm/fm-200-fire-suppression-system/img-8emira6q.jpg"
+    ]
   },
   { 
-    title: "Government Fire Safety", 
+    title: "Hospitality", 
+    desc: "Comprehensive fire detection and automated sprinklers for hotels, resorts, and event banquet halls.",
+    recommendedEquipment: ["Smoke Detectors", "Fire Sprinkler System", "Emergency Exit Signs", "Fire Alarm Control Panel"],
+    images: [
+      "/images/services/fire-alarm/smoke-detector/img-o4ku020g.jpg",
+      "/images/services/fire-alarm/fire-sprinkler-system/img-eslesg89.jpg",
+      "/images/services/fire-alarm/emergency-exit-sign/img-60h93n9j.jpg"
+    ]
+  },
+  { 
+    title: "Warehouses & Logistics", 
+    desc: "High-ceiling beam smoke detectors, flame sensors, and pressurized fire hydrant networks for logistics centers.",
+    recommendedEquipment: ["Beam Smoke Detector", "Fire Hydrant System", "Flame Detectors", "Fire Hose Reel"],
+    images: [
+      "/images/services/fire-alarm/beam-smoke-detector/img-66ftinii.jpg",
+      "/images/services/fire-alarm/fire-hydrant-system/img-gpw6n0xl.jpg",
+      "/images/services/fire-alarm/flame-detector/img-9dwugq0j.jpg"
+    ]
+  },
+  { 
+    title: "Government & Public", 
     desc: "Code-compliant fire protection installations for public infrastructure, administrative centers, and heritage buildings.",
-    recommendedEquipment: ["FM-200 System", "Fire Alarm Control Panel", "Emergency Exit Signs", "Fire Hydrant System"]
+    recommendedEquipment: ["FM-200 System", "Fire Alarm Control Panel", "Emergency Exit Signs", "Fire Hydrant System"],
+    images: [
+      "/images/services/fire-alarm/fm-200-fire-suppression-system/img-k2nr9vht.jpg",
+      "/images/services/fire-alarm/fire-alarm-control-panel-facp/img-5gpw193z.jpg",
+      "/images/services/fire-alarm/emergency-exit-sign/img-0aryxuoh.jpg"
+    ]
   }
 ];
 
@@ -587,6 +670,53 @@ export default function FireAlarmSystemPage() {
         </div>
       </section>
 
+      {/* Fire Safety Technologies & Smart AI Features Grid */}
+      <section className="py-24 bg-white text-slate-900 relative">
+        <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-7xl">
+          <div className="grid lg:grid-cols-2 gap-16">
+            
+            {/* Modern Equipment / Fire Technologies */}
+            <div className="bg-sky-50/80 rounded-[32px] p-8 md:p-10 border-2 border-sky-200">
+              <span className="text-[#0284C7] font-bebas text-xl tracking-widest uppercase mb-2 block">
+                Modern Equipment
+              </span>
+              <h3 className="text-4xl font-bebas tracking-wide text-slate-900 mb-6">Fire Safety Technologies</h3>
+              <p className="text-slate-600 text-sm font-inter mb-6">
+                We install advanced fire detection systems equipped with state-of-the-art sensing hardware, addressable loop protocols, and clean agent suppression.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-3">
+                {FIRE_TECHNOLOGIES.map((tech, tIdx) => (
+                  <div key={tIdx} className="bg-white p-3.5 rounded-xl border border-sky-200 flex items-center gap-2.5 shadow-sm text-slate-800 font-inter text-xs font-semibold">
+                    <Zap className="w-4 h-4 text-[#0284C7] shrink-0" />
+                    <span>{tech}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Intelligent Security / Smart AI Features */}
+            <div className="bg-[#0070c0] text-white rounded-[32px] p-8 md:p-10 border-2 border-[#38BDF8]/40 shadow-2xl">
+              <span className="text-[#38BDF8] font-bebas text-xl tracking-widest uppercase mb-2 block">
+                Intelligent Security
+              </span>
+              <h3 className="text-4xl font-bebas tracking-wide text-white mb-6">Smart AI & Alerting Features</h3>
+              <p className="text-blue-100 text-sm font-inter mb-6">
+                Modern fire protection systems include intelligent automation features designed to improve early warning accuracy and execute automated life safety controls.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-3">
+                {FIRE_SMART_FEATURES.map((ai, aIdx) => (
+                  <div key={aIdx} className="bg-white/10 backdrop-blur-md p-3.5 rounded-xl border border-white/20 flex items-center gap-2.5 text-blue-100 font-inter text-xs font-medium">
+                    <Sparkles className="w-4 h-4 text-[#38BDF8] shrink-0" />
+                    <span>{ai}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       {/* Fire Safety Solutions by Industry - Interactive Rectangular Tiles */}
       <section className="py-24 bg-[url('/images/backgrounds/services-blue-bg.png')] bg-cover bg-center bg-no-repeat relative text-white border-t border-sky-400/40">
         <div className="container mx-auto px-4 md:px-6 relative z-10">
@@ -603,7 +733,7 @@ export default function FireAlarmSystemPage() {
           </div>
 
           {/* Rectangular Industry Selection Tiles without Icons */}
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-7xl mx-auto mb-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-7xl mx-auto mb-12">
             {FIRE_INDUSTRIES.map((ind, idx) => {
               const isSelected = selectedIndustry === idx;
               return (
@@ -659,6 +789,26 @@ export default function FireAlarmSystemPage() {
                     </span>
                   ))}
                 </div>
+              </div>
+              
+              {/* Photo Showcase Grid */}
+              <div className="grid sm:grid-cols-3 gap-6 pt-2">
+                {FIRE_INDUSTRIES[selectedIndustry].images.map((imgUrl, imgIdx) => (
+                  <div 
+                    key={imgIdx} 
+                    className="group relative h-64 rounded-2xl overflow-hidden bg-slate-900 border-2 border-slate-200 shadow-md hover:shadow-xl transition-all"
+                  >
+                    <img 
+                      src={imgUrl} 
+                      alt={`${FIRE_INDUSTRIES[selectedIndustry].title} Photo ${imgIdx + 1}`}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <div className="absolute bottom-3 left-3 right-3 text-white text-xs font-inter opacity-0 group-hover:opacity-100 transition-opacity font-medium">
+                      {FIRE_INDUSTRIES[selectedIndustry].recommendedEquipment[imgIdx % FIRE_INDUSTRIES[selectedIndustry].recommendedEquipment.length]} Deployment
+                    </div>
+                  </div>
+                ))}
               </div>
             </motion.div>
           </AnimatePresence>
