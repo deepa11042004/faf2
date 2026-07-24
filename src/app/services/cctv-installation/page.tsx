@@ -281,16 +281,104 @@ const SMART_AI_FEATURES = [
   "Smart Notifications"
 ];
 
-// 5. Industry Deployments
+// 5. Industry Deployments with associated camera hardware category & photo showcases
 const INDUSTRIES_SOLUTIONS = [
-  { title: "Residential Security", desc: "Protect homes, villas, apartments, and gated communities with reliable surveillance.", icon: <Home className="w-6 h-6 text-[#0284C7]" /> },
-  { title: "Commercial Security", desc: "Monitor offices, retail stores, shopping malls, and business centers.", icon: <Building2 className="w-6 h-6 text-[#0284C7]" /> },
-  { title: "Industrial Security", desc: "Secure factories, manufacturing units, warehouses, and logistics centers.", icon: <Factory className="w-6 h-6 text-[#0284C7]" /> },
-  { title: "Educational Institutions", desc: "Ensure campus safety with surveillance and centralized monitoring.", icon: <GraduationCap className="w-6 h-6 text-[#0284C7]" /> },
-  { title: "Healthcare Facilities", desc: "Protect patients, staff, and critical medical infrastructure.", icon: <HeartPulse className="w-6 h-6 text-[#0284C7]" /> },
-  { title: "Hospitality", desc: "Monitor hotels, resorts, and banquet halls seamlessly.", icon: <Hotel className="w-6 h-6 text-[#0284C7]" /> },
-  { title: "Warehouses & Logistics", desc: "Prevent theft and monitor inventory loading dock movement.", icon: <Warehouse className="w-6 h-6 text-[#0284C7]" /> },
-  { title: "Government & Public", desc: "Reliable surveillance for administrative buildings and public infrastructure.", icon: <Landmark className="w-6 h-6 text-[#0284C7]" /> }
+  { 
+    title: "Residential Security", 
+    desc: "Protect homes, villas, apartments, and gated communities with reliable surveillance.", 
+    icon: <Home className="w-6 h-6 text-[#0284C7]" />,
+    categoryKey: "Dome Cameras",
+    recommendedCameras: ["Dome Cameras", "Wireless Cameras", "Turret Cameras"],
+    images: [
+      "/dome camera/VP26P-T89uJ-K4JLfuW_mCGOQrehf1rTqHCz-e2Ljrz9UIAVV-9CwaTIQ05Vyji3sHDITRGOT28HEbJolIJ4vxOc3XKNS2_ieTsd_ldZsFmy7S1e2i6z9JFD7CMT0Ptxb4PLN5SO9c0LMySMybvgzvYgPg2xSp16lX5LEPaujV7xkX-xJEwe5PBxzNHCZ9RJ.jpg",
+      "/Wireless Cameras/Brvszyepf42s5qZOHOAHslHNpglvdvo9PMoYRQhxYT33PpW20NMHVgGaGTBSKOUtKz58ty5dNdZuQJHOaaKklJk5X1WJjqsgARAmf-haRLtNk5gS52RdDpS7coUbcbhPucAXkXjwgrD6jYeBjgqv2LydGogqPtVIPraHi0WtD454D1rY3I_nUnYkiqYmLpx-.jpg",
+      "/Turret (Eyeball) Cameras/SvQC9SamokYa7sTS8d57xE6RX4is0AptxJ0pWwb0wOzmoVwoAI2LVJpHdmDKkU2PGaOk88CNx-qw6KQPH8VTuY-kMrIJhqGAU8LhseFuWWAbCREn3WIqZtlSe09DraRjrzIdCUzG17iu3Vahl1EPzytuUgGX27CgJCnglQ5hPIwkQcXNJmB37jTOJZ.jpg"
+    ]
+  },
+  { 
+    title: "Commercial Security", 
+    desc: "Monitor offices, retail stores, shopping malls, and business centers.", 
+    icon: <Building2 className="w-6 h-6 text-[#0284C7]" />,
+    categoryKey: "IP Cameras",
+    recommendedCameras: ["IP Cameras", "Dome Cameras", "Fisheye Cameras"],
+    images: [
+      "/IP Cameras/i3sCq33JbdmOZ_WKVY_ZVmVvM_KdFr5drwXpbzJrhreC1D7inYnwmW6wDB73XHdNCpRthAn-5v8NTBYpbO4KmXOyohfbeDADjURRxU9VSBVhsF42pxC83jIpYdsyXuiGscc2BqNi751r1zHTL697vWtU5VnYnU2s2bU-9ZMbi6evj0zghqBocsmQxnzYtZHR.jpg",
+      "/Fisheye Cameras/TS5VM_mHNYm7bXe2lP9oy6g7-5BofDkiQ5COLXuSLCnY4JYiRnmbwRmN26mSEd3Bjuqj9cWWIEP25sIF3zzyDz3Ya9jBW4Dt1YY1WYlHtUk5Rc9rcPrfhx0riX-XOiUo44q49C74HTi7xGLBykUjQ-7E7KN3G-7Y28IdCcePmkDYmg_Zd2dIEmtV5KaqPgR4.jpg",
+      "/dome camera/aR15OIAMnao-N2Ix3CohgQ9EXocqgqQqaEYuCUkgQKMnf46SlCzTUUpGiOdgXfHmwIyC41DbLV6GSIxYm5UUwIWaqfrNK9ivUEJ_cp_NMxakT9w-wVPS-qTC93bYlqCqrKXO5-TqFwx1nn3nnnVTiE-Eix78Bm19TD6iNtDFgdeyMLdWVjP1zTGYKYTKzNJ6.jpg"
+    ]
+  },
+  { 
+    title: "Industrial Security", 
+    desc: "Secure factories, manufacturing units, warehouses, and logistics centers.", 
+    icon: <Factory className="w-6 h-6 text-[#0284C7]" />,
+    categoryKey: "Bullet Cameras",
+    recommendedCameras: ["Bullet Cameras", "PTZ Cameras", "Box Cameras"],
+    images: [
+      "/Bullet Cameras/5TenuMzbyrJ5zN0UlqJ7rRLKXQYhnM_6tlAF-812He89l4ewjQtYvQz0U2gZmtzIoM6DEV_Gaeq8nlCT8uvXj5FAljDUZ-rQ5YkGEwo6ebOoaRxWLaQcNQ93W5_gFrc0emAiera7qRjYWAA2QgLExxjNhqQAc2YUDddtb9G4wvWKnSd4kuK8n5sQOwy2MUIv.jpg",
+      "/PTZ (Pan-Tilt-Zoom) Cameras/3VZFzDiO72AoHwakoDLGNvHFkLVUgiVmdQducNVhp2laXGUxxuEihWeWCa-dDMGUnVT_4KzH-nq6GoEdOUfhEhtTd0Uw1GJt9KAX4BozyvPncmgmz6YE_TzQrfjNbxXV-HT9CTiX5wZ6GKdIAAwg0fmn0PHaX2GytRGANTYHlXqYsuhCuCNXrSxhmb.jpg",
+      "/Box Cameras/BKOHaLctffpqc4yN-yDyQsAKOsvFpgeccn3PFGqtjvU7T8bMZRY2-NDm241havjANPwiSa0GKhHPX6EKvdqBR5YIhTS2pbBCyHYdseavlJFJ8ZlKaTFyQ6PoGzIkBERboX5Tc5xLKVvSTc9CUdPdR6Axflm1GEdBrHY18FmPoXjXqAlN3rtaJD91xXzfiJ6-.jpg"
+    ]
+  },
+  { 
+    title: "Educational Institutions", 
+    desc: "Ensure campus safety with surveillance and centralized monitoring.", 
+    icon: <GraduationCap className="w-6 h-6 text-[#0284C7]" />,
+    categoryKey: "Dome Cameras",
+    recommendedCameras: ["Dome Cameras", "IP Cameras", "PTZ Cameras"],
+    images: [
+      "/dome camera/r2otC68jlCzyJlZcaKTWDSBYBb77CSEmVzBQvJVhd9xjc-AMcZe64CfmP2Hx033Gg4NNEGF9iH_IBOlbzzn0RYvP3xZnRR9ubPLTdDmyJ_DtSeK9y8uCAB8oYQKDcnwFqSrn-S7mYlQ1hWZh5fJpRehEjCnZfeTPwYLDQCm5a3I_k7H4Q6l7A87yY4OHhhXu.jpg",
+      "/IP Cameras/ljuNi5WadXxd3D-LTgoUo9BSJ5ctJdjNFlMjG8xkzfi1fU2dN3OC6g792UfozN-QLYWgw3r7fzrCYnLs2KlqdlkQz_VKl5YrGGdrAMr_oj0svf-zAbzVaUCKiAcab_aeSPv5DXCJrvEjvHcoPn0awsq5cmy5UNBtDy9a4KdATsW1K8e8t8xGctd7T2fcdIph.jpg",
+      "/PTZ (Pan-Tilt-Zoom) Cameras/3aKrogU_PuxGSGBe-nhUYKXexZtmUjqpXQmT1IVaaKTEKyjTKONcdDQwHBaPSde4YYMnq9dcsxTLd6BWteoJSDZZzG2vun5HpISbA5gg3mwfObCApsrzpV8y45lD9OsFfJuub7YcY9i3BVHZHMkm-awPJIYggJQXyv6AWmBfRR1FpKgwTKXsyhVxXN.jpg"
+    ]
+  },
+  { 
+    title: "Healthcare Facilities", 
+    desc: "Protect patients, staff, and critical medical infrastructure.", 
+    icon: <HeartPulse className="w-6 h-6 text-[#0284C7]" />,
+    categoryKey: "Turret Cameras",
+    recommendedCameras: ["Turret Cameras", "Dome Cameras", "IP Cameras"],
+    images: [
+      "/Turret (Eyeball) Cameras/U7CLK71NU3s8iXCUDDnwjWFGkKak_GQxcryQm7jSfv5enZ7cOoZ_L1dAXEb2kH7EX3-qlNB8ObfFVrWZFz3kBDc07GTN86pjlknhQl8thZPlVGYg4nc4mXOnhV_lE9JR_ybvw3S47l8CGeI2-inqnFEh3U0To9VLCVbNggk3UxDByi5_a-VdXKwckfXSX.jpg",
+      "/dome camera/u425wWqjSne5ZRNEsNTVsdL5WJaDU_T7fbtTlVAwrN8qZyxU2ZLWKzTl0AKHA97uqNlw21lM2tnsSfPzBLSevLsAIVTyNbM9xaTNJ7RZsu2nNXmctv424r5V_oEddPxGW5QEamd8pT1bvSMLaTf33eE2n8JpnlCIZ2pmSPbYvzmCsfe27Vo-cigWgHIljqk4.jpg",
+      "/IP Cameras/rixHKUMUK8DfKz_lCX3tNlGhCASrDGbcgGwy6paf5z9G8N8glzxnr0YTwn5QVlp3bDRiqk9P9jovFRwvU_UbJfr3dK2F1omVnJWASrtYtge0WyqS8GgM1YuI8jkfZuU06IYbNcuK986XDXcrz_ghCVBO6TQ7XyhpxsYItbn2d7QrO0zhj7WNok_FFPytFdKZ.jpg"
+    ]
+  },
+  { 
+    title: "Hospitality", 
+    desc: "Monitor hotels, resorts, and banquet halls seamlessly.", 
+    icon: <Hotel className="w-6 h-6 text-[#0284C7]" />,
+    categoryKey: "Fisheye Cameras",
+    recommendedCameras: ["Fisheye Cameras", "Dome Cameras", "Wireless Cameras"],
+    images: [
+      "/Fisheye Cameras/Ush_DdR3vMVmqCf4d1nt4lQAq9hldeHwyTBh6y3zoljh6SeBCVZt5CAaDliqxLBDZMu85moC7GsjKM1MjlwqNkGE_TlVYRs89Iht8-ya3PJz_qSuOjgKPUfwdaZBiYj7Tt4QAhGgb0x6tqzwRqKLYQhtrB_AIndte2Z1hQMDtHhUeGBDDG7ndn2py_PDRmm9.jpg",
+      "/dome camera/yazGO60BVUnAjl4kRWiQTlbdEKm0PTYoPZ6VPY9I2ZDOeJdhaTmIwMbdeC3WM0VqF_v4D154an8fFs-j2Ar8scBDKAhOvOU6ZJR8tY78EHQbo7-EkwimgEhYv7dWlNK2Lh6jMzhvW6kEJt4jTQUZZK9YS4SnJgl-s1TtM8gm0EKH9o_Q2q20hADEpAG0oO4x.jpg",
+      "/Wireless Cameras/GtV2rqk8eCg7gap3Ik_Ydtw7zlO8SmIACi0w5gOoyYRy2hNtEoDDfd5NV8_EaNk9rr_Cr0j9puxo9pLJ6ErNMwGtMGZpQmtps0HgzleQ9ujnURnEGP3AQDLIBnnQtBaV-zdBnNnyDqo44lHC4_7MW4T4HYGIji2SZZeywiNGeWoFsHG08ct2qQzEXB1vhhCU.jpg"
+    ]
+  },
+  { 
+    title: "Warehouses & Logistics", 
+    desc: "Prevent theft and monitor inventory loading dock movement.", 
+    icon: <Warehouse className="w-6 h-6 text-[#0284C7]" />,
+    categoryKey: "Box Cameras",
+    recommendedCameras: ["Box Cameras", "Bullet Cameras", "PTZ Cameras"],
+    images: [
+      "/Box Cameras/Fe1Qq_64vlWphAGvAmJubos5KSpGNf8VbmlyRkA81EAKUFcHzqxiQkO5XzoAfBveYaHanASF-IMDuM4gJaWF6hXkZVpYNqe-9Nx5H0SksElNWX33uJC0meCcitiW110F-CqOHGFn6w_2_nVkq7-j9pTTNGvfZvGYJ6N3K25OVjVaCOX52VhzkqH22oZOcKO4.jpg",
+      "/Bullet Cameras/8Dsr3zpELO5_i6Dw3WkGDPB5bvIo2xpl1Y54iXMy-VN1hvn1_TiJ1W5nF7BcFoBitTlE1aBJoCoa9PnINtCq5t2ZMJyqZrx9YxVSg0FO-GjwBo92o17OnCuDkjK0naravjnMq4I1-8v-dj8jUtlb4BM6C7ZmpniwtjnlFBRtuDj8HcotH-N-q-BSomI0CS-R.jpg",
+      "/PTZ (Pan-Tilt-Zoom) Cameras/Vlz-EAnASOVOJ2jEVJn58a3VRhJrMprpxgl4kHw_i9m5hk8fcGwojFXsx2gdTqCRM4VQRmVBuVkTefVoPkoaS8cGkOUzyt7fwoJyrhXT0Ed0C3egDvT7r7I25TP4gYD8ZX6ZVgtslJb0WiJhWLv60xsP2CCWsIBDs7hnXHsTRym--katr4eF72026k.jpg"
+    ]
+  },
+  { 
+    title: "Government & Public", 
+    desc: "Reliable surveillance for administrative buildings and public infrastructure.", 
+    icon: <Landmark className="w-6 h-6 text-[#0284C7]" />,
+    categoryKey: "PTZ Cameras",
+    recommendedCameras: ["PTZ Cameras", "IP Cameras", "Box Cameras"],
+    images: [
+      "/PTZ (Pan-Tilt-Zoom) Cameras/kGRg3Y3qN8RHUOoTSBtoi7rt48JsuRKBfr2sS0ML7cyZZ8vaI-zJ1eiNAvfrQhe3tkbqdWo9YKgsW_lE8kBoQVKw0ep8j_BQWlJrZMxJCAZJ4JtPtkcqqRmS1_DytZ24dbDvIRmV5wAme_LEs4M-Ma3SjdjTBs8mnvjRx0xRfeaOYfoDvRH8LnzNVWu1UL0j.jpg",
+      "/IP Cameras/vvGZAf-hVfzG1GgUaRhz7F2HJ0XBv3Bd6hIRvdwiNnYyeJZmkGDbtpVFZI8o_tnMT9CqXUt_2o7cWxKmc2yxtBCohaJEFFAcBrzzsrsuJRybktMHWOZLnPt4zSjtF-6F7j2S_XRT0ScHY4eLtgDmC3laSgvbwx36Aqdm8L_w17la4S9EJCGT-xo54acxQGnQ.jpg",
+      "/Box Cameras/JPEhOYfK6fHOyjL0jkF40iMSvmtI0CWHPWf-Ku6iZ0UY_HOMOD2XP13YvAqV5m44vT2ndC16u3GdxK4Kdw3qM6IaVCYjp_NLpxAY9-cc-hC7fvC-QdFJpfol183KvhEGScq6Hao98NrAz4snJgmMqUnqkuPN87ePyP7GR77adjPsOxw8H1Exeg7W5IpDs3kK.jpg"
+    ]
+  }
 ];
 
 // 6. Installation Process Steps
@@ -335,6 +423,7 @@ const FAQS = [
 
 export default function CctvInstallationPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [selectedIndustry, setSelectedIndustry] = useState<number>(0);
 
   return (
     <main className="min-h-screen bg-black text-white selection:bg-[#0284C7] selection:text-white">
@@ -551,36 +640,102 @@ export default function CctvInstallationPage() {
         </div>
       </section>
 
-      {/* CCTV Solutions by Industry */}
+      {/* CCTV Solutions by Industry - Interactive Card Selection */}
       <section className="py-24 bg-[url('/services-blue-bg.png')] bg-cover bg-center bg-no-repeat relative text-white">
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-[#38BDF8] font-bebas text-xl tracking-widest uppercase mb-2 block drop-shadow">
-              Sector Coverage
+              Interactive Sector Showcase
             </span>
-            <h2 className="text-4xl md:text-6xl font-bebas tracking-wide text-white leading-tight">
+            <h2 className="text-4xl md:text-6xl font-bebas tracking-wide text-white leading-tight mb-4">
               CCTV Solutions by Industry
             </h2>
+            <p className="text-blue-100 font-inter text-base">
+              Click on any industry card below to view recommended camera hardware and real project deployment photos.
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-            {INDUSTRIES_SOLUTIONS.map((ind, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.05, duration: 0.4 }}
-                className="bg-white text-slate-900 p-6 rounded-[24px] border-4 border-sky-300 shadow-xl"
-              >
-                <div className="p-3 bg-sky-50 rounded-xl w-fit mb-4 border border-sky-200">
-                  {ind.icon}
-                </div>
-                <h3 className="font-bebas text-2xl tracking-wide text-slate-900 mb-2">{ind.title}</h3>
-                <p className="text-slate-600 text-xs font-inter leading-relaxed">{ind.desc}</p>
-              </motion.div>
-            ))}
+          {/* Rectangular Industry Selection Tiles without Icons */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-7xl mx-auto mb-12">
+            {INDUSTRIES_SOLUTIONS.map((ind, idx) => {
+              const isSelected = selectedIndustry === idx;
+              return (
+                <button
+                  key={idx}
+                  onClick={() => setSelectedIndustry(idx)}
+                  className={`w-full py-4 px-6 rounded-xl font-bebas text-xl md:text-2xl tracking-wider uppercase text-center transition-all duration-300 shadow-md ${
+                    isSelected 
+                      ? "bg-white text-[#0070c0] shadow-xl scale-105 ring-4 ring-[#38BDF8]" 
+                      : "bg-white/90 text-slate-900 hover:bg-white hover:scale-102 border border-sky-200"
+                  }`}
+                >
+                  {ind.title}
+                </button>
+              );
+            })}
           </div>
+
+          {/* Expanded Showcase View for Selected Industry */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={selectedIndustry}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4 }}
+              className="bg-white text-slate-900 rounded-[32px] p-8 md:p-12 border-4 border-sky-300 shadow-2xl max-w-7xl mx-auto"
+            >
+              <div className="flex flex-col lg:flex-row items-start justify-between gap-8 mb-8 pb-6 border-b border-slate-200">
+                <div>
+                  <span className="text-[#0284C7] font-bebas text-lg tracking-widest uppercase block mb-1">
+                    Industry Deployment Details
+                  </span>
+                  <h3 className="text-3xl md:text-5xl font-bebas tracking-wide text-slate-900 mb-2">
+                    {INDUSTRIES_SOLUTIONS[selectedIndustry].title} CCTV Hardware Setup
+                  </h3>
+                  <p className="text-slate-600 text-sm md:text-base font-inter leading-relaxed max-w-3xl">
+                    {INDUSTRIES_SOLUTIONS[selectedIndustry].desc}
+                  </p>
+                </div>
+
+                {/* Recommended Camera Badges */}
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="font-bebas text-sm text-slate-500 uppercase tracking-wider block w-full lg:w-auto">
+                    Recommended Cameras:
+                  </span>
+                  {INDUSTRIES_SOLUTIONS[selectedIndustry].recommendedCameras.map((rc, rIdx) => (
+                    <span 
+                      key={rIdx}
+                      className="bg-[#0284C7] text-white font-bebas text-sm tracking-wider uppercase px-4 py-1.5 rounded-full shadow-md"
+                    >
+                      {rc}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Photo Showcase Grid */}
+              <div className="grid sm:grid-cols-3 gap-6">
+                {INDUSTRIES_SOLUTIONS[selectedIndustry].images.map((imgUrl, imgIdx) => (
+                  <div 
+                    key={imgIdx} 
+                    className="group relative h-64 rounded-2xl overflow-hidden bg-slate-900 border-2 border-slate-200 shadow-md hover:shadow-xl transition-all"
+                  >
+                    <img 
+                      src={imgUrl} 
+                      alt={`${INDUSTRIES_SOLUTIONS[selectedIndustry].title} Camera Photo ${imgIdx + 1}`}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <div className="absolute bottom-3 left-3 right-3 text-white text-xs font-inter opacity-0 group-hover:opacity-100 transition-opacity font-medium">
+                      {INDUSTRIES_SOLUTIONS[selectedIndustry].recommendedCameras[imgIdx % INDUSTRIES_SOLUTIONS[selectedIndustry].recommendedCameras.length]} Deployment
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
         </div>
       </section>
 
