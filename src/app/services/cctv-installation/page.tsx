@@ -136,29 +136,27 @@ function CameraCardSlider({ images, cardIndex, categoryTitle }: { images: string
     <div 
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
-      className="relative w-full h-[320px] md:h-full min-h-[320px] overflow-hidden bg-slate-900 border-b border-slate-100 md:border-b-0 md:border-r border-slate-200 group/slider"
+      className="relative w-full h-[340px] md:h-full min-h-[340px] overflow-hidden bg-white border-b border-slate-100 md:border-b-0 md:border-r border-slate-200 group/slider"
     >
       <AnimatePresence mode="wait">
         <motion.img 
           key={current}
           src={images[current]} 
           alt={`${categoryTitle} - Image ${current + 1}`}
-          initial={{ opacity: 0, scale: 1.05 }}
+          initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-          className="w-full h-full object-cover object-center absolute inset-0" 
+          transition={{ duration: 0.4 }}
+          className="w-full h-full object-contain object-center absolute inset-0 p-6 z-10" 
         />
       </AnimatePresence>
-
-      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent pointer-events-none" />
 
       {/* Prev / Next Control Arrows */}
       {images.length > 1 && (
         <>
           <button
             onClick={prevImage}
-            className="absolute left-3 top-1/2 -translate-y-1/2 z-30 w-9 h-9 rounded-full bg-black/60 hover:bg-[#0284C7] text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 shadow-md"
+            className="absolute left-3 top-1/2 -translate-y-1/2 z-30 w-9 h-9 rounded-full bg-slate-900/70 hover:bg-[#0284C7] text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 shadow-md"
             aria-label="Previous Image"
           >
             <ChevronLeft className="w-5 h-5" />
@@ -166,7 +164,7 @@ function CameraCardSlider({ images, cardIndex, categoryTitle }: { images: string
 
           <button
             onClick={nextImage}
-            className="absolute right-3 top-1/2 -translate-y-1/2 z-30 w-9 h-9 rounded-full bg-black/60 hover:bg-[#0284C7] text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 shadow-md"
+            className="absolute right-3 top-1/2 -translate-y-1/2 z-30 w-9 h-9 rounded-full bg-slate-900/70 hover:bg-[#0284C7] text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 shadow-md"
             aria-label="Next Image"
           >
             <ChevronRight className="w-5 h-5" />
@@ -175,24 +173,24 @@ function CameraCardSlider({ images, cardIndex, categoryTitle }: { images: string
       )}
 
       {/* Slide Indicators */}
-      <div className="absolute bottom-3 right-4 z-30 flex items-center gap-1.5">
+      <div className="absolute bottom-3 right-4 z-30 flex items-center gap-1.5 bg-slate-900/60 px-3 py-1.5 rounded-full backdrop-blur-sm">
         {images.map((_, idx) => (
           <button
             key={idx}
             onClick={() => setCurrent(idx)}
             className={`h-2 rounded-full transition-all duration-300 ${
-              current === idx ? "w-6 bg-[#38BDF8]" : "w-2 bg-white/50"
+              current === idx ? "w-6 bg-[#38BDF8]" : "w-2 bg-white/60"
             }`}
           />
         ))}
       </div>
 
       {/* Card Index Badge */}
-      <div className="absolute top-4 left-4 z-20 w-10 h-10 rounded-xl bg-white/90 backdrop-blur-md flex items-center justify-center font-bebas text-lg text-[#0284C7] font-bold shadow-lg border border-sky-200">
+      <div className="absolute top-4 left-4 z-20 w-10 h-10 rounded-xl bg-white flex items-center justify-center font-bebas text-lg text-[#0284C7] font-bold shadow-md border-2 border-sky-200">
         {cardIndex + 1}
       </div>
 
-      <div className="absolute bottom-3 left-4 z-20 text-xs text-white font-inter bg-black/60 px-3 py-1 rounded-md backdrop-blur-sm font-medium">
+      <div className="absolute bottom-3 left-4 z-20 text-xs text-slate-800 font-inter bg-sky-50 border border-sky-200 px-3 py-1 rounded-md shadow-sm font-semibold">
         {categoryTitle} • {current + 1} / {images.length}
       </div>
     </div>
