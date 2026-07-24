@@ -261,7 +261,7 @@ export default function FireAlarmSystemPage() {
               className="relative h-[480px] rounded-[32px] overflow-hidden border-4 border-sky-300 shadow-2xl group"
             >
               <img 
-                src="/about-fire-alarm.jpg" 
+                src="/images/legacy/about-fire-alarm.jpg" 
                 alt="Fire Protection System Infrastructure" 
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
               />

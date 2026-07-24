@@ -17,7 +17,7 @@ export function Hero() {
           playsInline
           className="w-full h-full object-cover"
         >
-          <source src="/header-video.mp4" type="video/mp4" />
+          <source src="/videos/header-video.mp4" type="video/mp4" />
         </video>
         {/* Transparent White Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-white/75 via-white/35 to-transparent pointer-events-none" />

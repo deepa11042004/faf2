@@ -14,22 +14,22 @@ const aboutSlides = [
   {
     title: "Access Control System",
     alt: "Smart Biometric Access Control Fingerprint Reader",
-    image: "/about-access-control.png",
+    image: "/images/legacy/about-access-control.png",
   },
   {
     title: "Public Address System",
     alt: "Commercial PA System Microphones & Broadcast Console",
-    image: "/about-pa-system.jpg",
+    image: "/images/legacy/about-pa-system.jpg",
   },
   {
     title: "Fire Alarm System",
     alt: "Modern Ceiling Smoke Detector Fire Alarm System",
-    image: "/about-fire-alarm.jpg",
+    image: "/images/legacy/about-fire-alarm.jpg",
   },
   {
     title: "Security Guard Services",
     alt: "Professional Security Guard Officer",
-    image: "/about-security-officer.jpg",
+    image: "/images/legacy/about-security-officer.jpg",
   },
 ];
 

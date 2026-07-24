@@ -55,59 +55,59 @@ const KEY_BENEFITS = [
 // Local Public Image Folders for each Camera Category
 const CAMERA_CATEGORY_IMAGES: Record<string, string[]> = {
   "Dome Cameras": [
-    "/dome camera/VP26P-T89uJ-K4JLfuW_mCGOQrehf1rTqHCz-e2Ljrz9UIAVV-9CwaTIQ05Vyji3sHDITRGOT28HEbJolIJ4vxOc3XKNS2_ieTsd_ldZsFmy7S1e2i6z9JFD7CMT0Ptxb4PLN5SO9c0LMySMybvgzvYgPg2xSp16lX5LEPaujV7xkX-xJEwe5PBxzNHCZ9RJ.jpg",
-    "/dome camera/aR15OIAMnao-N2Ix3CohgQ9EXocqgqQqaEYuCUkgQKMnf46SlCzTUUpGiOdgXfHmwIyC41DbLV6GSIxYm5UUwIWaqfrNK9ivUEJ_cp_NMxakT9w-wVPS-qTC93bYlqCqrKXO5-TqFwx1nn3nnnVTiE-Eix78Bm19TD6iNtDFgdeyMLdWVjP1zTGYKYTKzNJ6.jpg",
-    "/dome camera/r2otC68jlCzyJlZcaKTWDSBYBb77CSEmVzBQvJVhd9xjc-AMcZe64CfmP2Hx033Gg4NNEGF9iH_IBOlbzzn0RYvP3xZnRR9ubPLTdDmyJ_DtSeK9y8uCAB8oYQKDcnwFqSrn-S7mYlQ1hWZh5fJpRehEjCnZfeTPwYLDQCm5a3I_k7H4Q6l7A87yY4OHhhXu.jpg",
-    "/dome camera/u425wWqjSne5ZRNEsNTVsdL5WJaDU_T7fbtTlVAwrN8qZyxU2ZLWKzTl0AKHA97uqNlw21lM2tnsSfPzBLSevLsAIVTyNbM9xaTNJ7RZsu2nNXmctv424r5V_oEddPxGW5QEamd8pT1bvSMLaTf33eE2n8JpnlCIZ2pmSPbYvzmCsfe27Vo-cigWgHIljqk4.jpg",
-    "/dome camera/yazGO60BVUnAjl4kRWiQTlbdEKm0PTYoPZ6VPY9I2ZDOeJdhaTmIwMbdeC3WM0VqF_v4D154an8fFs-j2Ar8scBDKAhOvOU6ZJR8tY78EHQbo7-EkwimgEhYv7dWlNK2Lh6jMzhvW6kEJt4jTQUZZK9YS4SnJgl-s1TtM8gm0EKH9o_Q2q20hADEpAG0oO4x.jpg"
+    "/images/cctv/dome/VP26P-T89uJ-K4JLfuW_mCGOQrehf1rTqHCz-e2Ljrz9UIAVV-9CwaTIQ05Vyji3sHDITRGOT28HEbJolIJ4vxOc3XKNS2_ieTsd_ldZsFmy7S1e2i6z9JFD7CMT0Ptxb4PLN5SO9c0LMySMybvgzvYgPg2xSp16lX5LEPaujV7xkX-xJEwe5PBxzNHCZ9RJ.jpg",
+    "/images/cctv/dome/aR15OIAMnao-N2Ix3CohgQ9EXocqgqQqaEYuCUkgQKMnf46SlCzTUUpGiOdgXfHmwIyC41DbLV6GSIxYm5UUwIWaqfrNK9ivUEJ_cp_NMxakT9w-wVPS-qTC93bYlqCqrKXO5-TqFwx1nn3nnnVTiE-Eix78Bm19TD6iNtDFgdeyMLdWVjP1zTGYKYTKzNJ6.jpg",
+    "/images/cctv/dome/r2otC68jlCzyJlZcaKTWDSBYBb77CSEmVzBQvJVhd9xjc-AMcZe64CfmP2Hx033Gg4NNEGF9iH_IBOlbzzn0RYvP3xZnRR9ubPLTdDmyJ_DtSeK9y8uCAB8oYQKDcnwFqSrn-S7mYlQ1hWZh5fJpRehEjCnZfeTPwYLDQCm5a3I_k7H4Q6l7A87yY4OHhhXu.jpg",
+    "/images/cctv/dome/u425wWqjSne5ZRNEsNTVsdL5WJaDU_T7fbtTlVAwrN8qZyxU2ZLWKzTl0AKHA97uqNlw21lM2tnsSfPzBLSevLsAIVTyNbM9xaTNJ7RZsu2nNXmctv424r5V_oEddPxGW5QEamd8pT1bvSMLaTf33eE2n8JpnlCIZ2pmSPbYvzmCsfe27Vo-cigWgHIljqk4.jpg",
+    "/images/cctv/dome/yazGO60BVUnAjl4kRWiQTlbdEKm0PTYoPZ6VPY9I2ZDOeJdhaTmIwMbdeC3WM0VqF_v4D154an8fFs-j2Ar8scBDKAhOvOU6ZJR8tY78EHQbo7-EkwimgEhYv7dWlNK2Lh6jMzhvW6kEJt4jTQUZZK9YS4SnJgl-s1TtM8gm0EKH9o_Q2q20hADEpAG0oO4x.jpg"
   ],
   "Bullet Cameras": [
-    "/Bullet Cameras/5TenuMzbyrJ5zN0UlqJ7rRLKXQYhnM_6tlAF-812He89l4ewjQtYvQz0U2gZmtzIoM6DEV_Gaeq8nlCT8uvXj5FAljDUZ-rQ5YkGEwo6ebOoaRxWLaQcNQ93W5_gFrc0emAiera7qRjYWAA2QgLExxjNhqQAc2YUDddtb9G4wvWKnSd4kuK8n5sQOwy2MUIv.jpg",
-    "/Bullet Cameras/8Dsr3zpELO5_i6Dw3WkGDPB5bvIo2xpl1Y54iXMy-VN1hvn1_TiJ1W5nF7BcFoBitTlE1aBJoCoa9PnINtCq5t2ZMJyqZrx9YxVSg0FO-GjwBo92o17OnCuDkjK0naravjnMq4I1-8v-dj8jUtlb4BM6C7ZmpniwtjnlFBRtuDj8HcotH-N-q-BSomI0CS-R.jpg",
-    "/Bullet Cameras/WVwAQYS267VdbxX6poLVDsWS-5wZersfIee2Q-E8F4X6XstePNf_oH5eXXRA9pG9YdnNmSTYi_FRyQUJQfRaAXlwfUUDc9zbwS7WjjmJx6_hM7XCQUILoy78lSqSbYCvhWyem7iKSGIjSrUqlMVNA3qaNFRq1JwN0V5QFGT8ULNEU5kvrXy6OUKG1Kc2FQv9.jpg",
-    "/Bullet Cameras/gERS6kDtIEpWLTZbvFwtzXVANjfIFGTs7vVBiByGu-AnVWyPKk6gHwNFcEXn51otLr3CLTTVdg3LFPix8Ujo46MbYt4jMKaar7Arzmsvo4QxXcaTKWOO6TY0XVEBqizGZpAkre_eDRntbWwe1w-WsM1NPW4SxbZqDN0T96lSi-8xshOvxDEvh8KlxJC6pS2d.jpg",
-    "/Bullet Cameras/uwSCd8QVwVhd9r0HubtcO-_3qCSxv0geQdsx93t_ZlGVm8A2FG_UhY8WAbYWIAURL2fgitbSNUWc5TF0OmqvVX4v6bGvFrGxEwPRBvOFHxsP48GyKxWDJMVCY9nXvm61yju_qKlt8EWuhmhvL2ka_7kC2ALh_l9slrT3qFQmeGw7yX4Sj85sIHASREXQ7-dY.jpg"
+    "/images/cctv/bullet/5TenuMzbyrJ5zN0UlqJ7rRLKXQYhnM_6tlAF-812He89l4ewjQtYvQz0U2gZmtzIoM6DEV_Gaeq8nlCT8uvXj5FAljDUZ-rQ5YkGEwo6ebOoaRxWLaQcNQ93W5_gFrc0emAiera7qRjYWAA2QgLExxjNhqQAc2YUDddtb9G4wvWKnSd4kuK8n5sQOwy2MUIv.jpg",
+    "/images/cctv/bullet/8Dsr3zpELO5_i6Dw3WkGDPB5bvIo2xpl1Y54iXMy-VN1hvn1_TiJ1W5nF7BcFoBitTlE1aBJoCoa9PnINtCq5t2ZMJyqZrx9YxVSg0FO-GjwBo92o17OnCuDkjK0naravjnMq4I1-8v-dj8jUtlb4BM6C7ZmpniwtjnlFBRtuDj8HcotH-N-q-BSomI0CS-R.jpg",
+    "/images/cctv/bullet/WVwAQYS267VdbxX6poLVDsWS-5wZersfIee2Q-E8F4X6XstePNf_oH5eXXRA9pG9YdnNmSTYi_FRyQUJQfRaAXlwfUUDc9zbwS7WjjmJx6_hM7XCQUILoy78lSqSbYCvhWyem7iKSGIjSrUqlMVNA3qaNFRq1JwN0V5QFGT8ULNEU5kvrXy6OUKG1Kc2FQv9.jpg",
+    "/images/cctv/bullet/gERS6kDtIEpWLTZbvFwtzXVANjfIFGTs7vVBiByGu-AnVWyPKk6gHwNFcEXn51otLr3CLTTVdg3LFPix8Ujo46MbYt4jMKaar7Arzmsvo4QxXcaTKWOO6TY0XVEBqizGZpAkre_eDRntbWwe1w-WsM1NPW4SxbZqDN0T96lSi-8xshOvxDEvh8KlxJC6pS2d.jpg",
+    "/images/cctv/bullet/uwSCd8QVwVhd9r0HubtcO-_3qCSxv0geQdsx93t_ZlGVm8A2FG_UhY8WAbYWIAURL2fgitbSNUWc5TF0OmqvVX4v6bGvFrGxEwPRBvOFHxsP48GyKxWDJMVCY9nXvm61yju_qKlt8EWuhmhvL2ka_7kC2ALh_l9slrT3qFQmeGw7yX4Sj85sIHASREXQ7-dY.jpg"
   ],
   "PTZ Cameras": [
-    "/PTZ (Pan-Tilt-Zoom) Cameras/3VZFzDiO72AoHwakoDLGNvHFkLVUgiVmdQducNVhp2laXGUxxuEihWeWCa-dDMGUnVT_4KzH-nq6GoEdOUfhEhtTd0Uw1GJt9KAX4BozyvPncmgmz6YE_TzQrfjNbxXV-HT9CTiX5wZ6GKdIAAwg0fmn0PHaX2GytRGANTYHlXqYsuhCuCNXrSxhmb.jpg",
-    "/PTZ (Pan-Tilt-Zoom) Cameras/3aKrogU_PuxGSGBe-nhUYKXexZtmUjqpXQmT1IVaaKTEKyjTKONcdDQwHBaPSde4YYMnq9dcsxTLd6BWteoJSDZZzG2vun5HpISbA5gg3mwfObCApsrzpV8y45lD9OsFfJuub7YcY9i3BVHZHMkm-awPJIYggJQXyv6AWmBfRR1FpKgwTKXsyhVxXN.jpg",
-    "/PTZ (Pan-Tilt-Zoom) Cameras/Vlz-EAnASOVOJ2jEVJn58a3VRhJrMprpxgl4kHw_i9m5hk8fcGwojFXsx2gdTqCRM4VQRmVBuVkTefVoPkoaS8cGkOUzyt7fwoJyrhXT0Ed0C3egDvT7r7I25TP4gYD8ZX6ZVgtslJb0WiJhWLv60xsP2CCWsIBDs7hnXHsTRym--katr4eF72026k.jpg",
-    "/PTZ (Pan-Tilt-Zoom) Cameras/kGRg3Y3qN8RHUOoTSBtoi7rt48JsuRKBfr2sS0ML7cyZZ8vaI-zJ1eiNAvfrQhe3tkbqdWo9YKgsW_lE8kBoQVKw0ep8j_BQWlJrZMxJCAZJ4JtPtkcqqRmS1_DytZ24dbDvIRmV5wAme_LEs4M-Ma3SjdjTBs8mnvjRx0xRfeaOYfoDvRH8LnzNVWu1UL0j.jpg",
-    "/PTZ (Pan-Tilt-Zoom) Cameras/y_GgxYVbmaptYukD-_fiZr0ij4ju7gWRixD8062BGBeSnXqlm1TdFUcWXsezFx55ejKVw7L8rmpArqqJ7sOJwhq4Z6ZHe4a4U4isaLcS8-4DffR-cM_XxIzY9ApbozVWfAZFdDc2RjmnOnBW_ASM0FrygMgQE2Yp3m2RI_f0tMM3w9z4YZbEjyo0S5.jpg"
+    "/images/cctv/ptz/3VZFzDiO72AoHwakoDLGNvHFkLVUgiVmdQducNVhp2laXGUxxuEihWeWCa-dDMGUnVT_4KzH-nq6GoEdOUfhEhtTd0Uw1GJt9KAX4BozyvPncmgmz6YE_TzQrfjNbxXV-HT9CTiX5wZ6GKdIAAwg0fmn0PHaX2GytRGANTYHlXqYsuhCuCNXrSxhmb.jpg",
+    "/images/cctv/ptz/3aKrogU_PuxGSGBe-nhUYKXexZtmUjqpXQmT1IVaaKTEKyjTKONcdDQwHBaPSde4YYMnq9dcsxTLd6BWteoJSDZZzG2vun5HpISbA5gg3mwfObCApsrzpV8y45lD9OsFfJuub7YcY9i3BVHZHMkm-awPJIYggJQXyv6AWmBfRR1FpKgwTKXsyhVxXN.jpg",
+    "/images/cctv/ptz/Vlz-EAnASOVOJ2jEVJn58a3VRhJrMprpxgl4kHw_i9m5hk8fcGwojFXsx2gdTqCRM4VQRmVBuVkTefVoPkoaS8cGkOUzyt7fwoJyrhXT0Ed0C3egDvT7r7I25TP4gYD8ZX6ZVgtslJb0WiJhWLv60xsP2CCWsIBDs7hnXHsTRym--katr4eF72026k.jpg",
+    "/images/cctv/ptz/kGRg3Y3qN8RHUOoTSBtoi7rt48JsuRKBfr2sS0ML7cyZZ8vaI-zJ1eiNAvfrQhe3tkbqdWo9YKgsW_lE8kBoQVKw0ep8j_BQWlJrZMxJCAZJ4JtPtkcqqRmS1_DytZ24dbDvIRmV5wAme_LEs4M-Ma3SjdjTBs8mnvjRx0xRfeaOYfoDvRH8LnzNVWu1UL0j.jpg",
+    "/images/cctv/ptz/y_GgxYVbmaptYukD-_fiZr0ij4ju7gWRixD8062BGBeSnXqlm1TdFUcWXsezFx55ejKVw7L8rmpArqqJ7sOJwhq4Z6ZHe4a4U4isaLcS8-4DffR-cM_XxIzY9ApbozVWfAZFdDc2RjmnOnBW_ASM0FrygMgQE2Yp3m2RI_f0tMM3w9z4YZbEjyo0S5.jpg"
   ],
   "Turret Cameras": [
-    "/Turret (Eyeball) Cameras/SvQC9SamokYa7sTS8d57xE6RX4is0AptxJ0pWwb0wOzmoVwoAI2LVJpHdmDKkU2PGaOk88CNx-qw6KQPH8VTuY-kMrIJhqGAU8LhseFuWWAbCREn3WIqZtlSe09DraRjrzIdCUzG17iu3Vahl1EPzytuUgGX27CgJCnglQ5hPIwkQcXNJmB37jTOJZ.jpg",
-    "/Turret (Eyeball) Cameras/U7CLK71NU3s8iXCUDDnwjWFGkKak_GQxcryQm7jSfv5enZ7cOoZ_L1dAXEb2kH7EX3-qlNB8ObfFVrWZFz3kBDc07GTN86pjlknhQl8thZPlVGYg4nc4mXOnhV_lE9JR_ybvw3S47l8CGeI2-inqnFEh3U0To9VLCVbNggk3UxDByi5_a-VdXKwckfXSX.jpg",
-    "/Turret (Eyeball) Cameras/gGjAcNIKP5mGBsGZDwy8cXa_Uynju4lOmHJ7bHisirAOW7sWB29pOLgq7c5IkjYlP3vL2LHxOR1wUv7hu-gX7s0vC6g3mMNcU7cOjA6kbcCuXUtsOek-HKtzWmvloh6Ge3hiRHr97iHoQHILi9TLcqaqTcg2S_heet8wOYiPwtCOzhC8DNAn-rR7rB91N.jpg",
-    "/Turret (Eyeball) Cameras/zomthuEcnAtbvrZyj2gAps93rBL-s5Y7suyO6ULTpLkplK9gExQmuOovY0abDCfGZJbMly8cj-Aq45BB6TBFL0OjMdc4wRWWI-uz7y-LEJmW0T1kA3KtqPz554o5UtykcFDYTlsm3Nu8UKaxEAWEY5MddLEFwbzolh2Hio-5oUKTqiPKtgM59ZyzZZ.jpg"
+    "/images/cctv/turret/SvQC9SamokYa7sTS8d57xE6RX4is0AptxJ0pWwb0wOzmoVwoAI2LVJpHdmDKkU2PGaOk88CNx-qw6KQPH8VTuY-kMrIJhqGAU8LhseFuWWAbCREn3WIqZtlSe09DraRjrzIdCUzG17iu3Vahl1EPzytuUgGX27CgJCnglQ5hPIwkQcXNJmB37jTOJZ.jpg",
+    "/images/cctv/turret/U7CLK71NU3s8iXCUDDnwjWFGkKak_GQxcryQm7jSfv5enZ7cOoZ_L1dAXEb2kH7EX3-qlNB8ObfFVrWZFz3kBDc07GTN86pjlknhQl8thZPlVGYg4nc4mXOnhV_lE9JR_ybvw3S47l8CGeI2-inqnFEh3U0To9VLCVbNggk3UxDByi5_a-VdXKwckfXSX.jpg",
+    "/images/cctv/turret/gGjAcNIKP5mGBsGZDwy8cXa_Uynju4lOmHJ7bHisirAOW7sWB29pOLgq7c5IkjYlP3vL2LHxOR1wUv7hu-gX7s0vC6g3mMNcU7cOjA6kbcCuXUtsOek-HKtzWmvloh6Ge3hiRHr97iHoQHILi9TLcqaqTcg2S_heet8wOYiPwtCOzhC8DNAn-rR7rB91N.jpg",
+    "/images/cctv/turret/zomthuEcnAtbvrZyj2gAps93rBL-s5Y7suyO6ULTpLkplK9gExQmuOovY0abDCfGZJbMly8cj-Aq45BB6TBFL0OjMdc4wRWWI-uz7y-LEJmW0T1kA3KtqPz554o5UtykcFDYTlsm3Nu8UKaxEAWEY5MddLEFwbzolh2Hio-5oUKTqiPKtgM59ZyzZZ.jpg"
   ],
   "Fisheye Cameras": [
-    "/Fisheye Cameras/TS5VM_mHNYm7bXe2lP9oy6g7-5BofDkiQ5COLXuSLCnY4JYiRnmbwRmN26mSEd3Bjuqj9cWWIEP25sIF3zzyDz3Ya9jBW4Dt1YY1WYlHtUk5Rc9rcPrfhx0riX-XOiUo44q49C74HTi7xGLBykUjQ-7E7KN3G-7Y28IdCcePmkDYmg_Zd2dIEmtV5KaqPgR4.jpg",
-    "/Fisheye Cameras/Ush_DdR3vMVmqCf4d1nt4lQAq9hldeHwyTBh6y3zoljh6SeBCVZt5CAaDliqxLBDZMu85moC7GsjKM1MjlwqNkGE_TlVYRs89Iht8-ya3PJz_qSuOjgKPUfwdaZBiYj7Tt4QAhGgb0x6tqzwRqKLYQhtrB_AIndte2Z1hQMDtHhUeGBDDG7ndn2py_PDRmm9.jpg",
-    "/Fisheye Cameras/VAYub-eOhJs5N8ATraYUGn9FQBpD94fA-kS3rRsKNvN0KqeRg7n1ZRxA-i11UXnwuTEVucHrcTr4cEtuVhbuCjZEvbCzP4etH3FuKDi2D-xoQEdO5E_Zy8xXDW8yUKVn-hT17dEWFZdk6xVhy2ZdQPAbyC9qdNd1_BSv2mYSa0EBUvNARsyuLlzN-1qtF-Gu.jpg",
-    "/Fisheye Cameras/ZrmFPIZoLwpSWEr4FyWsm8iOQNccdX-WKM1pPhMo0lkLayknqR7kN5FpFuaLGzs29AFlcD7O15O1bCtxkjFGKNS_pKXJj8e2XjI9ve4krtF3h_CJnmxJVg3U3jzF9qHqsX1nWwo-GOHrz5UDOlblQOpG6Y32w1EdVY5dqSVWNa9EmCbisPq8GRQGA-OvhYzx.jpg",
-    "/Fisheye Cameras/cS-cxt216oQbboxKWdRO3CaqXN0OSftBnU0AkCC-Z75V_EO7CeG6dh4YbfkjR8ZVYzaydSIeZIHAprU2lBS7OPPdLOmigOIuJ2IAY5SsaBzK7pYAOV8SRzSA0VQjTF77z1sLSj1uzUZH12uPh8dOVUJVApPwZ5GL2MKVsyKHiNI8bzKvS2qheytMvEmp2.jpg"
+    "/images/cctv/fisheye/TS5VM_mHNYm7bXe2lP9oy6g7-5BofDkiQ5COLXuSLCnY4JYiRnmbwRmN26mSEd3Bjuqj9cWWIEP25sIF3zzyDz3Ya9jBW4Dt1YY1WYlHtUk5Rc9rcPrfhx0riX-XOiUo44q49C74HTi7xGLBykUjQ-7E7KN3G-7Y28IdCcePmkDYmg_Zd2dIEmtV5KaqPgR4.jpg",
+    "/images/cctv/fisheye/Ush_DdR3vMVmqCf4d1nt4lQAq9hldeHwyTBh6y3zoljh6SeBCVZt5CAaDliqxLBDZMu85moC7GsjKM1MjlwqNkGE_TlVYRs89Iht8-ya3PJz_qSuOjgKPUfwdaZBiYj7Tt4QAhGgb0x6tqzwRqKLYQhtrB_AIndte2Z1hQMDtHhUeGBDDG7ndn2py_PDRmm9.jpg",
+    "/images/cctv/fisheye/VAYub-eOhJs5N8ATraYUGn9FQBpD94fA-kS3rRsKNvN0KqeRg7n1ZRxA-i11UXnwuTEVucHrcTr4cEtuVhbuCjZEvbCzP4etH3FuKDi2D-xoQEdO5E_Zy8xXDW8yUKVn-hT17dEWFZdk6xVhy2ZdQPAbyC9qdNd1_BSv2mYSa0EBUvNARsyuLlzN-1qtF-Gu.jpg",
+    "/images/cctv/fisheye/ZrmFPIZoLwpSWEr4FyWsm8iOQNccdX-WKM1pPhMo0lkLayknqR7kN5FpFuaLGzs29AFlcD7O15O1bCtxkjFGKNS_pKXJj8e2XjI9ve4krtF3h_CJnmxJVg3U3jzF9qHqsX1nWwo-GOHrz5UDOlblQOpG6Y32w1EdVY5dqSVWNa9EmCbisPq8GRQGA-OvhYzx.jpg",
+    "/images/cctv/fisheye/cS-cxt216oQbboxKWdRO3CaqXN0OSftBnU0AkCC-Z75V_EO7CeG6dh4YbfkjR8ZVYzaydSIeZIHAprU2lBS7OPPdLOmigOIuJ2IAY5SsaBzK7pYAOV8SRzSA0VQjTF77z1sLSj1uzUZH12uPh8dOVUJVApPwZ5GL2MKVsyKHiNI8bzKvS2qheytMvEmp2.jpg"
   ],
   "Box Cameras": [
-    "/Box Cameras/BKOHaLctffpqc4yN-yDyQsAKOsvFpgeccn3PFGqtjvU7T8bMZRY2-NDm241havjANPwiSa0GKhHPX6EKvdqBR5YIhTS2pbBCyHYdseavlJFJ8ZlKaTFyQ6PoGzIkBERboX5Tc5xLKVvSTc9CUdPdR6Axflm1GEdBrHY18FmPoXjXqAlN3rtaJD91xXzfiJ6-.jpg",
-    "/Box Cameras/Fe1Qq_64vlWphAGvAmJubos5KSpGNf8VbmlyRkA81EAKUFcHzqxiQkO5XzoAfBveYaHanASF-IMDuM4gJaWF6hXkZVpYNqe-9Nx5H0SksElNWX33uJC0meCcitiW110F-CqOHGFn6w_2_nVkq7-j9pTTNGvfZvGYJ6N3K25OVjVaCOX52VhzkqH22oZOcKO4.jpg",
-    "/Box Cameras/JPEhOYfK6fHOyjL0jkF40iMSvmtI0CWHPWf-Ku6iZ0UY_HOMOD2XP13YvAqV5m44vT2ndC16u3GdxK4Kdw3qM6IaVCYjp_NLpxAY9-cc-hC7fvC-QdFJpfol183KvhEGScq6Hao98NrAz4snJgmMqUnqkuPN87ePyP7GR77adjPsOxw8H1Exeg7W5IpDs3kK.jpg",
-    "/Box Cameras/lZtWWRUYQ0sR3qRZ_swqYavFUDFv-P1hUpu0ZuYBcDVvMTESHyTCzd9wjUFV-VE_czqqgH0LYgsjfOBxYp1Ebo9ouAQsMCE0Cy__0t0y740NXFj0mFd1WsgXOUEFuKXBMfiXeg7O_V7ZTta3ZHtvCyxL8AaQcXjnt9s3YsocOli8PZ2V_Dpj1DHQcbuL9fCJ.jpg",
-    "/Box Cameras/o3Yg42Bb1TMnSRcDSjgHy26hmhh6I1SaS_ltVekvy6gb41oHqxzxvfu-Kuq3ASpVaMvM47FUG3ZWtj18ilNMvd3m3UhiWa13Dp4hoIk4wCVfW6b56XMNb62C05FXJqTuycz7CZdtpUAHDaCl__mld3Y_wL6Fmfvr0EQauIOnPu5C5bTl4rQpXUJ9nr_latC8.jpg"
+    "/images/cctv/box/BKOHaLctffpqc4yN-yDyQsAKOsvFpgeccn3PFGqtjvU7T8bMZRY2-NDm241havjANPwiSa0GKhHPX6EKvdqBR5YIhTS2pbBCyHYdseavlJFJ8ZlKaTFyQ6PoGzIkBERboX5Tc5xLKVvSTc9CUdPdR6Axflm1GEdBrHY18FmPoXjXqAlN3rtaJD91xXzfiJ6-.jpg",
+    "/images/cctv/box/Fe1Qq_64vlWphAGvAmJubos5KSpGNf8VbmlyRkA81EAKUFcHzqxiQkO5XzoAfBveYaHanASF-IMDuM4gJaWF6hXkZVpYNqe-9Nx5H0SksElNWX33uJC0meCcitiW110F-CqOHGFn6w_2_nVkq7-j9pTTNGvfZvGYJ6N3K25OVjVaCOX52VhzkqH22oZOcKO4.jpg",
+    "/images/cctv/box/JPEhOYfK6fHOyjL0jkF40iMSvmtI0CWHPWf-Ku6iZ0UY_HOMOD2XP13YvAqV5m44vT2ndC16u3GdxK4Kdw3qM6IaVCYjp_NLpxAY9-cc-hC7fvC-QdFJpfol183KvhEGScq6Hao98NrAz4snJgmMqUnqkuPN87ePyP7GR77adjPsOxw8H1Exeg7W5IpDs3kK.jpg",
+    "/images/cctv/box/lZtWWRUYQ0sR3qRZ_swqYavFUDFv-P1hUpu0ZuYBcDVvMTESHyTCzd9wjUFV-VE_czqqgH0LYgsjfOBxYp1Ebo9ouAQsMCE0Cy__0t0y740NXFj0mFd1WsgXOUEFuKXBMfiXeg7O_V7ZTta3ZHtvCyxL8AaQcXjnt9s3YsocOli8PZ2V_Dpj1DHQcbuL9fCJ.jpg",
+    "/images/cctv/box/o3Yg42Bb1TMnSRcDSjgHy26hmhh6I1SaS_ltVekvy6gb41oHqxzxvfu-Kuq3ASpVaMvM47FUG3ZWtj18ilNMvd3m3UhiWa13Dp4hoIk4wCVfW6b56XMNb62C05FXJqTuycz7CZdtpUAHDaCl__mld3Y_wL6Fmfvr0EQauIOnPu5C5bTl4rQpXUJ9nr_latC8.jpg"
   ],
   "Wireless Cameras": [
-    "/Wireless Cameras/Brvszyepf42s5qZOHOAHslHNpglvdvo9PMoYRQhxYT33PpW20NMHVgGaGTBSKOUtKz58ty5dNdZuQJHOaaKklJk5X1WJjqsgARAmf-haRLtNk5gS52RdDpS7coUbcbhPucAXkXjwgrD6jYeBjgqv2LydGogqPtVIPraHi0WtD454D1rY3I_nUnYkiqYmLpx-.jpg",
-    "/Wireless Cameras/GtV2rqk8eCg7gap3Ik_Ydtw7zlO8SmIACi0w5gOoyYRy2hNtEoDDfd5NV8_EaNk9rr_Cr0j9puxo9pLJ6ErNMwGtMGZpQmtps0HgzleQ9ujnURnEGP3AQDLIBnnQtBaV-zdBnNnyDqo44lHC4_7MW4T4HYGIji2SZZeywiNGeWoFsHG08ct2qQzEXB1vhhCU.jpg",
-    "/Wireless Cameras/KdKDlWd9xDy75EjP9ac8ZA6qbG8A_E2MgXY60gowRmfGy9b36B4kfqirzwjXYsrIr0oMnugr9JTOgDDuA9zIGwX8MNcv87NzqfZdA8t1amsC8tl1G7TlyTNgSd5nA60_KR0WL2RKjftNE6suVwN3jorer4ZACZ7SG5yHM2YO7YXUWxXLftzZ6AkrpbU0e02A.jpg",
-    "/Wireless Cameras/ZTQnv5nJPjvy42Gmopat1Ij2jGdtVjc9R-oa2GrAFETm-4pUDFPnYu5OKulX9uirEye8euf_AhznbmeTnctoVb8l2_5Rp1Nl5dwyqX_nH6x6vW231_4t3HyKv1F_7wTr9ennC1m-QQZsq25QPXHIAi-osfheGm6VqqE3Fkpffx-4GCYtvpnMrIx7QcYm5G0N.jpg",
-    "/Wireless Cameras/shx3vgluitmQiVzU5syhbmwk-0Zo-ta-SrdWqguzIVmNz_5xjFcXSsl0_2_8Axxgdy16XCd--NsS5sBiMQlO4WZtc9ZTioin2wIplyY8lT0xodcfV8c0NJF6XK2Qzh6y4Uf2g7qaqVONxkZNco-Kn2jhobNxh8h9dqZH5SpmLPlm5dpecDLFMggz6yZywQ1k.jpg"
+    "/images/cctv/wireless/Brvszyepf42s5qZOHOAHslHNpglvdvo9PMoYRQhxYT33PpW20NMHVgGaGTBSKOUtKz58ty5dNdZuQJHOaaKklJk5X1WJjqsgARAmf-haRLtNk5gS52RdDpS7coUbcbhPucAXkXjwgrD6jYeBjgqv2LydGogqPtVIPraHi0WtD454D1rY3I_nUnYkiqYmLpx-.jpg",
+    "/images/cctv/wireless/GtV2rqk8eCg7gap3Ik_Ydtw7zlO8SmIACi0w5gOoyYRy2hNtEoDDfd5NV8_EaNk9rr_Cr0j9puxo9pLJ6ErNMwGtMGZpQmtps0HgzleQ9ujnURnEGP3AQDLIBnnQtBaV-zdBnNnyDqo44lHC4_7MW4T4HYGIji2SZZeywiNGeWoFsHG08ct2qQzEXB1vhhCU.jpg",
+    "/images/cctv/wireless/KdKDlWd9xDy75EjP9ac8ZA6qbG8A_E2MgXY60gowRmfGy9b36B4kfqirzwjXYsrIr0oMnugr9JTOgDDuA9zIGwX8MNcv87NzqfZdA8t1amsC8tl1G7TlyTNgSd5nA60_KR0WL2RKjftNE6suVwN3jorer4ZACZ7SG5yHM2YO7YXUWxXLftzZ6AkrpbU0e02A.jpg",
+    "/images/cctv/wireless/ZTQnv5nJPjvy42Gmopat1Ij2jGdtVjc9R-oa2GrAFETm-4pUDFPnYu5OKulX9uirEye8euf_AhznbmeTnctoVb8l2_5Rp1Nl5dwyqX_nH6x6vW231_4t3HyKv1F_7wTr9ennC1m-QQZsq25QPXHIAi-osfheGm6VqqE3Fkpffx-4GCYtvpnMrIx7QcYm5G0N.jpg",
+    "/images/cctv/wireless/shx3vgluitmQiVzU5syhbmwk-0Zo-ta-SrdWqguzIVmNz_5xjFcXSsl0_2_8Axxgdy16XCd--NsS5sBiMQlO4WZtc9ZTioin2wIplyY8lT0xodcfV8c0NJF6XK2Qzh6y4Uf2g7qaqVONxkZNco-Kn2jhobNxh8h9dqZH5SpmLPlm5dpecDLFMggz6yZywQ1k.jpg"
   ],
   "IP Cameras": [
-    "/IP Cameras/i3sCq33JbdmOZ_WKVY_ZVmVvM_KdFr5drwXpbzJrhreC1D7inYnwmW6wDB73XHdNCpRthAn-5v8NTBYpbO4KmXOyohfbeDADjURRxU9VSBVhsF42pxC83jIpYdsyXuiGscc2BqNi751r1zHTL697vWtU5VnYnU2s2bU-9ZMbi6evj0zghqBocsmQxnzYtZHR.jpg",
-    "/IP Cameras/ljuNi5WadXxd3D-LTgoUo9BSJ5ctJdjNFlMjG8xkzfi1fU2dN3OC6g792UfozN-QLYWgw3r7fzrCYnLs2KlqdlkQz_VKl5YrGGdrAMr_oj0svf-zAbzVaUCKiAcab_aeSPv5DXCJrvEjvHcoPn0awsq5cmy5UNBtDy9a4KdATsW1K8e8t8xGctd7T2fcdIph.jpg",
-    "/IP Cameras/rixHKUMUK8DfKz_lCX3tNlGhCASrDGbcgGwy6paf5z9G8N8glzxnr0YTwn5QVlp3bDRiqk9P9jovFRwvU_UbJfr3dK2F1omVnJWASrtYtge0WyqS8GgM1YuI8jkfZuU06IYbNcuK986XDXcrz_ghCVBO6TQ7XyhpxsYItbn2d7QrO0zhj7WNok_FFPytFdKZ.jpg",
-    "/IP Cameras/vvGZAf-hVfzG1GgUaRhz7F2HJ0XBv3Bd6hIRvdwiNnYyeJZmkGDbtpVFZI8o_tnMT9CqXUt_2o7cWxKmc2yxtBCohaJEFFAcBrzzsrsuJRybktMHWOZLnPt4zSjtF-6F7j2S_XRT0ScHY4eLtgDmC3laSgvbwx36Aqdm8L_w17la4S9EJCGT-xo54acxQGnQ.jpg",
-    "/IP Cameras/yWd9-zf8QvvP5Vzdf0Gc3V7AU6ko3lHgOopvTuGoPM4cxe94sxlwVsWOVIhRbjJukInlVru9NukGYZSsO3J5fTztHti5Dih8od-KFmkRzqnZcF-wb_KzOFqGe8gqSzVv_Wf3Kt4JcGmlOCSqtuRiY8kkN7LUvZvs64ALcSnZu2_cafQdU-oaJ1uMmi6_SCul.jpg"
+    "/images/cctv/ip/i3sCq33JbdmOZ_WKVY_ZVmVvM_KdFr5drwXpbzJrhreC1D7inYnwmW6wDB73XHdNCpRthAn-5v8NTBYpbO4KmXOyohfbeDADjURRxU9VSBVhsF42pxC83jIpYdsyXuiGscc2BqNi751r1zHTL697vWtU5VnYnU2s2bU-9ZMbi6evj0zghqBocsmQxnzYtZHR.jpg",
+    "/images/cctv/ip/ljuNi5WadXxd3D-LTgoUo9BSJ5ctJdjNFlMjG8xkzfi1fU2dN3OC6g792UfozN-QLYWgw3r7fzrCYnLs2KlqdlkQz_VKl5YrGGdrAMr_oj0svf-zAbzVaUCKiAcab_aeSPv5DXCJrvEjvHcoPn0awsq5cmy5UNBtDy9a4KdATsW1K8e8t8xGctd7T2fcdIph.jpg",
+    "/images/cctv/ip/rixHKUMUK8DfKz_lCX3tNlGhCASrDGbcgGwy6paf5z9G8N8glzxnr0YTwn5QVlp3bDRiqk9P9jovFRwvU_UbJfr3dK2F1omVnJWASrtYtge0WyqS8GgM1YuI8jkfZuU06IYbNcuK986XDXcrz_ghCVBO6TQ7XyhpxsYItbn2d7QrO0zhj7WNok_FFPytFdKZ.jpg",
+    "/images/cctv/ip/vvGZAf-hVfzG1GgUaRhz7F2HJ0XBv3Bd6hIRvdwiNnYyeJZmkGDbtpVFZI8o_tnMT9CqXUt_2o7cWxKmc2yxtBCohaJEFFAcBrzzsrsuJRybktMHWOZLnPt4zSjtF-6F7j2S_XRT0ScHY4eLtgDmC3laSgvbwx36Aqdm8L_w17la4S9EJCGT-xo54acxQGnQ.jpg",
+    "/images/cctv/ip/yWd9-zf8QvvP5Vzdf0Gc3V7AU6ko3lHgOopvTuGoPM4cxe94sxlwVsWOVIhRbjJukInlVru9NukGYZSsO3J5fTztHti5Dih8od-KFmkRzqnZcF-wb_KzOFqGe8gqSzVv_Wf3Kt4JcGmlOCSqtuRiY8kkN7LUvZvs64ALcSnZu2_cafQdU-oaJ1uMmi6_SCul.jpg"
   ]
 };
 
@@ -288,9 +288,9 @@ const INDUSTRIES_SOLUTIONS = [
     categoryKey: "Dome Cameras",
     recommendedCameras: ["Dome Cameras", "Wireless Cameras", "Turret Cameras"],
     images: [
-      "/dome camera/VP26P-T89uJ-K4JLfuW_mCGOQrehf1rTqHCz-e2Ljrz9UIAVV-9CwaTIQ05Vyji3sHDITRGOT28HEbJolIJ4vxOc3XKNS2_ieTsd_ldZsFmy7S1e2i6z9JFD7CMT0Ptxb4PLN5SO9c0LMySMybvgzvYgPg2xSp16lX5LEPaujV7xkX-xJEwe5PBxzNHCZ9RJ.jpg",
-      "/Wireless Cameras/Brvszyepf42s5qZOHOAHslHNpglvdvo9PMoYRQhxYT33PpW20NMHVgGaGTBSKOUtKz58ty5dNdZuQJHOaaKklJk5X1WJjqsgARAmf-haRLtNk5gS52RdDpS7coUbcbhPucAXkXjwgrD6jYeBjgqv2LydGogqPtVIPraHi0WtD454D1rY3I_nUnYkiqYmLpx-.jpg",
-      "/Turret (Eyeball) Cameras/SvQC9SamokYa7sTS8d57xE6RX4is0AptxJ0pWwb0wOzmoVwoAI2LVJpHdmDKkU2PGaOk88CNx-qw6KQPH8VTuY-kMrIJhqGAU8LhseFuWWAbCREn3WIqZtlSe09DraRjrzIdCUzG17iu3Vahl1EPzytuUgGX27CgJCnglQ5hPIwkQcXNJmB37jTOJZ.jpg"
+      "/images/cctv/dome/VP26P-T89uJ-K4JLfuW_mCGOQrehf1rTqHCz-e2Ljrz9UIAVV-9CwaTIQ05Vyji3sHDITRGOT28HEbJolIJ4vxOc3XKNS2_ieTsd_ldZsFmy7S1e2i6z9JFD7CMT0Ptxb4PLN5SO9c0LMySMybvgzvYgPg2xSp16lX5LEPaujV7xkX-xJEwe5PBxzNHCZ9RJ.jpg",
+      "/images/cctv/wireless/Brvszyepf42s5qZOHOAHslHNpglvdvo9PMoYRQhxYT33PpW20NMHVgGaGTBSKOUtKz58ty5dNdZuQJHOaaKklJk5X1WJjqsgARAmf-haRLtNk5gS52RdDpS7coUbcbhPucAXkXjwgrD6jYeBjgqv2LydGogqPtVIPraHi0WtD454D1rY3I_nUnYkiqYmLpx-.jpg",
+      "/images/cctv/turret/SvQC9SamokYa7sTS8d57xE6RX4is0AptxJ0pWwb0wOzmoVwoAI2LVJpHdmDKkU2PGaOk88CNx-qw6KQPH8VTuY-kMrIJhqGAU8LhseFuWWAbCREn3WIqZtlSe09DraRjrzIdCUzG17iu3Vahl1EPzytuUgGX27CgJCnglQ5hPIwkQcXNJmB37jTOJZ.jpg"
     ]
   },
   { 
@@ -300,9 +300,9 @@ const INDUSTRIES_SOLUTIONS = [
     categoryKey: "IP Cameras",
     recommendedCameras: ["IP Cameras", "Dome Cameras", "Fisheye Cameras"],
     images: [
-      "/IP Cameras/i3sCq33JbdmOZ_WKVY_ZVmVvM_KdFr5drwXpbzJrhreC1D7inYnwmW6wDB73XHdNCpRthAn-5v8NTBYpbO4KmXOyohfbeDADjURRxU9VSBVhsF42pxC83jIpYdsyXuiGscc2BqNi751r1zHTL697vWtU5VnYnU2s2bU-9ZMbi6evj0zghqBocsmQxnzYtZHR.jpg",
-      "/Fisheye Cameras/TS5VM_mHNYm7bXe2lP9oy6g7-5BofDkiQ5COLXuSLCnY4JYiRnmbwRmN26mSEd3Bjuqj9cWWIEP25sIF3zzyDz3Ya9jBW4Dt1YY1WYlHtUk5Rc9rcPrfhx0riX-XOiUo44q49C74HTi7xGLBykUjQ-7E7KN3G-7Y28IdCcePmkDYmg_Zd2dIEmtV5KaqPgR4.jpg",
-      "/dome camera/aR15OIAMnao-N2Ix3CohgQ9EXocqgqQqaEYuCUkgQKMnf46SlCzTUUpGiOdgXfHmwIyC41DbLV6GSIxYm5UUwIWaqfrNK9ivUEJ_cp_NMxakT9w-wVPS-qTC93bYlqCqrKXO5-TqFwx1nn3nnnVTiE-Eix78Bm19TD6iNtDFgdeyMLdWVjP1zTGYKYTKzNJ6.jpg"
+      "/images/cctv/ip/i3sCq33JbdmOZ_WKVY_ZVmVvM_KdFr5drwXpbzJrhreC1D7inYnwmW6wDB73XHdNCpRthAn-5v8NTBYpbO4KmXOyohfbeDADjURRxU9VSBVhsF42pxC83jIpYdsyXuiGscc2BqNi751r1zHTL697vWtU5VnYnU2s2bU-9ZMbi6evj0zghqBocsmQxnzYtZHR.jpg",
+      "/images/cctv/fisheye/TS5VM_mHNYm7bXe2lP9oy6g7-5BofDkiQ5COLXuSLCnY4JYiRnmbwRmN26mSEd3Bjuqj9cWWIEP25sIF3zzyDz3Ya9jBW4Dt1YY1WYlHtUk5Rc9rcPrfhx0riX-XOiUo44q49C74HTi7xGLBykUjQ-7E7KN3G-7Y28IdCcePmkDYmg_Zd2dIEmtV5KaqPgR4.jpg",
+      "/images/cctv/dome/aR15OIAMnao-N2Ix3CohgQ9EXocqgqQqaEYuCUkgQKMnf46SlCzTUUpGiOdgXfHmwIyC41DbLV6GSIxYm5UUwIWaqfrNK9ivUEJ_cp_NMxakT9w-wVPS-qTC93bYlqCqrKXO5-TqFwx1nn3nnnVTiE-Eix78Bm19TD6iNtDFgdeyMLdWVjP1zTGYKYTKzNJ6.jpg"
     ]
   },
   { 
@@ -312,9 +312,9 @@ const INDUSTRIES_SOLUTIONS = [
     categoryKey: "Bullet Cameras",
     recommendedCameras: ["Bullet Cameras", "PTZ Cameras", "Box Cameras"],
     images: [
-      "/Bullet Cameras/5TenuMzbyrJ5zN0UlqJ7rRLKXQYhnM_6tlAF-812He89l4ewjQtYvQz0U2gZmtzIoM6DEV_Gaeq8nlCT8uvXj5FAljDUZ-rQ5YkGEwo6ebOoaRxWLaQcNQ93W5_gFrc0emAiera7qRjYWAA2QgLExxjNhqQAc2YUDddtb9G4wvWKnSd4kuK8n5sQOwy2MUIv.jpg",
-      "/PTZ (Pan-Tilt-Zoom) Cameras/3VZFzDiO72AoHwakoDLGNvHFkLVUgiVmdQducNVhp2laXGUxxuEihWeWCa-dDMGUnVT_4KzH-nq6GoEdOUfhEhtTd0Uw1GJt9KAX4BozyvPncmgmz6YE_TzQrfjNbxXV-HT9CTiX5wZ6GKdIAAwg0fmn0PHaX2GytRGANTYHlXqYsuhCuCNXrSxhmb.jpg",
-      "/Box Cameras/BKOHaLctffpqc4yN-yDyQsAKOsvFpgeccn3PFGqtjvU7T8bMZRY2-NDm241havjANPwiSa0GKhHPX6EKvdqBR5YIhTS2pbBCyHYdseavlJFJ8ZlKaTFyQ6PoGzIkBERboX5Tc5xLKVvSTc9CUdPdR6Axflm1GEdBrHY18FmPoXjXqAlN3rtaJD91xXzfiJ6-.jpg"
+      "/images/cctv/bullet/5TenuMzbyrJ5zN0UlqJ7rRLKXQYhnM_6tlAF-812He89l4ewjQtYvQz0U2gZmtzIoM6DEV_Gaeq8nlCT8uvXj5FAljDUZ-rQ5YkGEwo6ebOoaRxWLaQcNQ93W5_gFrc0emAiera7qRjYWAA2QgLExxjNhqQAc2YUDddtb9G4wvWKnSd4kuK8n5sQOwy2MUIv.jpg",
+      "/images/cctv/ptz/3VZFzDiO72AoHwakoDLGNvHFkLVUgiVmdQducNVhp2laXGUxxuEihWeWCa-dDMGUnVT_4KzH-nq6GoEdOUfhEhtTd0Uw1GJt9KAX4BozyvPncmgmz6YE_TzQrfjNbxXV-HT9CTiX5wZ6GKdIAAwg0fmn0PHaX2GytRGANTYHlXqYsuhCuCNXrSxhmb.jpg",
+      "/images/cctv/box/BKOHaLctffpqc4yN-yDyQsAKOsvFpgeccn3PFGqtjvU7T8bMZRY2-NDm241havjANPwiSa0GKhHPX6EKvdqBR5YIhTS2pbBCyHYdseavlJFJ8ZlKaTFyQ6PoGzIkBERboX5Tc5xLKVvSTc9CUdPdR6Axflm1GEdBrHY18FmPoXjXqAlN3rtaJD91xXzfiJ6-.jpg"
     ]
   },
   { 
@@ -324,9 +324,9 @@ const INDUSTRIES_SOLUTIONS = [
     categoryKey: "Dome Cameras",
     recommendedCameras: ["Dome Cameras", "IP Cameras", "PTZ Cameras"],
     images: [
-      "/dome camera/r2otC68jlCzyJlZcaKTWDSBYBb77CSEmVzBQvJVhd9xjc-AMcZe64CfmP2Hx033Gg4NNEGF9iH_IBOlbzzn0RYvP3xZnRR9ubPLTdDmyJ_DtSeK9y8uCAB8oYQKDcnwFqSrn-S7mYlQ1hWZh5fJpRehEjCnZfeTPwYLDQCm5a3I_k7H4Q6l7A87yY4OHhhXu.jpg",
-      "/IP Cameras/ljuNi5WadXxd3D-LTgoUo9BSJ5ctJdjNFlMjG8xkzfi1fU2dN3OC6g792UfozN-QLYWgw3r7fzrCYnLs2KlqdlkQz_VKl5YrGGdrAMr_oj0svf-zAbzVaUCKiAcab_aeSPv5DXCJrvEjvHcoPn0awsq5cmy5UNBtDy9a4KdATsW1K8e8t8xGctd7T2fcdIph.jpg",
-      "/PTZ (Pan-Tilt-Zoom) Cameras/3aKrogU_PuxGSGBe-nhUYKXexZtmUjqpXQmT1IVaaKTEKyjTKONcdDQwHBaPSde4YYMnq9dcsxTLd6BWteoJSDZZzG2vun5HpISbA5gg3mwfObCApsrzpV8y45lD9OsFfJuub7YcY9i3BVHZHMkm-awPJIYggJQXyv6AWmBfRR1FpKgwTKXsyhVxXN.jpg"
+      "/images/cctv/dome/r2otC68jlCzyJlZcaKTWDSBYBb77CSEmVzBQvJVhd9xjc-AMcZe64CfmP2Hx033Gg4NNEGF9iH_IBOlbzzn0RYvP3xZnRR9ubPLTdDmyJ_DtSeK9y8uCAB8oYQKDcnwFqSrn-S7mYlQ1hWZh5fJpRehEjCnZfeTPwYLDQCm5a3I_k7H4Q6l7A87yY4OHhhXu.jpg",
+      "/images/cctv/ip/ljuNi5WadXxd3D-LTgoUo9BSJ5ctJdjNFlMjG8xkzfi1fU2dN3OC6g792UfozN-QLYWgw3r7fzrCYnLs2KlqdlkQz_VKl5YrGGdrAMr_oj0svf-zAbzVaUCKiAcab_aeSPv5DXCJrvEjvHcoPn0awsq5cmy5UNBtDy9a4KdATsW1K8e8t8xGctd7T2fcdIph.jpg",
+      "/images/cctv/ptz/3aKrogU_PuxGSGBe-nhUYKXexZtmUjqpXQmT1IVaaKTEKyjTKONcdDQwHBaPSde4YYMnq9dcsxTLd6BWteoJSDZZzG2vun5HpISbA5gg3mwfObCApsrzpV8y45lD9OsFfJuub7YcY9i3BVHZHMkm-awPJIYggJQXyv6AWmBfRR1FpKgwTKXsyhVxXN.jpg"
     ]
   },
   { 
@@ -336,9 +336,9 @@ const INDUSTRIES_SOLUTIONS = [
     categoryKey: "Turret Cameras",
     recommendedCameras: ["Turret Cameras", "Dome Cameras", "IP Cameras"],
     images: [
-      "/Turret (Eyeball) Cameras/U7CLK71NU3s8iXCUDDnwjWFGkKak_GQxcryQm7jSfv5enZ7cOoZ_L1dAXEb2kH7EX3-qlNB8ObfFVrWZFz3kBDc07GTN86pjlknhQl8thZPlVGYg4nc4mXOnhV_lE9JR_ybvw3S47l8CGeI2-inqnFEh3U0To9VLCVbNggk3UxDByi5_a-VdXKwckfXSX.jpg",
-      "/dome camera/u425wWqjSne5ZRNEsNTVsdL5WJaDU_T7fbtTlVAwrN8qZyxU2ZLWKzTl0AKHA97uqNlw21lM2tnsSfPzBLSevLsAIVTyNbM9xaTNJ7RZsu2nNXmctv424r5V_oEddPxGW5QEamd8pT1bvSMLaTf33eE2n8JpnlCIZ2pmSPbYvzmCsfe27Vo-cigWgHIljqk4.jpg",
-      "/IP Cameras/rixHKUMUK8DfKz_lCX3tNlGhCASrDGbcgGwy6paf5z9G8N8glzxnr0YTwn5QVlp3bDRiqk9P9jovFRwvU_UbJfr3dK2F1omVnJWASrtYtge0WyqS8GgM1YuI8jkfZuU06IYbNcuK986XDXcrz_ghCVBO6TQ7XyhpxsYItbn2d7QrO0zhj7WNok_FFPytFdKZ.jpg"
+      "/images/cctv/turret/U7CLK71NU3s8iXCUDDnwjWFGkKak_GQxcryQm7jSfv5enZ7cOoZ_L1dAXEb2kH7EX3-qlNB8ObfFVrWZFz3kBDc07GTN86pjlknhQl8thZPlVGYg4nc4mXOnhV_lE9JR_ybvw3S47l8CGeI2-inqnFEh3U0To9VLCVbNggk3UxDByi5_a-VdXKwckfXSX.jpg",
+      "/images/cctv/dome/u425wWqjSne5ZRNEsNTVsdL5WJaDU_T7fbtTlVAwrN8qZyxU2ZLWKzTl0AKHA97uqNlw21lM2tnsSfPzBLSevLsAIVTyNbM9xaTNJ7RZsu2nNXmctv424r5V_oEddPxGW5QEamd8pT1bvSMLaTf33eE2n8JpnlCIZ2pmSPbYvzmCsfe27Vo-cigWgHIljqk4.jpg",
+      "/images/cctv/ip/rixHKUMUK8DfKz_lCX3tNlGhCASrDGbcgGwy6paf5z9G8N8glzxnr0YTwn5QVlp3bDRiqk9P9jovFRwvU_UbJfr3dK2F1omVnJWASrtYtge0WyqS8GgM1YuI8jkfZuU06IYbNcuK986XDXcrz_ghCVBO6TQ7XyhpxsYItbn2d7QrO0zhj7WNok_FFPytFdKZ.jpg"
     ]
   },
   { 
@@ -348,9 +348,9 @@ const INDUSTRIES_SOLUTIONS = [
     categoryKey: "Fisheye Cameras",
     recommendedCameras: ["Fisheye Cameras", "Dome Cameras", "Wireless Cameras"],
     images: [
-      "/Fisheye Cameras/Ush_DdR3vMVmqCf4d1nt4lQAq9hldeHwyTBh6y3zoljh6SeBCVZt5CAaDliqxLBDZMu85moC7GsjKM1MjlwqNkGE_TlVYRs89Iht8-ya3PJz_qSuOjgKPUfwdaZBiYj7Tt4QAhGgb0x6tqzwRqKLYQhtrB_AIndte2Z1hQMDtHhUeGBDDG7ndn2py_PDRmm9.jpg",
-      "/dome camera/yazGO60BVUnAjl4kRWiQTlbdEKm0PTYoPZ6VPY9I2ZDOeJdhaTmIwMbdeC3WM0VqF_v4D154an8fFs-j2Ar8scBDKAhOvOU6ZJR8tY78EHQbo7-EkwimgEhYv7dWlNK2Lh6jMzhvW6kEJt4jTQUZZK9YS4SnJgl-s1TtM8gm0EKH9o_Q2q20hADEpAG0oO4x.jpg",
-      "/Wireless Cameras/GtV2rqk8eCg7gap3Ik_Ydtw7zlO8SmIACi0w5gOoyYRy2hNtEoDDfd5NV8_EaNk9rr_Cr0j9puxo9pLJ6ErNMwGtMGZpQmtps0HgzleQ9ujnURnEGP3AQDLIBnnQtBaV-zdBnNnyDqo44lHC4_7MW4T4HYGIji2SZZeywiNGeWoFsHG08ct2qQzEXB1vhhCU.jpg"
+      "/images/cctv/fisheye/Ush_DdR3vMVmqCf4d1nt4lQAq9hldeHwyTBh6y3zoljh6SeBCVZt5CAaDliqxLBDZMu85moC7GsjKM1MjlwqNkGE_TlVYRs89Iht8-ya3PJz_qSuOjgKPUfwdaZBiYj7Tt4QAhGgb0x6tqzwRqKLYQhtrB_AIndte2Z1hQMDtHhUeGBDDG7ndn2py_PDRmm9.jpg",
+      "/images/cctv/dome/yazGO60BVUnAjl4kRWiQTlbdEKm0PTYoPZ6VPY9I2ZDOeJdhaTmIwMbdeC3WM0VqF_v4D154an8fFs-j2Ar8scBDKAhOvOU6ZJR8tY78EHQbo7-EkwimgEhYv7dWlNK2Lh6jMzhvW6kEJt4jTQUZZK9YS4SnJgl-s1TtM8gm0EKH9o_Q2q20hADEpAG0oO4x.jpg",
+      "/images/cctv/wireless/GtV2rqk8eCg7gap3Ik_Ydtw7zlO8SmIACi0w5gOoyYRy2hNtEoDDfd5NV8_EaNk9rr_Cr0j9puxo9pLJ6ErNMwGtMGZpQmtps0HgzleQ9ujnURnEGP3AQDLIBnnQtBaV-zdBnNnyDqo44lHC4_7MW4T4HYGIji2SZZeywiNGeWoFsHG08ct2qQzEXB1vhhCU.jpg"
     ]
   },
   { 
@@ -360,9 +360,9 @@ const INDUSTRIES_SOLUTIONS = [
     categoryKey: "Box Cameras",
     recommendedCameras: ["Box Cameras", "Bullet Cameras", "PTZ Cameras"],
     images: [
-      "/Box Cameras/Fe1Qq_64vlWphAGvAmJubos5KSpGNf8VbmlyRkA81EAKUFcHzqxiQkO5XzoAfBveYaHanASF-IMDuM4gJaWF6hXkZVpYNqe-9Nx5H0SksElNWX33uJC0meCcitiW110F-CqOHGFn6w_2_nVkq7-j9pTTNGvfZvGYJ6N3K25OVjVaCOX52VhzkqH22oZOcKO4.jpg",
-      "/Bullet Cameras/8Dsr3zpELO5_i6Dw3WkGDPB5bvIo2xpl1Y54iXMy-VN1hvn1_TiJ1W5nF7BcFoBitTlE1aBJoCoa9PnINtCq5t2ZMJyqZrx9YxVSg0FO-GjwBo92o17OnCuDkjK0naravjnMq4I1-8v-dj8jUtlb4BM6C7ZmpniwtjnlFBRtuDj8HcotH-N-q-BSomI0CS-R.jpg",
-      "/PTZ (Pan-Tilt-Zoom) Cameras/Vlz-EAnASOVOJ2jEVJn58a3VRhJrMprpxgl4kHw_i9m5hk8fcGwojFXsx2gdTqCRM4VQRmVBuVkTefVoPkoaS8cGkOUzyt7fwoJyrhXT0Ed0C3egDvT7r7I25TP4gYD8ZX6ZVgtslJb0WiJhWLv60xsP2CCWsIBDs7hnXHsTRym--katr4eF72026k.jpg"
+      "/images/cctv/box/Fe1Qq_64vlWphAGvAmJubos5KSpGNf8VbmlyRkA81EAKUFcHzqxiQkO5XzoAfBveYaHanASF-IMDuM4gJaWF6hXkZVpYNqe-9Nx5H0SksElNWX33uJC0meCcitiW110F-CqOHGFn6w_2_nVkq7-j9pTTNGvfZvGYJ6N3K25OVjVaCOX52VhzkqH22oZOcKO4.jpg",
+      "/images/cctv/bullet/8Dsr3zpELO5_i6Dw3WkGDPB5bvIo2xpl1Y54iXMy-VN1hvn1_TiJ1W5nF7BcFoBitTlE1aBJoCoa9PnINtCq5t2ZMJyqZrx9YxVSg0FO-GjwBo92o17OnCuDkjK0naravjnMq4I1-8v-dj8jUtlb4BM6C7ZmpniwtjnlFBRtuDj8HcotH-N-q-BSomI0CS-R.jpg",
+      "/images/cctv/ptz/Vlz-EAnASOVOJ2jEVJn58a3VRhJrMprpxgl4kHw_i9m5hk8fcGwojFXsx2gdTqCRM4VQRmVBuVkTefVoPkoaS8cGkOUzyt7fwoJyrhXT0Ed0C3egDvT7r7I25TP4gYD8ZX6ZVgtslJb0WiJhWLv60xsP2CCWsIBDs7hnXHsTRym--katr4eF72026k.jpg"
     ]
   },
   { 
@@ -372,9 +372,9 @@ const INDUSTRIES_SOLUTIONS = [
     categoryKey: "PTZ Cameras",
     recommendedCameras: ["PTZ Cameras", "IP Cameras", "Box Cameras"],
     images: [
-      "/PTZ (Pan-Tilt-Zoom) Cameras/kGRg3Y3qN8RHUOoTSBtoi7rt48JsuRKBfr2sS0ML7cyZZ8vaI-zJ1eiNAvfrQhe3tkbqdWo9YKgsW_lE8kBoQVKw0ep8j_BQWlJrZMxJCAZJ4JtPtkcqqRmS1_DytZ24dbDvIRmV5wAme_LEs4M-Ma3SjdjTBs8mnvjRx0xRfeaOYfoDvRH8LnzNVWu1UL0j.jpg",
-      "/IP Cameras/vvGZAf-hVfzG1GgUaRhz7F2HJ0XBv3Bd6hIRvdwiNnYyeJZmkGDbtpVFZI8o_tnMT9CqXUt_2o7cWxKmc2yxtBCohaJEFFAcBrzzsrsuJRybktMHWOZLnPt4zSjtF-6F7j2S_XRT0ScHY4eLtgDmC3laSgvbwx36Aqdm8L_w17la4S9EJCGT-xo54acxQGnQ.jpg",
-      "/Box Cameras/JPEhOYfK6fHOyjL0jkF40iMSvmtI0CWHPWf-Ku6iZ0UY_HOMOD2XP13YvAqV5m44vT2ndC16u3GdxK4Kdw3qM6IaVCYjp_NLpxAY9-cc-hC7fvC-QdFJpfol183KvhEGScq6Hao98NrAz4snJgmMqUnqkuPN87ePyP7GR77adjPsOxw8H1Exeg7W5IpDs3kK.jpg"
+      "/images/cctv/ptz/kGRg3Y3qN8RHUOoTSBtoi7rt48JsuRKBfr2sS0ML7cyZZ8vaI-zJ1eiNAvfrQhe3tkbqdWo9YKgsW_lE8kBoQVKw0ep8j_BQWlJrZMxJCAZJ4JtPtkcqqRmS1_DytZ24dbDvIRmV5wAme_LEs4M-Ma3SjdjTBs8mnvjRx0xRfeaOYfoDvRH8LnzNVWu1UL0j.jpg",
+      "/images/cctv/ip/vvGZAf-hVfzG1GgUaRhz7F2HJ0XBv3Bd6hIRvdwiNnYyeJZmkGDbtpVFZI8o_tnMT9CqXUt_2o7cWxKmc2yxtBCohaJEFFAcBrzzsrsuJRybktMHWOZLnPt4zSjtF-6F7j2S_XRT0ScHY4eLtgDmC3laSgvbwx36Aqdm8L_w17la4S9EJCGT-xo54acxQGnQ.jpg",
+      "/images/cctv/box/JPEhOYfK6fHOyjL0jkF40iMSvmtI0CWHPWf-Ku6iZ0UY_HOMOD2XP13YvAqV5m44vT2ndC16u3GdxK4Kdw3qM6IaVCYjp_NLpxAY9-cc-hC7fvC-QdFJpfol183KvhEGScq6Hao98NrAz4snJgmMqUnqkuPN87ePyP7GR77adjPsOxw8H1Exeg7W5IpDs3kK.jpg"
     ]
   }
 ];

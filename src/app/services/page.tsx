@@ -31,7 +31,7 @@ const DETAILED_SERVICES = [
     title: "CCTV Installation",
     href: "/services/cctv-installation",
     icon: <Cctv className="w-10 h-10 text-[#0284C7]" />,
-    image: "/about-cctv.png",
+    image: "/images/legacy/about-cctv.png",
     description: "Protect your premises with advanced CCTV surveillance systems that provide 24/7 monitoring, high-definition video recording, remote access, and intelligent security solutions for homes, offices, factories, warehouses, and commercial properties.",
     features: [
       "HD & IP CCTV Cameras",
@@ -48,7 +48,7 @@ const DETAILED_SERVICES = [
     title: "Fire Alarm System",
     href: "/services/fire-alarm-system",
     icon: <Flame className="w-10 h-10 text-[#0284C7]" />,
-    image: "/about-fire-alarm.jpg",
+    image: "/images/legacy/about-fire-alarm.jpg",
     description: "Safeguard lives and property with reliable fire detection and alarm systems designed to detect potential fire hazards quickly and initiate timely alerts for immediate response.",
     features: [
       "Smoke & Heat Detection",
@@ -65,7 +65,7 @@ const DETAILED_SERVICES = [
     title: "Access Control System",
     href: "/services/access-control-system",
     icon: <Fingerprint className="w-10 h-10 text-[#0284C7]" />,
-    image: "/about-access-control.png",
+    image: "/images/legacy/about-access-control.png",
     description: "Control and monitor access to your premises with modern access control solutions that enhance security while simplifying employee and visitor management.",
     features: [
       "Biometric Attendance Systems",
@@ -82,7 +82,7 @@ const DETAILED_SERVICES = [
     title: "Public Address (PA) System",
     href: "/services/public-address-system",
     icon: <Mic className="w-10 h-10 text-[#0284C7]" />,
-    image: "/about-pa-system.jpg",
+    image: "/images/legacy/about-pa-system.jpg",
     description: "Ensure clear and effective communication across your facility with professionally designed Public Address Systems for daily announcements and emergency broadcasting.",
     features: [
       "Zone-wise Audio Distribution",
@@ -99,7 +99,7 @@ const DETAILED_SERVICES = [
     title: "Security Guard Services",
     href: "/services/security-guard-services",
     icon: <Shield className="w-10 h-10 text-[#0284C7]" />,
-    image: "/about-security-officer.jpg",
+    image: "/images/legacy/about-security-officer.jpg",
     description: "Our trained and disciplined security professionals provide reliable on-site protection, ensuring the safety of people, property, and business operations through vigilant monitoring and rapid response.",
     features: [
       "Residential & Commercial Security",
