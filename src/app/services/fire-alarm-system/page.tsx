@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { 
   Flame, 
   CheckCircle2, 
   ChevronRight, 
+  ChevronLeft,
   ShieldCheck, 
   Bell, 
   Zap, 
@@ -25,6 +26,195 @@ import {
 } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+
+// Local Public Image Folders for each Fire Alarm Equipment Category
+const FIRE_EQUIPMENT_IMAGES: Record<string, string[]> = {
+  "Fire Alarm Control Panel": [
+    "/images/services/fire-alarm/fire-alarm-control-panel-facp/img-41gyjfrk.jpg",
+    "/images/services/fire-alarm/fire-alarm-control-panel-facp/img-5gpw193z.jpg",
+    "/images/services/fire-alarm/fire-alarm-control-panel-facp/img-c88ktkga.jpg",
+    "/images/services/fire-alarm/fire-alarm-control-panel-facp/img-io8y8i6a.jpg",
+    "/images/services/fire-alarm/fire-alarm-control-panel-facp/img-uoyog4st.jpg"
+  ],
+  "Smoke Detectors": [
+    "/images/services/fire-alarm/smoke-detector/img-4soj8cqs.jpg",
+    "/images/services/fire-alarm/smoke-detector/img-bhq2vety.jpg",
+    "/images/services/fire-alarm/smoke-detector/img-dzobf4pq.jpg",
+    "/images/services/fire-alarm/smoke-detector/img-o4ku020g.jpg"
+  ],
+  "Heat Detectors": [
+    "/images/services/fire-alarm/heat-detector/img-empzt0kh.jpg",
+    "/images/services/fire-alarm/heat-detector/img-ersyneux.jpg",
+    "/images/services/fire-alarm/heat-detector/img-t7w9sjqv.jpg",
+    "/images/services/fire-alarm/heat-detector/img-t8o0axlu.jpg",
+    "/images/services/fire-alarm/heat-detector/img-yakn9l6m.jpg"
+  ],
+  "Flame Detectors": [
+    "/images/services/fire-alarm/flame-detector/img-0z408d2t.jpg",
+    "/images/services/fire-alarm/flame-detector/img-9dwugq0j.jpg",
+    "/images/services/fire-alarm/flame-detector/img-ee1f44fq.jpg",
+    "/images/services/fire-alarm/flame-detector/img-i3olvw1i.jpg",
+    "/images/services/fire-alarm/flame-detector/img-s81idmtv.jpg",
+    "/images/services/fire-alarm/flame-detector/img-t8g9ly23.jpg"
+  ],
+  "Beam Smoke Detector": [
+    "/images/services/fire-alarm/beam-smoke-detector/img-66ftinii.jpg",
+    "/images/services/fire-alarm/beam-smoke-detector/img-cawgt6ke.jpg",
+    "/images/services/fire-alarm/beam-smoke-detector/img-gme3yogg.jpg",
+    "/images/services/fire-alarm/beam-smoke-detector/img-i7ovgson.jpg"
+  ],
+  "Fire Alarm Bell": [
+    "/images/services/fire-alarm/fire-alarm-bell/img-47awgded.jpg",
+    "/images/services/fire-alarm/fire-alarm-bell/img-9utuguz7.jpg",
+    "/images/services/fire-alarm/fire-alarm-bell/img-fzgfv5s3.jpg",
+    "/images/services/fire-alarm/fire-alarm-bell/img-nwvpj1cm.jpg",
+    "/images/services/fire-alarm/fire-alarm-bell/img-wwfmslxi.jpg"
+  ],
+  "Fire Alarm Sounder & Strobe": [
+    "/images/services/fire-alarm/fire-alarm-sounder-strobe/img-8hrwvuu6.jpg",
+    "/images/services/fire-alarm/fire-alarm-sounder-strobe/img-bxc7yxvh.jpg",
+    "/images/services/fire-alarm/fire-alarm-sounder-strobe/img-chluzw72.jpg",
+    "/images/services/fire-alarm/fire-alarm-sounder-strobe/img-pwwn119m.jpg",
+    "/images/services/fire-alarm/fire-alarm-sounder-strobe/img-zdd7y8ke.jpg"
+  ],
+  "Emergency Exit Signs": [
+    "/images/services/fire-alarm/emergency-exit-sign/img-0aryxuoh.jpg",
+    "/images/services/fire-alarm/emergency-exit-sign/img-60h93n9j.jpg",
+    "/images/services/fire-alarm/emergency-exit-sign/img-s0c1gg3p.jpg",
+    "/images/services/fire-alarm/emergency-exit-sign/img-s25ilc45.jpg",
+    "/images/services/fire-alarm/emergency-exit-sign/img-uhv504sk.jpg"
+  ],
+  "Emergency Lights": [
+    "/images/services/fire-alarm/emergency-light/img-3i14ar2g.jpg",
+    "/images/services/fire-alarm/emergency-light/img-cyxj4mh7.jpg",
+    "/images/services/fire-alarm/emergency-light/img-kvmq57qz.jpg",
+    "/images/services/fire-alarm/emergency-light/img-lp1ckgxh.jpg",
+    "/images/services/fire-alarm/emergency-light/img-x74ms5cw.jpg"
+  ],
+  "Fire Extinguishers": [
+    "/images/services/fire-alarm/fire-extinguisher/img-cd8qwitk.jpg",
+    "/images/services/fire-alarm/fire-extinguisher/img-ik5yha5h.jpg",
+    "/images/services/fire-alarm/fire-extinguisher/img-tc46gomn.jpg",
+    "/images/services/fire-alarm/fire-extinguisher/img-vt197jth.jpg",
+    "/images/services/fire-alarm/fire-extinguisher/img-wa4or9me.jpg"
+  ],
+  "Fire Sprinkler System": [
+    "/images/services/fire-alarm/fire-sprinkler-system/img-ehndt9ph.jpg",
+    "/images/services/fire-alarm/fire-sprinkler-system/img-eslesg89.jpg",
+    "/images/services/fire-alarm/fire-sprinkler-system/img-gybl7tvs.jpg",
+    "/images/services/fire-alarm/fire-sprinkler-system/img-jsm7wz2o.jpg",
+    "/images/services/fire-alarm/fire-sprinkler-system/img-jxt44wqk.jpg"
+  ],
+  "Fire Hydrant System": [
+    "/images/services/fire-alarm/fire-hydrant-system/img-2ya0vqyi.jpg",
+    "/images/services/fire-alarm/fire-hydrant-system/img-gpw6n0xl.jpg",
+    "/images/services/fire-alarm/fire-hydrant-system/img-i57z0cn5.jpg",
+    "/images/services/fire-alarm/fire-hydrant-system/img-n4ui3wde.jpg",
+    "/images/services/fire-alarm/fire-hydrant-system/img-nzao6ejw.jpg"
+  ],
+  "Hose Reel System": [
+    "/images/services/fire-alarm/fire-hose-reel/img-ac9cs52h.jpg",
+    "/images/services/fire-alarm/fire-hose-reel/img-ctwn12tm.jpg",
+    "/images/services/fire-alarm/fire-hose-reel/img-f600vdcq.jpg",
+    "/images/services/fire-alarm/fire-hose-reel/img-jxg2uym7.jpg",
+    "/images/services/fire-alarm/fire-hose-reel/img-ylaq3ozo.jpg"
+  ],
+  "FM-200 System": [
+    "/images/services/fire-alarm/fm-200-fire-suppression-system/img-8emira6q.jpg",
+    "/images/services/fire-alarm/fm-200-fire-suppression-system/img-k2nr9vht.jpg",
+    "/images/services/fire-alarm/fm-200-fire-suppression-system/img-k64ize9f.jpg",
+    "/images/services/fire-alarm/fm-200-fire-suppression-system/img-o4pl3ju1.jpg",
+    "/images/services/fire-alarm/fm-200-fire-suppression-system/img-pehbfomp.jpg"
+  ]
+};
+
+// Automatic Photo Slider Component for Equipment Cards
+function EquipmentCardSlider({ images, cardIndex, categoryTitle }: { images: string[]; cardIndex: number; categoryTitle: string }) {
+  const [current, setCurrent] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused || !images || images.length <= 1) return;
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % images.length);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, [isPaused, images?.length]);
+
+  if (!images || images.length === 0) return null;
+
+  const prevImage = () => {
+    setCurrent((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
+
+  const nextImage = () => {
+    setCurrent((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  };
+
+  return (
+    <div 
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      className="relative w-full h-[320px] md:h-full min-h-[320px] overflow-hidden bg-white border-b md:border-b-0 md:border-r border-slate-200 group/slider"
+    >
+      <AnimatePresence mode="wait">
+        <motion.img 
+          key={current}
+          src={images[current]} 
+          alt={`${categoryTitle} - Photo ${current + 1}`}
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.4 }}
+          className="w-full h-full object-cover object-center absolute inset-0 z-10" 
+        />
+      </AnimatePresence>
+
+      {/* Prev / Next Control Arrows */}
+      {images.length > 1 && (
+        <>
+          <button
+            onClick={prevImage}
+            className="absolute left-3 top-1/2 -translate-y-1/2 z-30 w-9 h-9 rounded-full bg-slate-900/70 hover:bg-[#0284C7] text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 shadow-md"
+            aria-label="Previous Image"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+
+          <button
+            onClick={nextImage}
+            className="absolute right-3 top-1/2 -translate-y-1/2 z-30 w-9 h-9 rounded-full bg-slate-900/70 hover:bg-[#0284C7] text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 shadow-md"
+            aria-label="Next Image"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </>
+      )}
+
+      {/* Slide Indicators */}
+      <div className="absolute bottom-3 right-4 z-30 flex items-center gap-1.5 bg-slate-900/60 px-3 py-1.5 rounded-full backdrop-blur-sm">
+        {images.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => setCurrent(idx)}
+            className={`h-2 rounded-full transition-all duration-300 ${
+              current === idx ? "w-6 bg-[#38BDF8]" : "w-2 bg-white/60"
+            }`}
+          />
+        ))}
+      </div>
+
+      {/* Card Index Badge */}
+      <div className="absolute top-4 left-4 z-20 w-10 h-10 rounded-xl bg-white flex items-center justify-center font-bebas text-lg text-[#0284C7] font-bold shadow-md border-2 border-sky-200">
+        {cardIndex + 1}
+      </div>
+
+      <div className="absolute bottom-3 left-4 z-20 text-xs text-slate-800 font-inter bg-white/90 backdrop-blur-md border border-sky-200 px-3 py-1 rounded-md shadow-sm font-semibold">
+        {categoryTitle} • {current + 1} / {images.length}
+      </div>
+    </div>
+  );
+}
 
 // 1. Key Benefits
 const KEY_BENEFITS = [
@@ -320,73 +510,79 @@ export default function FireAlarmSystemPage() {
             </p>
           </div>
 
-          {/* 1 Card Per Row Layout with Solid White Background */}
+          {/* 1 Card Per Row Layout with Solid White Background & Photo Sliders */}
           <div className="grid grid-cols-1 gap-10 max-w-5xl mx-auto">
-            {FIRE_EQUIPMENT_CATEGORIES.map((eq, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.04, duration: 0.5 }}
-                className="group bg-white text-slate-900 rounded-[32px] overflow-hidden border-4 border-sky-300 shadow-2xl hover:border-[#0284C7] transition-all grid md:grid-cols-12 min-h-[300px]"
-              >
-                {/* Left Side Number Badge & Title (4 cols) */}
-                <div className="md:col-span-4 p-8 bg-sky-50/80 border-b md:border-b-0 md:border-r border-sky-200 flex flex-col justify-between">
-                  <div>
-                    <div className="w-12 h-12 rounded-2xl bg-white border-2 border-sky-300 flex items-center justify-center font-bebas text-2xl text-[#0284C7] font-bold shadow-md mb-6">
-                      {idx + 1}
-                    </div>
-                    <h3 className="font-bebas text-3xl md:text-4xl tracking-wide text-slate-900 group-hover:text-[#0284C7] transition-colors leading-tight">
-                      {eq.title}
-                    </h3>
+            {FIRE_EQUIPMENT_CATEGORIES.map((eq, idx) => {
+              const cardImages = FIRE_EQUIPMENT_IMAGES[eq.title] || [];
+              return (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 25 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.04, duration: 0.5 }}
+                  className="group bg-white text-slate-900 rounded-[32px] overflow-hidden border-4 border-sky-300 shadow-2xl hover:border-[#0284C7] transition-all grid md:grid-cols-12 min-h-[340px]"
+                >
+                  {/* Left Side Photo Slider (5 cols) */}
+                  <div className="md:col-span-5 relative bg-white">
+                    <EquipmentCardSlider 
+                      images={cardImages} 
+                      cardIndex={idx} 
+                      categoryTitle={eq.title} 
+                    />
                   </div>
-                  <div className="mt-6 flex items-center gap-2 text-xs font-bebas tracking-wider uppercase text-[#0284C7] font-bold">
-                    <Flame className="w-4 h-4" />
-                    <span>Certified Fire Hardware</span>
-                  </div>
-                </div>
 
-                {/* Right Side Content (8 cols) */}
-                <div className="md:col-span-8 p-8 md:p-10 flex flex-col justify-between bg-white">
-                  <div>
-                    <p className="text-slate-600 text-sm md:text-base font-inter leading-relaxed mb-6">
-                      {eq.desc}
-                    </p>
+                  {/* Right Side Details & Content (7 cols) */}
+                  <div className="md:col-span-7 p-8 md:p-10 flex flex-col justify-between bg-white">
+                    <div>
+                      <div className="flex items-center justify-between gap-4 mb-4">
+                        <h3 className="font-bebas text-3xl md:text-4xl tracking-wide text-slate-900 group-hover:text-[#0284C7] transition-colors leading-tight">
+                          {eq.title}
+                        </h3>
+                        <div className="flex items-center gap-1.5 text-xs font-bebas tracking-wider uppercase text-[#0284C7] font-bold bg-sky-50 border border-sky-200 px-3 py-1 rounded-full shrink-0">
+                          <Flame className="w-4 h-4 text-[#0284C7]" />
+                          <span>Certified Hardware</span>
+                        </div>
+                      </div>
 
-                    {/* Best For Pills */}
-                    <div className="mb-6">
-                      <span className="font-bebas text-sm tracking-wider uppercase text-[#0284C7] block mb-2 font-bold">
-                        Best For:
-                      </span>
-                      <div className="flex flex-wrap gap-2">
-                        {eq.bestFor.map((bf, bIdx) => (
-                          <span key={bIdx} className="bg-sky-50 text-slate-800 font-inter text-xs px-3 py-1 rounded-full border border-sky-200 font-medium">
-                            {bf}
-                          </span>
-                        ))}
+                      <p className="text-slate-600 text-sm md:text-base font-inter leading-relaxed mb-6">
+                        {eq.desc}
+                      </p>
+
+                      {/* Best For Pills */}
+                      <div className="mb-6">
+                        <span className="font-bebas text-sm tracking-wider uppercase text-[#0284C7] block mb-2 font-bold">
+                          Best For:
+                        </span>
+                        <div className="flex flex-wrap gap-2">
+                          {eq.bestFor.map((bf, bIdx) => (
+                            <span key={bIdx} className="bg-sky-50 text-slate-800 font-inter text-xs px-3 py-1 rounded-full border border-sky-200 font-medium">
+                              {bf}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Key Features */}
+                      <div>
+                        <span className="font-bebas text-sm tracking-wider uppercase text-[#0284C7] block mb-2 font-bold">
+                          Key Features:
+                        </span>
+                        <ul className="grid grid-cols-2 gap-2 font-inter text-xs md:text-sm text-slate-700">
+                          {eq.features.map((ft, fIdx) => (
+                            <li key={fIdx} className="flex items-center gap-2">
+                              <CheckCircle2 className="w-4 h-4 text-[#0284C7] shrink-0" />
+                              <span className="truncate">{ft}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     </div>
-
-                    {/* Key Features */}
-                    <div>
-                      <span className="font-bebas text-sm tracking-wider uppercase text-[#0284C7] block mb-2 font-bold">
-                        Key Features:
-                      </span>
-                      <ul className="grid grid-cols-2 gap-2 font-inter text-xs md:text-sm text-slate-700">
-                        {eq.features.map((ft, fIdx) => (
-                          <li key={fIdx} className="flex items-center gap-2">
-                            <CheckCircle2 className="w-4 h-4 text-[#0284C7] shrink-0" />
-                            <span className="truncate">{ft}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
                   </div>
-                </div>
 
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
