@@ -477,6 +477,60 @@ export default function CctvInstallationPage() {
         </div>
       </section>
 
+      {/* Introduction Section */}
+      <section className="py-24 bg-white text-slate-900 relative border-b border-sky-100">
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="space-y-6"
+            >
+              <span className="text-[#0284C7] font-bebas text-xl tracking-widest uppercase block">
+                24/7 Surveillance & Protection
+              </span>
+              <h2 className="text-4xl md:text-6xl font-bebas tracking-wide text-slate-900 leading-tight">
+                Complete CCTV Security Infrastructure
+              </h2>
+              <p className="text-slate-600 text-lg leading-relaxed font-inter">
+                Continuous video monitoring and intelligent threat detection are vital to protecting your property, employees, and assets. <strong className="text-slate-900">Family Anchor Facilities Pvt. Ltd.</strong> provides end-to-end CCTV surveillance systems, including high-definition IP cameras, night vision infrared domes, AI-powered analytics, thermal imaging, and 24/7 technical AMC support.
+              </p>
+              <p className="text-slate-600 text-lg leading-relaxed font-inter border-l-4 border-[#0284C7] pl-4 italic bg-sky-50/80 py-3 rounded-r-xl">
+                From residential villas and commercial offices to large industrial complexes and logistics hubs, we engineer fully customized surveillance solutions tailored to your security requirements.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="relative h-[480px] rounded-[32px] overflow-hidden border-4 border-sky-300 shadow-2xl group"
+            >
+              <img 
+                src="/images/legacy/about-cctv.png" 
+                alt="Complete CCTV Surveillance Infrastructure" 
+                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="absolute bottom-8 left-8 right-8 bg-zinc-900/90 backdrop-blur-md p-6 rounded-2xl border border-zinc-800 text-white">
+                <div className="flex items-center gap-3 text-[#38BDF8] mb-1">
+                  <Cctv className="w-7 h-7" />
+                  <span className="font-bebas text-2xl tracking-wide text-white">Intelligent Surveillance</span>
+                </div>
+                <p className="text-xs text-slate-300 font-inter">
+                  Full HD crystal clear video, AI motion detection, and remote smartphone monitoring.
+                </p>
+              </div>
+            </motion.div>
+
+          </div>
+        </div>
+      </section>
+
       {/* Why Choose Our CCTV Solutions? */}
       <section className="py-20 bg-white text-slate-900 relative">
         <div className="container mx-auto px-4 md:px-6 max-w-6xl">
@@ -763,45 +817,14 @@ export default function CctvInstallationPage() {
         </div>
       </section>
 
-      {/* Why Choose Family Anchor Facilities Pvt. Ltd.? */}
-      <section className="py-24 bg-slate-900 text-white relative">
-        <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-5xl">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-[#38BDF8] font-bebas text-xl tracking-widest uppercase mb-2 block">
-              Trusted Excellence
-            </span>
-            <h2 className="text-4xl md:text-6xl font-bebas tracking-wide text-white leading-tight">
-              Why Choose Family Anchor Facilities?
-            </h2>
-          </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {WHY_FAF.map((waf, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.05, duration: 0.4 }}
-                className="bg-zinc-950 p-6 rounded-2xl border border-zinc-800 flex flex-col justify-between"
-              >
-                <div>
-                  <ShieldCheck className="w-8 h-8 text-[#38BDF8] mb-4" />
-                  <h3 className="font-bebas text-2xl tracking-wide text-white mb-2">{waf.title}</h3>
-                  <p className="text-slate-300 text-xs font-inter leading-relaxed">{waf.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Frequently Asked Questions */}
-      <section className="py-24 bg-white text-slate-900 relative">
+      <section className="py-24 bg-sky-50/80 text-slate-900 relative border-t border-sky-200">
         <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-4xl">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-[#0284C7] font-bebas text-xl tracking-widest uppercase mb-2 block">
-              Clear Answers
+              Got Questions?
             </span>
             <h2 className="text-4xl md:text-6xl font-bebas tracking-wide text-slate-900 leading-tight">
               Frequently Asked Questions
@@ -812,13 +835,16 @@ export default function CctvInstallationPage() {
             {FAQS.map((faq, idx) => {
               const isOpen = openFaq === idx;
               return (
-                <div key={idx} className="bg-sky-50/80 rounded-2xl border border-sky-200 overflow-hidden">
+                <div key={idx} className="bg-white rounded-2xl border border-sky-200 shadow-sm overflow-hidden transition-all">
                   <button
                     onClick={() => setOpenFaq(isOpen ? null : idx)}
-                    className="w-full p-6 text-left flex items-center justify-between font-bebas text-2xl tracking-wide text-slate-900"
+                    className="w-full p-6 text-left flex items-center justify-between gap-4 font-bebas text-2xl tracking-wide text-slate-900 hover:text-[#0284C7] transition-colors"
                   >
-                    <span>{faq.q}</span>
-                    <ChevronDown className={`w-6 h-6 text-[#0284C7] transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
+                    <span className="flex items-center gap-3">
+                      <HelpCircle className="w-6 h-6 text-[#0284C7] shrink-0" />
+                      {faq.q}
+                    </span>
+                    <ChevronDown className={`w-5 h-5 text-slate-500 transition-transform duration-300 ${isOpen ? "rotate-180 text-[#0284C7]" : ""}`} />
                   </button>
                   <AnimatePresence>
                     {isOpen && (
@@ -826,7 +852,7 @@ export default function CctvInstallationPage() {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="px-6 pb-6 text-slate-600 font-inter text-sm leading-relaxed"
+                        className="px-6 pb-6 text-slate-600 font-inter text-sm md:text-base leading-relaxed border-t border-sky-100 pt-4"
                       >
                         {faq.a}
                       </motion.div>
