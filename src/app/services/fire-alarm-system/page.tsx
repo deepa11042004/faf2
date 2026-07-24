@@ -67,22 +67,10 @@ const FIRE_EQUIPMENT_CATEGORIES = [
     features: ["UV/IR Optical Dual Sensor", "Millisecond Trigger Time", "Solar Radiation Blind", "Explosion-Proof Housing"]
   },
   {
-    title: "Manual Call Point",
-    desc: "Resettable or break-glass emergency activation stations installed along escape routes for instant manual alarm triggers.",
-    bestFor: ["Exit Stairwells", "Building Lobbies", "Factory Aisles", "School Corridors"],
-    features: ["Break-Glass / Push Button", "Resettable Key", "Bright Red Finish", "Weatherproof Outdoor Covers"]
-  },
-  {
-    title: "Sounders & Sirens",
-    desc: "High-decibel audible alarm sounders delivering clear, attention-grabbing emergency warnings across multi-story properties.",
-    bestFor: ["Auditoriums", "Warehouses", "Commercial Malls", "Residential Towers"],
-    features: ["100dB+ Output Level", "Multi-Tone Selector", "Low Current Draw", "Durable ABS Casing"]
-  },
-  {
-    title: "Strobe Lights",
-    desc: "High-intensity flashing visual alert lights providing clear emergency cues for hearing-impaired occupants and noisy industrial floors.",
-    bestFor: ["Noisy Factories", "Hospitals", "Public Venues", "Shopping Centers"],
-    features: ["High-Intensity Xenon/LED", "Synchronized Flashing", "Red & Clear Lens Options", "Wall & Ceiling Mount"]
+    title: "Fire Alarm Sounder & Strobe",
+    desc: "Sounders emit loud alarm tones while strobe lights provide visual warnings, ensuring that all occupants—including those with hearing impairments—are alerted during emergencies.",
+    bestFor: ["Noisy Factories", "Hospitals", "Public Venues", "Shopping Centers", "Commercial Buildings"],
+    features: ["Loud Audible Alarm", "Bright LED Flash", "Indoor & Outdoor Models", "Low Power Consumption"]
   },
   {
     title: "Emergency Exit Signs",
@@ -149,12 +137,12 @@ const FIRE_INDUSTRIES = [
   { 
     title: "Industrial Fire Safety", 
     desc: "Heavy-duty fire detection, flame sensors, deluge systems, and hydrant networks for factories and chemical plants.",
-    recommendedEquipment: ["Flame Detectors", "Fire Hydrant System", "Heat Detectors", "Sounders & Sirens"]
+    recommendedEquipment: ["Flame Detectors", "Fire Hydrant System", "Heat Detectors", "Fire Alarm Sounder & Strobe"]
   },
   { 
     title: "Healthcare Fire Safety", 
     desc: "Specialized early warning smoke detection, strobe visual alerts, and clean agent suppression for hospitals and clinics.",
-    recommendedEquipment: ["Smoke Detectors", "Strobe Lights", "FM-200 System", "Manual Call Point"]
+    recommendedEquipment: ["Smoke Detectors", "Fire Alarm Sounder & Strobe", "FM-200 System", "Fire Alarm Control Panel"]
   },
   { 
     title: "Government Fire Safety", 
