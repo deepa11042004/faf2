@@ -21,16 +21,73 @@ import { Footer } from "@/components/layout/Footer";
 // Local Public Image Folders for PA System Hardware Categories
 const PA_EQUIPMENT_IMAGES: Record<string, string[]> = {
   "PA System Amplifier": [
-    "/images/services/pa-system/amplifier/img-1.jpg"
+    "/images/services/pa-system/pa-system-amplifier/img-43bln0p3.jpg",
+    "/images/services/pa-system/pa-system-amplifier/img-i0d6mrex.jpg",
+    "/images/services/pa-system/pa-system-amplifier/img-wb2iarh3.jpg"
   ],
   "Ceiling Speaker": [
-    "/images/services/pa-system/ceiling-speaker/img-1.jpg"
+    "/images/services/pa-system/ceiling-speaker/img-avkv7ivs.jpg",
+    "/images/services/pa-system/ceiling-speaker/img-lr7ewign.jpg",
+    "/images/services/pa-system/ceiling-speaker/img-uw08hnc8.jpg",
+    "/images/services/pa-system/ceiling-speaker/img-ypnczo6v.jpg"
+  ],
+  "Wall Mount Speaker": [
+    "/images/services/pa-system/wall-mount-speaker/img-acyt9i6l.jpg",
+    "/images/services/pa-system/wall-mount-speaker/img-uh1z6nku.jpg"
   ],
   "Horn Speaker": [
-    "/images/services/pa-system/horn-speaker/img-1.jpg"
+    "/images/services/pa-system/horn-speaker/img-8g9t83g3.jpg",
+    "/images/services/pa-system/horn-speaker/img-ekqzqnle.jpg"
+  ],
+  "Column Speaker": [
+    "/images/services/pa-system/column-speaker/img-izc93tf7.jpg",
+    "/images/services/pa-system/column-speaker/img-s2w1gf1f.jpg",
+    "/images/services/pa-system/column-speaker/img-srq4uzmb.jpg"
   ],
   "Paging Microphone": [
-    "/images/services/pa-system/microphone/img-1.jpg"
+    "/images/services/pa-system/paging-microphone/img-7bgfz11d.jpg",
+    "/images/services/pa-system/paging-microphone/img-z6da1vz6.jpg"
+  ],
+  "Wireless Microphone": [
+    "/images/services/pa-system/wireless-microphone/img-4gftnrvq.jpg",
+    "/images/services/pa-system/wireless-microphone/img-gavfmjx1.jpg"
+  ],
+  "Audio Mixer": [
+    "/images/services/pa-system/audio-mixer/img-3j0ngnza.jpg",
+    "/images/services/pa-system/audio-mixer/img-y76chrrz.jpg"
+  ],
+  "Zone Controller": [
+    "/images/services/pa-system/zone-controller/img-51dztxol.jpg",
+    "/images/services/pa-system/zone-controller/img-qqsx4dbe.jpg",
+    "/images/services/pa-system/zone-controller/img-xi50ws9h.jpg"
+  ],
+  "PA System Controller": [
+    "/images/services/pa-system/pa-system-controller/img-kwugwbmc.jpg",
+    "/images/services/pa-system/pa-system-controller/img-qoteph1h.jpg"
+  ],
+  "Network Audio Controller": [
+    "/images/services/pa-system/network-audio-controller/img-hl0gt0ig.jpg",
+    "/images/services/pa-system/network-audio-controller/img-th46dda6.jpg"
+  ],
+  "Rack Cabinet": [
+    "/images/services/pa-system/rack-cabinet/img-2yjii6qa.jpg",
+    "/images/services/pa-system/rack-cabinet/img-r8m1hy97.jpg"
+  ],
+  "Power Supply Unit (PSU)": [
+    "/images/services/pa-system/power-supply-unit-psu/img-1wwq7yib.jpg",
+    "/images/services/pa-system/power-supply-unit-psu/img-93ib1fqo.jpg"
+  ],
+  "Emergency Voice Evacuation System (EVAC)": [
+    "/images/services/pa-system/emergency-voice-evacuation-system-evac/img-1qhyd12o.jpg",
+    "/images/services/pa-system/emergency-voice-evacuation-system-evac/img-31eb2qi2.jpg"
+  ],
+  "Network IP Speaker": [
+    "/images/services/pa-system/network-ip-speaker/img-fdjhmlum.jpg",
+    "/images/services/pa-system/network-ip-speaker/img-kfnxl94y.jpg"
+  ],
+  "Volume Controller": [
+    "/images/services/pa-system/volume-controller/img-cnc7w59b.jpg",
+    "/images/services/pa-system/volume-controller/img-djleys61.jpg"
   ]
 };
 
@@ -63,7 +120,7 @@ function PACardSlider({ images, cardIndex, categoryTitle }: { images: string[]; 
     <div 
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
-      className="relative w-full h-[320px] md:h-full min-h-[320px] overflow-hidden bg-sky-50/50 border-b border-slate-100 md:border-b-0 md:border-r border-slate-200 group/slider flex items-center justify-center"
+      className="relative w-full h-[320px] md:h-full min-h-[320px] overflow-hidden bg-white border-b border-slate-100 md:border-b-0 md:border-r border-slate-200 group/slider flex items-center justify-center"
     >
       {hasImages ? (
         <AnimatePresence mode="wait">
@@ -372,9 +429,9 @@ const PA_INDUSTRIES = [
     desc: "Campus-wide bell schedules, auditorium column speakers, and administrator paging microphones for schools and universities.",
     recommendedEquipment: ["Paging Microphone", "Column Speaker", "Ceiling Speaker", "PA System Controller"],
     images: [
-      "/images/services/pa-system/ceiling-speaker/img-1.jpg",
-      "/images/services/pa-system/microphone/img-1.jpg",
-      "/images/services/pa-system/amplifier/img-1.jpg"
+      "/images/services/pa-system/paging-microphone/img-7bgfz11d.jpg",
+      "/images/services/pa-system/column-speaker/img-izc93tf7.jpg",
+      "/images/services/pa-system/ceiling-speaker/img-avkv7ivs.jpg"
     ]
   },
   { 
@@ -382,9 +439,9 @@ const PA_INDUSTRIES = [
     desc: "Background music, meeting room volume controllers, and multi-zone office paging systems.",
     recommendedEquipment: ["Ceiling Speaker", "PA System Amplifier", "Volume Controller", "Audio Mixer"],
     images: [
-      "/images/services/pa-system/ceiling-speaker/img-1.jpg",
-      "/images/services/pa-system/amplifier/img-1.jpg",
-      "/images/services/pa-system/microphone/img-1.jpg"
+      "/images/services/pa-system/ceiling-speaker/img-lr7ewign.jpg",
+      "/images/services/pa-system/pa-system-amplifier/img-43bln0p3.jpg",
+      "/images/services/pa-system/volume-controller/img-cnc7w59b.jpg"
     ]
   },
   { 
@@ -392,9 +449,9 @@ const PA_INDUSTRIES = [
     desc: "High-decibel weatherproof horn speakers and emergency evacuation controllers for noisy factory floors and outdoor yards.",
     recommendedEquipment: ["Horn Speaker", "PA System Amplifier", "Emergency Voice Evacuation System (EVAC)", "Rack Cabinet"],
     images: [
-      "/images/services/pa-system/horn-speaker/img-1.jpg",
-      "/images/services/pa-system/amplifier/img-1.jpg",
-      "/images/services/pa-system/ceiling-speaker/img-1.jpg"
+      "/images/services/pa-system/horn-speaker/img-8g9t83g3.jpg",
+      "/images/services/pa-system/pa-system-amplifier/img-i0d6mrex.jpg",
+      "/images/services/pa-system/emergency-voice-evacuation-system-evac/img-1qhyd12o.jpg"
     ]
   },
   { 
@@ -402,9 +459,9 @@ const PA_INDUSTRIES = [
     desc: "Quiet soothing background music, doctor call paging, and emergency code evacuation alerts for hospitals.",
     recommendedEquipment: ["Ceiling Speaker", "Paging Microphone", "Zone Controller", "Network Audio Controller"],
     images: [
-      "/images/services/pa-system/ceiling-speaker/img-1.jpg",
-      "/images/services/pa-system/microphone/img-1.jpg",
-      "/images/services/pa-system/amplifier/img-1.jpg"
+      "/images/services/pa-system/ceiling-speaker/img-uw08hnc8.jpg",
+      "/images/services/pa-system/paging-microphone/img-z6da1vz6.jpg",
+      "/images/services/pa-system/zone-controller/img-51dztxol.jpg"
     ]
   },
   { 
@@ -412,9 +469,9 @@ const PA_INDUSTRIES = [
     desc: "High-fidelity audio distribution for lobbies, banquet halls, poolside areas, and guest room corridors.",
     recommendedEquipment: ["Ceiling Speaker", "Column Speaker", "Audio Mixer", "Wireless Microphone"],
     images: [
-      "/images/services/pa-system/ceiling-speaker/img-1.jpg",
-      "/images/services/pa-system/amplifier/img-1.jpg",
-      "/images/services/pa-system/microphone/img-1.jpg"
+      "/images/services/pa-system/ceiling-speaker/img-ypnczo6v.jpg",
+      "/images/services/pa-system/column-speaker/img-s2w1gf1f.jpg",
+      "/images/services/pa-system/audio-mixer/img-3j0ngnza.jpg"
     ]
   },
   { 
@@ -422,9 +479,9 @@ const PA_INDUSTRIES = [
     desc: "Background music streaming, promotional announcements, and multi-floor zone audio management.",
     recommendedEquipment: ["Ceiling Speaker", "PA System Controller", "Network IP Speaker", "Volume Controller"],
     images: [
-      "/images/services/pa-system/ceiling-speaker/img-1.jpg",
-      "/images/services/pa-system/amplifier/img-1.jpg",
-      "/images/services/pa-system/microphone/img-1.jpg"
+      "/images/services/pa-system/ceiling-speaker/img-avkv7ivs.jpg",
+      "/images/services/pa-system/pa-system-controller/img-kwugwbmc.jpg",
+      "/images/services/pa-system/network-ip-speaker/img-fdjhmlum.jpg"
     ]
   },
   { 
@@ -432,9 +489,9 @@ const PA_INDUSTRIES = [
     desc: "High speech clarity announcements for railway stations, bus terminals, and airport boarding gates.",
     recommendedEquipment: ["Network Audio Controller", "Horn Speaker", "Emergency Voice Evacuation System (EVAC)", "Paging Microphone"],
     images: [
-      "/images/services/pa-system/horn-speaker/img-1.jpg",
-      "/images/services/pa-system/microphone/img-1.jpg",
-      "/images/services/pa-system/amplifier/img-1.jpg"
+      "/images/services/pa-system/network-audio-controller/img-hl0gt0ig.jpg",
+      "/images/services/pa-system/horn-speaker/img-ekqzqnle.jpg",
+      "/images/services/pa-system/emergency-voice-evacuation-system-evac/img-31eb2qi2.jpg"
     ]
   },
   { 
@@ -442,9 +499,9 @@ const PA_INDUSTRIES = [
     desc: "Code-compliant voice evacuation, multi-building IP audio distribution, and secure rack cabinet management.",
     recommendedEquipment: ["Emergency Voice Evacuation System (EVAC)", "Network Audio Controller", "Rack Cabinet", "Power Supply Unit (PSU)"],
     images: [
-      "/images/services/pa-system/amplifier/img-1.jpg",
-      "/images/services/pa-system/ceiling-speaker/img-1.jpg",
-      "/images/services/pa-system/horn-speaker/img-1.jpg"
+      "/images/services/pa-system/emergency-voice-evacuation-system-evac/img-1qhyd12o.jpg",
+      "/images/services/pa-system/rack-cabinet/img-2yjii6qa.jpg",
+      "/images/services/pa-system/power-supply-unit-psu/img-1wwq7yib.jpg"
     ]
   }
 ];
