@@ -67,6 +67,12 @@ const FIRE_EQUIPMENT_CATEGORIES = [
     features: ["UV/IR Optical Dual Sensor", "Millisecond Trigger Time", "Solar Radiation Blind", "Explosion-Proof Housing"]
   },
   {
+    title: "Beam Smoke Detector",
+    desc: "Beam smoke detectors project an infrared beam across large open spaces. Smoke interrupting the beam triggers the fire alarm system.",
+    bestFor: ["Warehouses", "Atriums", "Shopping Malls", "Aircraft Hangars", "Auditoriums"],
+    features: ["Long Detection Range", "Ideal for High Ceilings", "Low Maintenance", "Accurate Detection"]
+  },
+  {
     title: "Fire Alarm Sounder & Strobe",
     desc: "Sounders emit loud alarm tones while strobe lights provide visual warnings, ensuring that all occupants—including those with hearing impairments—are alerted during emergencies.",
     bestFor: ["Noisy Factories", "Hospitals", "Public Venues", "Shopping Centers", "Commercial Buildings"],
