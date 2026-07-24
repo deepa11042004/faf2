@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { 
   Cctv, 
   CheckCircle2, 
   ChevronRight, 
+  ChevronLeft, 
   ShieldCheck, 
   Phone, 
   Mail, 
@@ -51,61 +52,200 @@ const KEY_BENEFITS = [
   "24×7 Technical Support"
 ];
 
-// 2. Camera Categories Data with images, descriptions, best for, and features
+// Local Public Image Folders for each Camera Category
+const CAMERA_CATEGORY_IMAGES: Record<string, string[]> = {
+  "Dome Cameras": [
+    "/dome camera/VP26P-T89uJ-K4JLfuW_mCGOQrehf1rTqHCz-e2Ljrz9UIAVV-9CwaTIQ05Vyji3sHDITRGOT28HEbJolIJ4vxOc3XKNS2_ieTsd_ldZsFmy7S1e2i6z9JFD7CMT0Ptxb4PLN5SO9c0LMySMybvgzvYgPg2xSp16lX5LEPaujV7xkX-xJEwe5PBxzNHCZ9RJ.jpg",
+    "/dome camera/aR15OIAMnao-N2Ix3CohgQ9EXocqgqQqaEYuCUkgQKMnf46SlCzTUUpGiOdgXfHmwIyC41DbLV6GSIxYm5UUwIWaqfrNK9ivUEJ_cp_NMxakT9w-wVPS-qTC93bYlqCqrKXO5-TqFwx1nn3nnnVTiE-Eix78Bm19TD6iNtDFgdeyMLdWVjP1zTGYKYTKzNJ6.jpg",
+    "/dome camera/r2otC68jlCzyJlZcaKTWDSBYBb77CSEmVzBQvJVhd9xjc-AMcZe64CfmP2Hx033Gg4NNEGF9iH_IBOlbzzn0RYvP3xZnRR9ubPLTdDmyJ_DtSeK9y8uCAB8oYQKDcnwFqSrn-S7mYlQ1hWZh5fJpRehEjCnZfeTPwYLDQCm5a3I_k7H4Q6l7A87yY4OHhhXu.jpg",
+    "/dome camera/u425wWqjSne5ZRNEsNTVsdL5WJaDU_T7fbtTlVAwrN8qZyxU2ZLWKzTl0AKHA97uqNlw21lM2tnsSfPzBLSevLsAIVTyNbM9xaTNJ7RZsu2nNXmctv424r5V_oEddPxGW5QEamd8pT1bvSMLaTf33eE2n8JpnlCIZ2pmSPbYvzmCsfe27Vo-cigWgHIljqk4.jpg",
+    "/dome camera/yazGO60BVUnAjl4kRWiQTlbdEKm0PTYoPZ6VPY9I2ZDOeJdhaTmIwMbdeC3WM0VqF_v4D154an8fFs-j2Ar8scBDKAhOvOU6ZJR8tY78EHQbo7-EkwimgEhYv7dWlNK2Lh6jMzhvW6kEJt4jTQUZZK9YS4SnJgl-s1TtM8gm0EKH9o_Q2q20hADEpAG0oO4x.jpg"
+  ],
+  "Bullet Cameras": [
+    "/Bullet Cameras/5TenuMzbyrJ5zN0UlqJ7rRLKXQYhnM_6tlAF-812He89l4ewjQtYvQz0U2gZmtzIoM6DEV_Gaeq8nlCT8uvXj5FAljDUZ-rQ5YkGEwo6ebOoaRxWLaQcNQ93W5_gFrc0emAiera7qRjYWAA2QgLExxjNhqQAc2YUDddtb9G4wvWKnSd4kuK8n5sQOwy2MUIv.jpg",
+    "/Bullet Cameras/8Dsr3zpELO5_i6Dw3WkGDPB5bvIo2xpl1Y54iXMy-VN1hvn1_TiJ1W5nF7BcFoBitTlE1aBJoCoa9PnINtCq5t2ZMJyqZrx9YxVSg0FO-GjwBo92o17OnCuDkjK0naravjnMq4I1-8v-dj8jUtlb4BM6C7ZmpniwtjnlFBRtuDj8HcotH-N-q-BSomI0CS-R.jpg",
+    "/Bullet Cameras/WVwAQYS267VdbxX6poLVDsWS-5wZersfIee2Q-E8F4X6XstePNf_oH5eXXRA9pG9YdnNmSTYi_FRyQUJQfRaAXlwfUUDc9zbwS7WjjmJx6_hM7XCQUILoy78lSqSbYCvhWyem7iKSGIjSrUqlMVNA3qaNFRq1JwN0V5QFGT8ULNEU5kvrXy6OUKG1Kc2FQv9.jpg",
+    "/Bullet Cameras/gERS6kDtIEpWLTZbvFwtzXVANjfIFGTs7vVBiByGu-AnVWyPKk6gHwNFcEXn51otLr3CLTTVdg3LFPix8Ujo46MbYt4jMKaar7Arzmsvo4QxXcaTKWOO6TY0XVEBqizGZpAkre_eDRntbWwe1w-WsM1NPW4SxbZqDN0T96lSi-8xshOvxDEvh8KlxJC6pS2d.jpg",
+    "/Bullet Cameras/uwSCd8QVwVhd9r0HubtcO-_3qCSxv0geQdsx93t_ZlGVm8A2FG_UhY8WAbYWIAURL2fgitbSNUWc5TF0OmqvVX4v6bGvFrGxEwPRBvOFHxsP48GyKxWDJMVCY9nXvm61yju_qKlt8EWuhmhvL2ka_7kC2ALh_l9slrT3qFQmeGw7yX4Sj85sIHASREXQ7-dY.jpg"
+  ],
+  "PTZ Cameras": [
+    "/PTZ (Pan-Tilt-Zoom) Cameras/3VZFzDiO72AoHwakoDLGNvHFkLVUgiVmdQducNVhp2laXGUxxuEihWeWCa-dDMGUnVT_4KzH-nq6GoEdOUfhEhtTd0Uw1GJt9KAX4BozyvPncmgmz6YE_TzQrfjNbxXV-HT9CTiX5wZ6GKdIAAwg0fmn0PHaX2GytRGANTYHlXqYsuhCuCNXrSxhmb.jpg",
+    "/PTZ (Pan-Tilt-Zoom) Cameras/3aKrogU_PuxGSGBe-nhUYKXexZtmUjqpXQmT1IVaaKTEKyjTKONcdDQwHBaPSde4YYMnq9dcsxTLd6BWteoJSDZZzG2vun5HpISbA5gg3mwfObCApsrzpV8y45lD9OsFfJuub7YcY9i3BVHZHMkm-awPJIYggJQXyv6AWmBfRR1FpKgwTKXsyhVxXN.jpg",
+    "/PTZ (Pan-Tilt-Zoom) Cameras/Vlz-EAnASOVOJ2jEVJn58a3VRhJrMprpxgl4kHw_i9m5hk8fcGwojFXsx2gdTqCRM4VQRmVBuVkTefVoPkoaS8cGkOUzyt7fwoJyrhXT0Ed0C3egDvT7r7I25TP4gYD8ZX6ZVgtslJb0WiJhWLv60xsP2CCWsIBDs7hnXHsTRym--katr4eF72026k.jpg",
+    "/PTZ (Pan-Tilt-Zoom) Cameras/kGRg3Y3qN8RHUOoTSBtoi7rt48JsuRKBfr2sS0ML7cyZZ8vaI-zJ1eiNAvfrQhe3tkbqdWo9YKgsW_lE8kBoQVKw0ep8j_BQWlJrZMxJCAZJ4JtPtkcqqRmS1_DytZ24dbDvIRmV5wAme_LEs4M-Ma3SjdjTBs8mnvjRx0xRfeaOYfoDvRH8LnzNVWu1UL0j.jpg",
+    "/PTZ (Pan-Tilt-Zoom) Cameras/y_GgxYVbmaptYukD-_fiZr0ij4ju7gWRixD8062BGBeSnXqlm1TdFUcWXsezFx55ejKVw7L8rmpArqqJ7sOJwhq4Z6ZHe4a4U4isaLcS8-4DffR-cM_XxIzY9ApbozVWfAZFdDc2RjmnOnBW_ASM0FrygMgQE2Yp3m2RI_f0tMM3w9z4YZbEjyo0S5.jpg"
+  ],
+  "Turret Cameras": [
+    "/Turret (Eyeball) Cameras/SvQC9SamokYa7sTS8d57xE6RX4is0AptxJ0pWwb0wOzmoVwoAI2LVJpHdmDKkU2PGaOk88CNx-qw6KQPH8VTuY-kMrIJhqGAU8LhseFuWWAbCREn3WIqZtlSe09DraRjrzIdCUzG17iu3Vahl1EPzytuUgGX27CgJCnglQ5hPIwkQcXNJmB37jTOJZ.jpg",
+    "/Turret (Eyeball) Cameras/U7CLK71NU3s8iXCUDDnwjWFGkKak_GQxcryQm7jSfv5enZ7cOoZ_L1dAXEb2kH7EX3-qlNB8ObfFVrWZFz3kBDc07GTN86pjlknhQl8thZPlVGYg4nc4mXOnhV_lE9JR_ybvw3S47l8CGeI2-inqnFEh3U0To9VLCVbNggk3UxDByi5_a-VdXKwckfXSX.jpg",
+    "/Turret (Eyeball) Cameras/gGjAcNIKP5mGBsGZDwy8cXa_Uynju4lOmHJ7bHisirAOW7sWB29pOLgq7c5IkjYlP3vL2LHxOR1wUv7hu-gX7s0vC6g3mMNcU7cOjA6kbcCuXUtsOek-HKtzWmvloh6Ge3hiRHr97iHoQHILi9TLcqaqTcg2S_heet8wOYiPwtCOzhC8DNAn-rR7rB91N.jpg",
+    "/Turret (Eyeball) Cameras/zomthuEcnAtbvrZyj2gAps93rBL-s5Y7suyO6ULTpLkplK9gExQmuOovY0abDCfGZJbMly8cj-Aq45BB6TBFL0OjMdc4wRWWI-uz7y-LEJmW0T1kA3KtqPz554o5UtykcFDYTlsm3Nu8UKaxEAWEY5MddLEFwbzolh2Hio-5oUKTqiPKtgM59ZyzZZ.jpg"
+  ],
+  "Fisheye Cameras": [
+    "/Fisheye Cameras/TS5VM_mHNYm7bXe2lP9oy6g7-5BofDkiQ5COLXuSLCnY4JYiRnmbwRmN26mSEd3Bjuqj9cWWIEP25sIF3zzyDz3Ya9jBW4Dt1YY1WYlHtUk5Rc9rcPrfhx0riX-XOiUo44q49C74HTi7xGLBykUjQ-7E7KN3G-7Y28IdCcePmkDYmg_Zd2dIEmtV5KaqPgR4.jpg",
+    "/Fisheye Cameras/Ush_DdR3vMVmqCf4d1nt4lQAq9hldeHwyTBh6y3zoljh6SeBCVZt5CAaDliqxLBDZMu85moC7GsjKM1MjlwqNkGE_TlVYRs89Iht8-ya3PJz_qSuOjgKPUfwdaZBiYj7Tt4QAhGgb0x6tqzwRqKLYQhtrB_AIndte2Z1hQMDtHhUeGBDDG7ndn2py_PDRmm9.jpg",
+    "/Fisheye Cameras/VAYub-eOhJs5N8ATraYUGn9FQBpD94fA-kS3rRsKNvN0KqeRg7n1ZRxA-i11UXnwuTEVucHrcTr4cEtuVhbuCjZEvbCzP4etH3FuKDi2D-xoQEdO5E_Zy8xXDW8yUKVn-hT17dEWFZdk6xVhy2ZdQPAbyC9qdNd1_BSv2mYSa0EBUvNARsyuLlzN-1qtF-Gu.jpg",
+    "/Fisheye Cameras/ZrmFPIZoLwpSWEr4FyWsm8iOQNccdX-WKM1pPhMo0lkLayknqR7kN5FpFuaLGzs29AFlcD7O15O1bCtxkjFGKNS_pKXJj8e2XjI9ve4krtF3h_CJnmxJVg3U3jzF9qHqsX1nWwo-GOHrz5UDOlblQOpG6Y32w1EdVY5dqSVWNa9EmCbisPq8GRQGA-OvhYzx.jpg",
+    "/Fisheye Cameras/cS-cxt216oQbboxKWdRO3CaqXN0OSftBnU0AkCC-Z75V_EO7CeG6dh4YbfkjR8ZVYzaydSIeZIHAprU2lBS7OPPdLOmigOIuJ2IAY5SsaBzK7pYAOV8SRzSA0VQjTF77z1sLSj1uzUZH12uPh8dOVUJVApPwZ5GL2MKVsyKHiNI8bzKvS2qheytMvEmp2.jpg"
+  ],
+  "Box Cameras": [
+    "/Box Cameras/BKOHaLctffpqc4yN-yDyQsAKOsvFpgeccn3PFGqtjvU7T8bMZRY2-NDm241havjANPwiSa0GKhHPX6EKvdqBR5YIhTS2pbBCyHYdseavlJFJ8ZlKaTFyQ6PoGzIkBERboX5Tc5xLKVvSTc9CUdPdR6Axflm1GEdBrHY18FmPoXjXqAlN3rtaJD91xXzfiJ6-.jpg",
+    "/Box Cameras/Fe1Qq_64vlWphAGvAmJubos5KSpGNf8VbmlyRkA81EAKUFcHzqxiQkO5XzoAfBveYaHanASF-IMDuM4gJaWF6hXkZVpYNqe-9Nx5H0SksElNWX33uJC0meCcitiW110F-CqOHGFn6w_2_nVkq7-j9pTTNGvfZvGYJ6N3K25OVjVaCOX52VhzkqH22oZOcKO4.jpg",
+    "/Box Cameras/JPEhOYfK6fHOyjL0jkF40iMSvmtI0CWHPWf-Ku6iZ0UY_HOMOD2XP13YvAqV5m44vT2ndC16u3GdxK4Kdw3qM6IaVCYjp_NLpxAY9-cc-hC7fvC-QdFJpfol183KvhEGScq6Hao98NrAz4snJgmMqUnqkuPN87ePyP7GR77adjPsOxw8H1Exeg7W5IpDs3kK.jpg",
+    "/Box Cameras/lZtWWRUYQ0sR3qRZ_swqYavFUDFv-P1hUpu0ZuYBcDVvMTESHyTCzd9wjUFV-VE_czqqgH0LYgsjfOBxYp1Ebo9ouAQsMCE0Cy__0t0y740NXFj0mFd1WsgXOUEFuKXBMfiXeg7O_V7ZTta3ZHtvCyxL8AaQcXjnt9s3YsocOli8PZ2V_Dpj1DHQcbuL9fCJ.jpg",
+    "/Box Cameras/o3Yg42Bb1TMnSRcDSjgHy26hmhh6I1SaS_ltVekvy6gb41oHqxzxvfu-Kuq3ASpVaMvM47FUG3ZWtj18ilNMvd3m3UhiWa13Dp4hoIk4wCVfW6b56XMNb62C05FXJqTuycz7CZdtpUAHDaCl__mld3Y_wL6Fmfvr0EQauIOnPu5C5bTl4rQpXUJ9nr_latC8.jpg"
+  ],
+  "Wireless Cameras": [
+    "/Wireless Cameras/Brvszyepf42s5qZOHOAHslHNpglvdvo9PMoYRQhxYT33PpW20NMHVgGaGTBSKOUtKz58ty5dNdZuQJHOaaKklJk5X1WJjqsgARAmf-haRLtNk5gS52RdDpS7coUbcbhPucAXkXjwgrD6jYeBjgqv2LydGogqPtVIPraHi0WtD454D1rY3I_nUnYkiqYmLpx-.jpg",
+    "/Wireless Cameras/GtV2rqk8eCg7gap3Ik_Ydtw7zlO8SmIACi0w5gOoyYRy2hNtEoDDfd5NV8_EaNk9rr_Cr0j9puxo9pLJ6ErNMwGtMGZpQmtps0HgzleQ9ujnURnEGP3AQDLIBnnQtBaV-zdBnNnyDqo44lHC4_7MW4T4HYGIji2SZZeywiNGeWoFsHG08ct2qQzEXB1vhhCU.jpg",
+    "/Wireless Cameras/KdKDlWd9xDy75EjP9ac8ZA6qbG8A_E2MgXY60gowRmfGy9b36B4kfqirzwjXYsrIr0oMnugr9JTOgDDuA9zIGwX8MNcv87NzqfZdA8t1amsC8tl1G7TlyTNgSd5nA60_KR0WL2RKjftNE6suVwN3jorer4ZACZ7SG5yHM2YO7YXUWxXLftzZ6AkrpbU0e02A.jpg",
+    "/Wireless Cameras/ZTQnv5nJPjvy42Gmopat1Ij2jGdtVjc9R-oa2GrAFETm-4pUDFPnYu5OKulX9uirEye8euf_AhznbmeTnctoVb8l2_5Rp1Nl5dwyqX_nH6x6vW231_4t3HyKv1F_7wTr9ennC1m-QQZsq25QPXHIAi-osfheGm6VqqE3Fkpffx-4GCYtvpnMrIx7QcYm5G0N.jpg",
+    "/Wireless Cameras/shx3vgluitmQiVzU5syhbmwk-0Zo-ta-SrdWqguzIVmNz_5xjFcXSsl0_2_8Axxgdy16XCd--NsS5sBiMQlO4WZtc9ZTioin2wIplyY8lT0xodcfV8c0NJF6XK2Qzh6y4Uf2g7qaqVONxkZNco-Kn2jhobNxh8h9dqZH5SpmLPlm5dpecDLFMggz6yZywQ1k.jpg"
+  ],
+  "IP Cameras": [
+    "/IP Cameras/i3sCq33JbdmOZ_WKVY_ZVmVvM_KdFr5drwXpbzJrhreC1D7inYnwmW6wDB73XHdNCpRthAn-5v8NTBYpbO4KmXOyohfbeDADjURRxU9VSBVhsF42pxC83jIpYdsyXuiGscc2BqNi751r1zHTL697vWtU5VnYnU2s2bU-9ZMbi6evj0zghqBocsmQxnzYtZHR.jpg",
+    "/IP Cameras/ljuNi5WadXxd3D-LTgoUo9BSJ5ctJdjNFlMjG8xkzfi1fU2dN3OC6g792UfozN-QLYWgw3r7fzrCYnLs2KlqdlkQz_VKl5YrGGdrAMr_oj0svf-zAbzVaUCKiAcab_aeSPv5DXCJrvEjvHcoPn0awsq5cmy5UNBtDy9a4KdATsW1K8e8t8xGctd7T2fcdIph.jpg",
+    "/IP Cameras/rixHKUMUK8DfKz_lCX3tNlGhCASrDGbcgGwy6paf5z9G8N8glzxnr0YTwn5QVlp3bDRiqk9P9jovFRwvU_UbJfr3dK2F1omVnJWASrtYtge0WyqS8GgM1YuI8jkfZuU06IYbNcuK986XDXcrz_ghCVBO6TQ7XyhpxsYItbn2d7QrO0zhj7WNok_FFPytFdKZ.jpg",
+    "/IP Cameras/vvGZAf-hVfzG1GgUaRhz7F2HJ0XBv3Bd6hIRvdwiNnYyeJZmkGDbtpVFZI8o_tnMT9CqXUt_2o7cWxKmc2yxtBCohaJEFFAcBrzzsrsuJRybktMHWOZLnPt4zSjtF-6F7j2S_XRT0ScHY4eLtgDmC3laSgvbwx36Aqdm8L_w17la4S9EJCGT-xo54acxQGnQ.jpg",
+    "/IP Cameras/yWd9-zf8QvvP5Vzdf0Gc3V7AU6ko3lHgOopvTuGoPM4cxe94sxlwVsWOVIhRbjJukInlVru9NukGYZSsO3J5fTztHti5Dih8od-KFmkRzqnZcF-wb_KzOFqGe8gqSzVv_Wf3Kt4JcGmlOCSqtuRiY8kkN7LUvZvs64ALcSnZu2_cafQdU-oaJ1uMmi6_SCul.jpg"
+  ]
+};
+
+// Generic Slider Component for Every Camera Category Card with Auto-Slide & Fixed Uniform Sizing
+function CameraCardSlider({ images, cardIndex, categoryTitle }: { images: string[]; cardIndex: number; categoryTitle: string }) {
+  const [current, setCurrent] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused || images.length <= 1) return;
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % images.length);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, [isPaused, images.length]);
+
+  const prevImage = () => {
+    setCurrent((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
+
+  const nextImage = () => {
+    setCurrent((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  };
+
+  return (
+    <div 
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      className="relative w-full h-[320px] md:h-full min-h-[320px] overflow-hidden bg-slate-900 border-b border-slate-100 md:border-b-0 md:border-r border-slate-200 group/slider"
+    >
+      <AnimatePresence mode="wait">
+        <motion.img 
+          key={current}
+          src={images[current]} 
+          alt={`${categoryTitle} - Image ${current + 1}`}
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+          className="w-full h-full object-cover object-center absolute inset-0" 
+        />
+      </AnimatePresence>
+
+      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent pointer-events-none" />
+
+      {/* Prev / Next Control Arrows */}
+      {images.length > 1 && (
+        <>
+          <button
+            onClick={prevImage}
+            className="absolute left-3 top-1/2 -translate-y-1/2 z-30 w-9 h-9 rounded-full bg-black/60 hover:bg-[#0284C7] text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 shadow-md"
+            aria-label="Previous Image"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+
+          <button
+            onClick={nextImage}
+            className="absolute right-3 top-1/2 -translate-y-1/2 z-30 w-9 h-9 rounded-full bg-black/60 hover:bg-[#0284C7] text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 shadow-md"
+            aria-label="Next Image"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </>
+      )}
+
+      {/* Slide Indicators */}
+      <div className="absolute bottom-3 right-4 z-30 flex items-center gap-1.5">
+        {images.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => setCurrent(idx)}
+            className={`h-2 rounded-full transition-all duration-300 ${
+              current === idx ? "w-6 bg-[#38BDF8]" : "w-2 bg-white/50"
+            }`}
+          />
+        ))}
+      </div>
+
+      {/* Card Index Badge */}
+      <div className="absolute top-4 left-4 z-20 w-10 h-10 rounded-xl bg-white/90 backdrop-blur-md flex items-center justify-center font-bebas text-lg text-[#0284C7] font-bold shadow-lg border border-sky-200">
+        {cardIndex + 1}
+      </div>
+
+      <div className="absolute bottom-3 left-4 z-20 text-xs text-white font-inter bg-black/60 px-3 py-1 rounded-md backdrop-blur-sm font-medium">
+        {categoryTitle} • {current + 1} / {images.length}
+      </div>
+    </div>
+  );
+}
+
+// 2. Camera Categories Data with descriptions, best for, and features
 const CAMERA_CATEGORIES = [
   {
     title: "Dome Cameras",
     desc: "Ideal for indoor surveillance where aesthetics and wide-angle coverage are important.",
-    image: "https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=800&q=80",
     bestFor: ["Offices", "Retail Stores", "Hospitals", "Schools", "Hotels"],
     features: ["Compact Design", "Vandal Resistant", "Infrared Night Vision", "Wide Viewing Angle", "Indoor & Outdoor Models"]
   },
   {
     title: "Bullet Cameras",
     desc: "Designed for long-range outdoor surveillance with high-visibility deterrence.",
-    image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80",
     bestFor: ["Parking Areas", "Building Perimeters", "Warehouses", "Industrial Facilities"],
     features: ["Long-Distance Monitoring", "Weatherproof Housing", "HD Recording", "Infrared Night Vision", "Easy Wall Mounting"]
   },
   {
     title: "PTZ Cameras",
     desc: "Monitor large areas with remote control, motorized optical zoom, and intelligent tracking.",
-    image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80",
     bestFor: ["Airports", "Stadiums", "Industrial Plants", "Large Campuses"],
     features: ["360° Rotation", "Optical Zoom", "Auto Tracking", "Remote Operation", "Large Area Coverage"]
   },
   {
     title: "Turret Cameras",
     desc: "A versatile option for homes and businesses with flexible installation angles and zero IR reflection.",
-    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80",
     bestFor: ["Homes", "Shops", "Offices"],
     features: ["Easy Angle Adjustment", "High Image Quality", "Low IR Reflection", "Compact Design"]
   },
   {
     title: "Fisheye Cameras",
     desc: "Capture 180° to 360° panoramic views with a single camera and digital dewarping.",
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80",
     bestFor: ["Shopping Malls", "Conference Rooms", "Banks"],
     features: ["180°–360° Coverage", "Panoramic View", "Digital Dewarping"]
   },
   {
     title: "Box Cameras",
     desc: "Professional-grade cameras for high-security environments requiring custom specialized optics.",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80",
     bestFor: ["Banks", "Warehouses", "Critical Infrastructure"],
     features: ["Long-Distance Monitoring", "Interchangeable Lens", "High Performance"]
   },
   {
     title: "Wireless Cameras",
     desc: "Simple cable-free installation with direct Wi-Fi connectivity and mobile streaming.",
-    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80",
     bestFor: ["Homes", "Small Offices"],
     features: ["Wi-Fi Connectivity", "Mobile Monitoring", "Cloud Recording", "Easy Installation"]
   },
   {
     title: "IP Cameras",
     desc: "Network-based PoE surveillance streaming 4K video with integrated AI analytics.",
-    image: "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=800&q=80",
     bestFor: ["Corporate Offices", "Commercial Buildings", "Smart Campuses"],
     features: ["High Resolution", "Remote Monitoring", "PoE Support", "AI Integration"]
   }
@@ -298,61 +438,66 @@ export default function CctvInstallationPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+          {/* 1 Card Per Row Layout with Solid White Background */}
+          <div className="grid grid-cols-1 gap-10 max-w-5xl mx-auto">
             {CAMERA_CATEGORIES.map((cam, idx) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: idx * 0.05, duration: 0.4 }}
-                className="group bg-white text-slate-900 rounded-[28px] overflow-hidden border-4 border-sky-300 shadow-xl hover:shadow-2xl hover:border-white transition-all flex flex-col justify-between"
+                transition={{ delay: idx * 0.05, duration: 0.5 }}
+                className="group bg-white text-slate-900 rounded-[32px] overflow-hidden border-4 border-sky-300 shadow-2xl hover:border-[#0284C7] transition-all grid md:grid-cols-2 min-h-[380px]"
               >
-                <div>
-                  <div className="relative h-48 overflow-hidden bg-slate-900 border-b border-slate-100">
-                    <img 
-                      src={cam.image} 
-                      alt={cam.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                    <div className="absolute top-4 left-4 z-20 w-8 h-8 rounded-lg bg-white/90 backdrop-blur-md flex items-center justify-center font-bebas text-sm text-[#0284C7] font-bold shadow-md">
-                      {idx + 1}
-                    </div>
-                  </div>
+                {/* Left Side 50%: Image Slider from Category Public Folder */}
+                <CameraCardSlider 
+                  images={CAMERA_CATEGORY_IMAGES[cam.title] || []} 
+                  cardIndex={idx} 
+                  categoryTitle={cam.title} 
+                />
 
-                  <div className="p-6">
-                    <h3 className="font-bebas text-2xl tracking-wide text-slate-900 mb-2 group-hover:text-[#0284C7] transition-colors">
+                {/* Right Side 50%: Solid White Content Container */}
+                <div className="p-8 md:p-10 flex flex-col justify-between bg-white">
+                  <div>
+                    <h3 className="font-bebas text-4xl md:text-5xl tracking-wide text-slate-900 mb-3 group-hover:text-[#0284C7] transition-colors">
                       {cam.title}
                     </h3>
-                    <p className="text-slate-600 text-xs font-inter leading-relaxed mb-4">
+
+                    <p className="text-slate-600 text-sm md:text-base font-inter leading-relaxed mb-6">
                       {cam.desc}
                     </p>
 
-                    <div className="mb-4">
-                      <span className="font-bebas text-xs tracking-wider uppercase text-[#0284C7] block mb-1">Best For:</span>
-                      <div className="flex flex-wrap gap-1">
+                    {/* Best For Pills */}
+                    <div className="mb-6">
+                      <span className="font-bebas text-sm tracking-wider uppercase text-[#0284C7] block mb-2 font-bold">
+                        Best For:
+                      </span>
+                      <div className="flex flex-wrap gap-2">
                         {cam.bestFor.map((bf, bIdx) => (
-                          <span key={bIdx} className="bg-sky-50 text-slate-700 font-inter text-[10px] px-2 py-0.5 rounded border border-sky-100">
+                          <span key={bIdx} className="bg-sky-50 text-slate-800 font-inter text-xs px-3 py-1 rounded-full border border-sky-200 font-medium">
                             {bf}
                           </span>
                         ))}
                       </div>
                     </div>
 
+                    {/* Key Features */}
                     <div>
-                      <span className="font-bebas text-xs tracking-wider uppercase text-[#0284C7] block mb-1">Key Features:</span>
-                      <ul className="space-y-1 font-inter text-[11px] text-slate-600">
+                      <span className="font-bebas text-sm tracking-wider uppercase text-[#0284C7] block mb-2 font-bold">
+                        Key Features:
+                      </span>
+                      <ul className="grid grid-cols-2 gap-2 font-inter text-xs md:text-sm text-slate-700">
                         {cam.features.map((ft, fIdx) => (
-                          <li key={fIdx} className="flex items-center gap-1.5">
-                            <CheckCircle2 className="w-3 h-3 text-[#0284C7] shrink-0" />
-                            <span>{ft}</span>
+                          <li key={fIdx} className="flex items-center gap-2">
+                            <CheckCircle2 className="w-4 h-4 text-[#0284C7] shrink-0" />
+                            <span className="truncate">{ft}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
                   </div>
                 </div>
+
               </motion.div>
             ))}
           </div>
