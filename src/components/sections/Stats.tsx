@@ -13,7 +13,7 @@ const stats = [
 
 export function StatsSection() {
   return (
-    <section className="py-20 bg-[url('/services-blue-bg.png')] bg-cover bg-center bg-no-repeat relative text-white overflow-hidden">
+    <section className="py-20 bg-[url('/images/backgrounds/services-blue-bg.png')] bg-cover bg-center bg-no-repeat relative text-white overflow-hidden">
       {/* Background ambient light */}
       <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.15)_0%,transparent_60%)]" />
       

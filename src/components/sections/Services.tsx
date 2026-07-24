@@ -9,42 +9,42 @@ const services = [
     icon: <Cctv className="w-10 h-10" />,
     title: "CCTV Installation",
     description: "High-definition surveillance systems with remote monitoring capabilities.",
-    image: "/cctv-service.png",
+    image: "/images/services/cctv-service.png",
     href: "/services/cctv-installation"
   },
   {
     icon: <Flame className="w-10 h-10" />,
     title: "Fire Alarm System",
     description: "Advanced fire detection and alarm systems to ensure maximum safety.",
-    image: "/fire-alarm-service.png",
+    image: "/images/services/fire-alarm-service.png",
     href: "/services/fire-alarm-system"
   },
   {
     icon: <Fingerprint className="w-10 h-10" />,
     title: "Access Control System",
     description: "Biometric and card-based access control for restricted areas.",
-    image: "/access-control-service.png",
+    image: "/images/services/access-control-service.png",
     href: "/services/access-control-system"
   },
   {
     icon: <Mic className="w-10 h-10" />,
     title: "Public Address System",
     description: "Clear and reliable communication systems for large facilities.",
-    image: "/pa-system-service.png",
+    image: "/images/services/pa-system-service.png",
     href: "/services/public-address-system"
   },
   {
     icon: <Shield className="w-10 h-10 text-[#0284C7]" />,
     title: "Security Guard Services",
     description: "Highly trained and professional security personnel for all sectors.",
-    image: "/guards-service.png",
+    image: "/images/services/guards-service.png",
     href: "/services/security-guard-services"
   },
 ];
 
 export function ServicesSection() {
   return (
-    <section id="services" className="py-24 bg-[url('/services-blue-bg.png')] bg-cover bg-center bg-no-repeat relative text-white">
+    <section id="services" className="py-24 bg-[url('/images/backgrounds/services-blue-bg.png')] bg-cover bg-center bg-no-repeat relative text-white">
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-[#38BDF8] font-bebas text-xl tracking-widest uppercase mb-2 block drop-shadow">

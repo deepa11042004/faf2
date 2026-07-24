@@ -14,7 +14,7 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-[url('/services-blue-bg.png')] bg-cover bg-center bg-no-repeat relative text-white overflow-hidden">
+    <section id="contact" className="py-24 bg-[url('/images/backgrounds/services-blue-bg.png')] bg-cover bg-center bg-no-repeat relative text-white overflow-hidden">
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           

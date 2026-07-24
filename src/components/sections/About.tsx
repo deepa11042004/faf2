@@ -9,27 +9,27 @@ const aboutSlides = [
   {
     title: "CCTV Surveillance System",
     alt: "Advanced CCTV Surveillance Cameras",
-    image: "/about-cctv.png",
+    image: "/images/about/about-cctv.png",
   },
   {
     title: "Access Control System",
     alt: "Smart Biometric Access Control Fingerprint Reader",
-    image: "/images/legacy/about-access-control.png",
+    image: "/images/about/about-access-control.png",
   },
   {
     title: "Public Address System",
     alt: "Commercial PA System Microphones & Broadcast Console",
-    image: "/images/legacy/about-pa-system.jpg",
+    image: "/images/about/about-pa-system.jpg",
   },
   {
     title: "Fire Alarm System",
     alt: "Modern Ceiling Smoke Detector Fire Alarm System",
-    image: "/images/legacy/about-fire-alarm.jpg",
+    image: "/images/about/about-fire-alarm.jpg",
   },
   {
     title: "Security Guard Services",
     alt: "Professional Security Guard Officer",
-    image: "/images/legacy/about-security-officer.jpg",
+    image: "/images/about/about-security-officer.jpg",
   },
 ];
 
@@ -56,7 +56,7 @@ export function AboutSection() {
     <section id="about" className="py-24 bg-black text-white overflow-hidden relative">
       {/* Abstract dark waves background texture */}
       <div 
-        className="absolute inset-0 bg-[url('/dark-waves.png')] bg-cover bg-center bg-no-repeat opacity-45 pointer-events-none z-0" 
+        className="absolute inset-0 bg-[url('/images/backgrounds/dark-waves.png')] bg-cover bg-center bg-no-repeat opacity-45 pointer-events-none z-0" 
       />
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">

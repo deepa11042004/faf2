@@ -79,7 +79,7 @@ export default function AboutPage() {
 
       {/* Page Header / Hero Banner */}
       <section className="relative pt-36 pb-20 bg-black overflow-hidden border-b border-zinc-800">
-        <div className="absolute inset-0 bg-[url('/dark-waves.png')] bg-cover bg-center bg-no-repeat opacity-45 pointer-events-none z-0" />
+        <div className="absolute inset-0 bg-[url('/images/backgrounds/dark-waves.png')] bg-cover bg-center bg-no-repeat opacity-45 pointer-events-none z-0" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-[#38BDF8]/10 rounded-full blur-[140px] pointer-events-none z-0" />
 
         <div className="container mx-auto px-4 md:px-6 relative z-10 text-center max-w-4xl">
@@ -171,7 +171,7 @@ export default function AboutPage() {
 
       {/* Vision & Mission Section */}
       <section className="py-24 bg-black relative text-white overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/dark-waves.png')] bg-cover bg-center bg-no-repeat opacity-40 pointer-events-none z-0" />
+        <div className="absolute inset-0 bg-[url('/images/backgrounds/dark-waves.png')] bg-cover bg-center bg-no-repeat opacity-40 pointer-events-none z-0" />
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="grid md:grid-cols-2 gap-10">
             
@@ -276,7 +276,7 @@ export default function AboutPage() {
 
       {/* Our Team & Company Strength */}
       <section className="py-24 bg-black text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/dark-waves.png')] bg-cover bg-center bg-no-repeat opacity-45 pointer-events-none z-0" />
+        <div className="absolute inset-0 bg-[url('/images/backgrounds/dark-waves.png')] bg-cover bg-center bg-no-repeat opacity-45 pointer-events-none z-0" />
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           
           {/* Team Block */}
