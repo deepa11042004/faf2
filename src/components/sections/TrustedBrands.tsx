@@ -37,37 +37,95 @@ export function TrustedBrandsSection() {
       </div>
 
       {/* Infinite Horizontal Auto-Marquee Slider */}
-      <div className="relative flex overflow-x-hidden group py-4">
-        <div className="flex w-[200%] animate-brand-marquee">
-          <div className="flex w-1/2 justify-around items-center space-x-6 px-4">
-            {[...BRAND_LOGOS, ...BRAND_LOGOS].map((brand, idx) => (
+      <div className="relative flex overflow-hidden group py-6 select-none w-full">
+        {/* Track 1 */}
+        <div className="flex shrink-0 animate-brand-marquee items-center space-x-10 pr-10">
+          {BRAND_LOGOS.map((brand, idx) => {
+            const nameLower = brand.name.toLowerCase();
+            const isSmallBrand =
+              nameLower.includes("matrix") ||
+              nameLower.includes("toa") ||
+              nameLower.includes("tyco") ||
+              nameLower.includes("system sensor") ||
+              nameLower.includes("apollo") ||
+              nameLower.includes("hochiki");
+
+            const isCpPlus = nameLower.includes("cp plus");
+
+            return (
               <div
-                key={idx}
-                className="w-60 h-32 rounded-2xl bg-white border-2 border-sky-200 shadow-md hover:shadow-2xl hover:scale-105 hover:border-[#0284C7] transition-all duration-300 flex items-center justify-center p-3 cursor-pointer shrink-0"
+                key={`b1-${idx}`}
+                className="w-64 h-34 rounded-2xl bg-white border border-sky-200/80 shadow-sm hover:shadow-xl hover:border-[#0284C7] hover:scale-105 transition-all duration-300 flex items-center justify-center p-3 cursor-pointer shrink-0"
               >
-                <div className="h-24 w-48 flex items-center justify-center relative">
+                <div className="h-24 w-52 flex items-center justify-center relative overflow-hidden">
                   <Image
                     src={brand.image}
                     alt={`${brand.name} Logo`}
-                    width={200}
-                    height={90}
-                    className="max-h-20 max-w-[170px] w-auto h-auto object-contain transition-all duration-300 transform scale-100 group-hover:scale-105"
+                    width={240}
+                    height={110}
+                    className={`w-auto h-auto object-contain transition-all duration-300 mix-blend-multiply ${
+                      isSmallBrand
+                        ? "max-h-12 max-w-[135px] scale-95"
+                        : isCpPlus
+                        ? "max-h-16 max-w-[195px] scale-105 hover:scale-110"
+                        : "max-h-20 max-w-[200px] scale-125 hover:scale-130"
+                    }`}
                     unoptimized
                   />
                 </div>
               </div>
-            ))}
-          </div>
+            );
+          })}
+        </div>
+
+        {/* Track 2 for Flawless Circular Loop */}
+        <div className="flex shrink-0 animate-brand-marquee items-center space-x-10 pr-10" aria-hidden="true">
+          {BRAND_LOGOS.map((brand, idx) => {
+            const nameLower = brand.name.toLowerCase();
+            const isSmallBrand =
+              nameLower.includes("matrix") ||
+              nameLower.includes("toa") ||
+              nameLower.includes("tyco") ||
+              nameLower.includes("system sensor") ||
+              nameLower.includes("apollo") ||
+              nameLower.includes("hochiki");
+
+            const isCpPlus = nameLower.includes("cp plus");
+
+            return (
+              <div
+                key={`b2-${idx}`}
+                className="w-64 h-34 rounded-2xl bg-white border border-sky-200/80 shadow-sm hover:shadow-xl hover:border-[#0284C7] hover:scale-105 transition-all duration-300 flex items-center justify-center p-3 cursor-pointer shrink-0"
+              >
+                <div className="h-24 w-52 flex items-center justify-center relative overflow-hidden">
+                  <Image
+                    src={brand.image}
+                    alt={`${brand.name} Logo`}
+                    width={240}
+                    height={110}
+                    className={`w-auto h-auto object-contain transition-all duration-300 mix-blend-multiply ${
+                      isSmallBrand
+                        ? "max-h-12 max-w-[135px] scale-95"
+                        : isCpPlus
+                        ? "max-h-16 max-w-[195px] scale-105 hover:scale-110"
+                        : "max-h-20 max-w-[200px] scale-125 hover:scale-130"
+                    }`}
+                    unoptimized
+                  />
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
 
       <style dangerouslySetInnerHTML={{__html: `
         @keyframes brandMarquee {
           0% { transform: translateX(0%); }
-          100% { transform: translateX(-50%); }
+          100% { transform: translateX(-100%); }
         }
         .animate-brand-marquee {
-          animation: brandMarquee 35s linear infinite;
+          animation: brandMarquee 38s linear infinite;
         }
         .group:hover .animate-brand-marquee {
           animation-play-state: paused;
