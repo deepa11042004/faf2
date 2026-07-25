@@ -40,13 +40,14 @@ export function IndustriesSection() {
                 transition={{ delay: idx * 0.05, duration: 0.5 }}
                 className="group relative bg-white/80 backdrop-blur-md rounded-[24px] overflow-hidden shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 border border-slate-200/80 hover:border-[#0284C7]/40 flex flex-col justify-between h-full cursor-pointer"
               >
-                <div className="relative h-44 overflow-hidden bg-white flex items-center justify-center border-b border-slate-100">
-                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors z-10" />
+                <div className="relative h-48 overflow-hidden bg-slate-900 flex items-center justify-center border-b border-slate-100/10">
                   <img 
                     src={industry.image} 
                     alt={industry.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90 group-hover:opacity-100"
                   />
+                  {/* Subtle dark gradient overlay ensuring white text contrast */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/30 to-transparent z-10" />
                 </div>
                 
                 <div className="p-5 text-center flex-1 flex items-center justify-center">

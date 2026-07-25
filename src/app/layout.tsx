@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { LenisProvider } from "@/components/providers/LenisProvider";
+import { StickyActionBar } from "@/components/layout/StickyActionBar";
 
 export const metadata: Metadata = {
   title: "Family Anchor Facilities Pvt. Ltd. | Trusted Security Solutions",
@@ -27,6 +28,7 @@ export default function RootLayout({
       >
         <LenisProvider>
           {children}
+          <StickyActionBar />
         </LenisProvider>
       </body>
     </html>
