@@ -16,10 +16,113 @@ import {
   Award, 
   TrendingUp, 
   Shield, 
-  FileText 
+  FileText,
+  DollarSign,
+  HeartPulse,
+  GraduationCap,
+  Users,
+  Gift,
+  PlusCircle,
+  Quote
 } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+
+// Employee Benefits & Facilities Data
+const BENEFITS_CATEGORIES = [
+  {
+    title: "Financial Benefits",
+    icon: <DollarSign className="w-6 h-6 text-[#0284C7]" />,
+    items: [
+      "Provident Fund (PF)",
+      "Employees' State Insurance (ESI)",
+      "Competitive Salary",
+      "Overtime (OT) Payment",
+      "Performance-Based Incentives",
+      "Annual Performance Bonus",
+      "Festival Bonus",
+      "Attendance Bonus",
+      "Referral Bonus",
+      "Salary on Time"
+    ]
+  },
+  {
+    title: "Health & Wellness",
+    icon: <HeartPulse className="w-6 h-6 text-[#0284C7]" />,
+    items: [
+      "ESI Medical Benefits",
+      "Medical Assistance",
+      "Accident & Emergency Support",
+      "Health & Safety Training",
+      "Personal Protective Equipment (PPE)",
+      "Safe Working Environment",
+      "First Aid Support"
+    ]
+  },
+  {
+    title: "Career Growth",
+    icon: <GraduationCap className="w-6 h-6 text-[#0284C7]" />,
+    items: [
+      "Professional Training Programs",
+      "Security Skills Development",
+      "Fire & Safety Training",
+      "Soft Skills Development",
+      "Promotion Opportunities",
+      "Leadership Development",
+      "Performance Recognition"
+    ]
+  },
+  {
+    title: "Employee Support",
+    icon: <Users className="w-6 h-6 text-[#0284C7]" />,
+    items: [
+      "Uniform Provided",
+      "Identity Card",
+      "Employee Helpline",
+      "HR Assistance",
+      "Transparent Company Policies",
+      "Grievance Support",
+      "Friendly Work Environment"
+    ]
+  },
+  {
+    title: "Rewards & Recognition",
+    icon: <Gift className="w-6 h-6 text-[#0284C7]" />,
+    items: [
+      "Employee of the Month",
+      "Outstanding Performance Awards",
+      "Long Service Recognition",
+      "Appreciation Certificates",
+      "Team Achievement Awards"
+    ]
+  },
+  {
+    title: "Additional Facilities",
+    icon: <PlusCircle className="w-6 h-6 text-[#0284C7]" />,
+    items: [
+      "Duty Transportation (where applicable)",
+      "Accommodation Support (for selected projects)",
+      "Meal Allowance (where applicable)",
+      "Mobile Allowance (for eligible roles)",
+      "Night Shift Allowance",
+      "Travel Reimbursement (for field staff)",
+      "Joining Kit & Uniform",
+      "Refreshment Breaks",
+      "Regular Team Meetings & Engagement Activities"
+    ]
+  }
+];
+
+const WHY_JOIN_REASONS = [
+  "Stable & Long-Term Career Opportunities",
+  "Supportive and Professional Work Culture",
+  "Equal Opportunity Employer",
+  "Timely Salary & Employee Benefits",
+  "Opportunities to Work on Diverse Projects",
+  "Continuous Learning & Career Advancement",
+  "Employee Safety as a Top Priority",
+  "Recognition for Hard Work & Dedication"
+];
 
 const WHAT_WE_OFFER = [
   "Professional and Respectful Work Environment",
@@ -225,33 +328,92 @@ export default function CareersPage() {
         </div>
       </section>
 
-      {/* Why Work With Us */}
-      <section className="py-20 bg-white text-slate-900 relative">
-        <div className="container mx-auto px-4 md:px-6 max-w-5xl">
+      {/* Why Join Family Anchor Facilities Section */}
+      <section className="py-24 bg-[url('/images/backgrounds/services-blue-bg.png')] bg-cover bg-center bg-no-repeat relative text-white">
+        <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-6xl">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-[#0284C7] font-bebas text-xl tracking-widest uppercase mb-2 block">
-              Workplace Culture
+            <span className="text-[#38BDF8] font-bebas text-xl tracking-widest uppercase mb-2 block drop-shadow">
+              Employer Value Proposition
             </span>
-            <h2 className="text-4xl md:text-6xl font-bebas tracking-wide text-slate-900 leading-tight">
-              Why Work With Us?
+            <h2 className="text-4xl md:text-6xl font-bebas tracking-wide text-white leading-tight mb-4">
+              Why Join Family Anchor Facilities Pvt. Ltd.?
             </h2>
-            <p className="text-slate-600 text-lg font-inter mt-3">
-              We are committed to creating a workplace where employees can develop their skills, advance their careers, and contribute to meaningful projects.
+            <p className="text-blue-100/90 text-base md:text-lg font-inter leading-relaxed">
+              At <strong>Family Anchor Facilities Pvt. Ltd.</strong>, we believe that our employees are our greatest asset. We are committed to providing a safe, supportive, and rewarding work environment where every team member can grow professionally while enjoying comprehensive employee benefits and welfare programs.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {WHAT_WE_OFFER.map((item, idx) => (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            {WHY_JOIN_REASONS.map((reason, idx) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.05, duration: 0.4 }}
-                className="bg-sky-50/80 p-5 rounded-2xl border border-sky-200 flex items-center gap-3 text-slate-800 font-inter font-medium shadow-sm hover:shadow-md transition-all"
+                className="bg-white/95 backdrop-blur-md rounded-2xl p-6 border-2 border-sky-300 text-slate-900 flex items-center gap-3 shadow-lg hover:shadow-2xl hover:border-white transition-all font-bebas text-xl tracking-wide"
               >
-                <CheckCircle2 className="w-5 h-5 text-[#0284C7] shrink-0" />
-                <span className="text-sm md:text-base">{item}</span>
+                <ShieldCheck className="w-6 h-6 text-[#0284C7] shrink-0" />
+                <span>{reason}</span>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Highlight Quote Block */}
+          <div className="bg-white/10 backdrop-blur-md border-2 border-white/20 rounded-[32px] p-8 md:p-12 text-center max-w-4xl mx-auto shadow-2xl relative">
+            <Quote className="w-12 h-12 text-[#38BDF8] opacity-40 mx-auto mb-4" />
+            <p className="text-lg md:text-xl font-inter text-blue-100 italic leading-relaxed">
+              "Grow your career with Family Anchor Facilities Pvt. Ltd. and become part of a team dedicated to delivering trusted security and facility management solutions while building a secure future for our employees."
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Employee Benefits & Facilities Section */}
+      <section className="py-24 bg-white text-slate-900 relative">
+        <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-7xl">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-[#0284C7] font-bebas text-xl tracking-widest uppercase mb-2 block">
+              Workforce Welfare
+            </span>
+            <h2 className="text-4xl md:text-6xl font-bebas tracking-wide text-slate-900 leading-tight mb-4">
+              Employee Benefits & Facilities
+            </h2>
+            <p className="text-slate-600 text-base md:text-lg font-inter leading-relaxed">
+              Explore our comprehensive range of employee perks, health insurance coverage, financial incentives, and professional development programs designed to support your career and well-being.
+            </p>
+          </div>
+
+          {/* 6 Category Benefit Cards Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {BENEFITS_CATEGORIES.map((cat, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.06, duration: 0.5 }}
+                className="bg-sky-50/80 rounded-[28px] p-8 border-2 border-sky-200 shadow-md hover:shadow-xl hover:border-[#0284C7] transition-all flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center gap-3 mb-6 pb-4 border-b border-sky-200">
+                    <div className="p-3 bg-white rounded-2xl border border-sky-100 shadow-sm">
+                      {cat.icon}
+                    </div>
+                    <h3 className="font-bebas text-2xl tracking-wide text-slate-900">
+                      {cat.title}
+                    </h3>
+                  </div>
+
+                  <ul className="space-y-2.5 font-inter text-xs md:text-sm text-slate-700 font-semibold">
+                    {cat.items.map((item, iIdx) => (
+                      <li key={iIdx} className="flex items-start gap-2.5">
+                        <CheckCircle2 className="w-4 h-4 text-[#0284C7] shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -643,8 +805,10 @@ export default function CareersPage() {
         </div>
       </section>
 
+
+
       {/* Call to Action */}
-      <section className="py-20 bg-gradient-to-r from-sky-50 via-slate-50 to-sky-50 text-slate-900 border-t border-sky-100">
+      <section className="py-20 bg-sky-50/80 text-slate-900 border-t border-sky-200">
         <div className="container mx-auto px-4 md:px-6 text-center max-w-4xl">
           <span className="text-[#0284C7] font-bebas text-xl tracking-widest uppercase mb-2 block">
             Future-Ready Growth
