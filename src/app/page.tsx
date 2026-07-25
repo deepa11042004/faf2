@@ -7,6 +7,7 @@ import { ServicesSection } from "@/components/sections/Services";
 import { WhyChooseUsSection } from "@/components/sections/WhyChooseUs";
 import { ProcessSection } from "@/components/sections/Process";
 import { IndustriesSection } from "@/components/sections/Industries";
+import { TrustedBrandsSection } from "@/components/sections/TrustedBrands";
 import { StatsSection } from "@/components/sections/Stats";
 import { TestimonialsSection } from "@/components/sections/Testimonials";
 import { FAQSection } from "@/components/sections/FAQ";
@@ -24,6 +25,7 @@ export default function Home() {
         <WhyChooseUsSection />
         <ProcessSection />
         <IndustriesSection />
+        <TrustedBrandsSection />
         <StatsSection />
         <TestimonialsSection />
         <FAQSection />
