@@ -59,13 +59,13 @@ export function Hero() {
 
           <div className="flex flex-col sm:flex-row gap-4 mt-6">
             <Link href="/contact">
-              <Button variant="premium" size="lg" className="bg-[#0284C7] hover:bg-[#0369a1] text-white border-none shadow-xl w-full sm:w-auto">
-                Get Free Consultation
+              <Button size="lg" className="bg-[#F59E0B] hover:bg-[#D97706] text-slate-950 font-bebas text-xl tracking-wider uppercase border-2 border-amber-300/80 shadow-2xl hover:scale-105 transition-all w-full sm:w-auto px-8 py-6 rounded-full font-bold">
+                Get a Free Quote
               </Button>
             </Link>
             <Link href="/services">
-              <Button variant="outline" size="lg" className="border-slate-300 bg-white/80 text-slate-900 hover:bg-white hover:border-slate-400 w-full sm:w-auto">
-                Explore Services
+              <Button size="lg" className="bg-slate-900/90 hover:bg-slate-950 text-white font-bebas text-xl tracking-wider uppercase border-2 border-slate-700/80 backdrop-blur-md shadow-xl hover:scale-105 transition-all w-full sm:w-auto px-8 py-6 rounded-full">
+                Explore Our Services
               </Button>
             </Link>
           </div>

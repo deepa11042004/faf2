@@ -16,9 +16,37 @@ const clients = [
 
 export function TrustSection() {
   return (
-    <section className="py-16 md:py-20 bg-[#F8FAFC] border-y border-slate-200/80 overflow-hidden">
-      <div className="container mx-auto px-4 text-center mb-10">
-        <h2 className="font-bebas text-3xl md:text-5xl tracking-widest text-[#0F172A] uppercase">
+    <section className="py-12 md:py-16 bg-[#F8FAFC] border-y border-slate-200/80 overflow-hidden">
+      {/* ISO & Authority Compliance Badge Bar */}
+      <div className="container mx-auto px-4 mb-10">
+        <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8 mb-10 pb-8 border-b border-slate-200/80">
+          <div className="flex items-center gap-2.5 px-4 py-2 bg-white rounded-full border border-sky-200 shadow-sm">
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="font-bebas text-sm md:text-base tracking-widest text-slate-800 uppercase font-bold">
+              ISO 9001:2015 Certified
+            </span>
+          </div>
+          <div className="flex items-center gap-2.5 px-4 py-2 bg-white rounded-full border border-sky-200 shadow-sm">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#0284C7]" />
+            <span className="font-bebas text-sm md:text-base tracking-widest text-slate-800 uppercase font-bold">
+              PSARA Govt. Compliant
+            </span>
+          </div>
+          <div className="flex items-center gap-2.5 px-4 py-2 bg-white rounded-full border border-sky-200 shadow-sm">
+            <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
+            <span className="font-bebas text-sm md:text-base tracking-widest text-slate-800 uppercase font-bold">
+              MSME Govt. Registered
+            </span>
+          </div>
+          <div className="flex items-center gap-2.5 px-4 py-2 bg-white rounded-full border border-sky-200 shadow-sm">
+            <span className="w-2.5 h-2.5 rounded-full bg-purple-500" />
+            <span className="font-bebas text-sm md:text-base tracking-widest text-slate-800 uppercase font-bold">
+              100% Quality Audited
+            </span>
+          </div>
+        </div>
+
+        <h2 className="font-bebas text-3xl md:text-5xl tracking-widest text-[#0F172A] uppercase text-center">
           Trusted By Industry Leaders Across Sectors
         </h2>
       </div>
