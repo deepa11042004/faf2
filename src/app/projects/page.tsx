@@ -7,114 +7,157 @@ import {
   Flame, 
   Fingerprint, 
   Mic, 
-  Shield, 
-  Layers, 
+  ShieldCheck, 
   MapPin, 
   CheckCircle2, 
   ChevronRight, 
-  ShieldCheck, 
-  Sliders, 
-  Cpu, 
-  Award, 
-  Wrench, 
-  Headset, 
-  FileCheck 
+  Building2,
+  Users,
+  Award,
+  Clock,
+  ThumbsUp,
+  Briefcase,
+  Layers,
+  ArrowRight,
+  Quote,
+  Sliders,
+  Check
 } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { ProcessSection } from "@/components/sections/Process";
 
-const COMPLETED_PROJECTS_LIST = [
-  "CCTV Surveillance System Installations",
-  "Fire Alarm System Deployments",
-  "Access Control System Implementations",
-  "Public Address (PA) System Installations",
-  "Professional Security Guard Services",
-  "Integrated Security Solutions"
+// 1. Project Statistics Data
+const PROJECT_STATS = [
+  { value: "100+", label: "Projects Completed", icon: <Briefcase className="w-7 h-7 text-[#0284C7]" /> },
+  { value: "50+", label: "Happy Clients", icon: <Users className="w-7 h-7 text-[#0284C7]" /> },
+  { value: "10+", label: "Industries Served", icon: <Building2 className="w-7 h-7 text-[#0284C7]" /> },
+  { value: "24×7", label: "Support & Maintenance", icon: <Clock className="w-7 h-7 text-[#0284C7]" /> },
+  { value: "100%", label: "Satisfaction Focus", icon: <ThumbsUp className="w-7 h-7 text-[#0284C7]" /> }
 ];
 
-const GALLERY_IMAGES = [
-  { title: "CCTV Camera Installations", image: "https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=800&q=80" },
-  { title: "Control Room Setups", image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80" },
-  { title: "Fire Alarm System Installations", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80" },
-  { title: "Access Control Devices", image: "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=800&q=80" },
-  { title: "Public Address Systems", image: "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80" },
-  { title: "Security Guard Deployment", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" },
-  { title: "Commercial Building Security", image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" },
-  { title: "Residential Security Projects", image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80" },
-  { title: "Industrial Security Solutions", image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" },
-  { title: "Warehouse Surveillance Systems", image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80" }
-];
-
-const EXECUTION_STEPS = [
-  "Requirement Analysis",
-  "Site Inspection",
-  "Security Risk Assessment",
-  "Solution Design",
-  "Equipment Selection",
-  "Professional Installation",
-  "System Configuration",
-  "Testing & Commissioning",
-  "Client Training",
-  "Ongoing Maintenance & Support"
-];
-
-const LOCATIONS = [
-  "Delhi",
-  "Noida",
-  "Greater Noida",
-  "Gurugram",
-  "Faridabad",
-  "Ghaziabad",
-  "Sonipat",
-  "Bahadurgarh",
-  "Nearby cities and industrial zones"
-];
-
-const CATEGORIES = [
+// 2. Featured Projects Data
+const FEATURED_PROJECTS = [
   {
-    title: "CCTV Installation",
-    desc: "Advanced surveillance systems for residential, commercial, and industrial properties.",
-    icon: <Cctv className="w-7 h-7 text-[#0070c0]" />
+    title: "Corporate Office CCTV Surveillance",
+    category: "CCTV Installation",
+    location: "Noida, Uttar Pradesh",
+    status: "Completed",
+    desc: "Designed and installed a high-definition IP CCTV surveillance system covering office entrances, workstations, parking areas, and common spaces. The system includes remote monitoring, mobile access, and 24×7 video recording to enhance workplace security.",
+    servicesDelivered: ["IP Cameras", "Control Room Setup", "Mobile Live View", "Night Vision IR"],
+    images: [
+      "https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80"
+    ]
   },
   {
-    title: "Fire Alarm System",
-    desc: "Comprehensive fire detection and alarm solutions designed to protect lives and property.",
-    icon: <Flame className="w-7 h-7 text-[#0070c0]" />
+    title: "Fire Alarm System Installation",
+    category: "Fire Safety System",
+    location: "Gurugram, Haryana",
+    status: "Completed",
+    desc: "Installed an addressable fire alarm system featuring smoke detectors, heat detectors, manual call points, emergency sounders, and a centralized fire alarm control panel to ensure early fire detection and rapid emergency response.",
+    servicesDelivered: ["Addressable Smoke Detectors", "Central Control Panel", "Emergency Sounders", "Fire Audit Briefing"],
+    images: [
+      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80"
+    ]
   },
   {
-    title: "Access Control System",
-    desc: "Modern biometric, RFID, and smart access solutions for secure entry management.",
-    icon: <Fingerprint className="w-7 h-7 text-[#0070c0]" />
+    title: "Biometric Access Control Solution",
+    category: "Access Control System",
+    location: "Delhi NCR",
+    status: "Completed",
+    desc: "Implemented a biometric access control system with fingerprint and facial recognition devices integrated with electromagnetic locks and attendance management software for secure employee access.",
+    servicesDelivered: ["Facial Recognition Terminals", "Maglocks & Brackets", "Attendance Software Sync", "Exit Motion Sensors"],
+    images: [
+      "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80"
+    ]
   },
   {
-    title: "Public Address (PA) System",
-    desc: "Professional audio communication systems for announcements, emergency alerts, and public information.",
-    icon: <Mic className="w-7 h-7 text-[#0070c0]" />
+    title: "Public Address System Installation",
+    category: "Public Address System",
+    location: "Ghaziabad, Uttar Pradesh",
+    status: "Completed",
+    desc: "Installed a multi-zone Public Address System with ceiling speakers, horn speakers, amplifiers, paging microphones, and emergency voice announcement capabilities for effective communication across the facility.",
+    servicesDelivered: ["100V Line Amplifiers", "Ceiling & Horn Speakers", "Zone Paging Consoles", "EVAC Interlock"],
+    images: [
+      "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80"
+    ]
   },
   {
-    title: "Security Guard Services",
-    desc: "Deployment of trained and professional security personnel for residential, commercial, industrial, and institutional facilities.",
-    icon: <Shield className="w-7 h-7 text-[#0070c0]" />
-  },
-  {
-    title: "Integrated Security Solutions",
-    desc: "Complete security infrastructure combining surveillance, access control, fire safety, communication systems, and on-site security personnel into a single, unified solution.",
-    icon: <Layers className="w-7 h-7 text-[#0070c0]" />
+    title: "Industrial Security Guard Deployment",
+    category: "Security Guard Services",
+    location: "Faridabad, Haryana",
+    status: "Completed",
+    desc: "Deployed professionally trained security personnel for 24×7 industrial security, including gate management, visitor verification, vehicle inspection, and regular perimeter patrols to safeguard assets and operations.",
+    servicesDelivered: ["24×7 Guard Forces", "Visitor & Vehicle Checks", "QR Patrol Audits", "Command Supervisor Checks"],
+    images: [
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80"
+    ]
   }
 ];
 
-const WHY_TRUST_PROJECTS = [
-  "Customized Security Solutions",
-  "Professional Project Planning",
+// 3. Industries Served List
+const INDUSTRIES_SERVED = [
+  "Residential Communities",
+  "Commercial Buildings",
+  "Corporate Offices",
+  "Manufacturing Industries",
+  "Educational Institutions",
+  "Hospitals & Healthcare Facilities",
+  "Hotels & Hospitality",
+  "Warehouses & Logistics",
+  "Government Organizations",
+  "Retail & Shopping Complexes"
+];
+
+// 4. Execution Methodology Steps
+const EXECUTION_PROCESS = [
+  { step: "01", title: "Requirement Analysis", desc: "Understanding the client's security challenges, objectives, and operational requirements." },
+  { step: "02", title: "Site Survey", desc: "Conducting a detailed inspection to identify risks and determine the optimal system layout." },
+  { step: "03", title: "Solution Design", desc: "Preparing a customized security solution with appropriate products and technologies." },
+  { step: "04", title: "Professional Installation", desc: "Installing all equipment following industry standards and best practices." },
+  { step: "05", title: "Testing & Commissioning", desc: "Verifying system performance, functionality, and reliability before handover." },
+  { step: "06", title: "Client Training", desc: "Providing operational training and system documentation for efficient day-to-day management." },
+  { step: "07", title: "Maintenance & Support", desc: "Offering preventive maintenance, troubleshooting, and Annual Maintenance Contracts (AMC) for long-term performance." }
+];
+
+// 5. Why Clients Trust Us List
+const WHY_CLIENTS_TRUST_US = [
   "Experienced Installation Team",
-  "High-Quality Equipment",
+  "High-Quality Security Equipment",
+  "Customized Security Solutions",
   "On-Time Project Delivery",
-  "Industry Standard Installation Practices",
-  "Comprehensive Testing & Quality Assurance",
-  "Dedicated After-Sales Support",
-  "Annual Maintenance Services (AMC)",
-  "Long-Term Customer Relationships"
+  "Transparent Communication",
+  "Competitive Pricing",
+  "Reliable After-Sales Support",
+  "Annual Maintenance Contracts (AMC)",
+  "24×7 Technical Assistance"
+];
+
+// 6. Image Gallery Elements Showcase
+const GALLERY_SECTIONS = [
+  { title: "Project Images", subtitle: "Full Overview", image: "https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=800&q=80" },
+  { title: "Before & After Photos", subtitle: "Site Transformation", image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80" },
+  { title: "Equipment Close-Ups", subtitle: "Hardware Precision", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80" },
+  { title: "Installation Process", subtitle: "Field Execution", image: "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=800&q=80" },
+  { title: "Final Completed Site", subtitle: "Ready For Handover", image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" }
+];
+
+// 7. Client Testimonials
+const TESTIMONIALS = [
+  {
+    quote: "Family Anchor Facilities delivered our CCTV and Access Control project on time with excellent professionalism. The installation quality and after-sales support have been outstanding.",
+    client: "Corporate Client",
+    location: "Noida"
+  },
+  {
+    quote: "Their team installed our Fire Alarm System efficiently and provided complete training. We are highly satisfied with their service.",
+    client: "Facility Manager",
+    location: "Gurugram"
+  }
 ];
 
 export default function ProjectsPage() {
@@ -122,7 +165,7 @@ export default function ProjectsPage() {
     <main className="min-h-screen bg-black text-white selection:bg-[#0284C7] selection:text-white">
       <Navbar />
 
-      {/* Hero Header Banner */}
+      {/* 1. Hero Section */}
       <section className="relative pt-36 pb-20 bg-black overflow-hidden border-b border-zinc-800">
         <div className="absolute inset-0 bg-[url('/images/backgrounds/dark-waves.png')] bg-cover bg-center bg-no-repeat opacity-45 pointer-events-none z-0" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-[#38BDF8]/10 rounded-full blur-[140px] pointer-events-none z-0" />
@@ -138,102 +181,303 @@ export default function ProjectsPage() {
               <ChevronRight className="w-4 h-4 text-slate-500" />
               <span>Our Projects</span>
             </div>
+            
+            <span className="text-[#38BDF8] font-bebas text-2xl tracking-widest uppercase mb-3 block">
+              Our Projects
+            </span>
+            
             <h1 className="text-5xl md:text-7xl font-bebas tracking-wide text-white mb-6">
-              Delivering Trusted Security Solutions Across <span className="text-[#38BDF8]">Diverse Industries</span>
+              Delivering Trusted Security Solutions <span className="text-[#38BDF8]">Across Industries</span>
             </h1>
-            <p className="text-slate-300 text-lg md:text-xl leading-relaxed font-inter max-w-3xl mx-auto">
-              At Family Anchor Facilities Pvt. Ltd., every project reflects our commitment to quality, reliability, and customer satisfaction.
+            
+            <p className="text-slate-300 text-base md:text-lg leading-relaxed font-inter max-w-3xl mx-auto mb-8">
+              At <strong>Family Anchor Facilities Pvt. Ltd.</strong>, we take pride in delivering reliable and customized security solutions for residential, commercial, industrial, educational, healthcare, hospitality, and government sectors. Every project is executed with careful planning, professional installation, and strict adherence to quality and safety standards.
             </p>
+            <p className="text-slate-400 text-sm md:text-base leading-relaxed font-inter max-w-3xl mx-auto mb-8">
+              From CCTV surveillance and fire alarm systems to access control, public address systems, and security guard services, our experienced team ensures every solution is designed to meet the unique security requirements of our clients.
+            </p>
+
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a 
+                href="#featured-projects" 
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-[#0284C7] hover:bg-[#0369a1] text-white font-bebas text-xl tracking-wider uppercase px-8 py-4 rounded-full shadow-xl hover:scale-105 transition-all"
+              >
+                <span>View Projects</span>
+                <ChevronRight className="w-5 h-5" />
+              </a>
+              <Link 
+                href="/contact" 
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-white/10 hover:bg-white/20 text-white font-bebas text-xl tracking-wider uppercase px-8 py-4 rounded-full border border-white/20 backdrop-blur-md transition-all"
+              >
+                <span>Request a Consultation</span>
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Overview Intro Section */}
-      <section className="py-20 bg-white text-slate-900 relative">
-        <div className="container mx-auto px-4 md:px-6 max-w-4xl text-center">
-          <span className="text-[#0284C7] font-bebas text-xl tracking-widest uppercase mb-2 block">
-            End-To-End Execution
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bebas tracking-wide text-slate-900 mb-6">
-            Proven Security Infrastructures & Turnkey Deployments
-          </h2>
-          <p className="text-slate-600 text-lg leading-relaxed font-inter mb-4">
-            We have successfully delivered customized security and facility management solutions for residential communities, commercial establishments, industrial facilities, educational institutions, healthcare organizations, hospitality businesses, warehouses, and government sectors.
-          </p>
-          <p className="text-slate-600 text-lg leading-relaxed font-inter">
-            Our experienced team manages every stage of the project—from site assessment and solution design to installation, testing, and ongoing support.
-          </p>
-        </div>
-      </section>
-
-      {/* Completed Projects Highlight Section */}
-      <section className="py-24 bg-[url('/images/backgrounds/services-blue-bg.png')] bg-cover bg-center bg-no-repeat relative text-white">
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-[#38BDF8] font-bebas text-xl tracking-widest uppercase mb-2 block drop-shadow">
-              Portfolio
-            </span>
-            <h2 className="text-4xl md:text-6xl font-bebas tracking-wide text-white leading-tight">
-              Completed Projects
-            </h2>
-            <p className="text-blue-100/90 text-lg font-inter mt-3">
-              Each project demonstrates our expertise in delivering reliable security systems and professional services with precision.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {COMPLETED_PROJECTS_LIST.map((proj, idx) => (
+      {/* 2. Project Statistics */}
+      <section className="py-16 bg-white text-slate-900 border-b border-sky-100">
+        <div className="container mx-auto px-4 md:px-6 max-w-6xl">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
+            {PROJECT_STATS.map((stat, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: idx * 0.06, duration: 0.4 }}
-                className="bg-white/95 backdrop-blur-md rounded-2xl p-6 border-2 border-sky-300 text-slate-900 flex items-center gap-4 shadow-lg hover:shadow-2xl hover:border-white transition-all"
+                transition={{ delay: idx * 0.05, duration: 0.4 }}
+                className="bg-sky-50/80 p-6 rounded-2xl border border-sky-200 shadow-sm hover:shadow-md transition-all flex flex-col items-center justify-center"
               >
-                <div className="w-10 h-10 rounded-xl bg-sky-50 border border-sky-200 flex items-center justify-center text-[#0284C7] shrink-0 font-bebas text-lg">
-                  {idx + 1}
+                <div className="mb-3 p-3 bg-white rounded-xl shadow-sm border border-sky-100">
+                  {stat.icon}
                 </div>
-                <span className="font-bebas text-xl tracking-wide text-slate-900">{proj}</span>
+                <div className="font-bebas text-4xl md:text-5xl text-[#0284C7] font-bold mb-1">
+                  {stat.value}
+                </div>
+                <div className="font-inter text-xs md:text-sm font-semibold text-slate-700 uppercase tracking-wide">
+                  {stat.label}
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Project Gallery Grid */}
-      <section className="py-24 bg-white text-slate-900 relative">
+      {/* 3. Featured Projects Showcase */}
+      <section id="featured-projects" className="py-24 bg-[url('/images/backgrounds/services-blue-bg.png')] bg-cover bg-center bg-no-repeat relative text-white">
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-[#0284C7] font-bebas text-xl tracking-widest uppercase mb-2 block">
-              Visual Showcase
+            <span className="text-[#38BDF8] font-bebas text-xl tracking-widest uppercase mb-2 block drop-shadow">
+              Proven Track Record
             </span>
-            <h2 className="text-4xl md:text-6xl font-bebas tracking-wide text-slate-900 leading-tight">
-              Project Gallery
+            <h2 className="text-4xl md:text-6xl font-bebas tracking-wide text-white leading-tight">
+              Featured Projects
             </h2>
-            <p className="text-slate-600 text-lg font-inter mt-3">
-              Each image highlights our installation quality, equipment excellence, and field deployment standards.
+            <p className="text-blue-100 text-lg font-inter mt-3">
+              Explore key security deployments completed for leading organizations across NCR.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            {GALLERY_IMAGES.map((item, idx) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto">
+            {FEATURED_PROJECTS.map((proj, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.08, duration: 0.5 }}
+                className="group bg-white text-slate-900 rounded-[32px] overflow-hidden border-4 border-sky-300 shadow-2xl flex flex-col justify-between hover:border-[#0284C7] transition-all"
+              >
+                {/* Top Image Section */}
+                <div className="relative bg-slate-900 h-64 w-full grid grid-cols-2 gap-1 p-2 overflow-hidden">
+                  {proj.images.map((imgUrl, iIdx) => (
+                    <div key={iIdx} className="relative h-full w-full overflow-hidden rounded-xl">
+                      <img 
+                        src={imgUrl} 
+                        alt={`${proj.title} Photo ${iIdx + 1}`}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                      />
+                    </div>
+                  ))}
+                  {/* Status Badge */}
+                  <div className="absolute top-4 left-4 z-20 bg-emerald-600 text-white font-bebas text-xs tracking-wider uppercase px-3 py-1 rounded-md shadow-lg flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5" />
+                    <span>{proj.status}</span>
+                  </div>
+                </div>
+
+                {/* Card Content Details */}
+                <div className="p-6 md:p-8 flex-1 flex flex-col justify-between bg-white">
+                  <div>
+                    <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                      <span className="bg-sky-50 text-[#0284C7] font-bebas text-xs tracking-wider uppercase px-3 py-1 rounded-full border border-sky-200 font-bold">
+                        {proj.category}
+                      </span>
+                      <div className="flex items-center gap-1 text-slate-500 font-inter text-xs font-semibold">
+                        <MapPin className="w-3.5 h-3.5 text-[#0284C7]" />
+                        <span>{proj.location}</span>
+                      </div>
+                    </div>
+
+                    <h3 className="font-bebas text-2xl md:text-3xl tracking-wide text-slate-900 mb-3 leading-tight group-hover:text-[#0284C7] transition-colors">
+                      {proj.title}
+                    </h3>
+
+                    <p className="text-slate-600 text-xs md:text-sm font-inter leading-relaxed mb-5 line-clamp-3">
+                      {proj.desc}
+                    </p>
+
+                    {/* Services Delivered */}
+                    <div className="mb-5">
+                      <span className="font-bebas text-xs tracking-wider uppercase text-[#0284C7] block mb-2 font-bold">
+                        Services Delivered:
+                      </span>
+                      <div className="grid grid-cols-2 gap-1.5 font-inter text-xs text-slate-700 font-semibold">
+                        {proj.servicesDelivered.map((sd, sIdx) => (
+                          <div key={sIdx} className="flex items-center gap-1.5 bg-sky-50/80 p-1.5 rounded-lg border border-sky-100">
+                            <Check className="w-3.5 h-3.5 text-[#0284C7] shrink-0" />
+                            <span className="truncate">{sd}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                    <Link 
+                      href="/contact"
+                      className="inline-flex items-center gap-2 text-[#0284C7] hover:text-[#0369a1] font-bebas text-base tracking-wider uppercase group/btn"
+                    >
+                      <span>View Details</span>
+                      <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                    </Link>
+                  </div>
+                </div>
+
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Industries We Have Served */}
+      <section className="py-24 bg-white text-slate-900 relative">
+        <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-6xl">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-[#0284C7] font-bebas text-xl tracking-widest uppercase mb-2 block">
+              Diverse Expertise
+            </span>
+            <h2 className="text-4xl md:text-6xl font-bebas tracking-wide text-slate-900 leading-tight">
+              Industries We Have Served
+            </h2>
+            <p className="text-slate-600 text-lg font-inter mt-3">
+              Providing specialized security engineering and guard deployments across multiple market sectors.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            {INDUSTRIES_SERVED.map((ind, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.04, duration: 0.4 }}
+                className="bg-sky-50/80 p-5 rounded-2xl border border-sky-200 text-center font-bebas text-xl tracking-wide text-slate-900 shadow-sm hover:shadow-md hover:bg-white hover:border-[#0284C7] transition-all flex items-center justify-center min-h-[90px]"
+              >
+                {ind}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Our Project Execution Process */}
+      <section className="py-24 bg-sky-50/80 text-slate-900 relative border-t border-sky-200">
+        <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-6xl">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-[#0284C7] font-bebas text-xl tracking-widest uppercase mb-2 block">
+              Standardized Methodology
+            </span>
+            <h2 className="text-4xl md:text-6xl font-bebas tracking-wide text-slate-900 leading-tight">
+              Our Project Execution Process
+            </h2>
+            <p className="text-slate-600 text-lg font-inter mt-3">
+              A systematic 7-step approach ensuring high quality, safety compliance, and on-time project completion.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {EXECUTION_PROCESS.map((proc, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.06, duration: 0.5 }}
+                className="bg-white p-6 rounded-2xl border border-sky-200 shadow-md hover:shadow-xl transition-all flex flex-col justify-between"
+              >
+                <div>
+                  <div className="font-bebas text-4xl text-[#0284C7] font-bold mb-3">
+                    {proc.step}
+                  </div>
+                  <h3 className="font-bebas text-2xl tracking-wide text-slate-900 mb-2">{proc.title}</h3>
+                  <p className="text-slate-600 text-xs font-inter leading-relaxed">{proc.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. Why Clients Trust Us */}
+      <section className="py-24 bg-white text-slate-900 relative">
+        <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-6xl">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-[#0284C7] font-bebas text-xl tracking-widest uppercase mb-2 block">
+              Reliable Partner
+            </span>
+            <h2 className="text-4xl md:text-6xl font-bebas tracking-wide text-slate-900 leading-tight">
+              Why Clients Trust Us
+            </h2>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {WHY_CLIENTS_TRUST_US.map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.05, duration: 0.4 }}
+                className="bg-sky-50/80 p-6 rounded-2xl border border-sky-200 flex items-center gap-4 text-slate-900 shadow-sm hover:shadow-md transition-all"
+              >
+                <ShieldCheck className="w-6 h-6 text-[#0284C7] shrink-0" />
+                <span className="font-bebas text-xl tracking-wide">{item}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 7. Image Gallery Showcase Section */}
+      <section className="py-24 bg-[url('/images/backgrounds/services-blue-bg.png')] bg-cover bg-center bg-no-repeat relative text-white">
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-[#38BDF8] font-bebas text-xl tracking-widest uppercase mb-2 block drop-shadow">
+              Site Handover Standards
+            </span>
+            <h2 className="text-4xl md:text-6xl font-bebas tracking-wide text-white leading-tight">
+              Project Image Gallery
+            </h2>
+            <p className="text-blue-100 text-lg font-inter mt-3">
+              Each completed project features meticulous documentation from before & after photos to equipment close-ups.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
+            {GALLERY_SECTIONS.map((gal, idx) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.05, duration: 0.4 }}
-                className="group relative h-64 rounded-3xl overflow-hidden shadow-xl border-2 border-slate-200 hover:border-[#0284C7] transition-all"
+                className="group relative h-64 rounded-3xl overflow-hidden shadow-2xl border-2 border-white/20 hover:border-white transition-all"
               >
                 <img 
-                  src={item.image} 
-                  alt={item.title}
+                  src={gal.image} 
+                  alt={gal.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent p-4 flex items-end">
-                  <span className="font-bebas text-lg tracking-wide text-white drop-shadow">
-                    {item.title}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent p-5 flex flex-col justify-end">
+                  <span className="text-[#38BDF8] font-bebas text-xs tracking-widest uppercase mb-1">
+                    {gal.subtitle}
+                  </span>
+                  <span className="font-bebas text-xl tracking-wide text-white drop-shadow">
+                    {gal.title}
                   </span>
                 </div>
               </motion.div>
@@ -242,159 +486,79 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      {/* Project Description & Execution Methodology */}
-      <section className="py-24 bg-slate-900 text-white relative">
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            
-            <div>
-              <span className="text-[#38BDF8] font-bebas text-xl tracking-widest uppercase mb-2 block">
-                Execution Quality
-              </span>
-              <h2 className="text-4xl md:text-5xl font-bebas tracking-wide text-white mb-6">
-                Thorough Security Risk Assessment & Custom Deployment
-              </h2>
-              <p className="text-slate-300 text-lg leading-relaxed font-inter mb-6">
-                Each project begins with a thorough understanding of the client's security requirements. Our team conducts a detailed site survey, identifies potential risks, and designs a customized security solution that aligns with operational needs and industry standards.
-              </p>
-              <p className="text-slate-300 text-lg leading-relaxed font-inter">
-                Whether it's a single-site installation or a comprehensive multi-location security deployment, we focus on delivering dependable, scalable, and future-ready security solutions.
-              </p>
-            </div>
+      {/* 8. Client Testimonials */}
+      <section className="py-24 bg-black text-white relative overflow-hidden border-t border-zinc-800">
+        <div className="absolute inset-0 bg-[url('/images/backgrounds/dark-waves.png')] bg-cover bg-center bg-no-repeat opacity-45 pointer-events-none z-0" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-[#38BDF8]/10 rounded-full blur-[130px] pointer-events-none z-0" />
 
-            <div className="bg-zinc-950 p-8 md:p-10 rounded-[32px] border border-zinc-800 shadow-2xl">
-              <h3 className="font-bebas text-3xl tracking-wide text-[#38BDF8] mb-6">
-                Our Project Execution Process
-              </h3>
-              <div className="grid sm:grid-cols-2 gap-3">
-                {EXECUTION_STEPS.map((step, idx) => (
-                  <div key={idx} className="flex items-center gap-3 text-slate-200 text-sm font-inter">
-                    <CheckCircle2 className="w-4 h-4 text-[#38BDF8] shrink-0" />
-                    <span>{step}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* Project Locations */}
-      <section className="py-24 bg-white text-slate-900 relative">
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="max-w-4xl mx-auto bg-sky-50/80 rounded-[32px] p-10 md:p-12 border-2 border-sky-200 shadow-xl text-center">
-            <div className="inline-flex items-center justify-center p-4 bg-[#0284C7] text-white rounded-2xl mb-4 shadow-md">
-              <MapPin className="w-8 h-8" />
-            </div>
-            <span className="text-[#0284C7] font-bebas text-xl tracking-widest uppercase mb-2 block">
-              Regional Coverage
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bebas tracking-wide text-slate-900 mb-6">
-              Serving Delhi NCR & Surrounding Regions
-            </h2>
-            <p className="text-slate-600 text-lg leading-relaxed font-inter mb-8">
-              We proudly provide security solutions across Delhi NCR and surrounding regions, serving businesses, institutions, and residential communities with reliable and professional security services.
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-3">
-              {LOCATIONS.map((loc, idx) => (
-                <span 
-                  key={idx}
-                  className="bg-white border border-sky-300 text-slate-800 font-bebas text-lg tracking-wider uppercase px-5 py-2 rounded-full shadow-sm"
-                >
-                  {loc}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Project Categories Grid */}
-      <section className="py-24 bg-[url('/images/backgrounds/services-blue-bg.png')] bg-cover bg-center bg-no-repeat relative text-white">
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-5xl">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-[#38BDF8] font-bebas text-xl tracking-widest uppercase mb-2 block drop-shadow">
-              Specializations
+            <span className="text-[#38BDF8] font-bebas text-xl tracking-widest uppercase mb-2 block">
+              Client Feedback
             </span>
             <h2 className="text-4xl md:text-6xl font-bebas tracking-wide text-white leading-tight">
-              Project Categories
+              What Our Clients Say
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {CATEGORIES.map((cat, idx) => (
+          <div className="grid md:grid-cols-2 gap-8">
+            {TESTIMONIALS.map((t, idx) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: idx * 0.08, duration: 0.5 }}
-                className="bg-white text-slate-900 p-8 rounded-[28px] border-4 border-sky-300 shadow-xl hover:shadow-2xl transition-all group"
+                transition={{ delay: idx * 0.1, duration: 0.5 }}
+                className="bg-zinc-900/90 backdrop-blur-md rounded-[32px] p-8 md:p-10 border-2 border-zinc-800 hover:border-[#38BDF8]/60 shadow-2xl relative flex flex-col justify-between transition-all"
               >
-                <div className="p-4 rounded-2xl bg-sky-50 text-[#0070c0] w-fit mb-6 shadow-md border border-sky-200 group-hover:scale-110 transition-transform">
-                  {cat.icon}
+                <Quote className="w-10 h-10 text-[#38BDF8] opacity-30 mb-4" />
+                <p className="text-slate-300 font-inter text-base md:text-lg italic leading-relaxed mb-6">
+                  "{t.quote}"
+                </p>
+                <div className="pt-4 border-t border-zinc-800 flex items-center justify-between">
+                  <span className="font-bebas text-2xl tracking-wide text-white">{t.client}</span>
+                  <span className="bg-zinc-800 text-[#38BDF8] font-inter text-xs px-3.5 py-1 rounded-full border border-zinc-700 font-semibold">
+                    {t.location}
+                  </span>
                 </div>
-                <h3 className="font-bebas text-2xl tracking-wide text-slate-900 mb-3">{cat.title}</h3>
-                <p className="text-slate-600 text-sm leading-relaxed font-inter">{cat.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Our Project Approach */}
-      <ProcessSection />
-
-      {/* Why Clients Trust Our Projects */}
-      <section className="py-24 bg-white text-slate-900 relative">
-        <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-5xl">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-[#0284C7] font-bebas text-xl tracking-widest uppercase mb-2 block">
-              Proven Track Record
-            </span>
-            <h2 className="text-4xl md:text-6xl font-bebas tracking-wide text-slate-900 leading-tight">
-              Why Clients Trust Our Projects
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-4">
-            {WHY_TRUST_PROJECTS.map((trust, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, x: idx % 2 === 0 ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.05, duration: 0.4 }}
-                className="bg-sky-50/80 p-5 rounded-2xl border border-sky-200 flex items-center gap-3 text-slate-800 font-inter font-medium"
-              >
-                <ShieldCheck className="w-5 h-5 text-[#0284C7] shrink-0" />
-                <span>{trust}</span>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Call to Action */}
-      <section className="py-20 bg-gradient-to-r from-sky-50 via-slate-50 to-sky-50 text-slate-900 border-t border-sky-100">
+      {/* 9. Call to Action */}
+      <section className="py-24 bg-gradient-to-r from-sky-50 via-white to-sky-50 text-slate-900 border-t border-sky-200">
         <div className="container mx-auto px-4 md:px-6 text-center max-w-4xl">
           <span className="text-[#0284C7] font-bebas text-xl tracking-widest uppercase mb-2 block">
-            Build Together
+            Partner With Us
           </span>
           <h2 className="text-4xl md:text-6xl font-bebas tracking-wide text-slate-900 mb-6">
-            Let's Build a Safer Future Together
+            Let's Secure Your Next Project
           </h2>
           <p className="text-slate-600 text-lg leading-relaxed font-inter mb-8">
-            Every project we complete reflects our commitment to delivering reliable, technology-driven, and customer-focused security solutions.
+            Whether you're planning a new installation or upgrading your existing security infrastructure, <strong>Family Anchor Facilities Pvt. Ltd.</strong> is ready to deliver reliable, scalable, and cost-effective security solutions tailored to your needs.
           </p>
-          <div className="flex justify-center">
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link 
-              href="/#contact" 
-              className="inline-flex items-center gap-3 bg-[#0284C7] hover:bg-[#0369a1] text-white font-bebas text-xl tracking-wider uppercase px-10 py-4 rounded-full shadow-xl hover:scale-105 transition-all"
+              href="/contact" 
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-[#0284C7] hover:bg-[#0369a1] text-white font-bebas text-xl tracking-wider uppercase px-8 py-4 rounded-full shadow-xl hover:scale-105 transition-all"
             >
-              <span>Contact Us Today</span>
+              <span>Get a Free Consultation</span>
               <ChevronRight className="w-5 h-5" />
+            </Link>
+            <Link 
+              href="/contact" 
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-white text-slate-900 hover:bg-slate-50 font-bebas text-xl tracking-wider uppercase px-8 py-4 rounded-full border-2 border-slate-300 shadow-md transition-all"
+            >
+              <span>Request a Project Quote</span>
+            </Link>
+            <Link 
+              href="/contact" 
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-slate-900 text-white hover:bg-black font-bebas text-xl tracking-wider uppercase px-8 py-4 rounded-full shadow-lg transition-all"
+            >
+              <span>Contact Our Experts</span>
             </Link>
           </div>
         </div>
