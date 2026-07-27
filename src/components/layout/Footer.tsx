@@ -104,8 +104,8 @@ export function Footer() {
             © {new Date().getFullYear()} Family Anchor Facilities Pvt. Ltd. All rights reserved.
           </p>
           <div className="flex items-center gap-6 text-sm text-zinc-500">
-            <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
+            <Link href="/privacy-policy" className="hover:text-[#38BDF8] transition-colors">Privacy Policy</Link>
+            <Link href="/terms-of-service" className="hover:text-[#38BDF8] transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>
