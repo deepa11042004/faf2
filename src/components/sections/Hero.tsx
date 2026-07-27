@@ -53,8 +53,8 @@ export function Hero() {
 
           <p className="text-lg md:text-xl text-slate-800 max-w-xl font-inter leading-relaxed font-medium">
             Delivering advanced surveillance systems, fire safety solutions,
-            access control, and professional security services for homes, businesses,
-            industries, and institutions.
+            access control and professional security services for homes, businesses,
+            industries and institutions.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mt-6">

@@ -60,10 +60,16 @@ export function Footer() {
           <div>
             <h4 className="font-poppins font-semibold text-lg mb-6">Our Services</h4>
             <ul className="flex flex-col gap-3">
-              {["CCTV Installation", "Fire Alarm Systems", "Access Control", "Security Guards", "Facility Management", "AMC Support"].map((link, idx) => (
+              {[
+                { label: "CCTV Installation", href: "/services/cctv-installation" },
+                { label: "Fire Alarm Systems", href: "/services/fire-alarm-system" },
+                { label: "Access Control", href: "/services/access-control-system" },
+                { label: "Security Guards", href: "/services/security-guard-services" },
+                { label: "Public Address System", href: "/services/public-address-system" },
+              ].map((link, idx) => (
                 <li key={idx}>
-                  <Link href="#" className="text-zinc-400 hover:text-[#4338CA] transition-colors text-sm">
-                    {link}
+                  <Link href={link.href} className="text-zinc-400 hover:text-[#38BDF8] transition-colors text-sm font-inter">
+                    {link.label}
                   </Link>
                 </li>
               ))}

@@ -312,7 +312,7 @@ export default function AboutPage() {
               className="relative h-[480px] rounded-[32px] overflow-hidden border border-zinc-800 shadow-2xl"
             >
               <img 
-                src="/hero-guard.jpg" 
+                src="/images/hero/hero-guard.jpg" 
                 alt="Family Anchor Security Team" 
                 className="w-full h-full object-cover object-center"
               />
