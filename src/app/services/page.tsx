@@ -232,6 +232,18 @@ export default function ServicesPage() {
                         {srv.title}
                       </h3>
                     </div>
+
+                    {/* Mobile Image (Placed directly below title header) */}
+                    <div className="lg:hidden relative h-[240px] rounded-2xl overflow-hidden border-2 border-slate-200 shadow-lg mb-6 group">
+                      <img 
+                        src={srv.image} 
+                        alt={srv.title}
+                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" 
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    </div>
+
+                    {/* Description Paragraph (Placed below mobile image) */}
                     <p className="text-slate-600 text-base md:text-lg leading-relaxed font-inter mb-6">
                       {srv.description}
                     </p>
@@ -267,8 +279,8 @@ export default function ServicesPage() {
                     </Link>
                   </div>
 
-                  {/* Visual Image */}
-                  <div className={`relative h-[360px] md:h-[420px] rounded-[24px] overflow-hidden border-2 border-slate-200 shadow-xl group ${isEven ? "" : "lg:col-start-1"}`}>
+                  {/* Desktop Visual Image */}
+                  <div className={`hidden lg:block relative h-[360px] md:h-[420px] rounded-[24px] overflow-hidden border-2 border-slate-200 shadow-xl group ${isEven ? "" : "lg:col-start-1"}`}>
                     <img 
                       src={srv.image} 
                       alt={srv.title}

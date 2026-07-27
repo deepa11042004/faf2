@@ -282,7 +282,7 @@ export default function IndustriesPage() {
                 >
                   {/* Content Left */}
                   <div className={isEven ? "" : "lg:col-start-2"}>
-                    <div className="flex items-center gap-4 mb-3">
+                    <div className="flex items-center gap-4 mb-4">
                       <div className="p-3.5 bg-sky-50 rounded-2xl border border-sky-200 shadow-sm">
                         {ind.icon}
                       </div>
@@ -295,6 +295,18 @@ export default function IndustriesPage() {
                         </span>
                       </div>
                     </div>
+
+                    {/* Mobile Image (Placed directly below title/tagline header) */}
+                    <div className="lg:hidden relative h-[240px] rounded-2xl overflow-hidden border-2 border-slate-200 shadow-lg mb-6 group">
+                      <img 
+                        src={ind.image} 
+                        alt={ind.title}
+                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" 
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    </div>
+
+                    {/* Description Paragraph (Placed below mobile image) */}
                     <p className="text-slate-600 text-base md:text-lg leading-relaxed font-inter mb-6">
                       {ind.description}
                     </p>
@@ -321,8 +333,8 @@ export default function IndustriesPage() {
                     </div>
                   </div>
 
-                  {/* Image Right */}
-                  <div className={`relative h-[360px] md:h-[420px] rounded-[24px] overflow-hidden border-2 border-slate-200 shadow-xl group ${isEven ? "" : "lg:col-start-1"}`}>
+                  {/* Desktop Image Right */}
+                  <div className={`hidden lg:block relative h-[360px] md:h-[420px] rounded-[24px] overflow-hidden border-2 border-slate-200 shadow-xl group ${isEven ? "" : "lg:col-start-1"}`}>
                     <img 
                       src={ind.image} 
                       alt={ind.title}
