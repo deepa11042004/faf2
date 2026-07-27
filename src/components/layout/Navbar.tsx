@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown, Cctv, Flame, Fingerprint, Shield, Mic, Layers } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
+  { label: "Services", href: "/services", hasDropdown: true },
   { label: "Industries", href: "/industries" },
   { label: "Projects", href: "/projects" },
   { label: "Gallery", href: "/gallery" },
@@ -19,13 +19,53 @@ const NAV_LINKS = [
   { label: "Contact", href: "/contact" },
 ];
 
+const SERVICE_ITEMS = [
+  {
+    label: "CCTV Installation",
+    href: "/services/cctv-installation",
+    desc: "AI Surveillance & 24/7 Live Monitoring",
+    icon: Cctv
+  },
+  {
+    label: "Fire Alarm Systems",
+    href: "/services/fire-alarm-system",
+    desc: "Early Sensor Detection & Automatic Fire Alerts",
+    icon: Flame
+  },
+  {
+    label: "Access Control Systems",
+    href: "/services/access-control-system",
+    desc: "Biometrics, Smart Cards & Touchless Entry",
+    icon: Fingerprint
+  },
+  {
+    label: "Security Guard Services",
+    href: "/services/security-guard-services",
+    desc: "Vetted Guards, Supervisors & Field Engineers",
+    icon: Shield
+  },
+  {
+    label: "Public Address Systems",
+    href: "/services/public-address-system",
+    desc: "Multi-Zone Audio & Emergency Paging",
+    icon: Mic
+  },
+  {
+    label: "All Services Overview",
+    href: "/services",
+    desc: "Explore Our Full Range of Solutions",
+    icon: Layers
+  }
+];
+
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isServicesHovered, setIsServicesHovered] = useState(false);
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Transition navbar style when scrolling past the top hero video section
       const heroHeight = window.innerHeight - 100;
       setIsScrolled(window.scrollY > heroHeight);
     };
@@ -59,24 +99,92 @@ export function Navbar() {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center">
             <ul className={cn(
-              "flex items-center gap-6 px-7 py-2 rounded-full border transition-all duration-500 shadow-md backdrop-blur-md",
+              "flex items-center gap-6 px-7 py-2 rounded-full border transition-all duration-500 shadow-md backdrop-blur-md relative",
               isScrolled 
                 ? "border-slate-700/70 bg-slate-800/80 text-white" 
                 : "border-slate-300/80 bg-white/90 text-slate-900"
             )}>
-              {NAV_LINKS.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className={cn(
-                      "font-bebas text-lg tracking-wider uppercase transition-colors relative after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 hover:after:w-full after:transition-all font-medium",
-                      isScrolled ? "text-slate-100 hover:text-[#38BDF8] after:bg-[#38BDF8]" : "text-slate-900 hover:text-[#0284C7] after:bg-[#0284C7]"
-                    )}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+              {NAV_LINKS.map((link) => {
+                if (link.hasDropdown) {
+                  return (
+                    <li
+                      key={link.label}
+                      className="relative"
+                      onMouseEnter={() => setIsServicesHovered(true)}
+                      onMouseLeave={() => setIsServicesHovered(false)}
+                    >
+                      <div className="flex items-center gap-1 cursor-pointer py-1">
+                        <Link
+                          href={link.href}
+                          className={cn(
+                            "font-bebas text-lg tracking-wider uppercase transition-colors relative after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 hover:after:w-full after:transition-all font-medium flex items-center gap-1",
+                            isScrolled ? "text-slate-100 hover:text-[#38BDF8] after:bg-[#38BDF8]" : "text-slate-900 hover:text-[#0284C7] after:bg-[#0284C7]"
+                          )}
+                        >
+                          {link.label}
+                          <ChevronDown className={cn(
+                            "w-4 h-4 transition-transform duration-300",
+                            isServicesHovered ? "rotate-180 text-[#38BDF8]" : ""
+                          )} />
+                        </Link>
+                      </div>
+
+                      {/* Dropdown Menu */}
+                      <AnimatePresence>
+                        {isServicesHovered && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 12, scale: 0.96 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: 10, scale: 0.96 }}
+                            transition={{ duration: 0.2 }}
+                            className="absolute top-full -left-20 pt-4 w-96 z-50"
+                          >
+                            <div className="bg-[#0284C7]/95 backdrop-blur-2xl border-2 border-sky-300/40 shadow-[0_20px_50px_rgba(2,132,199,0.4)] rounded-2xl p-3 grid grid-cols-1 gap-1 text-white">
+                              {SERVICE_ITEMS.map((item) => {
+                                const IconComponent = item.icon;
+                                return (
+                                  <Link
+                                    key={item.label}
+                                    href={item.href}
+                                    className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/15 transition-all duration-200 group"
+                                    onClick={() => setIsServicesHovered(false)}
+                                  >
+                                    <div className="p-2.5 bg-white/20 text-white rounded-xl border border-white/30 group-hover:bg-white group-hover:text-[#0284C7] transition-all shrink-0">
+                                      <IconComponent className="w-5 h-5" />
+                                    </div>
+                                    <div>
+                                      <div className="font-bebas text-lg tracking-wider text-white group-hover:text-amber-300 transition-colors leading-none mb-1">
+                                        {item.label}
+                                      </div>
+                                      <div className="text-xs text-sky-100 font-inter line-clamp-1">
+                                        {item.desc}
+                                      </div>
+                                    </div>
+                                  </Link>
+                                );
+                              })}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </li>
+                  );
+                }
+
+                return (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className={cn(
+                        "font-bebas text-lg tracking-wider uppercase transition-colors relative after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 hover:after:w-full after:transition-all font-medium",
+                        isScrolled ? "text-slate-100 hover:text-[#38BDF8] after:bg-[#38BDF8]" : "text-slate-900 hover:text-[#0284C7] after:bg-[#0284C7]"
+                      )}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </nav>
 
@@ -117,20 +225,70 @@ export function Navbar() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 right-0 bg-slate-900/95 backdrop-blur-xl border-t border-slate-800 shadow-2xl p-6 lg:hidden"
+            className="absolute top-full left-0 right-0 bg-slate-900/95 backdrop-blur-xl border-t border-slate-800 shadow-2xl p-6 lg:hidden max-h-[85vh] overflow-y-auto"
           >
-            <ul className="flex flex-col gap-4">
-              {NAV_LINKS.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="block font-bebas text-xl tracking-wider uppercase text-slate-100 hover:text-[#38BDF8] py-2"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+            <ul className="flex flex-col gap-3">
+              {NAV_LINKS.map((link) => {
+                if (link.hasDropdown) {
+                  return (
+                    <li key={link.label} className="border-b border-slate-800/60 pb-2">
+                      <div className="flex items-center justify-between py-2">
+                        <Link
+                          href={link.href}
+                          className="font-bebas text-xl tracking-wider uppercase text-slate-100 hover:text-[#38BDF8]"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          {link.label}
+                        </Link>
+                        <button
+                          onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+                          className="p-1 text-slate-400 hover:text-[#38BDF8]"
+                        >
+                          <ChevronDown className={cn(
+                            "w-5 h-5 transition-transform duration-300",
+                            isMobileServicesOpen ? "rotate-180 text-[#38BDF8]" : ""
+                          )} />
+                        </button>
+                      </div>
+
+                      <AnimatePresence>
+                        {isMobileServicesOpen && (
+                          <motion.ul
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            className="pl-4 flex flex-col gap-2 border-l-2 border-[#0284C7] my-2"
+                          >
+                            {SERVICE_ITEMS.map((item) => (
+                              <li key={item.label}>
+                                <Link
+                                  href={item.href}
+                                  className="block font-bebas text-lg tracking-wider text-slate-300 hover:text-[#38BDF8] py-1"
+                                  onClick={() => setIsMobileMenuOpen(false)}
+                                >
+                                  {item.label}
+                                </Link>
+                              </li>
+                            ))}
+                          </motion.ul>
+                        )}
+                      </AnimatePresence>
+                    </li>
+                  );
+                }
+
+                return (
+                  <li key={link.label} className="border-b border-slate-800/40 pb-1">
+                    <Link
+                      href={link.href}
+                      className="block font-bebas text-xl tracking-wider uppercase text-slate-100 hover:text-[#38BDF8] py-2"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
             <div className="flex flex-col gap-3 mt-6">
               <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
