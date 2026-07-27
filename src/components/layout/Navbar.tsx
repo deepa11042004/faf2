@@ -190,19 +190,27 @@ export function Navbar() {
 
           {/* CTAs */}
           <div className="hidden lg:flex items-center gap-4">
-            <Link href="/contact">
+            <a 
+              href="https://wa.me/919386126258?text=Hello%20Family%20Anchor%20Facilities,%20I%20would%20like%20to%20inquire%20about%20your%20security%20services." 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
               <Button variant="outline" className={cn(
                 "font-bebas text-base tracking-wider uppercase transition-colors",
                 isScrolled ? "border-slate-700 bg-slate-800/80 text-white hover:bg-slate-700" : "border-slate-300 bg-white/90 text-slate-900 hover:bg-white"
               )}>
                 Call Now
               </Button>
-            </Link>
-            <Link href="/contact">
+            </a>
+            <a 
+              href="https://wa.me/919386126258?text=Hello%20Family%20Anchor%20Facilities,%20I%20would%20like%20to%20get%20a%20quote%20for%20security%20services." 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
               <Button className="bg-[#0284C7] hover:bg-[#0369a1] text-white font-bebas text-base tracking-wider uppercase px-5 shadow-lg">
                 Get Quote
               </Button>
-            </Link>
+            </a>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -291,16 +299,26 @@ export function Navbar() {
               })}
             </ul>
             <div className="flex flex-col gap-3 mt-6">
-              <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+              <a 
+                href="https://wa.me/919386126258?text=Hello%20Family%20Anchor%20Facilities,%20I%20would%20like%20to%20inquire%20about%20your%20security%20services." 
+                target="_blank" 
+                rel="noopener noreferrer"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
                 <Button variant="outline" className="w-full border-slate-700 bg-slate-800 text-white hover:bg-slate-700 font-bebas text-lg">
                   Call Now
                 </Button>
-              </Link>
-              <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+              </a>
+              <a 
+                href="https://wa.me/919386126258?text=Hello%20Family%20Anchor%20Facilities,%20I%20would%20like%20to%20get%20a%20quote%20for%20security%20services." 
+                target="_blank" 
+                rel="noopener noreferrer"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
                 <Button className="w-full bg-[#0284C7] hover:bg-[#0369a1] text-white font-bebas text-lg">
                   Get Quote
                 </Button>
-              </Link>
+              </a>
             </div>
           </motion.div>
         )}

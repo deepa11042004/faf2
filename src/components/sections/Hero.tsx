@@ -58,11 +58,15 @@ export function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mt-6">
-            <Link href="/contact">
+            <a 
+              href="https://wa.me/919386126258?text=Hello%20Family%20Anchor%20Facilities,%20I%20would%20like%20to%20get%20a%20free%20quote%20for%20security%20services."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button size="lg" className="bg-[#0284C7] hover:bg-[#0369a1] text-white font-bebas text-xl tracking-wider uppercase shadow-2xl hover:scale-105 transition-all w-full sm:w-auto px-8 py-6 rounded-full font-bold">
                 Get a Free Quote
               </Button>
-            </Link>
+            </a>
             <Link href="/services">
               <Button size="lg" className="bg-white hover:bg-slate-50 text-slate-900 font-bebas text-xl tracking-wider uppercase border-2 border-slate-200 shadow-xl hover:scale-105 transition-all w-full sm:w-auto px-8 py-6 rounded-full font-bold">
                 Explore Our Services
