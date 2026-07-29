@@ -95,6 +95,13 @@ export const seedAllData = async (isStandalone = false) => {
         }
       ]);
       console.log("✔ 5 Core Security Services Created.");
+    } else {
+      await Service.update({ bannerImage: "/uploads/services/cctv-banner.webp" }, { where: { slug: "cctv-installation" } });
+      await Service.update({ bannerImage: "/uploads/services/fire-banner.webp" }, { where: { slug: "fire-alarm-system" } });
+      await Service.update({ bannerImage: "/uploads/services/access-banner.webp" }, { where: { slug: "access-control-system" } });
+      await Service.update({ bannerImage: "/uploads/services/guards-banner.webp" }, { where: { slug: "security-guard-services" } });
+      await Service.update({ bannerImage: "/uploads/services/pa-banner.webp" }, { where: { slug: "public-address-system" } });
+      console.log("✔ 5 Core Security Services Image Paths Updated.");
     }
 
     // 3. Projects Portfolio & Images

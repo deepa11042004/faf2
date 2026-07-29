@@ -42,7 +42,8 @@ app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 app.use(morgan("dev"));
 
-// Static Folder for Uploads
+// Static Folder for Uploads & Public Assets
+app.use("/uploads", express.static(path.join(process.cwd(), "public/uploads")));
 app.use("/public", express.static(path.join(process.cwd(), "public")));
 
 // Swagger API Documentation UI
