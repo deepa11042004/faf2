@@ -30,7 +30,11 @@ export const connectDB = async () => {
     await sequelize.authenticate();
     console.log("MySQL Database Connection Established Successfully.");
   } catch (error) {
-    console.error("Unable to connect to the MySQL database:", error.message);
+    console.error(
+      `Unable to connect to MySQL database at ${process.env.DB_HOST || 'localhost'}:${process.env.DB_PORT || 3306} ` +
+      `(DB: ${process.env.DB_NAME}, User: ${process.env.DB_USER}):`,
+      error.message
+    );
     process.exit(1);
   }
 };
