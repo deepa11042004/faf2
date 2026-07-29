@@ -2,6 +2,8 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiResponse } from "../utils/apiResponse.js";
 import authService from "../services/authService.js";
 
+import { seedAllData } from "../seeders/adminSeeder.js";
+
 export const login = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   const data = await authService.login(email, password);
@@ -29,3 +31,9 @@ export const resetPassword = asyncHandler(async (req, res) => {
   await authService.resetPassword(token, newPassword);
   return ApiResponse.success(res, "Password has been reset successfully.");
 });
+
+export const seedDatabase = asyncHandler(async (req, res) => {
+  await seedAllData(false);
+  return ApiResponse.success(res, "Database seeded successfully. Admin credentials: admin@familyanchor.in / AdminPassword123!");
+});
+

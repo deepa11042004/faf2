@@ -14,11 +14,13 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const seedAllData = async () => {
+export const seedAllData = async (isStandalone = false) => {
   try {
-    await sequelize.authenticate();
-    await sequelize.sync({ alter: true });
-    console.log("Database synced for seeding...");
+    if (isStandalone) {
+      await sequelize.authenticate();
+      await sequelize.sync({ alter: true });
+      console.log("Database synced for seeding...");
+    }
 
     // 1. Admin Account
     const adminCount = await Admin.count();
@@ -318,11 +320,21 @@ const seedAllData = async () => {
     }
 
     console.log("\n✨ DATABASE SEEDING COMPLETED SUCCESSFULLY!");
-    process.exit(0);
+    if (isStandalone) {
+      process.exit(0);
+    }
+    return true;
   } catch (error) {
     console.error("Error Seeding Complete Database:", error);
-    process.exit(1);
+    if (isStandalone) {
+      process.exit(1);
+    }
+    throw error;
   }
 };
 
-seedAllData();
+import { fileURLToPath } from "url";
+if (process.argv[1] && process.argv[1] === fileURLToPath(import.meta.url)) {
+  seedAllData(true);
+}
+
