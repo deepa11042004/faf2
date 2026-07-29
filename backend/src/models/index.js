@@ -8,6 +8,7 @@ import CareerJob from "./CareerJob.js";
 import CareerApplication from "./CareerApplication.js";
 import ContactEnquiry from "./ContactEnquiry.js";
 import WebsiteSetting from "./WebsiteSetting.js";
+import Device from "./Device.js";
 
 // Define Associations
 
@@ -43,5 +44,6 @@ export {
   CareerJob,
   CareerApplication,
   ContactEnquiry,
-  WebsiteSetting
+  WebsiteSetting,
+  Device
 };

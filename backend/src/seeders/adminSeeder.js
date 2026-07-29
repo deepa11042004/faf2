@@ -8,7 +8,8 @@ import {
   CareerJob,
   CareerApplication,
   ContactEnquiry,
-  WebsiteSetting
+  WebsiteSetting,
+  Device
 } from "../models/index.js";
 import dotenv from "dotenv";
 
@@ -324,6 +325,69 @@ export const seedAllData = async (isStandalone = false) => {
         footerText: "Your Trusted Partner in Comprehensive Security & Facility Management. Protecting people, property, and business operations for over a decade."
       });
       console.log("✔ Complete Website Settings & Contact Information Created.");
+    }
+
+    // 9. Security Devices
+    const deviceCount = await Device.count();
+    if (deviceCount === 0) {
+      await Device.bulkCreate([
+        {
+          name: "Dome Cameras",
+          category: "CCTV Surveillance",
+          serviceSlug: "cctv-installation",
+          description: "Ideal for indoor surveillance where aesthetics and wide-angle coverage are important.",
+          bestFor: ["Offices", "Retail Stores", "Hospitals", "Schools", "Hotels"],
+          keyFeatures: ["Compact Design", "Vandal Resistant", "Infrared Night Vision", "Wide Viewing Angle"],
+          imagePath: "/uploads/services/cctv-banner.webp",
+          status: "active",
+          displayOrder: 1
+        },
+        {
+          name: "Bullet Cameras",
+          category: "CCTV Surveillance",
+          serviceSlug: "cctv-installation",
+          description: "Designed for long-range outdoor monitoring with high weather resistance and IR illumination.",
+          bestFor: ["Perimeters", "Parking Lots", "Warehouses", "Building Exteriors"],
+          keyFeatures: ["Long Range IR", "IP67 Weatherproof", "Optical Zoom", "Motion Detection"],
+          imagePath: "/uploads/services/cctv-service.png",
+          status: "active",
+          displayOrder: 2
+        },
+        {
+          name: "PTZ (Pan-Tilt-Zoom) Cameras",
+          category: "CCTV Surveillance",
+          serviceSlug: "cctv-installation",
+          description: "Provides 360-degree motorized pan, tilt, and powerful optical zoom for active security control.",
+          bestFor: ["Industrial Parks", "Malls", "Airports", "Public Squares"],
+          keyFeatures: ["360° Continuous Pan", "30x Optical Zoom", "Auto Tracking", "Preset Patrol Routes"],
+          imagePath: "/uploads/services/cctv-banner.webp",
+          status: "active",
+          displayOrder: 3
+        },
+        {
+          name: "Touchless Facial Recognition Scanner",
+          category: "Access Control",
+          serviceSlug: "access-control-system",
+          description: "High-speed biometric face scanner with temperature sensing and anti-spoofing AI.",
+          bestFor: ["Corporate Offices", "Data Centers", "High Security Zones"],
+          keyFeatures: ["0.2s Detection", "Fake Face Anti-Spoof", "Mask Detection", "10,000 Face Capacity"],
+          imagePath: "/uploads/services/access-banner.webp",
+          status: "active",
+          displayOrder: 4
+        },
+        {
+          name: "Multi-Sensor Optical Smoke Detector",
+          category: "Fire Safety",
+          serviceSlug: "fire-alarm-system",
+          description: "Early smoke and heat sensor detecting smoldering fires before open flames appear.",
+          bestFor: ["Server Rooms", "Commercial Buildings", "Hospitals", "Hotels"],
+          keyFeatures: ["Dual Sensor Tech", "Low False Alarm Rate", "360° LED Indicator", "Addressable Loop Integration"],
+          imagePath: "/uploads/services/fire-banner.webp",
+          status: "active",
+          displayOrder: 5
+        }
+      ]);
+      console.log("✔ Security Devices Catalog Created.");
     }
 
     console.log("\n✨ DATABASE SEEDING COMPLETED SUCCESSFULLY!");

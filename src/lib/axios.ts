@@ -11,7 +11,7 @@ export const getApiBaseUrl = () => {
       return `${protocol}//${hostname}${port ? `:${port}` : ""}/api/v1`;
     }
   }
-  return "http://localhost:5001/api/v1";
+  return "http://localhost:5005/api/v1";
 };
 
 export const getMediaUrl = (imagePath?: string) => {

@@ -6,6 +6,22 @@ export interface AdminUser {
   role: string;
 }
 
+export interface DeviceItem {
+  id: number;
+  uuid: string;
+  name: string;
+  category: string;
+  serviceSlug?: string;
+  description?: string;
+  bestFor?: string[];
+  keyFeatures?: string[];
+  imagePath?: string;
+  status: "active" | "inactive";
+  displayOrder: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
 export interface ServiceItem {
   id: number;
   uuid: string;

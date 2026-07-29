@@ -8,6 +8,7 @@ import jobRoutes from "./jobRoutes.js";
 import applicationRoutes from "./applicationRoutes.js";
 import contactRoutes from "./contactRoutes.js";
 import settingRoutes from "./settingRoutes.js";
+import deviceRoutes from "./deviceRoutes.js";
 
 const router = Router();
 
@@ -20,5 +21,6 @@ router.use("/jobs", jobRoutes);
 router.use("/applications", applicationRoutes);
 router.use("/contact", contactRoutes);
 router.use("/settings", settingRoutes);
+router.use("/devices", deviceRoutes);
 
 export default router;
