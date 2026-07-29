@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { projectsApi } from "@/services/api/projectsApi";
 import { ProjectItem } from "@/types/admin";
 import { ConfirmModal } from "@/components/admin/ConfirmModal";
+import { getMediaUrl } from "@/lib/axios";
 import {
   Plus,
   Search,
@@ -209,7 +210,7 @@ export default function AdminProjectsPage() {
               <div>
                 <div className="h-48 bg-slate-950 relative overflow-hidden">
                   {item.images && item.images.length > 0 ? (
-                    <img src={`http://localhost:5001${item.images[0].imagePath}`} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <img src={getMediaUrl(item.images[0].imagePath)} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-slate-700">
                       <Building2 className="w-12 h-12" />

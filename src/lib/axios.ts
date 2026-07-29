@@ -1,17 +1,39 @@
 import axios from "axios";
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001/api/v1";
+export const getApiBaseUrl = () => {
+  if (process.env.NEXT_PUBLIC_API_URL) {
+    return process.env.NEXT_PUBLIC_API_URL;
+  }
+  if (typeof window !== "undefined") {
+    const { protocol, hostname, port } = window.location;
+    if (hostname !== "localhost" && hostname !== "127.0.0.1") {
+      // In production deployment (e.g. Coolify), dynamically construct API endpoint
+      return `${protocol}//${hostname}${port ? `:${port}` : ""}/api/v1`;
+    }
+  }
+  return "http://localhost:5001/api/v1";
+};
+
+export const getMediaUrl = (imagePath?: string) => {
+  if (!imagePath) return "";
+  if (imagePath.startsWith("http://") || imagePath.startsWith("https://")) {
+    return imagePath;
+  }
+  const apiBase = getApiBaseUrl();
+  const rootServerUrl = apiBase.replace(/\/api\/v1\/?$/, "");
+  return `${rootServerUrl}${imagePath.startsWith("/") ? "" : "/"}${imagePath}`;
+};
 
 export const apiClient = axios.create({
-  baseURL: API_BASE_URL,
   headers: {
     "Content-Type": "application/json"
   }
 });
 
-// Request Interceptor: Attach JWT Token from localStorage
+// Request Interceptor: Attach dynamic baseURL and JWT token from localStorage
 apiClient.interceptors.request.use(
   (config) => {
+    config.baseURL = getApiBaseUrl();
     if (typeof window !== "undefined") {
       const token = localStorage.getItem("faf_admin_token");
       if (token && config.headers) {

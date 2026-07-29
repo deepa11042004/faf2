@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { applicationsApi } from "@/services/api/applicationsApi";
 import { CareerApplicationItem } from "@/types/admin";
 import { ConfirmModal } from "@/components/admin/ConfirmModal";
+import { getMediaUrl } from "@/lib/axios";
 import { Search, Download, Trash2, Users, FileText } from "lucide-react";
 
 export default function AdminApplicationsPage() {
@@ -75,7 +76,7 @@ export default function AdminApplicationsPage() {
                   <td className="p-4 text-xs text-slate-500">{new Date(item.createdAt).toLocaleDateString()}</td>
                   <td className="p-4 text-right space-x-2">
                     {item.resumePath && (
-                      <a href={`http://localhost:5001${item.resumePath}`} target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-sky-500/10 text-[#38BDF8] hover:bg-sky-500/20 inline-flex items-center gap-1 text-xs">
+                      <a href={getMediaUrl(item.resumePath)} target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-sky-500/10 text-[#38BDF8] hover:bg-sky-500/20 inline-flex items-center gap-1 text-xs">
                         <Download className="w-3.5 h-3.5" /> Resume
                       </a>
                     )}

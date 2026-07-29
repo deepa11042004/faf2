@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { servicesApi } from "@/services/api/servicesApi";
 import { ServiceItem } from "@/types/admin";
 import { ConfirmModal } from "@/components/admin/ConfirmModal";
+import { getMediaUrl } from "@/lib/axios";
 import {
   Plus,
   Search,
@@ -197,7 +198,7 @@ export default function AdminServicesPage() {
                     <td className="p-4 font-semibold text-white flex items-center gap-3">
                       <div className="w-10 h-10 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-center overflow-hidden shrink-0">
                         {item.bannerImage ? (
-                          <img src={`http://localhost:5001${item.bannerImage}`} alt={item.title} className="w-full h-full object-cover" />
+                          <img src={getMediaUrl(item.bannerImage)} alt={item.title} className="w-full h-full object-cover" />
                         ) : (
                           <ImageIcon className="w-5 h-5 text-slate-600" />
                         )}

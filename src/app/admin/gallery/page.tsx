@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { galleryApi } from "@/services/api/galleryApi";
 import { GalleryItem } from "@/types/admin";
 import { ConfirmModal } from "@/components/admin/ConfirmModal";
+import { getMediaUrl } from "@/lib/axios";
 import { Plus, Trash2, Image as ImageIcon, X } from "lucide-react";
 
 export default function AdminGalleryPage() {
@@ -124,7 +125,7 @@ export default function AdminGalleryPage() {
         ) : (
           gallery.map((item) => (
             <div key={item.id} className="group relative bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-lg h-48">
-              <img src={`http://localhost:5001${item.imagePath}`} alt={item.title || "Gallery image"} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <img src={getMediaUrl(item.imagePath)} alt={item.title || "Gallery image"} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-slate-950/70 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-between p-3">
                 <span className="text-[10px] bg-[#0284C7] text-white px-2 py-0.5 rounded-full w-fit">{item.category}</span>
                 <div className="flex items-center justify-between">
