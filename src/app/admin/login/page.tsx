@@ -7,6 +7,8 @@ import { useAuthStore } from "@/store/authStore";
 import { Shield, Lock, Mail, AlertCircle, ArrowRight } from "lucide-react";
 import Image from "next/image";
 
+import { getApiBaseUrl } from "@/lib/axios";
+
 export default function LoginPage() {
   const [email, setEmail] = useState("admin@familyanchor.in");
   const [password, setPassword] = useState("AdminPassword123!");
@@ -30,7 +32,11 @@ export default function LoginPage() {
         setError(response.message || "Invalid credentials.");
       }
     } catch (err: any) {
-      setError(err.response?.data?.message || "Invalid email or password.");
+      if (!err.response) {
+        setError(`Network Error: Unable to reach backend server at ${getApiBaseUrl()}. Please verify your backend container is running.`);
+      } else {
+        setError(err.response?.data?.message || "Invalid email or password.");
+      }
     } finally {
       setLoading(false);
     }
