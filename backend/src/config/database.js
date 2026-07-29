@@ -36,17 +36,12 @@ export const connectDB = async () => {
   for (const host of hostsToTry) {
     try {
       console.log(`Attempting MySQL connection to host '${host}:${dbPort}' (DB: '${dbName}', User: '${dbUser}')...`);
-      const testInstance = new Sequelize(dbName, dbUser, dbPassword, {
-        host: host,
-        port: dbPort,
-        dialect: "mysql",
-        logging: false,
-        pool: { max: 10, min: 0, acquire: 30000, idle: 10000 },
-        define: { timestamps: true, underscored: true }
-      });
-      await testInstance.authenticate();
+      sequelize.config.host = host;
+      sequelize.options.host = host;
+      sequelize.connectionManager.config.host = host;
+      
+      await sequelize.authenticate();
       console.log(`✔ Connected successfully to MySQL at host '${host}:${dbPort}'!`);
-      sequelize = testInstance;
       connected = true;
       break;
     } catch (err) {
