@@ -57,7 +57,7 @@ export const connectDB = async () => {
 
   if (!connected) {
     console.error("❌ All attempted database host connections failed:", lastError?.message);
-    process.exit(1);
+    throw new Error(`MySQL Connection Failed: ${lastError?.message}`);
   }
 };
 
