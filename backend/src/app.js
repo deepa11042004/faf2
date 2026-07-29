@@ -48,6 +48,11 @@ app.use("/public", express.static(path.join(process.cwd(), "public")));
 // Swagger API Documentation UI
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
+// Root & Healthcheck Endpoints
+app.get(["/", "/health"], (req, res) => {
+  return res.json({ status: "OK", message: "FAF Security Backend API is running successfully." });
+});
+
 // API Version 1 Routes
 app.use("/api/v1", routes);
 
