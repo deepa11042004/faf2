@@ -20,8 +20,8 @@ export const seedAllData = async (isStandalone = false) => {
     if (isStandalone) {
       await sequelize.authenticate();
       await sequelize.sync({ alter: true });
-      console.log("Database synced for seeding...");
     }
+    console.log("Database synced for seeding...");
 
     // 1. Admin Account
     const adminCount = await Admin.count();
@@ -244,7 +244,7 @@ export const seedAllData = async (isStandalone = false) => {
       console.log("✔ Career Job Openings Created.");
     }
 
-    // 6. Career Applications (Sample leads)
+    // 6. Career Applications
     const appCount = await CareerApplication.count();
     if (appCount === 0) {
       await CareerApplication.bulkCreate([
@@ -270,7 +270,7 @@ export const seedAllData = async (isStandalone = false) => {
       console.log("✔ Sample Career Applications Created.");
     }
 
-    // 7. Contact Enquiries (Sample leads)
+    // 7. Contact Enquiries
     const contactCount = await ContactEnquiry.count();
     if (contactCount === 0) {
       await ContactEnquiry.bulkCreate([
@@ -327,10 +327,11 @@ export const seedAllData = async (isStandalone = false) => {
       console.log("✔ Complete Website Settings & Contact Information Created.");
     }
 
-    // 9. Security Devices
+    // 9. Full Security Devices Catalog across all 4 Hardware Categories
     const deviceCount = await Device.count();
     if (deviceCount === 0) {
       await Device.bulkCreate([
+        // CCTV Cameras
         {
           name: "Dome Cameras",
           category: "CCTV Surveillance",
@@ -338,7 +339,7 @@ export const seedAllData = async (isStandalone = false) => {
           description: "Ideal for indoor surveillance where aesthetics and wide-angle coverage are important.",
           bestFor: ["Offices", "Retail Stores", "Hospitals", "Schools", "Hotels"],
           keyFeatures: ["Compact Design", "Vandal Resistant", "Infrared Night Vision", "Wide Viewing Angle"],
-          imagePath: "/uploads/services/cctv-banner.webp",
+          imagePath: "/images/cctv/dome/VP26P-T89uJ-K4JLfuW_mCGOQrehf1rTqHCz-e2Ljrz9UIAVV-9CwaTIQ05Vyji3sHDITRGOT28HEbJolIJ4vxOc3XKNS2_ieTsd_ldZsFmy7S1e2i6z9JFD7CMT0Ptxb4PLN5SO9c0LMySMybvgzvYgPg2xSp16lX5LEPaujV7xkX-xJEwe5PBxzNHCZ9RJ.jpg",
           status: "active",
           displayOrder: 1
         },
@@ -349,7 +350,7 @@ export const seedAllData = async (isStandalone = false) => {
           description: "Designed for long-range outdoor monitoring with high weather resistance and IR illumination.",
           bestFor: ["Perimeters", "Parking Lots", "Warehouses", "Building Exteriors"],
           keyFeatures: ["Long Range IR", "IP67 Weatherproof", "Optical Zoom", "Motion Detection"],
-          imagePath: "/uploads/services/cctv-service.png",
+          imagePath: "/images/cctv/bullet/5TenuMzbyrJ5zN0UlqJ7rRLKXQYhnM_6tlAF-812He89l4ewjQtYvQz0U2gZmtzIoM6DEV_Gaeq8nlCT8uvXj5FAljDUZ-rQ5YkGEwo6ebOoaRxWLaQcNQ93W5_gFrc0emAiera7qRjYWAA2QgLExxjNhqQAc2YUDddtb9G4wvWKnSd4kuK8n5sQOwy2MUIv.jpg",
           status: "active",
           displayOrder: 2
         },
@@ -360,34 +361,128 @@ export const seedAllData = async (isStandalone = false) => {
           description: "Provides 360-degree motorized pan, tilt, and powerful optical zoom for active security control.",
           bestFor: ["Industrial Parks", "Malls", "Airports", "Public Squares"],
           keyFeatures: ["360° Continuous Pan", "30x Optical Zoom", "Auto Tracking", "Preset Patrol Routes"],
-          imagePath: "/uploads/services/cctv-banner.webp",
+          imagePath: "/images/cctv/ptz/3VZFzDiO72AoHwakoDLGNvHFkLVUgiVmdQducNVhp2laXGUxxuEihWeWCa-dDMGUnVT_4KzH-nq6GoEdOUfhEhtTd0Uw1GJt9KAX4BozyvPncmgmz6YE_TzQrfjNbxXV-HT9CTiX5wZ6GKdIAAwg0fmn0PHaX2GytRGANTYHlXqYsuhCuCNXrSxhmb.jpg",
           status: "active",
           displayOrder: 3
         },
         {
-          name: "Touchless Facial Recognition Scanner",
-          category: "Access Control",
-          serviceSlug: "access-control-system",
-          description: "High-speed biometric face scanner with temperature sensing and anti-spoofing AI.",
-          bestFor: ["Corporate Offices", "Data Centers", "High Security Zones"],
-          keyFeatures: ["0.2s Detection", "Fake Face Anti-Spoof", "Mask Detection", "10,000 Face Capacity"],
-          imagePath: "/uploads/services/access-banner.webp",
+          name: "Turret Cameras",
+          category: "CCTV Surveillance",
+          serviceSlug: "cctv-installation",
+          description: "Ball-and-socket design eliminating lens reflections, perfect for clear night vision performance.",
+          bestFor: ["Corridors", "Elevators", "Lobbies", "Stores"],
+          keyFeatures: ["No IR Reflection", "EXIR Night Vision", "Easy Angle Adjustment", "Smart Detection"],
+          imagePath: "/images/cctv/turret/SvQC9SamokYa7sTS8d57xE6RX4is0AptxJ0pWwb0wOzmoVwoAI2LVJpHdmDKkU2PGaOk88CNx-qw6KQPH8VTuY-kMrIJhqGAU8LhseFuWWAbCREn3WIqZtlSe09DraRjrzIdCUzG17iu3Vahl1EPzytuUgGX27CgJCnglQ5hPIwkQcXNJmB37jTOJZ.jpg",
           status: "active",
           displayOrder: 4
         },
         {
-          name: "Multi-Sensor Optical Smoke Detector",
-          category: "Fire Safety",
-          serviceSlug: "fire-alarm-system",
-          description: "Early smoke and heat sensor detecting smoldering fires before open flames appear.",
-          bestFor: ["Server Rooms", "Commercial Buildings", "Hospitals", "Hotels"],
-          keyFeatures: ["Dual Sensor Tech", "Low False Alarm Rate", "360° LED Indicator", "Addressable Loop Integration"],
-          imagePath: "/uploads/services/fire-banner.webp",
+          name: "Fisheye 360° Panoramic Camera",
+          category: "CCTV Surveillance",
+          serviceSlug: "cctv-installation",
+          description: "Single-sensor 360-degree panoramic view eliminating blind spots across large indoor areas.",
+          bestFor: ["Open Offices", "Supermarkets", "Convention Centers"],
+          keyFeatures: ["360° Panoramic View", "Dewarping Software Support", "Virtual PTZ Modes"],
+          imagePath: "/images/cctv/fisheye/TS5VM_mHNYm7bXe2lP9oy6g7-5BofDkiQ5COLXuSLCnY4JYiRnmbwRmN26mSEd3Bjuqj9cWWIEP25sIF3zzyDz3Ya9jBW4Dt1YY1WYlHtUk5Rc9rcPrfhx0riX-XOiUo44q49C74HTi7xGLBykUjQ-7E7KN3G-7Y28IdCcePmkDYmg_Zd2dIEmtV5KaqPgR4.jpg",
           status: "active",
           displayOrder: 5
+        },
+
+        // Fire Safety Equipment
+        {
+          name: "Fire Alarm Control Panel (FACP)",
+          category: "Fire Safety",
+          serviceSlug: "fire-alarm-system",
+          description: "Centralized intelligent control panel monitoring all fire loops, smoke sensors, and notification horns.",
+          bestFor: ["Commercial Buildings", "Industrial Plants", "Hospitals", "Hotels"],
+          keyFeatures: ["Multi-Zone Monitoring", "Battery Backup", "Automated Sprinkler Relay", "LCD Touch Interface"],
+          imagePath: "/images/services/fire-alarm/fire-alarm-control-panel-facp/img-41gyjfrk.jpg",
+          status: "active",
+          displayOrder: 6
+        },
+        {
+          name: "Optical Smoke Detector",
+          category: "Fire Safety",
+          serviceSlug: "fire-alarm-system",
+          description: "Photoelectric smoke sensor detecting smoldering fires before open flames burst.",
+          bestFor: ["Offices", "Server Rooms", "Bedrooms", "Libraries"],
+          keyFeatures: ["360° Smoke Entry", "Dust Resistance", "Addressable Loop ID", "Built-in Sounder"],
+          imagePath: "/images/services/fire-alarm/smoke-detector/img-4soj8cqs.jpg",
+          status: "active",
+          displayOrder: 7
+        },
+        {
+          name: "Rate-of-Rise Heat Detector",
+          category: "Fire Safety",
+          serviceSlug: "fire-alarm-system",
+          description: "Triggers emergency alert when ambient temperature rises rapidly, ideal for dusty or smoky environments.",
+          bestFor: ["Kitchens", "Garages", "Boiler Rooms", "Factories"],
+          keyFeatures: ["Dual Temperature Sensor", "High Humidity Tolerant", "Auto Reset"],
+          imagePath: "/images/services/fire-alarm/heat-detector/img-empzt0kh.jpg",
+          status: "active",
+          displayOrder: 8
+        },
+
+        // Access Control Equipment
+        {
+          name: "Biometric Fingerprint Reader",
+          category: "Access Control",
+          serviceSlug: "access-control-system",
+          description: "High-precision optical fingerprint sensor supporting thousands of user templates and instant verification.",
+          bestFor: ["Server Rooms", "Executive Offices", "Turnstiles"],
+          keyFeatures: ["Live Finger Detection", "IP65 Rated", "Wiegand / OSDP Protocol", "Offline Buffer"],
+          imagePath: "/images/services/access-control/biometric-fingerprint-reader/img-7yp7vslh.jpg",
+          status: "active",
+          displayOrder: 9
+        },
+        {
+          name: "Touchless Facial Recognition Terminal",
+          category: "Access Control",
+          serviceSlug: "access-control-system",
+          description: "AI-powered facial recognition terminal with temperature screening and mask detection.",
+          bestFor: ["Corporate Lobbies", "Cleanrooms", "High Security Gates"],
+          keyFeatures: ["0.2s Facial Recognition", "Anti-Spoofing AI", "Touchless Hygiene", "10,000 Capacity"],
+          imagePath: "/images/services/access-control/facial-recognition-terminal/img-8gta2svs.jpg",
+          status: "active",
+          displayOrder: 10
+        },
+        {
+          name: "Electromagnetic Lock (Maglock)",
+          category: "Access Control",
+          serviceSlug: "access-control-system",
+          description: "Heavy-duty 600lbs/1200lbs holding force magnetic door lock for glass, wood, and metal doors.",
+          bestFor: ["Emergency Exits", "Glass Doors", "Commercial Entrances"],
+          keyFeatures: ["600lbs Holding Force", "Fail-Safe Operation", "LED Status Indicator", "Zero Residual Magnetism"],
+          imagePath: "/images/services/access-control/electromagnetic-lock-maglock/img-sya1h93d.jpg",
+          status: "active",
+          displayOrder: 11
+        },
+
+        // PA Systems
+        {
+          name: "Multi-Zone PA System Amplifier",
+          category: "PA System",
+          serviceSlug: "public-address-system",
+          description: "Commercial power amplifier with multi-zone speaker control, Bluetooth, and emergency priority broadcast.",
+          bestFor: ["Shopping Malls", "Schools", "Auditoriums", "Factories"],
+          keyFeatures: ["240W RMS Output", "6 Independent Zones", "Chime & Siren Inputs", "FM/USB/Bluetooth"],
+          imagePath: "/images/services/pa-system/pa-system-amplifier/img-43bln0p3.jpg",
+          status: "active",
+          displayOrder: 12
+        },
+        {
+          name: "Flush Ceiling Speaker",
+          category: "PA System",
+          serviceSlug: "public-address-system",
+          description: "High-fidelity coaxial ceiling speaker for background music and clear acoustic voice paging.",
+          bestFor: ["Corporate Offices", "Restaurants", "Retail Outlets"],
+          keyFeatures: ["100V Line Transformer", "ABS Flush Mount", "Crisp Vocal Clarity"],
+          imagePath: "/images/services/pa-system/ceiling-speaker/img-avkv7ivs.jpg",
+          status: "active",
+          displayOrder: 13
         }
       ]);
-      console.log("✔ Security Devices Catalog Created.");
+      console.log("✔ Complete Security Devices Catalog Created.");
     }
 
     console.log("\n✨ DATABASE SEEDING COMPLETED SUCCESSFULLY!");
@@ -404,8 +499,6 @@ export const seedAllData = async (isStandalone = false) => {
   }
 };
 
-import { fileURLToPath } from "url";
-if (process.argv[1] && process.argv[1] === fileURLToPath(import.meta.url)) {
+if (process.argv[1]?.endsWith("adminSeeder.js")) {
   seedAllData(true);
 }
-
