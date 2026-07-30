@@ -16,6 +16,7 @@ export interface DeviceItem {
   bestFor?: string[];
   keyFeatures?: string[];
   imagePath?: string;
+  images?: string[];
   status: "active" | "inactive";
   displayOrder: number;
   createdAt: string;

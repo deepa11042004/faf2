@@ -34,6 +34,14 @@ export class DeviceService {
       }
     }
 
+    if (typeof data.images === "string") {
+      try {
+        data.images = JSON.parse(data.images);
+      } catch {
+        data.images = data.images.split(",").map((s) => s.trim()).filter(Boolean);
+      }
+    }
+
     return await deviceRepository.create(data);
   }
 
@@ -60,6 +68,14 @@ export class DeviceService {
         data.keyFeatures = JSON.parse(data.keyFeatures);
       } catch {
         data.keyFeatures = data.keyFeatures.split(",").map((s) => s.trim()).filter(Boolean);
+      }
+    }
+
+    if (typeof data.images === "string") {
+      try {
+        data.images = JSON.parse(data.images);
+      } catch {
+        data.images = data.images.split(",").map((s) => s.trim()).filter(Boolean);
       }
     }
 

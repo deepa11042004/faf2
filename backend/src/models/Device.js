@@ -46,6 +46,11 @@ const Device = sequelize.define(
       type: DataTypes.STRING(255),
       allowNull: true
     },
+    images: {
+      type: DataTypes.JSON,
+      allowNull: true,
+      defaultValue: []
+    },
     status: {
       type: DataTypes.ENUM("active", "inactive"),
       defaultValue: "active"

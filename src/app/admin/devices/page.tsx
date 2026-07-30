@@ -268,11 +268,11 @@ const CATEGORY_SLIDER_IMAGES: Record<string, string[]> = {
 };
 
 // Admin Card Image Slider Component
-function AdminCardSlider({ primaryImage, itemTitle }: { primaryImage?: string; itemTitle: string }) {
+function AdminCardSlider({ primaryImage, dbImages, itemTitle }: { primaryImage?: string; dbImages?: string[]; itemTitle: string }) {
   const catalogImages = CATEGORY_SLIDER_IMAGES[itemTitle] || [];
-  const images = catalogImages.length > 0 
-    ? catalogImages 
-    : (primaryImage ? [primaryImage] : []);
+  const images = (dbImages && Array.isArray(dbImages) && dbImages.length > 0)
+    ? dbImages
+    : (catalogImages.length > 0 ? catalogImages : (primaryImage ? [primaryImage] : []));
 
   const [current, setCurrent] = useState(0);
 
@@ -517,7 +517,7 @@ export default function AdminServiceCategoriesPage() {
               <div>
                 {/* Multi-Image Slider for Card */}
                 <div className="relative">
-                  <AdminCardSlider primaryImage={item.imagePath} itemTitle={item.name} />
+                  <AdminCardSlider primaryImage={item.imagePath} dbImages={item.images} itemTitle={item.name} />
 
                   <span className="absolute top-3 left-3 z-30 bg-[#0284C7] text-white font-bold text-[10px] uppercase px-2.5 py-1 rounded-full shadow-md">
                     {item.category}
