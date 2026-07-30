@@ -658,7 +658,7 @@ export default function AccessControlServicePage() {
                       {eq.title}
                     </h3>
 
-                    <p className="text-slate-600 text-xs md:text-sm font-inter leading-relaxed mb-4 line-clamp-2">
+                    <p className="text-slate-600 text-xs md:text-sm font-inter leading-relaxed mb-4">
                       {eq.desc}
                     </p>
 

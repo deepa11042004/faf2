@@ -11,10 +11,334 @@ import {
   Edit2,
   Trash2,
   Cpu,
-  ShieldCheck,
   CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
   X
 } from "lucide-react";
+
+// Image Catalog Mapping for multi-image sliders in Admin Cards
+const CATEGORY_SLIDER_IMAGES: Record<string, string[]> = {
+  // Security Guards
+  "Residential Security Guards": [
+    "/images/services/security-guards/residential-security-guards/img-exiamctq.jpg",
+    "/images/services/security-guards/residential-security-guards/img-llicgcl7.jpg"
+  ],
+  "Commercial Security Guards": [
+    "/images/services/security-guards/commercial-security-guards/img-0qqf0rjg.jpg",
+    "/images/services/security-guards/commercial-security-guards/img-kdtedybx.jpg"
+  ],
+  "Industrial Security Guards": [
+    "/images/services/security-guards/industrial-security-guards/img-a76ntaw8.jpg",
+    "/images/services/security-guards/industrial-security-guards/img-io25lm2p.jpg"
+  ],
+  "Corporate Office Security": [
+    "/images/services/security-guards/corporate-office-security/img-jhz9bsil.jpg",
+    "/images/services/security-guards/corporate-office-security/img-xvzjl7vc.jpg"
+  ],
+  "Hotel Security": [
+    "/images/services/security-guards/hotel-security/img-2lpwrhv1.jpg",
+    "/images/services/security-guards/hotel-security/img-qrx0x7n6.jpg"
+  ],
+  "Hospital Security": [
+    "/images/services/security-guards/hospital-security/img-0hi8skoy.jpg",
+    "/images/services/security-guards/hospital-security/img-sk51hm5s.jpg"
+  ],
+  "School & College Security": [
+    "/images/services/security-guards/school-college-security/img-0c4i3bfk.jpg",
+    "/images/services/security-guards/school-college-security/img-apy5p9sz.jpg"
+  ],
+  "Warehouse Security": [
+    "/images/services/security-guards/warehouse-security/img-pvqpmuq0.jpg",
+    "/images/services/security-guards/warehouse-security/img-yis98onh.jpg"
+  ],
+  "Event Security": [
+    "/images/services/security-guards/event-security/img-53jld5id.jpg",
+    "/images/services/security-guards/event-security/img-stn2yv8t.jpg"
+  ],
+  "VIP Protection (Where Applicable)": [
+    "/images/services/security-guards/vip-protection/img-6095veu5.jpg",
+    "/images/services/security-guards/vip-protection/img-zllz3u2j.jpg"
+  ],
+
+  // CCTV Cameras
+  "Dome Cameras": [
+    "/images/cctv/dome/VP26P-T89uJ-K4JLfuW_mCGOQrehf1rTqHCz-e2Ljrz9UIAVV-9CwaTIQ05Vyji3sHDITRGOT28HEbJolIJ4vxOc3XKNS2_ieTsd_ldZsFmy7S1e2i6z9JFD7CMT0Ptxb4PLN5SO9c0LMySMybvgzvYgPg2xSp16lX5LEPaujV7xkX-xJEwe5PBxzNHCZ9RJ.jpg",
+    "/images/cctv/dome/aR15OIAMnao-N2Ix3CohgQ9EXocqgqQqaEYuCUkgQKMnf46SlCzTUUpGiOdgXfHmwIyC41DbLV6GSIxYm5UUwIWaqfrNK9ivUEJ_cp_NMxakT9w-wVPS-qTC93bYlqCqrKXO5-TqFwx1nn3nnnVTiE-Eix78Bm19TD6iNtDFgdeyMLdWVjP1zTGYKYTKzNJ6.jpg",
+    "/images/cctv/dome/r2otC68jlCzyJlZcaKTWDSBYBb77CSEmVzBQvJVhd9xjc-AMcZe64CfmP2Hx033Gg4NNEGF9iH_IBOlbzzn0RYvP3xZnRR9ubPLTdDmyJ_DtSeK9y8uCAB8oYQKDcnwFqSrn-S7mYlQ1hWZh5fJpRehEjCnZfeTPwYLDQCm5a3I_k7H4Q6l7A87yY4OHhhXu.jpg"
+  ],
+  "Bullet Cameras": [
+    "/images/cctv/bullet/5TenuMzbyrJ5zN0UlqJ7rRLKXQYhnM_6tlAF-812He89l4ewjQtYvQz0U2gZmtzIoM6DEV_Gaeq8nlCT8uvXj5FAljDUZ-rQ5YkGEwo6ebOoaRxWLaQcNQ93W5_gFrc0emAiera7qRjYWAA2QgLExxjNhqQAc2YUDddtb9G4wvWKnSd4kuK8n5sQOwy2MUIv.jpg",
+    "/images/cctv/bullet/8Dsr3zpELO5_i6Dw3WkGDPB5bvIo2xpl1Y54iXMy-VN1hvn1_TiJ1W5nF7BcFoBitTlE1aBJoCoa9PnINtCq5t2ZMJyqZrx9YxVSg0FO-GjwBo92o17OnCuDkjK0naravjnMq4I1-8v-dj8jUtlb4BM6C7ZmpniwtjnlFBRtuDj8HcotH-N-q-BSomI0CS-R.jpg"
+  ],
+  "PTZ Cameras": [
+    "/images/cctv/ptz/3VZFzDiO72AoHwakoDLGNvHFkLVUgiVmdQducNVhp2laXGUxxuEihWeWCa-dDMGUnVT_4KzH-nq6GoEdOUfhEhtTd0Uw1GJt9KAX4BozyvPncmgmz6YE_TzQrfjNbxXV-HT9CTiX5wZ6GKdIAAwg0fmn0PHaX2GytRGANTYHlXqYsuhCuCNXrSxhmb.jpg",
+    "/images/cctv/ptz/3aKrogU_PuxGSGBe-nhUYKXexZtmUjqpXQmT1IVaaKTEKyjTKONcdDQwHBaPSde4YYMnq9dcsxTLd6BWteoJSDZZzG2vun5HpISbA5gg3mwfObCApsrzpV8y45lD9OsFfJuub7YcY9i3BVHZHMkm-awPJIYggJQXyv6AWmBfRR1FpKgwTKXsyhVxXN.jpg"
+  ],
+  "Turret Cameras": [
+    "/images/cctv/turret/SvQC9SamokYa7sTS8d57xE6RX4is0AptxJ0pWwb0wOzmoVwoAI2LVJpHdmDKkU2PGaOk88CNx-qw6KQPH8VTuY-kMrIJhqGAU8LhseFuWWAbCREn3WIqZtlSe09DraRjrzIdCUzG17iu3Vahl1EPzytuUgGX27CgJCnglQ5hPIwkQcXNJmB37jTOJZ.jpg",
+    "/images/cctv/turret/U7CLK71NU3s8iXCUDDnwjWFGkKak_GQxcryQm7jSfv5enZ7cOoZ_L1dAXEb2kH7EX3-qlNB8ObfFVrWZFz3kBDc07GTN86pjlknhQl8thZPlVGYg4nc4mXOnhV_lE9JR_ybvw3S47l8CGeI2-inqnFEh3U0To9VLCVbNggk3UxDByi5_a-VdXKwckfXSX.jpg"
+  ],
+  "Fisheye Cameras": [
+    "/images/cctv/fisheye/TS5VM_mHNYm7bXe2lP9oy6g7-5BofDkiQ5COLXuSLCnY4JYiRnmbwRmN26mSEd3Bjuqj9cWWIEP25sIF3zzyDz3Ya9jBW4Dt1YY1WYlHtUk5Rc9rcPrfhx0riX-XOiUo44q49C74HTi7xGLBykUjQ-7E7KN3G-7Y28IdCcePmkDYmg_Zd2dIEmtV5KaqPgR4.jpg",
+    "/images/cctv/fisheye/Ush_DdR3vMVmqCf4d1nt4lQAq9hldeHwyTBh6y3zoljh6SeBCVZt5CAaDliqxLBDZMu85moC7GsjKM1MjlwqNkGE_TlVYRs89Iht8-ya3PJz_qSuOjgKPUfwdaZBiYj7Tt4QAhGgb0x6tqzwRqKLYQhtrB_AIndte2Z1hQMDtHhUeGBDDG7ndn2py_PDRmm9.jpg"
+  ],
+  "Box Cameras": [
+    "/images/cctv/box/BKOHaLctffpqc4yN-yDyQsAKOsvFpgeccn3PFGqtjvU7T8bMZRY2-NDm241havjANPwiSa0GKhHPX6EKvdqBR5YIhTS2pbBCyHYdseavlJFJ8ZlKaTFyQ6PoGzIkBERboX5Tc5xLKVvSTc9CUdPdR6Axflm1GEdBrHY18FmPoXjXqAlN3rtaJD91xXzfiJ6-.jpg",
+    "/images/cctv/box/Fe1Qq_64vlWphAGvAmJubos5KSpGNf8VbmlyRkA81EAKUFcHzqxiQkO5XzoAfBveYaHanASF-IMDuM4gJaWF6hXkZVpYNqe-9Nx5H0SksElNWX33uJC0meCcitiW110F-CqOHGFn6w_2_nVkq7-j9pTTNGvfZvGYJ6N3K25OVjVaCOX52VhzkqH22oZOcKO4.jpg"
+  ],
+  "Wireless Cameras": [
+    "/images/cctv/wireless/Brvszyepf42s5qZOHOAHslHNpglvdvo9PMoYRQhxYT33PpW20NMHVgGaGTBSKOUtKz58ty5dNdZuQJHOaaKklJk5X1WJjqsgARAmf-haRLtNk5gS52RdDpS7coUbcbhPucAXkXjwgrD6jYeBjgqv2LydGogqPtVIPraHi0WtD454D1rY3I_nUnYkiqYmLpx-.jpg",
+    "/images/cctv/wireless/GtV2rqk8eCg7gap3Ik_Ydtw7zlO8SmIACi0w5gOoyYRy2hNtEoDDfd5NV8_EaNk9rr_Cr0j9puxo9pLJ6ErNMwGtMGZpQmtps0HgzleQ9ujnURnEGP3AQDLIBnnQtBaV-zdBnNnyDqo44lHC4_7MW4T4HYGIji2SZZeywiNGeWoFsHG08ct2qQzEXB1vhhCU.jpg"
+  ],
+  "IP Cameras": [
+    "/images/cctv/ip/i3sCq33JbdmOZ_WKVY_ZVmVvM_KdFr5drwXpbzJrhreC1D7inYnwmW6wDB73XHdNCpRthAn-5v8NTBYpbO4KmXOyohfbeDADjURRxU9VSBVhsF42pxC83jIpYdsyXuiGscc2BqNi751r1zHTL697vWtU5VnYnU2s2bU-9ZMbi6evj0zghqBocsmQxnzYtZHR.jpg",
+    "/images/cctv/ip/ljuNi5WadXxd3D-LTgoUo9BSJ5ctJdjNFlMjG8xkzfi1fU2dN3OC6g792UfozN-QLYWgw3r7fzrCYnLs2KlqdlkQz_VKl5YrGGdrAMr_oj0svf-zAbzVaUCKiAcab_aeSPv5DXCJrvEjvHcoPn0awsq5cmy5UNBtDy9a4KdATsW1K8e8t8xGctd7T2fcdIph.jpg"
+  ],
+
+  // Fire Safety Equipment
+  "Fire Alarm Control Panel": [
+    "/images/services/fire-alarm/fire-alarm-control-panel-facp/img-41gyjfrk.jpg",
+    "/images/services/fire-alarm/fire-alarm-control-panel-facp/img-5gpw193z.jpg"
+  ],
+  "Smoke Detectors": [
+    "/images/services/fire-alarm/smoke-detector/img-4soj8cqs.jpg",
+    "/images/services/fire-alarm/smoke-detector/img-bhq2vety.jpg"
+  ],
+  "Heat Detectors": [
+    "/images/services/fire-alarm/heat-detector/img-empzt0kh.jpg",
+    "/images/services/fire-alarm/heat-detector/img-ersyneux.jpg"
+  ],
+  "Flame Detectors": [
+    "/images/services/fire-alarm/flame-detector/img-0z408d2t.jpg",
+    "/images/services/fire-alarm/flame-detector/img-9dwugq0j.jpg"
+  ],
+  "Beam Smoke Detector": [
+    "/images/services/fire-alarm/beam-smoke-detector/img-66ftinii.jpg",
+    "/images/services/fire-alarm/beam-smoke-detector/img-cawgt6ke.jpg"
+  ],
+  "Emergency Exit Signs": [
+    "/images/services/fire-alarm/emergency-exit-sign/img-0aryxuoh.jpg",
+    "/images/services/fire-alarm/emergency-exit-sign/img-60h93n9j.jpg"
+  ],
+  "Emergency Lights": [
+    "/images/services/fire-alarm/emergency-light/img-3i14ar2g.jpg",
+    "/images/services/fire-alarm/emergency-light/img-cyxj4mh7.jpg"
+  ],
+  "Fire Extinguishers": [
+    "/images/services/fire-alarm/fire-extinguisher/img-cd8qwitk.jpg",
+    "/images/services/fire-alarm/fire-extinguisher/img-ik5yha5h.jpg"
+  ],
+  "Fire Sprinkler System": [
+    "/images/services/fire-alarm/fire-sprinkler-system/img-ehndt9ph.jpg",
+    "/images/services/fire-alarm/fire-sprinkler-system/img-eslesg89.jpg"
+  ],
+  "Fire Hydrant System": [
+    "/images/services/fire-alarm/fire-hydrant-system/img-2ya0vqyi.jpg",
+    "/images/services/fire-alarm/fire-hydrant-system/img-gpw6n0xl.jpg"
+  ],
+  "FM-200 System": [
+    "/images/services/fire-alarm/fm-200-fire-suppression-system/img-8emira6q.jpg",
+    "/images/services/fire-alarm/fm-200-fire-suppression-system/img-k2nr9vht.jpg"
+  ],
+
+  // Access Control Equipment
+  "Biometric Fingerprint Reader": [
+    "/images/services/access-control/biometric-fingerprint-reader/img-7yp7vslh.jpg",
+    "/images/services/access-control/biometric-fingerprint-reader/img-bkmdwe3r.jpg"
+  ],
+  "Facial Recognition Terminal": [
+    "/images/services/access-control/facial-recognition-terminal/img-8gta2svs.jpg",
+    "/images/services/access-control/facial-recognition-terminal/img-9ui2qmn2.jpg"
+  ],
+  "RFID Card Reader": [
+    "/images/services/access-control/rfid-card-reader/img-7pp9r2b0.jpg",
+    "/images/services/access-control/rfid-card-reader/img-phvquhjz.jpg"
+  ],
+  "Keypad Access Control": [
+    "/images/services/access-control/keypad-access-control/img-mrjk6rat.jpg",
+    "/images/services/access-control/keypad-access-control/img-uak61dl1.jpg"
+  ],
+  "Smart Door Lock": [
+    "/images/services/access-control/smart-door-lock/img-hhd2fcx6.jpg",
+    "/images/services/access-control/smart-door-lock/img-rexrg6qb.jpg"
+  ],
+  "Electromagnetic Lock (Maglock)": [
+    "/images/services/access-control/electromagnetic-lock-maglock/img-sya1h93d.jpg",
+    "/images/services/access-control/electromagnetic-lock-maglock/img-xf2p23z2.jpg"
+  ],
+  "Electric Bolt Lock": [
+    "/images/services/access-control/electric-bolt-lock/img-bxxbrn4m.jpg",
+    "/images/services/access-control/electric-bolt-lock/img-v1tnsaaz.jpg"
+  ],
+  "Electric Strike Lock": [
+    "/images/services/access-control/electric-strike-lock/img-bpvjxswg.jpg",
+    "/images/services/access-control/electric-strike-lock/img-d813e77i.jpg"
+  ],
+  "Access Control Controller": [
+    "/images/services/access-control/access-control-controller/img-1uy66gux.jpg",
+    "/images/services/access-control/access-control-controller/img-gq7fpc50.jpg"
+  ],
+  "Exit Push Button": [
+    "/images/services/access-control/exit-push-button/img-425b0u2h.jpg",
+    "/images/services/access-control/exit-push-button/img-cnxvcik7.jpg"
+  ],
+  "Exit Motion Sensor": [
+    "/images/services/access-control/exit-motion-sensor/img-j8g3i1ou.jpg",
+    "/images/services/access-control/exit-motion-sensor/img-qjuqrola.jpg"
+  ],
+  "Door Exit Release Button": [
+    "/images/services/access-control/door-exit-release-button/img-4tsn27pa.jpg",
+    "/images/services/access-control/door-exit-release-button/img-unjw6ose.jpg"
+  ],
+  "Boom Barrier": [
+    "/images/services/access-control/boom-barrier/img-azeb8r5k.jpg",
+    "/images/services/access-control/boom-barrier/img-h4wiwmwp.jpg"
+  ],
+  "Video Door Phone (VDP)": [
+    "/images/services/access-control/video-door-phone-vdp/img-0xtgtvic.jpg",
+    "/images/services/access-control/video-door-phone-vdp/img-9uu3gur7.jpg"
+  ],
+
+  // PA System Equipment
+  "PA System Amplifier": [
+    "/images/services/pa-system/pa-system-amplifier/img-43bln0p3.jpg",
+    "/images/services/pa-system/pa-system-amplifier/img-i0d6mrex.jpg"
+  ],
+  "Ceiling Speaker": [
+    "/images/services/pa-system/ceiling-speaker/img-avkv7ivs.jpg",
+    "/images/services/pa-system/ceiling-speaker/img-lr7ewign.jpg"
+  ],
+  "Wall Mount Speaker": [
+    "/images/services/pa-system/wall-mount-speaker/img-acyt9i6l.jpg",
+    "/images/services/pa-system/wall-mount-speaker/img-uh1z6nku.jpg"
+  ],
+  "Horn Speaker": [
+    "/images/services/pa-system/horn-speaker/img-8g9t83g3.jpg",
+    "/images/services/pa-system/horn-speaker/img-ekqzqnle.jpg"
+  ],
+  "Column Speaker": [
+    "/images/services/pa-system/column-speaker/img-izc93tf7.jpg",
+    "/images/services/pa-system/column-speaker/img-s2w1gf1f.jpg"
+  ],
+  "Paging Microphone": [
+    "/images/services/pa-system/paging-microphone/img-7bgfz11d.jpg",
+    "/images/services/pa-system/paging-microphone/img-z6da1vz6.jpg"
+  ],
+  "Wireless Microphone": [
+    "/images/services/pa-system/wireless-microphone/img-4gftnrvq.jpg",
+    "/images/services/pa-system/wireless-microphone/img-gavfmjx1.jpg"
+  ],
+  "Audio Mixer": [
+    "/images/services/pa-system/audio-mixer/img-3j0ngnza.jpg",
+    "/images/services/pa-system/audio-mixer/img-y76chrrz.jpg"
+  ],
+  "Zone Controller": [
+    "/images/services/pa-system/zone-controller/img-51dztxol.jpg",
+    "/images/services/pa-system/zone-controller/img-qqsx4dbe.jpg"
+  ],
+  "PA System Controller": [
+    "/images/services/pa-system/pa-system-controller/img-kwugwbmc.jpg",
+    "/images/services/pa-system/pa-system-controller/img-qoteph1h.jpg"
+  ],
+  "Network Audio Controller": [
+    "/images/services/pa-system/network-audio-controller/img-hl0gt0ig.jpg",
+    "/images/services/pa-system/network-audio-controller/img-th46dda6.jpg"
+  ],
+  "Rack Cabinet": [
+    "/images/services/pa-system/rack-cabinet/img-2yjii6qa.jpg",
+    "/images/services/pa-system/rack-cabinet/img-r8m1hy97.jpg"
+  ],
+  "Power Supply Unit (PSU)": [
+    "/images/services/pa-system/power-supply-unit-psu/img-1wwq7yib.jpg",
+    "/images/services/pa-system/power-supply-unit-psu/img-93ib1fqo.jpg"
+  ],
+  "Emergency Voice Evacuation System (EVAC)": [
+    "/images/services/pa-system/emergency-voice-evacuation-system-evac/img-1qhyd12o.jpg",
+    "/images/services/pa-system/emergency-voice-evacuation-system-evac/img-31eb2qi2.jpg"
+  ],
+  "Network IP Speaker": [
+    "/images/services/pa-system/network-ip-speaker/img-fdjhmlum.jpg",
+    "/images/services/pa-system/network-ip-speaker/img-kfnxl94y.jpg"
+  ],
+  "Volume Controller": [
+    "/images/services/pa-system/volume-controller/img-cnc7w59b.jpg",
+    "/images/services/pa-system/volume-controller/img-djleys61.jpg"
+  ]
+};
+
+// Admin Card Image Slider Component
+function AdminCardSlider({ primaryImage, itemTitle }: { primaryImage?: string; itemTitle: string }) {
+  const catalogImages = CATEGORY_SLIDER_IMAGES[itemTitle] || [];
+  const images = catalogImages.length > 0 
+    ? catalogImages 
+    : (primaryImage ? [primaryImage] : []);
+
+  const [current, setCurrent] = useState(0);
+
+  if (images.length === 0) {
+    return (
+      <div className="h-56 bg-slate-950 flex items-center justify-center">
+        <Cpu className="w-16 h-16 text-slate-700" />
+      </div>
+    );
+  }
+
+  const prevImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrent((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
+
+  const nextImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrent((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  };
+
+  return (
+    <div className="h-56 bg-slate-950 relative overflow-hidden flex items-center justify-center p-4 group/slider">
+      <img
+        src={getMediaUrl(images[current])}
+        alt={`${itemTitle} - ${current + 1}`}
+        className="max-h-full max-w-full object-contain group-hover/slider:scale-105 transition-transform duration-500"
+      />
+
+      {images.length > 1 && (
+        <>
+          <button
+            type="button"
+            onClick={prevImage}
+            className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 hover:bg-[#0284C7] text-white flex items-center justify-center transition-all opacity-0 group-hover/slider:opacity-100 shadow-lg z-20"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+          <button
+            type="button"
+            onClick={nextImage}
+            className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 hover:bg-[#0284C7] text-white flex items-center justify-center transition-all opacity-0 group-hover/slider:opacity-100 shadow-lg z-20"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
+
+          {/* Dots Indicator */}
+          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-1 bg-slate-900/70 px-2 py-1 rounded-full z-20">
+            {images.map((_, idx) => (
+              <span
+                key={idx}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setCurrent(idx);
+                }}
+                className={`h-1.5 rounded-full cursor-pointer transition-all ${
+                  current === idx ? "w-4 bg-[#38BDF8]" : "w-1.5 bg-slate-500"
+                }`}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
 
 export default function AdminServiceCategoriesPage() {
   const [devices, setDevices] = useState<DeviceItem[]>([]);
@@ -191,29 +515,29 @@ export default function AdminServiceCategoriesPage() {
           devices.map((item) => (
             <div key={item.id} className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl flex flex-col justify-between group hover:border-slate-700 transition-all">
               <div>
-                <div className="h-48 bg-slate-950 relative overflow-hidden flex items-center justify-center p-4">
-                  {item.imagePath ? (
-                    <img src={getMediaUrl(item.imagePath)} alt={item.name} className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500" />
-                  ) : (
-                    <Cpu className="w-16 h-16 text-slate-700" />
-                  )}
+                {/* Multi-Image Slider for Card */}
+                <div className="relative">
+                  <AdminCardSlider primaryImage={item.imagePath} itemTitle={item.name} />
 
-                  <span className="absolute top-3 left-3 bg-[#0284C7] text-white font-bold text-[10px] uppercase px-2.5 py-1 rounded-full shadow-md">
+                  <span className="absolute top-3 left-3 z-30 bg-[#0284C7] text-white font-bold text-[10px] uppercase px-2.5 py-1 rounded-full shadow-md">
                     {item.category}
                   </span>
                 </div>
 
-                <div className="p-5 space-y-3">
+                {/* Card Body - FULL CONTENT UN-TRUNCATED */}
+                <div className="p-5 space-y-4">
                   <h3 className="text-xl font-bebas tracking-wide text-white">{item.name}</h3>
-                  <p className="text-slate-400 text-xs line-clamp-2">{item.description || "No description provided."}</p>
 
-                  {/* Best For Tags */}
+                  {/* Full Un-clamped Description */}
+                  <p className="text-slate-400 text-xs leading-relaxed">{item.description || "No description provided."}</p>
+
+                  {/* Complete Best For Tags */}
                   {Array.isArray(item.bestFor) && item.bestFor.length > 0 && (
                     <div>
-                      <span className="text-[10px] text-slate-500 uppercase font-semibold block mb-1">Best For:</span>
-                      <div className="flex flex-wrap gap-1">
+                      <span className="text-[10px] text-slate-500 uppercase font-semibold block mb-1.5">Best For:</span>
+                      <div className="flex flex-wrap gap-1.5">
                         {item.bestFor.map((tag, idx) => (
-                          <span key={idx} className="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded-md">
+                          <span key={idx} className="text-[10px] bg-slate-800 text-slate-300 px-2.5 py-1 rounded-md">
                             {tag}
                           </span>
                         ))}
@@ -221,15 +545,15 @@ export default function AdminServiceCategoriesPage() {
                     </div>
                   )}
 
-                  {/* Key Features */}
+                  {/* Complete Key Features & Duties */}
                   {Array.isArray(item.keyFeatures) && item.keyFeatures.length > 0 && (
                     <div>
-                      <span className="text-[10px] text-slate-500 uppercase font-semibold block mb-1">Key Features & Duties:</span>
-                      <ul className="text-xs text-slate-300 space-y-0.5">
-                        {item.keyFeatures.slice(0, 3).map((feat, idx) => (
-                          <li key={idx} className="flex items-center gap-1.5 text-slate-400">
-                            <CheckCircle2 className="w-3 h-3 text-[#38BDF8] shrink-0" />
-                            <span className="truncate">{feat}</span>
+                      <span className="text-[10px] text-slate-500 uppercase font-semibold block mb-1.5">Key Features & Duties:</span>
+                      <ul className="text-xs text-slate-300 space-y-1.5">
+                        {item.keyFeatures.map((feat, idx) => (
+                          <li key={idx} className="flex items-start gap-2 text-slate-300">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-[#38BDF8] shrink-0 mt-0.5" />
+                            <span className="leading-snug">{feat}</span>
                           </li>
                         ))}
                       </ul>
@@ -238,7 +562,7 @@ export default function AdminServiceCategoriesPage() {
                 </div>
               </div>
 
-              <div className="p-5 pt-0 border-t border-slate-800/60 flex items-center justify-between mt-4">
+              <div className="p-5 pt-3 border-t border-slate-800/60 flex items-center justify-between mt-4">
                 <span className="text-xs text-slate-500 font-mono">{item.serviceSlug || "general"}</span>
                 <div className="flex items-center gap-2">
                   <button onClick={() => handleOpenModal(item)} className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200">
