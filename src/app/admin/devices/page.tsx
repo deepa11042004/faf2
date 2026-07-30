@@ -351,6 +351,17 @@ export default function AdminServiceCategoriesPage() {
   const [editingItem, setEditingItem] = useState<DeviceItem | null>(null);
   const [formLoading, setFormLoading] = useState(false);
 
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isModalOpen]);
+
   // Delete Modal
   const [deleteId, setDeleteId] = useState<number | null>(null);
   const [deleteLoading, setDeleteLoading] = useState(false);
@@ -574,7 +585,7 @@ export default function AdminServiceCategoriesPage() {
             <div key={item.id} className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl flex flex-col justify-between group hover:border-slate-700 transition-all">
               <div>
                 {/* Multi-Image Slider for Card */}
-                <div className="relative">
+                <div className="relative z-0">
                   <AdminCardSlider primaryImage={item.imagePath} dbImages={item.images} itemTitle={item.name} />
 
                   <span className="absolute top-3 left-3 z-10 bg-[#0284C7] text-white font-bold text-[10px] uppercase px-2.5 py-1 rounded-full shadow-md">
@@ -638,12 +649,13 @@ export default function AdminServiceCategoriesPage() {
 
       {/* Create / Edit Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 bg-slate-950/85 backdrop-blur-md">
-          <div
-            ref={modalScrollRef}
-            tabIndex={0}
-            className="bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 w-full max-w-5xl max-h-[85vh] overflow-y-auto shadow-2xl relative focus:outline-none scroll-smooth my-auto"
-          >
+        <div className="fixed inset-0 z-[100] overflow-y-auto bg-slate-950/85 backdrop-blur-md">
+          <div className="flex min-h-full items-center justify-center p-4 md:p-6">
+            <div
+              ref={modalScrollRef}
+              tabIndex={-1}
+              className="bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 w-full max-w-5xl shadow-2xl relative focus:outline-none"
+            >
             <div className="sticky top-0 bg-slate-900 z-30 pt-1 pb-4 mb-6 border-b border-slate-800 flex items-center justify-between">
               <div>
                 <h2 className="text-3xl font-bebas tracking-wide text-white">

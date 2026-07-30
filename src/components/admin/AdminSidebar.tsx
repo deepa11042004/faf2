@@ -68,9 +68,9 @@ export function AdminSidebar({
           isMobileOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         )}
       >
-        {/* Brand Header */}
-        <div>
-          <div className="flex items-center justify-between p-4 border-b border-slate-800">
+        {/* Brand Header & Nav */}
+        <div className="flex-1 flex flex-col min-h-0">
+          <div className="flex items-center justify-between p-4 border-b border-slate-800 shrink-0">
             <Link href="/admin/dashboard" className="flex items-center gap-3 overflow-hidden">
               <img
                 src="/logo.png"
@@ -93,7 +93,7 @@ export function AdminSidebar({
           </div>
 
           {/* Nav Links */}
-          <nav className="p-3 space-y-1.5">
+          <nav className="p-3 space-y-1.5 flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-slate-700">
             {NAV_ITEMS.map((item) => {
               const Icon = item.icon;
               const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
