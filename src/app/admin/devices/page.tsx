@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { devicesApi } from "@/services/api/devicesApi";
 import { DeviceItem } from "@/types/admin";
 import { ConfirmModal } from "@/components/admin/ConfirmModal";
@@ -380,9 +380,49 @@ export default function AdminServiceCategoriesPage() {
     }
   };
 
+  const modalScrollRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     fetchDevices();
   }, [search, category]);
+
+  // Lock body scroll and handle keyboard scrolling for modal dialog
+  useEffect(() => {
+    if (!isModalOpen) return;
+
+    document.body.style.overflow = "hidden";
+    setTimeout(() => {
+      modalScrollRef.current?.focus();
+    }, 50);
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const activeTag = document.activeElement?.tagName;
+      const isTyping = activeTag === "INPUT" || activeTag === "TEXTAREA" || activeTag === "SELECT";
+
+      if (e.key === "Escape") {
+        setIsModalOpen(false);
+        return;
+      }
+
+      if (!isTyping && modalScrollRef.current) {
+        if (e.key === "ArrowDown" || e.key === "PageDown" || e.key === " ") {
+          e.preventDefault();
+          const amount = e.key === "PageDown" ? 400 : (e.key === " " ? 300 : 150);
+          modalScrollRef.current.scrollBy({ top: amount, behavior: "smooth" });
+        } else if (e.key === "ArrowUp" || e.key === "PageUp") {
+          e.preventDefault();
+          const amount = e.key === "PageUp" ? -400 : -150;
+          modalScrollRef.current.scrollBy({ top: amount, behavior: "smooth" });
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = "unset";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isModalOpen]);
 
   const handleOpenModal = (item?: DeviceItem) => {
     if (item) {
@@ -592,7 +632,11 @@ export default function AdminServiceCategoriesPage() {
 
       {/* Create / Edit Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/85 backdrop-blur-md p-4 md:p-8 flex justify-center items-start">
+        <div
+          ref={modalScrollRef}
+          tabIndex={0}
+          className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/85 backdrop-blur-md p-4 md:p-8 flex justify-center items-start focus:outline-none"
+        >
           <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 w-full max-w-5xl shadow-2xl relative my-8">
             <div className="flex items-center justify-between pb-4 mb-6 border-b border-slate-800">
               <div>
