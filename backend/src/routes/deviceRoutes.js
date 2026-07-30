@@ -6,8 +6,8 @@ import {
   updateDevice,
   deleteDevice
 } from "../controllers/deviceController.js";
-import { authenticate } from "../middlewares/authMiddleware.js";
-import { uploadSingle } from "../middlewares/uploadMiddleware.js";
+import { protectAdmin } from "../middlewares/authMiddleware.js";
+import { upload } from "../middlewares/uploadMiddleware.js";
 
 const router = Router();
 
@@ -16,8 +16,8 @@ router.get("/", getDevices);
 router.get("/:id", getDeviceById);
 
 // Protected Admin Routes
-router.post("/", authenticate, uploadSingle("image"), createDevice);
-router.put("/:id", authenticate, uploadSingle("image"), updateDevice);
-router.delete("/:id", authenticate, deleteDevice);
+router.post("/", protectAdmin, upload.single("image"), createDevice);
+router.put("/:id", protectAdmin, upload.single("image"), updateDevice);
+router.delete("/:id", protectAdmin, deleteDevice);
 
 export default router;

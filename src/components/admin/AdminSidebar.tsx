@@ -24,7 +24,7 @@ import { useAuthStore } from "@/store/authStore";
 const NAV_ITEMS = [
   { label: "Dashboard", href: "/admin/dashboard", icon: LayoutDashboard },
   { label: "Services", href: "/admin/services", icon: ShieldCheck },
-  { label: "Devices Catalog", href: "/admin/devices", icon: Cpu },
+  { label: "Service Categories", href: "/admin/devices", icon: Cpu },
   { label: "Projects", href: "/admin/projects", icon: Building2 },
   { label: "Gallery", href: "/admin/gallery", icon: ImageIcon },
   { label: "Career Jobs", href: "/admin/jobs", icon: Briefcase },

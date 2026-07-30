@@ -88,11 +88,56 @@ export const seedAllData = async (isStandalone = false) => {
       console.log("✔ 5 Core Security Services Created.");
     }
 
-    // 3. Devices Catalog (Force sync/re-populate if < 10)
-    const deviceCount = await Device.count();
-    if (deviceCount < 10) {
-      await Device.destroy({ where: {}, truncate: false });
-      await Device.bulkCreate([
+    // 3. Service Categories Catalog (Force sync/re-populate)
+    await Device.destroy({ where: {}, truncate: false });
+    await Device.bulkCreate([
+        // Security Guard Services Categories
+        {
+          name: "Corporate & Commercial Office Guards",
+          category: "Security Guard Services",
+          serviceSlug: "security-guard-services",
+          description: "Uniformed, background-checked security personnel trained in front desk access management, visitor logs, and corporate safety.",
+          bestFor: ["Corporate Towers", "IT Parks", "Banking Hubs", "Commercial Plazas"],
+          keyFeatures: ["Front Desk Visitor Verification", "Badge & Pass Checking", "CCTV Monitoring Support", "Emergency First Response"],
+          imagePath: "/images/services/guards-service.png",
+          status: "active",
+          displayOrder: 1
+        },
+        {
+          name: "Industrial & Manufacturing Plant Guards",
+          category: "Security Guard Services",
+          serviceSlug: "security-guard-services",
+          description: "Heavy-duty security forces trained for material gate passes, perimeter patrolling, and industrial hazard awareness.",
+          bestFor: ["Manufacturing Plants", "Warehouses", "Construction Sites", "Steel Mills"],
+          keyFeatures: ["24/7 Gate Patrol", "Material & Vehicle Pass Check", "Fire Safety & Extinguisher Trained", "Shift Patrol Rotation"],
+          imagePath: "/images/services/guards/industrial-security-guards/img-a76ntaw8.jpg",
+          status: "active",
+          displayOrder: 2
+        },
+        {
+          name: "Residential Society & Gated Community Security",
+          category: "Security Guard Services",
+          serviceSlug: "security-guard-services",
+          description: "Friendly and vigilant security personnel protecting apartment complexes, villas, and residential townships.",
+          bestFor: ["Gated Communities", "Apartment Societies", "Private Estates"],
+          keyFeatures: ["Intercom Resident Check", "Parking & Traffic Flow Guard", "Night Patrol Duty", "CCTV Gate Supervision"],
+          imagePath: "/images/services/guards/residential-security-guards/img-exiamctq.jpg",
+          status: "active",
+          displayOrder: 3
+        },
+        {
+          name: "VIP Protection & Event Security Bouncers",
+          category: "Security Guard Services",
+          serviceSlug: "security-guard-services",
+          description: "High-level personal security officers and trained bouncers for high-profile events, VIP movement, and crowd management.",
+          bestFor: ["VVIP Movement", "Exhibitions & Concerts", "High Profile Events"],
+          keyFeatures: ["Crowd Control Expertise", "Armed & Unarmed Escort", "Threat Risk Assessment", "Executive Protection"],
+          imagePath: "/images/services/guards/vip-protection/img-6095veu5.jpg",
+          status: "active",
+          displayOrder: 4
+        },
+
+        // CCTV Cameras
         {
           name: "Dome Cameras",
           category: "CCTV Surveillance",
@@ -237,8 +282,7 @@ export const seedAllData = async (isStandalone = false) => {
           displayOrder: 13
         }
       ]);
-      console.log("✔ Security Devices Catalog Populated with 13 Hardware Specs.");
-    }
+      console.log("✔ Service Categories Catalog Populated with 17 Items.");
 
     // 4. Projects Portfolio & Images
     const projectCount = await Project.count();

@@ -11,14 +11,12 @@ import {
   Edit2,
   Trash2,
   Cpu,
-  Image as ImageIcon,
+  ShieldCheck,
   CheckCircle2,
-  XCircle,
-  X,
-  Tag
+  X
 } from "lucide-react";
 
-export default function AdminDevicesPage() {
+export default function AdminServiceCategoriesPage() {
   const [devices, setDevices] = useState<DeviceItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
@@ -51,7 +49,7 @@ export default function AdminDevicesPage() {
         setDevices(res.data.devices);
       }
     } catch (error) {
-      console.error("Failed to fetch devices:", error);
+      console.error("Failed to fetch service categories:", error);
     } finally {
       setLoading(false);
     }
@@ -112,7 +110,7 @@ export default function AdminDevicesPage() {
       setIsModalOpen(false);
       fetchDevices();
     } catch (error) {
-      alert("Failed to save device details.");
+      alert("Failed to save service category details.");
     } finally {
       setFormLoading(false);
     }
@@ -126,7 +124,7 @@ export default function AdminDevicesPage() {
       setDeleteId(null);
       fetchDevices();
     } catch (error) {
-      alert("Failed to delete device.");
+      alert("Failed to delete category item.");
     } finally {
       setDeleteLoading(false);
     }
@@ -137,8 +135,8 @@ export default function AdminDevicesPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bebas tracking-wide text-white">Security Devices & Equipment Catalog</h1>
-          <p className="text-slate-400 text-sm">Manage camera types, biometric hardware, sensors, and equipment specs.</p>
+          <h1 className="text-3xl font-bebas tracking-wide text-white">Service Categories & Hardware Specs</h1>
+          <p className="text-slate-400 text-sm">Manage sub-service categories, camera types, guard deployments, biometric hardware, and equipment specs.</p>
         </div>
 
         <button
@@ -146,7 +144,7 @@ export default function AdminDevicesPage() {
           className="px-4 py-2.5 rounded-xl bg-[#0284C7] hover:bg-[#0369a1] text-white text-sm font-semibold flex items-center gap-2 shadow-lg transition-all"
         >
           <Plus className="w-4 h-4" />
-          <span>Add New Device</span>
+          <span>Add New Category / Device</span>
         </button>
       </div>
 
@@ -156,7 +154,7 @@ export default function AdminDevicesPage() {
           <Search className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
-            placeholder="Search devices..."
+            placeholder="Search service categories..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="w-full bg-slate-950 border border-slate-800 rounded-xl py-2 pl-10 pr-4 text-sm text-white focus:outline-none focus:border-[#0284C7]"
@@ -170,6 +168,7 @@ export default function AdminDevicesPage() {
             className="bg-slate-950 border border-slate-800 rounded-xl py-2 px-3 text-xs text-white focus:outline-none"
           >
             <option value="">All Categories</option>
+            <option value="Security Guard Services">Security Guard Services</option>
             <option value="CCTV Surveillance">CCTV Surveillance</option>
             <option value="Access Control">Access Control</option>
             <option value="Fire Safety">Fire Safety</option>
@@ -178,15 +177,15 @@ export default function AdminDevicesPage() {
         </div>
       </div>
 
-      {/* Devices Grid */}
+      {/* Items Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {loading ? (
           <div className="col-span-full text-center py-12 text-slate-500">
-            Loading security devices...
+            Loading service categories...
           </div>
         ) : devices.length === 0 ? (
           <div className="col-span-full text-center py-12 text-slate-500">
-            No security devices found in catalog.
+            No service categories or devices found in catalog.
           </div>
         ) : (
           devices.map((item) => (
@@ -225,7 +224,7 @@ export default function AdminDevicesPage() {
                   {/* Key Features */}
                   {Array.isArray(item.keyFeatures) && item.keyFeatures.length > 0 && (
                     <div>
-                      <span className="text-[10px] text-slate-500 uppercase font-semibold block mb-1">Key Features:</span>
+                      <span className="text-[10px] text-slate-500 uppercase font-semibold block mb-1">Key Features & Duties:</span>
                       <ul className="text-xs text-slate-300 space-y-0.5">
                         {item.keyFeatures.slice(0, 3).map((feat, idx) => (
                           <li key={idx} className="flex items-center gap-1.5 text-slate-400">
@@ -255,7 +254,7 @@ export default function AdminDevicesPage() {
         )}
       </div>
 
-      {/* Create / Edit Device Modal */}
+      {/* Create / Edit Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm overflow-y-auto">
           <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 max-w-2xl w-full shadow-2xl relative my-8">
@@ -264,29 +263,30 @@ export default function AdminDevicesPage() {
             </button>
 
             <h2 className="text-2xl font-bebas tracking-wide text-white mb-6">
-              {editingItem ? "Edit Security Device" : "Add New Device Type"}
+              {editingItem ? "Edit Service Category / Device" : "Add New Service Category"}
             </h2>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Device Name *</label>
+                  <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Category Name *</label>
                   <input
                     type="text"
                     required
-                    placeholder="e.g. Dome Cameras"
+                    placeholder="e.g. Industrial Security Guards or Dome Cameras"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     className="w-full bg-slate-950 border border-slate-800 rounded-xl py-2.5 px-4 text-white text-sm focus:outline-none focus:border-[#0284C7]"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Category *</label>
+                  <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Parent Service *</label>
                   <select
                     value={deviceCategory}
                     onChange={(e) => setDeviceCategory(e.target.value)}
                     className="w-full bg-slate-950 border border-slate-800 rounded-xl py-2.5 px-4 text-white text-sm focus:outline-none focus:border-[#0284C7]"
                   >
+                    <option value="Security Guard Services">Security Guard Services</option>
                     <option value="CCTV Surveillance">CCTV Surveillance</option>
                     <option value="Access Control">Access Control</option>
                     <option value="Fire Safety">Fire Safety</option>
@@ -302,10 +302,10 @@ export default function AdminDevicesPage() {
                   onChange={(e) => setServiceSlug(e.target.value)}
                   className="w-full bg-slate-950 border border-slate-800 rounded-xl py-2.5 px-4 text-white text-sm focus:outline-none focus:border-[#0284C7]"
                 >
+                  <option value="security-guard-services">Security Guard Services</option>
                   <option value="cctv-installation">CCTV Installation & Live Surveillance</option>
                   <option value="fire-alarm-system">Fire Alarm & Detection Systems</option>
                   <option value="access-control-system">Access Control Systems</option>
-                  <option value="security-guard-services">Security Guard Services</option>
                   <option value="public-address-system">Public Address (PA) Systems</option>
                 </select>
               </div>
@@ -314,7 +314,7 @@ export default function AdminDevicesPage() {
                 <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Description</label>
                 <textarea
                   rows={3}
-                  placeholder="e.g. Ideal for indoor surveillance where aesthetics and wide-angle coverage are important."
+                  placeholder="e.g. Trained & vetted physical security personnel for industrial plants and commercial buildings."
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   className="w-full bg-slate-950 border border-slate-800 rounded-xl py-2.5 px-4 text-white text-sm focus:outline-none focus:border-[#0284C7]"
@@ -325,7 +325,7 @@ export default function AdminDevicesPage() {
                 <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Best For (Comma Separated)</label>
                 <input
                   type="text"
-                  placeholder="Offices, Retail Stores, Hospitals, Schools, Hotels"
+                  placeholder="Corporate Offices, Industrial Plants, Residential Societies, Events"
                   value={bestForInput}
                   onChange={(e) => setBestForInput(e.target.value)}
                   className="w-full bg-slate-950 border border-slate-800 rounded-xl py-2.5 px-4 text-white text-sm focus:outline-none focus:border-[#0284C7]"
@@ -333,10 +333,10 @@ export default function AdminDevicesPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Key Features (Comma Separated)</label>
+                <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Key Features & Duties (Comma Separated)</label>
                 <input
                   type="text"
-                  placeholder="Compact Design, Vandal Resistant, Infrared Night Vision, Wide Viewing Angle"
+                  placeholder="24/7 Gate Supervision, Access Register Management, Fire Safety Trained"
                   value={keyFeaturesInput}
                   onChange={(e) => setKeyFeaturesInput(e.target.value)}
                   className="w-full bg-slate-950 border border-slate-800 rounded-xl py-2.5 px-4 text-white text-sm focus:outline-none focus:border-[#0284C7]"
@@ -344,7 +344,7 @@ export default function AdminDevicesPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Device Image</label>
+                <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Category Image / Banner</label>
                 <input
                   type="file"
                   accept="image/*"
@@ -367,7 +367,7 @@ export default function AdminDevicesPage() {
                   className="px-6 py-2.5 rounded-xl text-sm font-semibold bg-[#0284C7] text-white"
                 >
                   {formLoading && <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin inline-block mr-2" />}
-                  Save Device
+                  Save Category
                 </button>
               </div>
             </form>
@@ -380,8 +380,8 @@ export default function AdminDevicesPage() {
         isOpen={!!deleteId}
         onClose={() => setDeleteId(null)}
         onConfirm={handleDelete}
-        title="Delete Security Device"
-        description="Are you sure you want to delete this device from catalog?"
+        title="Delete Service Category"
+        description="Are you sure you want to delete this service category from catalog?"
         loading={deleteLoading}
       />
     </div>
