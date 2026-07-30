@@ -99,7 +99,7 @@ export const seedAllData = async (isStandalone = false) => {
           description: "Uniformed, background-checked security personnel trained in front desk access management, visitor logs, and corporate safety.",
           bestFor: ["Corporate Towers", "IT Parks", "Banking Hubs", "Commercial Plazas"],
           keyFeatures: ["Front Desk Visitor Verification", "Badge & Pass Checking", "CCTV Monitoring Support", "Emergency First Response"],
-          imagePath: "/images/services/guards-service.png",
+          imagePath: "/images/services/security-guards/corporate-office-security/img-jhz9bsil.jpg",
           status: "active",
           displayOrder: 1
         },
@@ -110,7 +110,7 @@ export const seedAllData = async (isStandalone = false) => {
           description: "Heavy-duty security forces trained for material gate passes, perimeter patrolling, and industrial hazard awareness.",
           bestFor: ["Manufacturing Plants", "Warehouses", "Construction Sites", "Steel Mills"],
           keyFeatures: ["24/7 Gate Patrol", "Material & Vehicle Pass Check", "Fire Safety & Extinguisher Trained", "Shift Patrol Rotation"],
-          imagePath: "/images/services/guards/industrial-security-guards/img-a76ntaw8.jpg",
+          imagePath: "/images/services/security-guards/industrial-security-guards/img-a76ntaw8.jpg",
           status: "active",
           displayOrder: 2
         },
@@ -121,7 +121,7 @@ export const seedAllData = async (isStandalone = false) => {
           description: "Friendly and vigilant security personnel protecting apartment complexes, villas, and residential townships.",
           bestFor: ["Gated Communities", "Apartment Societies", "Private Estates"],
           keyFeatures: ["Intercom Resident Check", "Parking & Traffic Flow Guard", "Night Patrol Duty", "CCTV Gate Supervision"],
-          imagePath: "/images/services/guards/residential-security-guards/img-exiamctq.jpg",
+          imagePath: "/images/services/security-guards/residential-security-guards/img-exiamctq.jpg",
           status: "active",
           displayOrder: 3
         },
@@ -132,7 +132,7 @@ export const seedAllData = async (isStandalone = false) => {
           description: "High-level personal security officers and trained bouncers for high-profile events, VIP movement, and crowd management.",
           bestFor: ["VVIP Movement", "Exhibitions & Concerts", "High Profile Events"],
           keyFeatures: ["Crowd Control Expertise", "Armed & Unarmed Escort", "Threat Risk Assessment", "Executive Protection"],
-          imagePath: "/images/services/guards/vip-protection/img-6095veu5.jpg",
+          imagePath: "/images/services/security-guards/vip-protection/img-6095veu5.jpg",
           status: "active",
           displayOrder: 4
         },
