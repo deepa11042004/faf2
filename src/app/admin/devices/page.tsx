@@ -531,7 +531,7 @@ export default function AdminServiceCategoriesPage() {
                 <div className="relative">
                   <AdminCardSlider primaryImage={item.imagePath} dbImages={item.images} itemTitle={item.name} />
 
-                  <span className="absolute top-3 left-3 z-30 bg-[#0284C7] text-white font-bold text-[10px] uppercase px-2.5 py-1 rounded-full shadow-md">
+                  <span className="absolute top-3 left-3 z-10 bg-[#0284C7] text-white font-bold text-[10px] uppercase px-2.5 py-1 rounded-full shadow-md">
                     {item.category}
                   </span>
                 </div>

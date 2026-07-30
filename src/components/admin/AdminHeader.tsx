@@ -12,7 +12,7 @@ export function AdminHeader({ setIsMobileOpen }: AdminHeaderProps) {
   const user = useAuthStore((state) => state.user);
 
   return (
-    <header className="h-16 bg-slate-900 border-b border-slate-800 text-slate-100 px-4 md:px-6 flex items-center justify-between sticky top-0 z-30 shadow-md">
+    <header className="h-16 bg-slate-900 border-b border-slate-800 text-slate-100 px-4 md:px-6 flex items-center justify-between sticky top-0 z-40 shadow-md">
       <div className="flex items-center gap-4">
         <button
           onClick={() => setIsMobileOpen(true)}
