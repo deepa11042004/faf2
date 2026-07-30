@@ -293,39 +293,160 @@ export const seedAllData = async (isStandalone = false) => {
         displayOrder: 18
       },
 
-      // Fire Safety Equipment
+      // 14 Fire Safety Equipment
       {
-        name: "Fire Alarm Control Panel (FACP)",
+        name: "Fire Alarm Control Panel",
         category: "Fire Safety",
         serviceSlug: "fire-alarm-system",
-        description: "Centralized intelligent control panel monitoring all fire loops, smoke sensors, and notification horns.",
-        bestFor: ["Commercial Buildings", "Industrial Plants", "Hospitals", "Hotels"],
-        keyFeatures: ["Multi-Zone Monitoring", "Battery Backup", "Automated Sprinkler Relay", "LCD Touch Interface"],
+        description: "The central brain of the fire protection system, receiving signals from sensors and activating alarms, sprinklers, and emergency notifications.",
+        bestFor: ["Commercial Towers", "Hospitals", "Industrial Facilities", "Hotels"],
+        keyFeatures: ["Addressable & Conventional", "Battery Backup", "LCD Display", "Zone Monitoring", "Emergency Dialer Integration"],
         imagePath: "/images/services/fire-alarm/fire-alarm-control-panel-facp/img-41gyjfrk.jpg",
         status: "active",
         displayOrder: 19
       },
       {
-        name: "Optical Smoke Detector",
+        name: "Smoke Detectors",
         category: "Fire Safety",
         serviceSlug: "fire-alarm-system",
-        description: "Photoelectric smoke sensor detecting smoldering fires before open flames burst.",
-        bestFor: ["Offices", "Server Rooms", "Bedrooms", "Libraries"],
-        keyFeatures: ["360° Smoke Entry", "Dust Resistance", "Addressable Loop ID", "Built-in Sounder"],
+        description: "Optical and ionization sensors that detect combustion particles at the earliest stage to trigger pre-alarm notifications.",
+        bestFor: ["Offices", "Bedrooms", "Server Rooms", "Corridors", "Libraries"],
+        keyFeatures: ["Photoelectric Optics", "360° Smoke Entry", "Dust Resistance", "Built-in LED Indicator", "Low Power Consumption"],
         imagePath: "/images/services/fire-alarm/smoke-detector/img-4soj8cqs.jpg",
         status: "active",
         displayOrder: 20
       },
       {
-        name: "Rate-of-Rise Heat Detector",
+        name: "Heat Detectors",
         category: "Fire Safety",
         serviceSlug: "fire-alarm-system",
-        description: "Triggers emergency alert when ambient temperature rises rapidly, ideal for dusty or smoky environments.",
-        bestFor: ["Kitchens", "Garages", "Boiler Rooms", "Factories"],
-        keyFeatures: ["Dual Temperature Sensor", "High Humidity Tolerant", "Auto Reset"],
+        description: "Fixed temperature and rate-of-rise thermal sensors ideal for dusty or smoky environments where smoke detectors might false alarm.",
+        bestFor: ["Kitchens", "Boiler Rooms", "Garages", "Manufacturing Plants"],
+        keyFeatures: ["Rate-of-Rise Sensing", "Fixed Temp (57°C - 90°C)", "High Humidity Tolerant", "Vandal Resistant"],
         imagePath: "/images/services/fire-alarm/heat-detector/img-empzt0kh.jpg",
         status: "active",
         displayOrder: 21
+      },
+      {
+        name: "Flame Detectors",
+        category: "Fire Safety",
+        serviceSlug: "fire-alarm-system",
+        description: "Advanced optical sensors responding to infrared (IR) or ultraviolet (UV) radiation emitted by open flames within milliseconds.",
+        bestFor: ["Oil & Gas Refineries", "Chemical Plants", "Fuel Depots", "Aircraft Hangars"],
+        keyFeatures: ["UV/IR Optical Dual Sensor", "Millisecond Trigger Time", "Solar Radiation Blind", "Explosion-Proof Housing"],
+        imagePath: "/images/services/fire-alarm/flame-detector/img-0z408d2t.jpg",
+        status: "active",
+        displayOrder: 22
+      },
+      {
+        name: "Beam Smoke Detector",
+        category: "Fire Safety",
+        serviceSlug: "fire-alarm-system",
+        description: "Beam smoke detectors project an infrared beam across large open spaces. Smoke interrupting the beam triggers the fire alarm system.",
+        bestFor: ["Warehouses", "Atriums", "Shopping Malls", "Aircraft Hangars", "Auditoriums"],
+        keyFeatures: ["Long Detection Range", "Ideal for High Ceilings", "Low Maintenance", "Accurate Detection"],
+        imagePath: "/images/services/fire-alarm/beam-smoke-detector/img-66ftinii.jpg",
+        status: "active",
+        displayOrder: 23
+      },
+      {
+        name: "Fire Alarm Bell",
+        category: "Fire Safety",
+        serviceSlug: "fire-alarm-system",
+        description: "Fire alarm bells provide a traditional audible warning when the fire alarm system is activated.",
+        bestFor: ["School Corridors", "Commercial Buildings", "Industrial Warehouses", "Residential Buildings"],
+        keyFeatures: ["High Sound Output", "Durable Metal Construction", "Reliable Operation"],
+        imagePath: "/images/services/fire-alarm/fire-alarm-bell/img-47awgded.jpg",
+        status: "active",
+        displayOrder: 24
+      },
+      {
+        name: "Fire Alarm Sounder & Strobe",
+        category: "Fire Safety",
+        serviceSlug: "fire-alarm-system",
+        description: "Sounders emit loud alarm tones while strobe lights provide visual warnings, ensuring that all occupants are alerted during emergencies.",
+        bestFor: ["Noisy Factories", "Hospitals", "Public Venues", "Shopping Centers", "Commercial Buildings"],
+        keyFeatures: ["Loud Audible Alarm", "Bright LED Flash", "Indoor & Outdoor Models", "Low Power Consumption"],
+        imagePath: "/images/services/fire-alarm/fire-alarm-sounder-strobe/img-8hrwvuu6.jpg",
+        status: "active",
+        displayOrder: 25
+      },
+      {
+        name: "Emergency Exit Signs",
+        category: "Fire Safety",
+        serviceSlug: "fire-alarm-system",
+        description: "Illuminated photoluminescent and battery-backed direction signs marking designated egress paths during power outages.",
+        bestFor: ["Stairways", "Corridors", "Fire Doors", "Basement Parking"],
+        keyFeatures: ["LED Edge-Lit", "3-Hour Battery Backup", "Double-Sided Directional", "Energy Efficient"],
+        imagePath: "/images/services/fire-alarm/emergency-exit-sign/img-0aryxuoh.jpg",
+        status: "active",
+        displayOrder: 26
+      },
+      {
+        name: "Emergency Lights",
+        category: "Fire Safety",
+        serviceSlug: "fire-alarm-system",
+        description: "Automatic battery-operated backup luminaires providing essential pathway lighting when main electrical power fails.",
+        bestFor: ["Escape Routes", "Electrical Rooms", "Control Centers", "Hallways"],
+        keyFeatures: ["Auto-Power Transfer", "Dual Adjustable Heads", "Long-Life Lithium Battery", "Self-Testing Feature"],
+        imagePath: "/images/services/fire-alarm/emergency-light/img-3i14ar2g.jpg",
+        status: "active",
+        displayOrder: 27
+      },
+      {
+        name: "Fire Extinguishers",
+        category: "Fire Safety",
+        serviceSlug: "fire-alarm-system",
+        description: "Portable first-response fire suppression cylinders for Class A, B, C, D, and Electrical fire hazards.",
+        bestFor: ["Offices", "Vehicles", "Kitchens", "Electrical Panels"],
+        keyFeatures: ["ABC Dry Powder / CO2 / Clean Agent", "Pressure Gauge", "Discharge Hose", "Wall Mounting Bracket"],
+        imagePath: "/images/services/fire-alarm/fire-extinguisher/img-cd8qwitk.jpg",
+        status: "active",
+        displayOrder: 28
+      },
+      {
+        name: "Fire Sprinkler System",
+        category: "Fire Safety",
+        serviceSlug: "fire-alarm-system",
+        description: "Automated heat-activated water distribution piping system suppressing fires directly over the source.",
+        bestFor: ["High-Rise Buildings", "Warehouses", "Shopping Malls", "Hotels"],
+        keyFeatures: ["Glass Bulb Sprinkler Heads", "Wet / Dry Pipe Systems", "Flow Switches", "Alarm Valve Assembly"],
+        imagePath: "/images/services/fire-alarm/fire-sprinkler-system/img-ehndt9ph.jpg",
+        status: "active",
+        displayOrder: 29
+      },
+      {
+        name: "Fire Hydrant System",
+        category: "Fire Safety",
+        serviceSlug: "fire-alarm-system",
+        description: "Heavy-duty pressurized water ring network and outdoor pillar hydrants supplying water for municipal fire brigades.",
+        bestFor: ["Industrial Parks", "Commercial Complexes", "Factories", "Residential Townships"],
+        keyFeatures: ["High Pressure Water Mains", "Landed Valves", "Canvas Hose Pipe & Nozzles", "Diesel & Electric Fire Pumps"],
+        imagePath: "/images/services/fire-alarm/fire-hydrant-system/img-2ya0vqyi.jpg",
+        status: "active",
+        displayOrder: 30
+      },
+      {
+        name: "Hose Reel System",
+        category: "Fire Safety",
+        serviceSlug: "fire-alarm-system",
+        description: "First-aid manual firefighting water hose reels permanently connected to pressurized water supply.",
+        bestFor: ["Building Landing Areas", "Commercial Corridors", "Schools"],
+        keyFeatures: ["30m Rubber Hose Pipe", "Shut-Off Jet Nozzle", "Swivel Drum Mounting", "Red Polyester Coating"],
+        imagePath: "/images/services/fire-alarm/fire-hose-reel/img-ac9cs52h.jpg",
+        status: "active",
+        displayOrder: 31
+      },
+      {
+        name: "FM-200 System",
+        category: "Fire Safety",
+        serviceSlug: "fire-alarm-system",
+        description: "Waterless gaseous fire suppression system discharging within 10 seconds to extinguish fires without damaging electronics.",
+        bestFor: ["Data Centers", "Server Rooms", "Telecommunication Hubs", "Control Rooms"],
+        keyFeatures: ["Zero Ozone Depletion", "Fast 10s Discharge", "Electrically Non-Conductive", "No Residue Cleanup"],
+        imagePath: "/images/services/fire-alarm/fm-200-fire-suppression-system/img-8emira6q.jpg",
+        status: "active",
+        displayOrder: 32
       },
 
       // Access Control Equipment
@@ -338,7 +459,7 @@ export const seedAllData = async (isStandalone = false) => {
         keyFeatures: ["Live Finger Detection", "IP65 Rated", "Wiegand / OSDP Protocol", "Offline Buffer"],
         imagePath: "/images/services/access-control/biometric-fingerprint-reader/img-7yp7vslh.jpg",
         status: "active",
-        displayOrder: 22
+        displayOrder: 33
       },
       {
         name: "Touchless Facial Recognition Terminal",
@@ -349,7 +470,7 @@ export const seedAllData = async (isStandalone = false) => {
         keyFeatures: ["0.2s Facial Recognition", "Anti-Spoofing AI", "Touchless Hygiene", "10,000 Capacity"],
         imagePath: "/images/services/access-control/facial-recognition-terminal/img-8gta2svs.jpg",
         status: "active",
-        displayOrder: 23
+        displayOrder: 34
       },
       {
         name: "Electromagnetic Lock (Maglock)",
@@ -360,7 +481,7 @@ export const seedAllData = async (isStandalone = false) => {
         keyFeatures: ["600lbs Holding Force", "Fail-Safe Operation", "LED Status Indicator", "Zero Residual Magnetism"],
         imagePath: "/images/services/access-control/electromagnetic-lock-maglock/img-sya1h93d.jpg",
         status: "active",
-        displayOrder: 24
+        displayOrder: 35
       },
 
       // PA Systems
@@ -373,7 +494,7 @@ export const seedAllData = async (isStandalone = false) => {
         keyFeatures: ["240W RMS Output", "6 Independent Zones", "Chime & Siren Inputs", "FM/USB/Bluetooth"],
         imagePath: "/images/services/pa-system/pa-system-amplifier/img-43bln0p3.jpg",
         status: "active",
-        displayOrder: 25
+        displayOrder: 36
       },
       {
         name: "Flush Ceiling Speaker",
@@ -384,10 +505,10 @@ export const seedAllData = async (isStandalone = false) => {
         keyFeatures: ["100V Line Transformer", "ABS Flush Mount", "Crisp Vocal Clarity"],
         imagePath: "/images/services/pa-system/ceiling-speaker/img-avkv7ivs.jpg",
         status: "active",
-        displayOrder: 26
+        displayOrder: 37
       }
     ]);
-    console.log("✔ Service Categories Catalog Populated with All 26 Items.");
+    console.log("✔ Service Categories Catalog Populated with All 37 Items.");
 
     // 4. Projects Portfolio & Images
     const projectCount = await Project.count();
