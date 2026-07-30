@@ -592,7 +592,7 @@ export default function AdminServiceCategoriesPage() {
 
       {/* Create / Edit Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 bg-slate-950/85 backdrop-blur-md overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 bg-slate-950/85 backdrop-blur-md">
           <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 w-full max-w-5xl h-[90vh] max-h-[880px] flex flex-col shadow-2xl relative my-auto">
             <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-800 shrink-0">
               <div>
@@ -611,7 +611,7 @@ export default function AdminServiceCategoriesPage() {
             </div>
 
             <form onSubmit={handleSubmit} className="flex flex-col flex-1 overflow-hidden">
-              <div className="flex-1 overflow-y-auto pr-3 space-y-6">
+              <div tabIndex={0} className="flex-1 overflow-y-auto pr-3 space-y-6 focus:outline-none scroll-smooth">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Category Name *</label>
