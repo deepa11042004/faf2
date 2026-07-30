@@ -15,5 +15,14 @@ export const applicationsApi = {
   deleteApplication: async (id: number | string) => {
     const res = await apiClient.delete<ApiResponse>(`/applications/${id}`);
     return res.data;
+  },
+
+  submitApplication: async (formData: FormData) => {
+    const res = await apiClient.post<ApiResponse>("/applications", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data"
+      }
+    });
+    return res.data;
   }
 };

@@ -27,6 +27,7 @@ import {
 } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { applicationsApi } from "@/services/api/applicationsApi";
 
 // Employee Benefits & Facilities Data
 const BENEFITS_CATEGORIES = [
@@ -290,12 +291,50 @@ export default function CareersPage() {
     skills: "",
     certifications: "",
     coverLetter: "",
-    declaration: false
+    declaration: false,
+    resumeFile: null as File | null
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    
+    if (!formData.resumeFile) {
+      alert("Please select and upload your resume.");
+      return;
+    }
+
+    try {
+      const data = new FormData();
+      
+      // Map frontend fields to backend expected fields
+      data.append("applicantName", formData.fullName);
+      data.append("email", formData.email);
+      data.append("phone", formData.mobile);
+      data.append("appliedJob", formData.position);
+      
+      // Serialize additional fields as JSON for structured rendering in Admin Panel
+      const additionalDetails = {
+        City: formData.currentCity,
+        "Date of Birth": formData.dob,
+        "Total Experience": formData.totalExp,
+        "Current Employer": formData.currentEmployer,
+        "Notice Period": formData.noticePeriod,
+        "Highest Qualification": formData.highestQual,
+        "Institution": formData.institution,
+        "Passing Year": formData.passingYear
+      };
+      data.append("message", JSON.stringify(additionalDetails));
+
+      if (formData.resumeFile) {
+        data.append("resume", formData.resumeFile as Blob);
+      }
+
+      await applicationsApi.submitApplication(data);
+      setSubmitted(true);
+    } catch (error) {
+      console.error("Failed to submit application", error);
+      alert("Failed to submit your application. Please try again later.");
+    }
   };
 
   return (
@@ -539,6 +578,10 @@ export default function CareersPage() {
                     <input 
                       type="text" 
                       required
+                      minLength={2}
+                      maxLength={50}
+                      pattern="^[A-Za-z\\s\\.]+$"
+                      title="Please enter a valid name (letters and spaces only)"
                       placeholder="e.g. Rahul Sharma"
                       value={formData.fullName}
                       onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
@@ -550,6 +593,7 @@ export default function CareersPage() {
                     <input 
                       type="email" 
                       required
+                      maxLength={100}
                       placeholder="e.g. rahul@example.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -561,6 +605,8 @@ export default function CareersPage() {
                     <input 
                       type="tel" 
                       required
+                      pattern="^\\+?[0-9\\s\\-\\(\\)]{7,15}$"
+                      title="Please enter a valid phone number (7-15 digits)"
                       placeholder="+91 98765 43210"
                       value={formData.mobile}
                       onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
@@ -572,6 +618,10 @@ export default function CareersPage() {
                     <input 
                       type="text" 
                       required
+                      minLength={2}
+                      maxLength={50}
+                      pattern="^[A-Za-z\\s\\-]+$"
+                      title="Please enter a valid city name"
                       placeholder="e.g. New Delhi"
                       value={formData.currentCity}
                       onChange={(e) => setFormData({ ...formData, currentCity: e.target.value })}
@@ -583,6 +633,8 @@ export default function CareersPage() {
                     <input 
                       type="date" 
                       required
+                      max="2008-12-31"
+                      title="You must be at least 18 years old to apply"
                       value={formData.dob}
                       onChange={(e) => setFormData({ ...formData, dob: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:border-[#0284C7] bg-white font-inter text-slate-800"
@@ -614,6 +666,7 @@ export default function CareersPage() {
                     <input 
                       type="text" 
                       required
+                      maxLength={30}
                       placeholder="e.g. 2 Years / Fresher"
                       value={formData.totalExp}
                       onChange={(e) => setFormData({ ...formData, totalExp: e.target.value })}
@@ -624,6 +677,7 @@ export default function CareersPage() {
                     <label className="block text-xs font-inter font-bold uppercase text-slate-700 mb-2">Current Employer</label>
                     <input 
                       type="text" 
+                      maxLength={100}
                       placeholder="Company Name (if employed)"
                       value={formData.currentEmployer}
                       onChange={(e) => setFormData({ ...formData, currentEmployer: e.target.value })}
@@ -634,6 +688,7 @@ export default function CareersPage() {
                     <label className="block text-xs font-inter font-bold uppercase text-slate-700 mb-2">Notice Period</label>
                     <input 
                       type="text" 
+                      maxLength={50}
                       placeholder="e.g. Immediate / 15 Days"
                       value={formData.noticePeriod}
                       onChange={(e) => setFormData({ ...formData, noticePeriod: e.target.value })}
@@ -654,6 +709,8 @@ export default function CareersPage() {
                     <input 
                       type="text" 
                       required
+                      minLength={2}
+                      maxLength={100}
                       placeholder="e.g. 12th / ITI / Diploma"
                       value={formData.highestQual}
                       onChange={(e) => setFormData({ ...formData, highestQual: e.target.value })}
@@ -665,6 +722,8 @@ export default function CareersPage() {
                     <input 
                       type="text" 
                       required
+                      minLength={2}
+                      maxLength={150}
                       placeholder="School / College Name"
                       value={formData.institution}
                       onChange={(e) => setFormData({ ...formData, institution: e.target.value })}
@@ -676,6 +735,8 @@ export default function CareersPage() {
                     <input 
                       type="text" 
                       required
+                      pattern="^(19|20)\\d{2}$"
+                      title="Please enter a valid 4-digit year (e.g., 2021)"
                       placeholder="e.g. 2021"
                       value={formData.passingYear}
                       onChange={(e) => setFormData({ ...formData, passingYear: e.target.value })}
@@ -693,11 +754,22 @@ export default function CareersPage() {
                 <div className="space-y-6">
                   <div>
                     <label className="block text-xs font-inter font-bold uppercase text-slate-700 mb-2">Upload Resume (PDF / DOC / DOCX - Max 5MB) *</label>
-                    <div className="border-2 border-dashed border-sky-300 rounded-2xl p-6 bg-white text-center cursor-pointer hover:border-[#0284C7]">
+                    <label className="border-2 border-dashed border-sky-300 rounded-2xl p-6 bg-white text-center cursor-pointer hover:border-[#0284C7] block">
                       <Upload className="w-8 h-8 text-[#0284C7] mx-auto mb-2" />
-                      <span className="text-sm font-inter text-slate-600 block">Click to select resume file</span>
-                      <input type="file" required accept=".pdf,.doc,.docx" className="hidden" />
-                    </div>
+                      <span className="text-sm font-inter text-slate-600 block">
+                        {formData.resumeFile ? formData.resumeFile.name : "Click to select resume file"}
+                      </span>
+                      <input 
+                        type="file" 
+                        accept=".pdf,.doc,.docx" 
+                        className="hidden"
+                        onChange={(e) => {
+                          if (e.target.files && e.target.files.length > 0) {
+                            setFormData({ ...formData, resumeFile: e.target.files[0] });
+                          }
+                        }}
+                      />
+                    </label>
                   </div>
 
                   <div className="flex items-start gap-3 bg-white p-4 rounded-xl border border-slate-200">

@@ -39,6 +39,7 @@ export default function AdminServicesPage() {
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState<"active" | "inactive">("active");
   const [bannerFile, setBannerFile] = useState<File | null>(null);
+  const [removeBannerImage, setRemoveBannerImage] = useState(false);
 
   const fetchServices = async () => {
     try {
@@ -76,6 +77,7 @@ export default function AdminServicesPage() {
       setStatus("active");
     }
     setBannerFile(null);
+    setRemoveBannerImage(false);
     setIsModalOpen(true);
   };
 
@@ -99,6 +101,9 @@ export default function AdminServicesPage() {
       formData.append("status", status);
       if (bannerFile) {
         formData.append("bannerImage", bannerFile);
+      }
+      if (removeBannerImage) {
+        formData.append("removeBannerImage", "true");
       }
 
       if (editingItem) {
@@ -302,11 +307,47 @@ export default function AdminServicesPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Banner Image</label>
+                  <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 flex items-center justify-between">
+                    Banner Image
+                    {editingItem?.bannerImage && !bannerFile && !removeBannerImage && (
+                      <span className="text-[10px] text-emerald-400 font-normal normal-case tracking-normal">Current Image Available</span>
+                    )}
+                  </label>
+                  
+                  {(bannerFile || (editingItem?.bannerImage && !removeBannerImage)) && (
+                    <div className="mb-3 w-full h-24 sm:h-32 rounded-xl border border-slate-800 bg-slate-950/50 overflow-hidden relative group">
+                      <img 
+                        src={bannerFile ? URL.createObjectURL(bannerFile) : getMediaUrl(editingItem!.bannerImage!)} 
+                        alt="Preview" 
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
+                      
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (bannerFile) setBannerFile(null);
+                          if (editingItem?.bannerImage) setRemoveBannerImage(true);
+                        }}
+                        className="absolute top-2 right-2 p-1.5 bg-red-500/80 hover:bg-red-500 text-white rounded-lg backdrop-blur-md transition-colors shadow-sm"
+                        title="Remove Image"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+
+                      <span className="absolute bottom-2 left-3 text-[10px] text-white/80 font-medium">
+                        {bannerFile ? "New Selection" : "Current Banner"}
+                      </span>
+                    </div>
+                  )}
+                  
                   <input
                     type="file"
                     accept="image/*"
-                    onChange={(e) => setBannerFile(e.target.files?.[0] || null)}
+                    onChange={(e) => {
+                      setBannerFile(e.target.files?.[0] || null);
+                      setRemoveBannerImage(false);
+                    }}
                     className="w-full text-xs text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-[#0284C7] file:text-white hover:file:bg-[#0369a1]"
                   />
                 </div>

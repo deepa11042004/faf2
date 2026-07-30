@@ -1,16 +1,42 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, Send } from "lucide-react";
+import { Phone, Mail, MapPin, Send, CheckCircle2 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import { contactApi } from "@/services/api/contactApi";
 
 export function ContactSection() {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
-  const onSubmit = (data: any) => {
-    console.log(data);
-    alert("Message sent successfully! (Demo)");
+  const onSubmit = async (data: any) => {
+    try {
+      setIsSubmitting(true);
+      setErrorMsg("");
+      const payload = {
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        interestedService: data.service,
+        message: data.message
+      };
+      const res = await contactApi.submitEnquiry(payload);
+      if (res.success) {
+        setSubmitted(true);
+        reset();
+      } else {
+        setErrorMsg("Failed to submit message. Please try again.");
+      }
+    } catch (err: any) {
+      console.error(err);
+      setErrorMsg("An error occurred while sending your message.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -87,59 +113,74 @@ export function ContactSection() {
             
             <h3 className="text-3xl font-bebas tracking-wide text-slate-900 mb-6">Send us a Message</h3>
             
-            <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5 relative z-10 font-inter">
-              <div className="grid grid-cols-2 gap-5">
+            {submitted ? (
+              <div className="flex flex-col items-center justify-center py-10 text-center relative z-10">
+                <div className="w-16 h-16 bg-[#0284C7]/10 text-[#0284C7] rounded-full flex items-center justify-center mb-4">
+                  <CheckCircle2 className="w-8 h-8" />
+                </div>
+                <h4 className="font-bebas text-2xl text-slate-900 mb-2">Message Sent!</h4>
+                <p className="text-slate-600 font-inter mb-6">Thank you for reaching out. Our team will get back to you shortly.</p>
+                <Button onClick={() => setSubmitted(false)} variant="outline" className="border-[#0284C7] text-[#0284C7] hover:bg-[#0284C7]/10 rounded-full px-8">
+                  Send Another
+                </Button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5 relative z-10 font-inter">
+                {errorMsg && <div className="p-3 bg-red-50 text-red-600 rounded-lg text-sm">{errorMsg}</div>}
+                
+                <div className="grid grid-cols-2 gap-5">
+                  <div className="flex flex-col gap-1">
+                    <input
+                      {...register("name", { required: true })}
+                      placeholder="Your Name"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-[#0284C7] focus:ring-2 focus:ring-[#0284C7]/20 transition-all text-slate-900"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <input
+                      {...register("phone", { required: true })}
+                      placeholder="Phone Number"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-[#0284C7] focus:ring-2 focus:ring-[#0284C7]/20 transition-all text-slate-900"
+                    />
+                  </div>
+                </div>
+
                 <div className="flex flex-col gap-1">
                   <input
-                    {...register("name", { required: true })}
-                    placeholder="Your Name"
+                    {...register("email", { required: true })}
+                    placeholder="Email Address"
+                    type="email"
                     className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-[#0284C7] focus:ring-2 focus:ring-[#0284C7]/20 transition-all text-slate-900"
                   />
                 </div>
+
                 <div className="flex flex-col gap-1">
-                  <input
-                    {...register("phone", { required: true })}
-                    placeholder="Phone Number"
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-[#0284C7] focus:ring-2 focus:ring-[#0284C7]/20 transition-all text-slate-900"
+                  <select
+                    {...register("service")}
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-600 focus:outline-none focus:border-[#0284C7] focus:ring-2 focus:ring-[#0284C7]/20 transition-all"
+                  >
+                    <option value="">Select a Service</option>
+                    <option value="CCTV Installation & Live Surveillance">CCTV Installation</option>
+                    <option value="Fire Alarm & Detection Systems">Fire Alarm System</option>
+                    <option value="Access Control & Security Systems">Access Control</option>
+                    <option value="Security Guard Services">Security Guard Services</option>
+                  </select>
+                </div>
+
+                <div className="flex flex-col gap-1">
+                  <textarea
+                    {...register("message", { required: true })}
+                    placeholder="How can we help you?"
+                    rows={4}
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-[#0284C7] focus:ring-2 focus:ring-[#0284C7]/20 transition-all resize-none text-slate-900"
                   />
                 </div>
-              </div>
 
-              <div className="flex flex-col gap-1">
-                <input
-                  {...register("email", { required: true })}
-                  placeholder="Email Address"
-                  type="email"
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-[#0284C7] focus:ring-2 focus:ring-[#0284C7]/20 transition-all text-slate-900"
-                />
-              </div>
-
-              <div className="flex flex-col gap-1">
-                <select
-                  {...register("service")}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-600 focus:outline-none focus:border-[#0284C7] focus:ring-2 focus:ring-[#0284C7]/20 transition-all"
-                >
-                  <option value="">Select a Service</option>
-                  <option value="cctv">CCTV Installation</option>
-                  <option value="fire">Fire Alarm System</option>
-                  <option value="access">Access Control</option>
-                  <option value="guard">Security Guard Services</option>
-                </select>
-              </div>
-
-              <div className="flex flex-col gap-1">
-                <textarea
-                  {...register("message", { required: true })}
-                  placeholder="How can we help you?"
-                  rows={4}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-[#0284C7] focus:ring-2 focus:ring-[#0284C7]/20 transition-all resize-none text-slate-900"
-                />
-              </div>
-
-              <Button type="submit" variant="premium" size="lg" className="w-full mt-2 gap-2 text-base h-14 bg-[#0284C7] hover:bg-[#0369a1] text-white">
-                Submit Message <Send className="w-5 h-5" />
-              </Button>
-            </form>
+                <Button disabled={isSubmitting} type="submit" variant="premium" size="lg" className="w-full mt-2 gap-2 text-base h-14 bg-[#0284C7] hover:bg-[#0369a1] text-white">
+                  {isSubmitting ? "Sending..." : "Submit Message"} <Send className="w-5 h-5" />
+                </Button>
+              </form>
+            )}
           </motion.div>
         </div>
       </div>

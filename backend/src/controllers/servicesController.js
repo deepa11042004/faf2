@@ -46,6 +46,8 @@ export const updateService = asyncHandler(async (req, res) => {
   };
   if (bannerImagePath) {
     updateData.bannerImage = bannerImagePath;
+  } else if (req.body.removeBannerImage === 'true') {
+    updateData.bannerImage = null;
   }
 
   const service = await serviceService.updateService(req.params.id, updateData);

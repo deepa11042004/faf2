@@ -7,6 +7,11 @@ export const contactApi = {
     return res.data;
   },
 
+  submitEnquiry: async (data: Record<string, any>) => {
+    const res = await apiClient.post<ApiResponse<ContactEnquiryItem>>("/contact", data);
+    return res.data;
+  },
+
   getEnquiryById: async (id: number | string) => {
     const res = await apiClient.get<ApiResponse<ContactEnquiryItem>>(`/contact/${id}`);
     return res.data;
