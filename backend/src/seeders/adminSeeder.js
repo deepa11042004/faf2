@@ -449,39 +449,160 @@ export const seedAllData = async (isStandalone = false) => {
         displayOrder: 32
       },
 
-      // Access Control Equipment
+      // 14 Access Control Hardware Categories
       {
         name: "Biometric Fingerprint Reader",
         category: "Access Control",
         serviceSlug: "access-control-system",
-        description: "High-precision optical fingerprint sensor supporting thousands of user templates and instant verification.",
-        bestFor: ["Server Rooms", "Executive Offices", "Turnstiles"],
-        keyFeatures: ["Live Finger Detection", "IP65 Rated", "Wiegand / OSDP Protocol", "Offline Buffer"],
+        description: "A biometric fingerprint reader authenticates users using their unique fingerprints, providing secure and fast access to restricted areas.",
+        bestFor: ["Corporate Offices", "Server Rooms", "Executive Suites", "Research Labs"],
+        keyFeatures: ["Fingerprint Authentication", "Fast Recognition", "High Security", "Attendance Integration", "Access Logs", "Touch Sensor Technology"],
         imagePath: "/images/services/access-control/biometric-fingerprint-reader/img-7yp7vslh.jpg",
         status: "active",
         displayOrder: 33
       },
       {
-        name: "Touchless Facial Recognition Terminal",
+        name: "Facial Recognition Terminal",
         category: "Access Control",
         serviceSlug: "access-control-system",
-        description: "AI-powered facial recognition terminal with temperature screening and mask detection.",
-        bestFor: ["Corporate Lobbies", "Cleanrooms", "High Security Gates"],
-        keyFeatures: ["0.2s Facial Recognition", "Anti-Spoofing AI", "Touchless Hygiene", "10,000 Capacity"],
+        description: "A facial recognition terminal uses AI-powered facial recognition technology to grant secure, contactless access.",
+        bestFor: ["Hospitals", "Corporate Lobbies", "High-Security Gates", "Factories"],
+        keyFeatures: ["Contactless Authentication", "AI Face Recognition", "Fast Verification", "Mask Detection Support", "Visitor Management"],
         imagePath: "/images/services/access-control/facial-recognition-terminal/img-8gta2svs.jpg",
         status: "active",
         displayOrder: 34
       },
       {
+        name: "RFID Card Reader",
+        category: "Access Control",
+        serviceSlug: "access-control-system",
+        description: "RFID card readers allow authorized users to unlock doors using RFID cards or key fobs.",
+        bestFor: ["Commercial Buildings", "Hotels", "Residential Towers", "Staff Entrances"],
+        keyFeatures: ["Contactless Card Access", "Fast Authentication", "Multiple Card Support", "Durable Design", "Secure Entry Logs"],
+        imagePath: "/images/services/access-control/rfid-card-reader/img-7pp9r2b0.jpg",
+        status: "active",
+        displayOrder: 35
+      },
+      {
+        name: "Keypad Access Control",
+        category: "Access Control",
+        serviceSlug: "access-control-system",
+        description: "A keypad access control system grants entry using a secure PIN code without requiring physical keys.",
+        bestFor: ["Store Rooms", "Utility Areas", "Residential Gates", "Server Racks"],
+        keyFeatures: ["PIN Authentication", "Password Protection", "Multiple User Codes", "Indoor & Outdoor Models", "Easy Installation"],
+        imagePath: "/images/services/access-control/keypad-access-control/img-mrjk6rat.jpg",
+        status: "active",
+        displayOrder: 36
+      },
+      {
+        name: "Smart Door Lock",
+        category: "Access Control",
+        serviceSlug: "access-control-system",
+        description: "A smart door lock combines fingerprint, PIN, RFID, and mobile app access for enhanced security.",
+        bestFor: ["Private Offices", "Luxury Apartments", "Boutique Hotels", "Conference Rooms"],
+        keyFeatures: ["Fingerprint Unlock", "PIN Code Access", "Mobile App Control", "RFID Card Support", "Emergency Key Backup"],
+        imagePath: "/images/services/access-control/smart-door-lock/img-hhd2fcx6.jpg",
+        status: "active",
+        displayOrder: 37
+      },
+      {
         name: "Electromagnetic Lock (Maglock)",
         category: "Access Control",
         serviceSlug: "access-control-system",
-        description: "Heavy-duty 600lbs/1200lbs holding force magnetic door lock for glass, wood, and metal doors.",
-        bestFor: ["Emergency Exits", "Glass Doors", "Commercial Entrances"],
-        keyFeatures: ["600lbs Holding Force", "Fail-Safe Operation", "LED Status Indicator", "Zero Residual Magnetism"],
+        description: "An electromagnetic lock secures doors using a powerful magnetic force and integrates with access control systems.",
+        bestFor: ["Glass Doors", "Emergency Exit Doors", "High-Traffic Gates", "Office Main Entrances"],
+        keyFeatures: ["High Holding Force", "Silent Operation", "Automatic Locking", "Long Service Life", "Easy Integration"],
         imagePath: "/images/services/access-control/electromagnetic-lock-maglock/img-sya1h93d.jpg",
         status: "active",
-        displayOrder: 35
+        displayOrder: 38
+      },
+      {
+        name: "Electric Bolt Lock",
+        category: "Access Control",
+        serviceSlug: "access-control-system",
+        description: "An electric bolt lock provides secure locking by automatically extending or retracting a steel bolt.",
+        bestFor: ["Double-Swing Doors", "Wooden Doors", "Heavy Metal Doors", "Secure Vaults"],
+        keyFeatures: ["Automatic Locking", "Stainless Steel Bolt", "Fail-Safe / Fail-Secure Options", "Low Power Consumption"],
+        imagePath: "/images/services/access-control/electric-bolt-lock/img-bxxbrn4m.jpg",
+        status: "active",
+        displayOrder: 39
+      },
+      {
+        name: "Electric Strike Lock",
+        category: "Access Control",
+        serviceSlug: "access-control-system",
+        description: "An electric strike lock works with existing door latches to allow remote unlocking through an access control system.",
+        bestFor: ["Office Doors", "Intercom Systems", "Commercial Suites", "Reception Entrances"],
+        keyFeatures: ["Remote Door Release", "Easy Installation", "Secure Access", "Compatible with Existing Locks"],
+        imagePath: "/images/services/access-control/electric-strike-lock/img-bpvjxswg.jpg",
+        status: "active",
+        displayOrder: 40
+      },
+      {
+        name: "Access Control Controller",
+        category: "Access Control",
+        serviceSlug: "access-control-system",
+        description: "The access control controller is the central processing unit that manages readers, locks, and user permissions.",
+        bestFor: ["Multi-Door Networks", "Enterprise Buildings", "Industrial Facilities", "Campus Infrastructure"],
+        keyFeatures: ["Multi-Door Management", "User Database", "Event Logging", "Remote Monitoring", "Network Connectivity"],
+        imagePath: "/images/services/access-control/access-control-controller/img-1uy66gux.jpg",
+        status: "active",
+        displayOrder: 41
+      },
+      {
+        name: "Exit Push Button",
+        category: "Access Control",
+        serviceSlug: "access-control-system",
+        description: "An exit push button allows occupants to unlock doors safely when exiting a secured area.",
+        bestFor: ["Interior Doors", "Reception Exits", "Staff Exits", "Office Corridors"],
+        keyFeatures: ["One-Touch Exit", "Durable Design", "Easy Installation", "LED Indicator"],
+        imagePath: "/images/services/access-control/exit-push-button/img-425b0u2h.jpg",
+        status: "active",
+        displayOrder: 42
+      },
+      {
+        name: "Exit Motion Sensor",
+        category: "Access Control",
+        serviceSlug: "access-control-system",
+        description: "An exit motion sensor automatically unlocks doors when someone approaches from inside.",
+        bestFor: ["High-Traffic Corridors", "Glass Door Entrances", "Hospital Hallways", "Cleanrooms"],
+        keyFeatures: ["Hands-Free Operation", "Motion Detection", "Automatic Door Release", "Adjustable Detection Range"],
+        imagePath: "/images/services/access-control/exit-motion-sensor/img-j8g3i1ou.jpg",
+        status: "active",
+        displayOrder: 43
+      },
+      {
+        name: "Door Exit Release Button",
+        category: "Access Control",
+        serviceSlug: "access-control-system",
+        description: "A break-glass emergency release unit immediately unlocks access-controlled doors during emergencies.",
+        bestFor: ["Emergency Exits", "Fire Escape Routes", "Stairwell Doors", "Hazardous Areas"],
+        keyFeatures: ["Emergency Door Release", "Break Glass Design", "High Reliability", "Safety Compliance"],
+        imagePath: "/images/services/access-control/door-exit-release-button/img-4tsn27pa.jpg",
+        status: "active",
+        displayOrder: 44
+      },
+      {
+        name: "Boom Barrier",
+        category: "Access Control",
+        serviceSlug: "access-control-system",
+        description: "Boom barriers control vehicle entry and exit in parking lots, residential complexes, and industrial premises.",
+        bestFor: ["Gated Communities", "Toll Plazas", "Commercial Parking", "Factory Gates"],
+        keyFeatures: ["Automatic Vehicle Control", "RFID Integration", "Fast Opening", "Weather Resistant", "Heavy Duty Motor"],
+        imagePath: "/images/services/access-control/boom-barrier/img-azeb8r5k.jpg",
+        status: "active",
+        displayOrder: 45
+      },
+      {
+        name: "Video Door Phone (VDP)",
+        category: "Access Control",
+        serviceSlug: "access-control-system",
+        description: "A video door phone enables audio and video communication with visitors before granting access.",
+        bestFor: ["Villas", "Apartments", "Corporate Reception", "Executive Offices"],
+        keyFeatures: ["HD Video Calling", "Two-Way Audio", "Remote Door Unlock", "Mobile App Support", "Night Vision"],
+        imagePath: "/images/services/access-control/video-door-phone-vdp/img-0xtgtvic.jpg",
+        status: "active",
+        displayOrder: 46
       },
 
       // PA Systems
@@ -494,7 +615,7 @@ export const seedAllData = async (isStandalone = false) => {
         keyFeatures: ["240W RMS Output", "6 Independent Zones", "Chime & Siren Inputs", "FM/USB/Bluetooth"],
         imagePath: "/images/services/pa-system/pa-system-amplifier/img-43bln0p3.jpg",
         status: "active",
-        displayOrder: 36
+        displayOrder: 47
       },
       {
         name: "Flush Ceiling Speaker",
@@ -505,10 +626,10 @@ export const seedAllData = async (isStandalone = false) => {
         keyFeatures: ["100V Line Transformer", "ABS Flush Mount", "Crisp Vocal Clarity"],
         imagePath: "/images/services/pa-system/ceiling-speaker/img-avkv7ivs.jpg",
         status: "active",
-        displayOrder: 37
+        displayOrder: 48
       }
     ]);
-    console.log("✔ Service Categories Catalog Populated with All 37 Items.");
+    console.log("✔ Service Categories Catalog Populated with All 48 Items.");
 
     // 4. Projects Portfolio & Images
     const projectCount = await Project.count();
