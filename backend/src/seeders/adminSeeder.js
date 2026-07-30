@@ -605,31 +605,185 @@ export const seedAllData = async (isStandalone = false) => {
         displayOrder: 46
       },
 
-      // PA Systems
+      // 16 PA System Equipment Categories
       {
-        name: "Multi-Zone PA System Amplifier",
+        name: "PA System Amplifier",
         category: "PA System",
         serviceSlug: "public-address-system",
-        description: "Commercial power amplifier with multi-zone speaker control, Bluetooth, and emergency priority broadcast.",
-        bestFor: ["Shopping Malls", "Schools", "Auditoriums", "Factories"],
-        keyFeatures: ["240W RMS Output", "6 Independent Zones", "Chime & Siren Inputs", "FM/USB/Bluetooth"],
+        description: "The amplifier is the heart of a Public Address System. It amplifies audio signals from microphones and media sources, ensuring clear sound distribution across all connected speakers.",
+        bestFor: ["Commercial Towers", "Schools & Colleges", "Auditoriums", "Factories"],
+        keyFeatures: ["High Power Output", "Multiple Audio Inputs", "Volume Control", "Zone Control", "Rack Mount Design", "Overload Protection"],
         imagePath: "/images/services/pa-system/pa-system-amplifier/img-43bln0p3.jpg",
         status: "active",
         displayOrder: 47
       },
       {
-        name: "Flush Ceiling Speaker",
+        name: "Ceiling Speaker",
         category: "PA System",
         serviceSlug: "public-address-system",
-        description: "High-fidelity coaxial ceiling speaker for background music and clear acoustic voice paging.",
-        bestFor: ["Corporate Offices", "Restaurants", "Retail Outlets"],
-        keyFeatures: ["100V Line Transformer", "ABS Flush Mount", "Crisp Vocal Clarity"],
+        description: "Ceiling speakers provide clear and evenly distributed sound for announcements and background music in offices, schools, hospitals, and commercial buildings.",
+        bestFor: ["Offices", "Corridors", "Hospitals", "Shopping Malls"],
+        keyFeatures: ["Clear Audio Quality", "Flush Mount Design", "Wide Sound Coverage", "Easy Installation", "Low Power Consumption"],
         imagePath: "/images/services/pa-system/ceiling-speaker/img-avkv7ivs.jpg",
         status: "active",
         displayOrder: 48
+      },
+      {
+        name: "Wall Mount Speaker",
+        category: "PA System",
+        serviceSlug: "public-address-system",
+        description: "Wall-mounted speakers are ideal for indoor public announcement systems where clear voice communication is required.",
+        bestFor: ["Conference Rooms", "Classrooms", "Retail Stores", "Lobbies"],
+        keyFeatures: ["Compact Design", "High Speech Clarity", "Wide Coverage", "Durable Construction"],
+        imagePath: "/images/services/pa-system/wall-mount-speaker/img-acyt9i6l.jpg",
+        status: "active",
+        displayOrder: 49
+      },
+      {
+        name: "Horn Speaker",
+        category: "PA System",
+        serviceSlug: "public-address-system",
+        description: "Horn speakers deliver loud and clear audio over long distances, making them ideal for factories, warehouses, outdoor areas, and industrial sites.",
+        bestFor: ["Warehouses", "Factories", "Outdoor Parking", "Sports Stadiums"],
+        keyFeatures: ["High Sound Output", "Weatherproof Design", "Long-Distance Coverage", "Outdoor Installation"],
+        imagePath: "/images/services/pa-system/horn-speaker/img-8g9t83g3.jpg",
+        status: "active",
+        displayOrder: 50
+      },
+      {
+        name: "Column Speaker",
+        category: "PA System",
+        serviceSlug: "public-address-system",
+        description: "Column speakers provide excellent speech intelligibility in auditoriums, conference halls, churches, and large indoor spaces.",
+        bestFor: ["Auditoriums", "Churches", "Conference Halls", "Exhibition Centers"],
+        keyFeatures: ["Wide Sound Dispersion", "Elegant Design", "Clear Voice Projection", "Indoor Applications"],
+        imagePath: "/images/services/pa-system/column-speaker/img-izc93tf7.jpg",
+        status: "active",
+        displayOrder: 51
+      },
+      {
+        name: "Paging Microphone",
+        category: "PA System",
+        serviceSlug: "public-address-system",
+        description: "Paging microphones allow operators to make live announcements to selected zones or the entire building.",
+        bestFor: ["Reception Desks", "Control Rooms", "Security Cabins", "Administration Offices"],
+        keyFeatures: ["Push-to-Talk Button", "Zone Selection", "Noise Reduction", "Flexible Gooseneck Design"],
+        imagePath: "/images/services/pa-system/paging-microphone/img-7bgfz11d.jpg",
+        status: "active",
+        displayOrder: 52
+      },
+      {
+        name: "Wireless Microphone",
+        category: "PA System",
+        serviceSlug: "public-address-system",
+        description: "Wireless microphones provide mobility and convenience for presentations, events, classrooms, and conferences.",
+        bestFor: ["Events & Stage", "Seminars", "Classrooms", "Boardrooms"],
+        keyFeatures: ["Wireless Operation", "Long Battery Life", "High Audio Quality", "Easy Connectivity"],
+        imagePath: "/images/services/pa-system/wireless-microphone/img-4gftnrvq.jpg",
+        status: "active",
+        displayOrder: 53
+      },
+      {
+        name: "Audio Mixer",
+        category: "PA System",
+        serviceSlug: "public-address-system",
+        description: "An audio mixer combines multiple audio sources such as microphones, music players, and computers, allowing operators to control sound levels efficiently.",
+        bestFor: ["Event Venues", "Recording Studios", "Auditoriums", "Broadcasting Booths"],
+        keyFeatures: ["Multiple Input Channels", "Independent Volume Control", "Equalizer", "Audio Effects Support"],
+        imagePath: "/images/services/pa-system/audio-mixer/img-3j0ngnza.jpg",
+        status: "active",
+        displayOrder: 54
+      },
+      {
+        name: "Zone Controller",
+        category: "PA System",
+        serviceSlug: "public-address-system",
+        description: "Zone controllers enable announcements to specific areas without broadcasting throughout the entire building.",
+        bestFor: ["Multi-Story Offices", "Hospitals", "Airports", "Shopping Malls"],
+        keyFeatures: ["Multi-Zone Control", "Independent Volume Adjustment", "Easy Operation", "Centralized Management"],
+        imagePath: "/images/services/pa-system/zone-controller/img-51dztxol.jpg",
+        status: "active",
+        displayOrder: 55
+      },
+      {
+        name: "PA System Controller",
+        category: "PA System",
+        serviceSlug: "public-address-system",
+        description: "The PA system controller manages all connected audio devices and distributes announcements across different zones.",
+        bestFor: ["Enterprise Facilities", "Commercial Complexes", "Universities", "Industrial Parks"],
+        keyFeatures: ["Centralized Control", "Zone Management", "Emergency Broadcasting", "Audio Routing"],
+        imagePath: "/images/services/pa-system/pa-system-controller/img-kwugwbmc.jpg",
+        status: "active",
+        displayOrder: 56
+      },
+      {
+        name: "Network Audio Controller",
+        category: "PA System",
+        serviceSlug: "public-address-system",
+        description: "Network audio controllers allow centralized audio management over IP networks, making them ideal for large campuses and enterprise facilities.",
+        bestFor: ["Smart Campuses", "Multi-Building Facilities", "Airports", "Railway Stations"],
+        keyFeatures: ["IP-Based Audio Distribution", "Remote Management", "Multi-Building Support", "High Reliability"],
+        imagePath: "/images/services/pa-system/network-audio-controller/img-hl0gt0ig.jpg",
+        status: "active",
+        displayOrder: 57
+      },
+      {
+        name: "Rack Cabinet",
+        category: "PA System",
+        serviceSlug: "public-address-system",
+        description: "A rack cabinet houses amplifiers, controllers, mixers, power supplies, and other PA system equipment in a secure and organized manner.",
+        bestFor: ["Server Rooms", "Control Rooms", "AV Equipment Hubs"],
+        keyFeatures: ["Equipment Protection", "Cable Management", "Ventilation", "Lockable Design"],
+        imagePath: "/images/services/pa-system/rack-cabinet/img-2yjii6qa.jpg",
+        status: "active",
+        displayOrder: 58
+      },
+      {
+        name: "Power Supply Unit (PSU)",
+        category: "PA System",
+        serviceSlug: "public-address-system",
+        description: "The power supply unit provides stable power to all PA system components for uninterrupted operation.",
+        bestFor: ["Continuous 24/7 Audio", "Emergency Evacuation Hubs", "Industrial Racks"],
+        keyFeatures: ["Stable Power Output", "Surge Protection", "High Efficiency", "Reliable Performance"],
+        imagePath: "/images/services/pa-system/power-supply-unit-psu/img-1wwq7yib.jpg",
+        status: "active",
+        displayOrder: 59
+      },
+      {
+        name: "Emergency Voice Evacuation System (EVAC)",
+        category: "PA System",
+        serviceSlug: "public-address-system",
+        description: "Voice evacuation systems broadcast emergency instructions during fire alarms and other emergencies, helping occupants evacuate safely.",
+        bestFor: ["High-Rise Towers", "Hospitals", "Public Venues", "Airports"],
+        keyFeatures: ["Emergency Voice Messages", "Fire Alarm Integration", "Automatic Announcements", "Multi-Zone Broadcasting"],
+        imagePath: "/images/services/pa-system/emergency-voice-evacuation-system-evac/img-1qhyd12o.jpg",
+        status: "active",
+        displayOrder: 60
+      },
+      {
+        name: "Network IP Speaker",
+        category: "PA System",
+        serviceSlug: "public-address-system",
+        description: "IP speakers receive audio over an Ethernet network, eliminating the need for traditional audio cabling and enabling scalable installations.",
+        bestFor: ["Smart Offices", "IP-Based Infrastructure", "Logistics Hubs"],
+        keyFeatures: ["Ethernet Connectivity", "Remote Configuration", "Crystal-Clear Audio", "Scalable Deployment"],
+        imagePath: "/images/services/pa-system/network-ip-speaker/img-fdjhmlum.jpg",
+        status: "active",
+        displayOrder: 61
+      },
+      {
+        name: "Volume Controller",
+        category: "PA System",
+        serviceSlug: "public-address-system",
+        description: "Volume controllers allow users to adjust speaker output levels in individual rooms or zones without affecting the rest of the system.",
+        bestFor: ["Executive Offices", "Conference Rooms", "Hotel Rooms", "Classrooms"],
+        keyFeatures: ["Local Volume Adjustment", "Wall-Mounted Design", "Easy Operation", "Zone Control"],
+        imagePath: "/images/services/pa-system/volume-controller/img-cnc7w59b.jpg",
+        status: "active",
+        displayOrder: 62
       }
     ]);
-    console.log("✔ Service Categories Catalog Populated with All 48 Items.");
+    console.log("✔ Service Categories Catalog Populated with All 62 Items.");
 
     // 4. Projects Portfolio & Images
     const projectCount = await Project.count();
