@@ -364,6 +364,7 @@ export default function AdminServiceCategoriesPage() {
   const [keyFeaturesInput, setKeyFeaturesInput] = useState("");
   const [status, setStatus] = useState<"active" | "inactive">("active");
   const [imageFile, setImageFile] = useState<File | null>(null);
+  const [existingImages, setExistingImages] = useState<string[]>([]);
 
   const fetchDevices = async () => {
     try {
@@ -393,6 +394,11 @@ export default function AdminServiceCategoriesPage() {
       setBestForInput(Array.isArray(item.bestFor) ? item.bestFor.join(", ") : "");
       setKeyFeaturesInput(Array.isArray(item.keyFeatures) ? item.keyFeatures.join(", ") : "");
       setStatus(item.status);
+
+      const modalImgs = (item.images && Array.isArray(item.images) && item.images.length > 0)
+        ? item.images
+        : (CATEGORY_SLIDER_IMAGES[item.name] || (item.imagePath ? [item.imagePath] : []));
+      setExistingImages(modalImgs);
     } else {
       setEditingItem(null);
       setName("");
@@ -402,6 +408,7 @@ export default function AdminServiceCategoriesPage() {
       setBestForInput("");
       setKeyFeaturesInput("");
       setStatus("active");
+      setExistingImages([]);
     }
     setImageFile(null);
     setIsModalOpen(true);
@@ -667,14 +674,50 @@ export default function AdminServiceCategoriesPage() {
                 />
               </div>
 
-              <div>
-                <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Category Image / Banner</label>
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={(e) => setImageFile(e.target.files?.[0] || null)}
-                  className="w-full text-xs text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-[#0284C7] file:text-white"
-                />
+              {/* Category Images Gallery Preview */}
+              <div className="space-y-3 pt-2">
+                <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                  Category Images Gallery ({existingImages.length} Images Available)
+                </label>
+
+                {existingImages.length > 0 ? (
+                  <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 bg-slate-950 p-3 rounded-2xl border border-slate-800">
+                    {existingImages.map((imgUrl, idx) => (
+                      <div key={idx} className="group relative aspect-square bg-slate-900 border border-slate-800 rounded-xl overflow-hidden flex items-center justify-center p-1.5 shadow-md">
+                        <img
+                          src={getMediaUrl(imgUrl)}
+                          alt={`Category image ${idx + 1}`}
+                          className="max-h-full max-w-full object-contain group-hover:scale-110 transition-transform duration-300"
+                        />
+                        <span className="absolute bottom-1 right-1 bg-slate-900/90 text-[#38BDF8] font-mono text-[9px] font-bold px-1.5 py-0.5 rounded border border-slate-800">
+                          #{idx + 1}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-xs text-slate-500 italic bg-slate-950 p-3 rounded-xl border border-slate-800">
+                    No images saved for this category yet.
+                  </p>
+                )}
+
+                <div>
+                  <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
+                    Upload New Image / Replace Primary Banner
+                  </label>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => setImageFile(e.target.files?.[0] || null)}
+                    className="w-full text-xs text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-[#0284C7] file:text-white"
+                  />
+                  {imageFile && (
+                    <div className="mt-2 text-xs text-[#38BDF8] font-medium flex items-center gap-1.5">
+                      <CheckCircle2 className="w-3.5 h-3.5" />
+                      <span>New image ready to upload: {imageFile.name}</span>
+                    </div>
+                  )}
+                </div>
               </div>
 
               <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-800">
