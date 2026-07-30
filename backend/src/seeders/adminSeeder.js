@@ -141,7 +141,7 @@ export const seedAllData = async (isStandalone = false) => {
         category: "Security Guard Services",
         serviceSlug: "security-guard-services",
         description: "Discreet and professional security staff providing 24/7 lobby supervision, valet oversight, and guest safety.",
-        bestFor: ["Luxury Hotels", "Boutique Resorts", "Hospitality Suites"],
+        bestFor: ["Luxury Hotels", "Resorts", "Boutique Hotels", "Event Banquets"],
         keyFeatures: ["Guest Safety Patrol", "Luggage & Valet Oversight", "Emergency Evacuation", "Discreet Monitoring"],
         imagePath: "/images/services/security-guards/hotel-security/img-2lpwrhv1.jpg",
         status: "active",
@@ -203,14 +203,14 @@ export const seedAllData = async (isStandalone = false) => {
         displayOrder: 10
       },
 
-      // CCTV Cameras
+      // 8 CCTV Camera Devices
       {
         name: "Dome Cameras",
         category: "CCTV Surveillance",
         serviceSlug: "cctv-installation",
         description: "Ideal for indoor surveillance where aesthetics and wide-angle coverage are important.",
         bestFor: ["Offices", "Retail Stores", "Hospitals", "Schools", "Hotels"],
-        keyFeatures: ["Compact Design", "Vandal Resistant", "Infrared Night Vision", "Wide Viewing Angle"],
+        keyFeatures: ["Compact Design", "Vandal Resistant", "Infrared Night Vision", "Wide Viewing Angle", "Indoor & Outdoor Models"],
         imagePath: "/images/cctv/dome/VP26P-T89uJ-K4JLfuW_mCGOQrehf1rTqHCz-e2Ljrz9UIAVV-9CwaTIQ05Vyji3sHDITRGOT28HEbJolIJ4vxOc3XKNS2_ieTsd_ldZsFmy7S1e2i6z9JFD7CMT0Ptxb4PLN5SO9c0LMySMybvgzvYgPg2xSp16lX5LEPaujV7xkX-xJEwe5PBxzNHCZ9RJ.jpg",
         status: "active",
         displayOrder: 11
@@ -219,20 +219,20 @@ export const seedAllData = async (isStandalone = false) => {
         name: "Bullet Cameras",
         category: "CCTV Surveillance",
         serviceSlug: "cctv-installation",
-        description: "Designed for long-range outdoor monitoring with high weather resistance and IR illumination.",
-        bestFor: ["Perimeters", "Parking Lots", "Warehouses", "Building Exteriors"],
-        keyFeatures: ["Long Range IR", "IP67 Weatherproof", "Optical Zoom", "Motion Detection"],
+        description: "Designed for long-range outdoor surveillance with high-visibility deterrence.",
+        bestFor: ["Parking Areas", "Building Perimeters", "Warehouses", "Industrial Facilities"],
+        keyFeatures: ["Long-Distance Monitoring", "Weatherproof Housing", "HD Recording", "Infrared Night Vision", "Easy Wall Mounting"],
         imagePath: "/images/cctv/bullet/5TenuMzbyrJ5zN0UlqJ7rRLKXQYhnM_6tlAF-812He89l4ewjQtYvQz0U2gZmtzIoM6DEV_Gaeq8nlCT8uvXj5FAljDUZ-rQ5YkGEwo6ebOoaRxWLaQcNQ93W5_gFrc0emAiera7qRjYWAA2QgLExxjNhqQAc2YUDddtb9G4wvWKnSd4kuK8n5sQOwy2MUIv.jpg",
         status: "active",
         displayOrder: 12
       },
       {
-        name: "PTZ (Pan-Tilt-Zoom) Cameras",
+        name: "PTZ Cameras",
         category: "CCTV Surveillance",
         serviceSlug: "cctv-installation",
-        description: "Provides 360-degree motorized pan, tilt, and powerful optical zoom for active security control.",
-        bestFor: ["Industrial Parks", "Malls", "Airports", "Public Squares"],
-        keyFeatures: ["360° Continuous Pan", "30x Optical Zoom", "Auto Tracking", "Preset Patrol Routes"],
+        description: "Monitor large areas with remote control, motorized optical zoom, and intelligent tracking.",
+        bestFor: ["Airports", "Stadiums", "Industrial Plants", "Large Campuses"],
+        keyFeatures: ["360° Rotation", "Optical Zoom", "Auto Tracking", "Remote Operation", "Large Area Coverage"],
         imagePath: "/images/cctv/ptz/3VZFzDiO72AoHwakoDLGNvHFkLVUgiVmdQducNVhp2laXGUxxuEihWeWCa-dDMGUnVT_4KzH-nq6GoEdOUfhEhtTd0Uw1GJt9KAX4BozyvPncmgmz6YE_TzQrfjNbxXV-HT9CTiX5wZ6GKdIAAwg0fmn0PHaX2GytRGANTYHlXqYsuhCuCNXrSxhmb.jpg",
         status: "active",
         displayOrder: 13
@@ -241,23 +241,56 @@ export const seedAllData = async (isStandalone = false) => {
         name: "Turret Cameras",
         category: "CCTV Surveillance",
         serviceSlug: "cctv-installation",
-        description: "Ball-and-socket design eliminating lens reflections, perfect for clear night vision performance.",
-        bestFor: ["Corridors", "Elevators", "Lobbies", "Stores"],
-        keyFeatures: ["No IR Reflection", "EXIR Night Vision", "Easy Angle Adjustment", "Smart Detection"],
+        description: "A versatile option for homes and businesses with flexible installation angles and zero IR reflection.",
+        bestFor: ["Homes", "Shops", "Offices"],
+        keyFeatures: ["Easy Angle Adjustment", "High Image Quality", "Low IR Reflection", "Compact Design"],
         imagePath: "/images/cctv/turret/SvQC9SamokYa7sTS8d57xE6RX4is0AptxJ0pWwb0wOzmoVwoAI2LVJpHdmDKkU2PGaOk88CNx-qw6KQPH8VTuY-kMrIJhqGAU8LhseFuWWAbCREn3WIqZtlSe09DraRjrzIdCUzG17iu3Vahl1EPzytuUgGX27CgJCnglQ5hPIwkQcXNJmB37jTOJZ.jpg",
         status: "active",
         displayOrder: 14
       },
       {
-        name: "Fisheye 360° Panoramic Camera",
+        name: "Fisheye Cameras",
         category: "CCTV Surveillance",
         serviceSlug: "cctv-installation",
-        description: "Single-sensor 360-degree panoramic view eliminating blind spots across large indoor areas.",
-        bestFor: ["Open Offices", "Supermarkets", "Convention Centers"],
-        keyFeatures: ["360° Panoramic View", "Dewarping Software Support", "Virtual PTZ Modes"],
+        description: "Capture 180° to 360° panoramic views with a single camera and digital dewarping.",
+        bestFor: ["Shopping Malls", "Conference Rooms", "Banks"],
+        keyFeatures: ["180°–360° Coverage", "Panoramic View", "Digital Dewarping"],
         imagePath: "/images/cctv/fisheye/TS5VM_mHNYm7bXe2lP9oy6g7-5BofDkiQ5COLXuSLCnY4JYiRnmbwRmN26mSEd3Bjuqj9cWWIEP25sIF3zzyDz3Ya9jBW4Dt1YY1WYlHtUk5Rc9rcPrfhx0riX-XOiUo44q49C74HTi7xGLBykUjQ-7E7KN3G-7Y28IdCcePmkDYmg_Zd2dIEmtV5KaqPgR4.jpg",
         status: "active",
         displayOrder: 15
+      },
+      {
+        name: "Box Cameras",
+        category: "CCTV Surveillance",
+        serviceSlug: "cctv-installation",
+        description: "Professional-grade cameras for high-security environments requiring custom specialized optics.",
+        bestFor: ["Banks", "Warehouses", "Critical Infrastructure"],
+        keyFeatures: ["Long-Distance Monitoring", "Interchangeable Lens", "High Performance"],
+        imagePath: "/images/cctv/box/BKOHaLctffpqc4yN-yDyQsAKOsvFpgeccn3PFGqtjvU7T8bMZRY2-NDm241havjANPwiSa0GKhHPX6EKvdqBR5YIhTS2pbBCyHYdseavlJFJ8ZlKaTFyQ6PoGzIkBERboX5Tc5xLKVvSTc9CUdPdR6Axflm1GEdBrHY18FmPoXjXqAlN3rtaJD91xXzfiJ6-.jpg",
+        status: "active",
+        displayOrder: 16
+      },
+      {
+        name: "Wireless Cameras",
+        category: "CCTV Surveillance",
+        serviceSlug: "cctv-installation",
+        description: "Simple cable-free installation with direct Wi-Fi connectivity and mobile streaming.",
+        bestFor: ["Homes", "Small Offices"],
+        keyFeatures: ["Wi-Fi Connectivity", "Mobile Monitoring", "Cloud Recording", "Easy Installation"],
+        imagePath: "/images/cctv/wireless/Brvszyepf42s5qZOHOAHslHNpglvdvo9PMoYRQhxYT33PpW20NMHVgGaGTBSKOUtKz58ty5dNdZuQJHOaaKklJk5X1WJjqsgARAmf-haRLtNk5gS52RdDpS7coUbcbhPucAXkXjwgrD6jYeBjgqv2LydGogqPtVIPraHi0WtD454D1rY3I_nUnYkiqYmLpx-.jpg",
+        status: "active",
+        displayOrder: 17
+      },
+      {
+        name: "IP Cameras",
+        category: "CCTV Surveillance",
+        serviceSlug: "cctv-installation",
+        description: "Network-based PoE surveillance streaming 4K video with integrated AI analytics.",
+        bestFor: ["Corporate Offices", "Commercial Buildings", "Smart Campuses"],
+        keyFeatures: ["High Resolution", "Remote Monitoring", "PoE Support", "AI Integration"],
+        imagePath: "/images/cctv/ip/i3sCq33JbdmOZ_WKVY_ZVmVvM_KdFr5drwXpbzJrhreC1D7inYnwmW6wDB73XHdNCpRthAn-5v8NTBYpbO4KmXOyohfbeDADjURRxU9VSBVhsF42pxC83jIpYdsyXuiGscc2BqNi751r1zHTL697vWtU5VnYnU2s2bU-9ZMbi6evj0zghqBocsmQxnzYtZHR.jpg",
+        status: "active",
+        displayOrder: 18
       },
 
       // Fire Safety Equipment
@@ -270,7 +303,7 @@ export const seedAllData = async (isStandalone = false) => {
         keyFeatures: ["Multi-Zone Monitoring", "Battery Backup", "Automated Sprinkler Relay", "LCD Touch Interface"],
         imagePath: "/images/services/fire-alarm/fire-alarm-control-panel-facp/img-41gyjfrk.jpg",
         status: "active",
-        displayOrder: 16
+        displayOrder: 19
       },
       {
         name: "Optical Smoke Detector",
@@ -281,7 +314,7 @@ export const seedAllData = async (isStandalone = false) => {
         keyFeatures: ["360° Smoke Entry", "Dust Resistance", "Addressable Loop ID", "Built-in Sounder"],
         imagePath: "/images/services/fire-alarm/smoke-detector/img-4soj8cqs.jpg",
         status: "active",
-        displayOrder: 17
+        displayOrder: 20
       },
       {
         name: "Rate-of-Rise Heat Detector",
@@ -292,7 +325,7 @@ export const seedAllData = async (isStandalone = false) => {
         keyFeatures: ["Dual Temperature Sensor", "High Humidity Tolerant", "Auto Reset"],
         imagePath: "/images/services/fire-alarm/heat-detector/img-empzt0kh.jpg",
         status: "active",
-        displayOrder: 18
+        displayOrder: 21
       },
 
       // Access Control Equipment
@@ -305,7 +338,7 @@ export const seedAllData = async (isStandalone = false) => {
         keyFeatures: ["Live Finger Detection", "IP65 Rated", "Wiegand / OSDP Protocol", "Offline Buffer"],
         imagePath: "/images/services/access-control/biometric-fingerprint-reader/img-7yp7vslh.jpg",
         status: "active",
-        displayOrder: 19
+        displayOrder: 22
       },
       {
         name: "Touchless Facial Recognition Terminal",
@@ -316,7 +349,7 @@ export const seedAllData = async (isStandalone = false) => {
         keyFeatures: ["0.2s Facial Recognition", "Anti-Spoofing AI", "Touchless Hygiene", "10,000 Capacity"],
         imagePath: "/images/services/access-control/facial-recognition-terminal/img-8gta2svs.jpg",
         status: "active",
-        displayOrder: 20
+        displayOrder: 23
       },
       {
         name: "Electromagnetic Lock (Maglock)",
@@ -327,7 +360,7 @@ export const seedAllData = async (isStandalone = false) => {
         keyFeatures: ["600lbs Holding Force", "Fail-Safe Operation", "LED Status Indicator", "Zero Residual Magnetism"],
         imagePath: "/images/services/access-control/electromagnetic-lock-maglock/img-sya1h93d.jpg",
         status: "active",
-        displayOrder: 21
+        displayOrder: 24
       },
 
       // PA Systems
@@ -340,7 +373,7 @@ export const seedAllData = async (isStandalone = false) => {
         keyFeatures: ["240W RMS Output", "6 Independent Zones", "Chime & Siren Inputs", "FM/USB/Bluetooth"],
         imagePath: "/images/services/pa-system/pa-system-amplifier/img-43bln0p3.jpg",
         status: "active",
-        displayOrder: 22
+        displayOrder: 25
       },
       {
         name: "Flush Ceiling Speaker",
@@ -351,10 +384,10 @@ export const seedAllData = async (isStandalone = false) => {
         keyFeatures: ["100V Line Transformer", "ABS Flush Mount", "Crisp Vocal Clarity"],
         imagePath: "/images/services/pa-system/ceiling-speaker/img-avkv7ivs.jpg",
         status: "active",
-        displayOrder: 23
+        displayOrder: 26
       }
     ]);
-    console.log("✔ Service Categories Catalog Populated with All 23 Items.");
+    console.log("✔ Service Categories Catalog Populated with All 26 Items.");
 
     // 4. Projects Portfolio & Images
     const projectCount = await Project.count();
