@@ -828,6 +828,7 @@ export default function AdminServiceCategoriesPage() {
             </form>
           </div>
         </div>
+        </div>
       )}
 
       {/* Delete Modal */}
