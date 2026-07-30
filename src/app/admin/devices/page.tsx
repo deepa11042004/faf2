@@ -390,7 +390,12 @@ export default function AdminServiceCategoriesPage() {
   useEffect(() => {
     if (!isModalOpen) return;
 
+    const originalOverflowHtml = document.documentElement.style.overflow;
+    const originalOverflowBody = document.body.style.overflow;
+
+    document.documentElement.style.overflow = "hidden";
     document.body.style.overflow = "hidden";
+
     setTimeout(() => {
       modalScrollRef.current?.focus();
     }, 50);
@@ -419,7 +424,8 @@ export default function AdminServiceCategoriesPage() {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => {
-      document.body.style.overflow = "unset";
+      document.documentElement.style.overflow = originalOverflowHtml;
+      document.body.style.overflow = originalOverflowBody;
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [isModalOpen]);
@@ -632,13 +638,13 @@ export default function AdminServiceCategoriesPage() {
 
       {/* Create / Edit Modal */}
       {isModalOpen && (
-        <div
-          ref={modalScrollRef}
-          tabIndex={0}
-          className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/85 backdrop-blur-md p-4 md:p-8 flex justify-center items-start focus:outline-none"
-        >
-          <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 w-full max-w-5xl shadow-2xl relative my-8">
-            <div className="flex items-center justify-between pb-4 mb-6 border-b border-slate-800">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 bg-slate-950/85 backdrop-blur-md">
+          <div
+            ref={modalScrollRef}
+            tabIndex={0}
+            className="bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 w-full max-w-5xl max-h-[85vh] overflow-y-auto shadow-2xl relative focus:outline-none scroll-smooth my-auto"
+          >
+            <div className="sticky top-0 bg-slate-900 z-30 pt-1 pb-4 mb-6 border-b border-slate-800 flex items-center justify-between">
               <div>
                 <h2 className="text-3xl font-bebas tracking-wide text-white">
                   {editingItem ? "Edit Service Category / Device" : "Add New Service Category"}
@@ -654,7 +660,7 @@ export default function AdminServiceCategoriesPage() {
               </button>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6 pb-2">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Category Name *</label>
@@ -790,7 +796,7 @@ export default function AdminServiceCategoriesPage() {
                 </div>
               </div>
 
-              <div className="flex items-center justify-end gap-3 pt-6 border-t border-slate-800">
+              <div className="sticky bottom-0 bg-slate-900 z-30 pt-4 pb-1 mt-6 border-t border-slate-800 flex items-center justify-end gap-3">
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(false)}
