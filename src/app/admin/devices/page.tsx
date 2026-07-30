@@ -414,6 +414,10 @@ export default function AdminServiceCategoriesPage() {
     setIsModalOpen(true);
   };
 
+  const handleRemoveImage = (indexToRemove: number) => {
+    setExistingImages((prev) => prev.filter((_, idx) => idx !== indexToRemove));
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormLoading(true);
@@ -427,6 +431,7 @@ export default function AdminServiceCategoriesPage() {
       formData.append("bestFor", bestForInput);
       formData.append("keyFeatures", keyFeaturesInput);
       formData.append("status", status);
+      formData.append("images", JSON.stringify(existingImages));
 
       if (imageFile) {
         formData.append("image", imageFile);
@@ -689,6 +694,14 @@ export default function AdminServiceCategoriesPage() {
                           alt={`Category image ${idx + 1}`}
                           className="max-h-full max-w-full object-contain group-hover:scale-110 transition-transform duration-300"
                         />
+                        <button
+                          type="button"
+                          onClick={() => handleRemoveImage(idx)}
+                          title="Remove this image"
+                          className="absolute top-1 right-1 z-20 w-6 h-6 rounded-full bg-red-600/90 hover:bg-red-600 text-white flex items-center justify-center shadow-lg transition-transform hover:scale-110"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                        </button>
                         <span className="absolute bottom-1 right-1 bg-slate-900/90 text-[#38BDF8] font-mono text-[9px] font-bold px-1.5 py-0.5 rounded border border-slate-800">
                           #{idx + 1}
                         </span>

@@ -79,6 +79,10 @@ export class DeviceService {
       }
     }
 
+    if (Array.isArray(data.images) && data.images.length > 0 && !file) {
+      data.imagePath = data.images[0];
+    }
+
     return await deviceRepository.update(id, data);
   }
 
