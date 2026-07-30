@@ -72,12 +72,14 @@ export function AdminSidebar({
         <div>
           <div className="flex items-center justify-between p-4 border-b border-slate-800">
             <Link href="/admin/dashboard" className="flex items-center gap-3 overflow-hidden">
-              <div className="w-10 h-10 rounded-xl bg-[#0284C7] flex items-center justify-center text-white shrink-0 shadow-lg">
-                <Shield className="w-6 h-6" />
-              </div>
+              <img
+                src="/logo.png"
+                alt="FAF Logo"
+                className="h-10 w-auto object-contain shrink-0"
+              />
               {!isCollapsed && (
                 <div className="font-bebas tracking-wide text-xl text-white truncate">
-                  FAF Admin
+                  FAF ADMIN
                 </div>
               )}
             </Link>
