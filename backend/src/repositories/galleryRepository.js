@@ -2,12 +2,17 @@ import { Gallery } from "../models/index.js";
 import { Op } from "sequelize";
 
 export class GalleryRepository {
-  async findAll({ page = 1, limit = 12, category = null, status = null }) {
+  async findAll({ page = 1, limit = 100, category = null, status = null }) {
     const offset = (page - 1) * limit;
     const where = {};
 
     if (status) where.status = status;
-    if (category) where.category = category;
+    if (category) {
+      where[Op.or] = [
+        { category: category },
+        { category: { [Op.like]: `%${category}%` } }
+      ];
+    }
 
     const { rows, count } = await Gallery.findAndCountAll({
       where,
