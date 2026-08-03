@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { 
@@ -366,16 +366,6 @@ export default function ProjectsPage() {
                         ))}
                       </div>
                     </div>
-                  </div>
-
-                  <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-                    <Link 
-                      href="/contact"
-                      className="inline-flex items-center gap-2 text-[#0284C7] hover:text-[#0369a1] font-bebas text-base tracking-wider uppercase group/btn"
-                    >
-                      <span>View Details</span>
-                      <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                    </Link>
                   </div>
                 </div>
 

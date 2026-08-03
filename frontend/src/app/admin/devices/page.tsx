@@ -600,11 +600,13 @@ export default function AdminServiceCategoriesPage() {
             className="bg-slate-950 border border-slate-800 rounded-xl py-2 px-3 text-xs text-white focus:outline-none"
           >
             <option value="">All Categories</option>
-            <option value="Security Guard Services">Security Guard Services</option>
-            <option value="CCTV Surveillance">CCTV Surveillance</option>
-            <option value="Access Control">Access Control</option>
-            <option value="Fire Safety">Fire Safety</option>
-            <option value="PA System">PA System</option>
+            {Array.from(
+              new Set(devices.map((d) => d.category).filter(Boolean))
+            ).map((catName) => (
+              <option key={catName} value={catName}>
+                {catName}
+              </option>
+            ))}
           </select>
         </div>
       </div>

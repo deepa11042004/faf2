@@ -186,6 +186,25 @@ const WHY_EXPLORE = [
   "Gain confidence in our expertise and experience"
 ];
 
+function mapCategoryToId(cat: string): string {
+  if (!cat) return "all";
+  const lower = cat.toLowerCase();
+  if (lower.includes("cctv") || lower.includes("camera") || lower.includes("control room")) return "cctv";
+  if (lower.includes("fire") || lower.includes("smoke")) return "fire";
+  if (lower.includes("access") || lower.includes("biometric") || lower.includes("door")) return "access";
+  if (lower.includes("pa") || lower.includes("public address") || lower.includes("speaker")) return "pa";
+  if (lower.includes("guard") || lower.includes("security") || lower.includes("vip")) return "guards";
+  if (lower.includes("house") || lower.includes("clean") || lower.includes("facility")) return "housekeeping";
+  if (lower.includes("commercial")) return "commercial";
+  if (lower.includes("residential")) return "residential";
+  if (lower.includes("industrial")) return "industrial";
+  if (lower.includes("education") || lower.includes("school")) return "education";
+  if (lower.includes("health") || lower.includes("hospital")) return "healthcare";
+  if (lower.includes("warehouse") || lower.includes("logistics")) return "warehouse";
+  if (lower.includes("government")) return "government";
+  return "cctv";
+}
+
 export default function GalleryPage() {
   const [activeCategory, setActiveCategory] = useState("all");
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -201,7 +220,7 @@ export default function GalleryPage() {
   const allGalleryItems = dbGallery.length > 0
     ? dbGallery.map((item, i) => ({
         id: item.id || i + 1,
-        category: item.category?.toLowerCase().replace(/[^a-z]/g, "").slice(0, 8) || "all",
+        category: mapCategoryToId(item.category),
         title: item.title || "",
         desc: item.description || "",
         image: getMediaUrl(item.imagePath || item.image || ""),

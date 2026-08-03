@@ -282,19 +282,28 @@ export default function CareersPage() {
       .catch(err => console.error("Failed to fetch jobs:", err));
   }, []);
 
+  // Helper to split text into bullet points
+  const parseBulletPoints = (val: any): string[] => {
+    if (!val) return [];
+    if (Array.isArray(val)) return val;
+    if (typeof val === "string") {
+      return val
+        .split(/\r?\n|\. /)
+        .map((s) => s.trim().replace(/^[-•*]\s*/, ""))
+        .filter((s) => s.length > 0);
+    }
+    return [];
+  };
+
   // Merge: DB jobs first, static OPENINGS as fallback
   const allJobs = dbJobs.length > 0
-    ? dbJobs.map(j => ({
+    ? dbJobs.map((j) => ({
         id: String(j.id),
-        title: j.title,
+        title: j.jobTitle || j.title || "Job Position",
         location: j.location || "Delhi NCR",
-        type: j.jobType || "Full-Time",
-        responsibilities: Array.isArray(j.responsibilities) ? j.responsibilities
-          : typeof j.responsibilities === "string" ? j.responsibilities.split("\n").filter(Boolean)
-          : [],
-        requirements: Array.isArray(j.requirements) ? j.requirements
-          : typeof j.requirements === "string" ? j.requirements.split("\n").filter(Boolean)
-          : []
+        type: j.employmentType || j.jobType || "Full-Time",
+        responsibilities: parseBulletPoints(j.responsibilities),
+        requirements: parseBulletPoints(j.requirements)
       }))
     : OPENINGS;
 
@@ -485,15 +494,18 @@ export default function CareersPage() {
       </section>
 
       {/* Current Openings */}
-      <section className="py-24 bg-[url('/images/backgrounds/services-blue-bg.png')] bg-cover bg-center bg-no-repeat relative text-white">
+      <section id="openings" className="py-24 pt-36 scroll-mt-24 bg-[url('/images/backgrounds/services-blue-bg.png')] bg-cover bg-center bg-no-repeat relative text-white">
         <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-[#38BDF8] font-bebas text-xl tracking-widest uppercase mb-2 block drop-shadow">
+          <div className="text-center max-w-3xl mx-auto mb-16 pt-4">
+            <span className="text-[#38BDF8] font-bebas text-xl md:text-2xl tracking-widest uppercase mb-2 block drop-shadow font-semibold">
               Join Our Team
             </span>
-            <h2 className="text-4xl md:text-6xl font-bebas tracking-wide text-white leading-tight">
+            <h2 className="text-4xl md:text-6xl font-bebas tracking-wide text-white leading-tight drop-shadow-md">
               Current Openings
             </h2>
+            <p className="text-blue-100 text-base md:text-lg font-inter mt-3 max-w-xl mx-auto">
+              Explore active job opportunities and join Family Anchor Facilities.
+            </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
@@ -605,7 +617,7 @@ export default function CareersPage() {
                       required
                       minLength={2}
                       maxLength={50}
-                      pattern="^[A-Za-z\\s\\.]+$"
+                      pattern="^[A-Za-z .]+$"
                       title="Please enter a valid name (letters and spaces only)"
                       placeholder="e.g. Rahul Sharma"
                       value={formData.fullName}
@@ -630,7 +642,7 @@ export default function CareersPage() {
                     <input 
                       type="tel" 
                       required
-                      pattern="^\\+?[0-9\\s\\-\\(\\)]{7,15}$"
+                      pattern="^\+?[0-9 -()]{7,15}$"
                       title="Please enter a valid phone number (7-15 digits)"
                       placeholder="+91 98765 43210"
                       value={formData.mobile}
@@ -645,7 +657,7 @@ export default function CareersPage() {
                       required
                       minLength={2}
                       maxLength={50}
-                      pattern="^[A-Za-z\\s\\-]+$"
+                      pattern="^[A-Za-z -]+$"
                       title="Please enter a valid city name"
                       placeholder="e.g. New Delhi"
                       value={formData.currentCity}
@@ -760,7 +772,7 @@ export default function CareersPage() {
                     <input 
                       type="text" 
                       required
-                      pattern="^(19|20)\\d{2}$"
+                      pattern="^(19|20)[0-9]{2}$"
                       title="Please enter a valid 4-digit year (e.g., 2021)"
                       placeholder="e.g. 2021"
                       value={formData.passingYear}

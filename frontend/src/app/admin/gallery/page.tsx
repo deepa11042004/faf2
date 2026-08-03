@@ -26,7 +26,7 @@ export default function AdminGalleryPage() {
   const fetchGallery = async () => {
     try {
       setLoading(true);
-      const res = await galleryApi.getGallery({ category });
+      const res = await galleryApi.getGallery({ category, limit: 100 });
       if (res.success && res.data) {
         setGallery(res.data.gallery);
       }
@@ -112,8 +112,10 @@ export default function AdminGalleryPage() {
           <option value="Fire Safety">Fire Safety</option>
           <option value="Access Control">Access Control</option>
           <option value="Security Guards">Security Guards</option>
+          <option value="PA System">PA System</option>
+          <option value="Housekeeping Services">Housekeeping Services</option>
         </select>
-        <span className="text-xs text-slate-400">Total: {gallery.length} Images</span>
+        <span className="text-xs text-slate-400 font-semibold">Total: {gallery.length} Images</span>
       </div>
 
       {/* Gallery Grid */}
@@ -121,17 +123,17 @@ export default function AdminGalleryPage() {
         {loading ? (
           <div className="col-span-full text-center py-12 text-slate-500">Loading gallery images...</div>
         ) : gallery.length === 0 ? (
-          <div className="col-span-full text-center py-12 text-slate-500">No images uploaded yet.</div>
+          <div className="col-span-full text-center py-12 text-slate-500">No images found for selected category.</div>
         ) : (
           gallery.map((item) => (
             <div key={item.id} className="group relative bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-lg h-48">
               <img src={getMediaUrl(item.imagePath)} alt={item.title || "Gallery image"} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-slate-950/70 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-between p-3">
-                <span className="text-[10px] bg-[#0284C7] text-white px-2 py-0.5 rounded-full w-fit">{item.category}</span>
+                <span className="text-[10px] bg-[#0284C7] text-white px-2 py-0.5 rounded-full w-fit font-semibold">{item.category}</span>
                 <div className="flex items-center justify-between">
                   <span className="text-xs text-white truncate font-medium">{item.title || "Untitled"}</span>
-                  <button onClick={() => setDeleteId(item.id)} className="p-1.5 rounded-lg bg-red-500/20 text-red-400 hover:bg-red-500">
-                    <Trash2 className="w-4 h-4 text-white" />
+                  <button onClick={() => setDeleteId(item.id)} className="p-1.5 rounded-lg bg-red-500/20 text-red-400 hover:bg-red-500 hover:text-white transition-colors">
+                    <Trash2 className="w-4 h-4" />
                   </button>
                 </div>
               </div>
@@ -150,16 +152,27 @@ export default function AdminGalleryPage() {
             <h2 className="text-xl font-bebas text-white mb-4">Upload Gallery Image</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-xs text-slate-400 uppercase mb-1">Image Title</label>
+                <label className="block text-xs text-slate-400 uppercase mb-1 font-semibold">Image Title</label>
                 <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} className="w-full bg-slate-950 border border-slate-800 rounded-xl py-2 px-3 text-white text-sm" />
               </div>
               <div>
-                <label className="block text-xs text-slate-400 uppercase mb-1">Category</label>
-                <input type="text" required value={galCategory} onChange={(e) => setGalCategory(e.target.value)} className="w-full bg-slate-950 border border-slate-800 rounded-xl py-2 px-3 text-white text-sm" />
+                <label className="block text-xs text-slate-400 uppercase mb-1 font-semibold">Category *</label>
+                <select
+                  value={galCategory}
+                  onChange={(e) => setGalCategory(e.target.value)}
+                  className="w-full bg-slate-950 border border-slate-800 rounded-xl py-2 px-3 text-white text-sm"
+                >
+                  <option value="CCTV Installation">CCTV Installation</option>
+                  <option value="Fire Safety">Fire Safety</option>
+                  <option value="Access Control">Access Control</option>
+                  <option value="Security Guards">Security Guards</option>
+                  <option value="PA System">PA System</option>
+                  <option value="Housekeeping Services">Housekeeping Services</option>
+                </select>
               </div>
               <div>
-                <label className="block text-xs text-slate-400 uppercase mb-1">Image File *</label>
-                <input type="file" required accept="image/*" onChange={(e) => setImageFile(e.target.files?.[0] || null)} className="w-full text-xs text-slate-400" />
+                <label className="block text-xs text-slate-400 uppercase mb-1 font-semibold">Image File *</label>
+                <input type="file" required accept="image/*" onChange={(e) => setImageFile(e.target.files?.[0] || null)} className="w-full text-xs text-slate-400 file:mr-3 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-[#0284C7] file:text-white" />
               </div>
               <div className="flex justify-end gap-2 pt-2">
                 <button type="button" onClick={() => setIsModalOpen(false)} className="px-4 py-2 border border-slate-700 text-slate-300 rounded-xl text-xs">Cancel</button>
