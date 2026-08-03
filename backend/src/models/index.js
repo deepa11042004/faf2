@@ -9,6 +9,7 @@ import CareerApplication from "./CareerApplication.js";
 import ContactEnquiry from "./ContactEnquiry.js";
 import WebsiteSetting from "./WebsiteSetting.js";
 import Device from "./Device.js";
+import TeamMember from "./TeamMember.js";
 
 // Define Associations
 
@@ -45,5 +46,6 @@ export {
   CareerApplication,
   ContactEnquiry,
   WebsiteSetting,
-  Device
+  Device,
+  TeamMember
 };

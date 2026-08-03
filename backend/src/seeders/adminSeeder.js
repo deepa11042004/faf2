@@ -9,7 +9,8 @@ import {
   CareerApplication,
   ContactEnquiry,
   WebsiteSetting,
-  Device
+  Device,
+  TeamMember
 } from "../models/index.js";
 import dotenv from "dotenv";
 
@@ -19,7 +20,7 @@ export const seedAllData = async (isStandalone = false) => {
   try {
     if (isStandalone) {
       await sequelize.authenticate();
-      await sequelize.sync({ alter: true });
+      await sequelize.sync({ force: false });
     }
     console.log("Database synced for seeding...");
 
@@ -88,9 +89,10 @@ export const seedAllData = async (isStandalone = false) => {
       console.log("✔ 5 Core Security Services Created.");
     }
 
-    // 3. Service Categories Catalog (Force sync/re-populate with ALL images in Database)
-    await Device.destroy({ where: {}, truncate: false });
-    await Device.bulkCreate([
+    // 3. Service Categories Catalog — Safe Upsert (never overwrites admin-uploaded images)
+    // Uses findOrCreate so existing records with custom images are preserved on every restart
+    const deviceSeedData = [
+
       // 10 Security Guard Services Categories
       {
         name: "Residential Security Guards",
@@ -228,7 +230,7 @@ export const seedAllData = async (isStandalone = false) => {
         displayOrder: 9
       },
       {
-        name: "VIP Protection (Where Applicable)",
+        name: "VIP Protection",
         category: "Security Guard Services",
         serviceSlug: "security-guard-services",
         description: "Personal protection officers and armed escorts providing executive protection for dignitaries, executives, and VIP guests.",
@@ -242,8 +244,38 @@ export const seedAllData = async (isStandalone = false) => {
         status: "active",
         displayOrder: 10
       },
+      {
+        name: "Bouncer Services",
+        category: "Security Guard Services",
+        serviceSlug: "security-guard-services",
+        description: "Professional Bouncers trained to maintain order, manage crowds, and ensure the safety of guests at events and commercial venues. They provide effective access control, handle conflicts professionally, and create a secure environment while maintaining excellent customer service.",
+        bestFor: ["Events & Concerts", "Hotels & Restaurants", "Clubs & Bars", "Weddings & Private Functions"],
+        keyFeatures: ["Crowd Management", "Entry & Exit Control", "Conflict Resolution", "Guest Safety", "Emergency Response", "Professional Conduct"],
+        imagePath: "/uploads/devices/1785680616395-868619263.jpg",
+        images: [
+          "/uploads/devices/1785680616395-868619263.jpg"
+        ],
+        status: "active",
+        displayOrder: 11
+      },
+      {
+        name: "Gunman Services",
+        category: "Security Guard Services",
+        serviceSlug: "security-guard-services",
+        description: "Our Licensed Gunmen provide advanced security for high-risk locations, valuable assets, and VIP protection assignments. Every deployment is carried out in compliance with applicable laws and regulations by trained professionals who are prepared to respond effectively to security threats while ensuring public safety.",
+        bestFor: ["Banks & ATMs", "VIP Protection", "Industrial Facilities", "High-Risk Locations"],
+        keyFeatures: ["Licensed Personnel", "Asset Protection", "High-Risk Security", "Armed Escort", "Threat Response", "24/7 Deployment"],
+        imagePath: "/uploads/devices/1785656802928-251719565.png",
+        images: [
+          "/uploads/devices/1785656802928-251719565.png",
+          "/uploads/devices/1785656802936-990891824.jpg"
+        ],
+        status: "active",
+        displayOrder: 12
+      },
 
-      // 8 CCTV Camera Devices (All 5 images saved for each camera type)
+      // CCTV Camera Devices (All 5 images saved for each camera type)
+
       {
         name: "Dome Cameras",
         category: "CCTV Surveillance",
@@ -1076,8 +1108,20 @@ export const seedAllData = async (isStandalone = false) => {
         status: "active",
         displayOrder: 62
       }
-    ]);
-    console.log("✔ Service Categories Catalog Populated with All 62 Items & All Database Images.");
+    ];
+
+    // Safe upsert: insert only if name doesn't exist yet — never overwrite admin-uploaded images
+    let inserted = 0;
+    for (const item of deviceSeedData) {
+      const [, created] = await Device.findOrCreate({
+        where: { name: item.name, category: item.category },
+        defaults: item
+      });
+      if (created) inserted++;
+    }
+    console.log(`✔ Service Categories Catalog: ${inserted} new items inserted (existing records preserved).`);
+
+
 
     // 4. Projects Portfolio & Images
     const projectCount = await Project.count();
@@ -1298,6 +1342,82 @@ export const seedAllData = async (isStandalone = false) => {
         footerText: "Your Trusted Partner in Comprehensive Security & Facility Management. Protecting people, property, and business operations for over a decade."
       });
       console.log("✔ Complete Website Settings & Contact Information Created.");
+    }
+
+    // 10. Devices (Service Categories)
+    const deviceCount = await Device.count();
+    if (deviceCount === 0) {
+      await Device.bulkCreate([
+        {
+          name: "4K Dome & Bullet IP Cameras",
+          category: "CCTV Surveillance",
+          serviceSlug: "cctv-installation",
+          description: "Night vision infrared 4K surveillance cameras with motion detection.",
+          status: "active",
+          displayOrder: 1
+        },
+        {
+          name: "Biometric & Access Control System",
+          category: "Access Control",
+          serviceSlug: "access-control",
+          description: "Fingerprint, RFID card, and facial recognition attendance and door locks.",
+          status: "active",
+          displayOrder: 2
+        },
+        {
+          name: "Addressable Fire Smoke Detectors",
+          category: "Fire Safety",
+          serviceSlug: "fire-alarm-system",
+          description: "Optical smoke sensors with automatic central control panel alerts.",
+          status: "active",
+          displayOrder: 3
+        },
+        {
+          name: "Armed & Unarmed Security Personnel",
+          category: "Manned Guarding",
+          serviceSlug: "security-guards",
+          description: "Trained physical guards for residential, commercial, and event security.",
+          status: "active",
+          displayOrder: 4
+        }
+      ]);
+      console.log("✔ Sample Service Categories & Devices Created.");
+    }
+
+    // 11. Team Members
+    const teamCount = await TeamMember.count();
+    if (teamCount === 0) {
+      await TeamMember.bulkCreate([
+        {
+          name: "Rajesh Sharma",
+          role: "Managing Director",
+          description: "Over 20 years of expertise in corporate security operations, risk assessment, and facility strategy.",
+          status: "active",
+          displayOrder: 1
+        },
+        {
+          name: "Amit Kumar Singh",
+          role: "Chief Operations Officer",
+          description: "Former defense personnel specializing in manned guarding deployments and quick response tactics.",
+          status: "active",
+          displayOrder: 2
+        },
+        {
+          name: "Sneha Mukherjee",
+          role: "Head of Technical Systems",
+          description: "Leads smart CCTV integration, IoT fire alarms, and automated access control projects.",
+          status: "active",
+          displayOrder: 3
+        },
+        {
+          name: "Vikram Malhotra",
+          role: "Senior Security Supervisor",
+          description: "Manages field guard training, physical vigilance audits, and emergency protocols.",
+          status: "active",
+          displayOrder: 4
+        }
+      ]);
+      console.log("✔ Sample Team Members Created.");
     }
 
     console.log("\n✨ DATABASE SEEDING COMPLETED SUCCESSFULLY!");

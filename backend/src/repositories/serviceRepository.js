@@ -21,7 +21,7 @@ export class ServiceRepository {
       where,
       limit: parseInt(limit, 10),
       offset: parseInt(offset, 10),
-      order: [["displayOrder", "ASC"], ["createdAt", "DESC"]]
+      order: [["displayOrder", "ASC"], ["createdAt", "ASC"]]
     });
 
     return {

@@ -1,5 +1,6 @@
 import app from "./app.js";
-import { connectDB } from "./config/database.js";
+import config from "./config/database.js";
+// Server entry point - updated ordering
 import { sequelize } from "./models/index.js";
 import { seedAllData } from "./seeders/adminSeeder.js";
 import dotenv from "dotenv";
@@ -20,7 +21,7 @@ app.listen(PORT, () => {
 const initDatabase = async () => {
   try {
     await connectDB();
-    await sequelize.sync({ alter: false });
+    await sequelize.sync({ force: false });
     console.log("✔ Sequelize Models Synchronized Successfully.");
 
     try {

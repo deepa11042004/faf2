@@ -30,7 +30,7 @@ export class DeviceRepository {
       where,
       limit: parseInt(limit),
       offset: parseInt(offset),
-      order: [["displayOrder", "ASC"], ["createdAt", "DESC"]]
+      order: [["displayOrder", "ASC"], ["id", "ASC"], ["createdAt", "ASC"]]
     });
 
     return {
@@ -39,6 +39,15 @@ export class DeviceRepository {
       totalPages: Math.ceil(count / limit),
       currentPage: parseInt(page)
     };
+  }
+
+  async getMaxDisplayOrder(category = null) {
+    const where = {};
+    if (category) {
+      where.category = category;
+    }
+    const max = await Device.max("displayOrder", { where });
+    return max || 0;
   }
 
   async findById(id) {

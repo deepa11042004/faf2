@@ -9,6 +9,7 @@ import applicationRoutes from "./applicationRoutes.js";
 import contactRoutes from "./contactRoutes.js";
 import settingRoutes from "./settingRoutes.js";
 import deviceRoutes from "./deviceRoutes.js";
+import teamRoutes from "./teamRoutes.js";
 
 const router = Router();
 
@@ -22,5 +23,6 @@ router.use("/applications", applicationRoutes);
 router.use("/contact", contactRoutes);
 router.use("/settings", settingRoutes);
 router.use("/devices", deviceRoutes);
+router.use("/team", teamRoutes);
 
 export default router;

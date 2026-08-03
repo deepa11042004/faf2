@@ -19,6 +19,10 @@ const storage = multer.diskStorage({
       folder = "public/uploads/projects";
     } else if (req.baseUrl.includes("gallery")) {
       folder = "public/uploads/gallery";
+    } else if (req.baseUrl.includes("team")) {
+      folder = "public/uploads/team";
+    } else if (req.baseUrl.includes("devices")) {
+      folder = "public/uploads/devices";
     } else if (req.baseUrl.includes("settings")) {
       folder = "public/uploads/logos";
     } else if (req.baseUrl.includes("applications")) {

@@ -14,12 +14,14 @@ export const getDeviceById = asyncHandler(async (req, res) => {
 });
 
 export const createDevice = asyncHandler(async (req, res) => {
-  const device = await deviceService.createDevice(req.body, req.file);
+  const files = req.files || (req.file ? [req.file] : []);
+  const device = await deviceService.createDevice(req.body, files);
   return ApiResponse.success(res, "Device created successfully.", device, HTTP_STATUS.CREATED);
 });
 
 export const updateDevice = asyncHandler(async (req, res) => {
-  const device = await deviceService.updateDevice(req.params.id, req.body, req.file);
+  const files = req.files || (req.file ? [req.file] : []);
+  const device = await deviceService.updateDevice(req.params.id, req.body, files);
   return ApiResponse.success(res, "Device updated successfully.", device);
 });
 

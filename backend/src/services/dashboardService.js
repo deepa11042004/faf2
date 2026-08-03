@@ -4,6 +4,7 @@ import galleryRepository from "../repositories/galleryRepository.js";
 import jobRepository from "../repositories/jobRepository.js";
 import applicationRepository from "../repositories/applicationRepository.js";
 import contactRepository from "../repositories/contactRepository.js";
+import { Device, TeamMember } from "../models/index.js";
 
 export class DashboardService {
   async getDashboardData() {
@@ -14,6 +15,8 @@ export class DashboardService {
       totalCareerJobs,
       totalApplications,
       totalContactEnquiries,
+      totalCategories,
+      totalTeamMembers,
       recentEnquiries,
       recentApplications
     ] = await Promise.all([
@@ -23,6 +26,8 @@ export class DashboardService {
       jobRepository.count(),
       applicationRepository.count(),
       contactRepository.count(),
+      Device.count(),
+      TeamMember.count(),
       contactRepository.findRecent(5),
       applicationRepository.findRecent(5)
     ]);
@@ -34,7 +39,9 @@ export class DashboardService {
         totalGalleryImages,
         totalCareerJobs,
         totalApplications,
-        totalContactEnquiries
+        totalContactEnquiries,
+        totalCategories,
+        totalTeamMembers
       },
       recentEnquiries,
       recentApplications

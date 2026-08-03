@@ -7,7 +7,30 @@ import { upload } from "../middlewares/uploadMiddleware.js";
 
 const router = Router();
 
+/**
+ * @swagger
+ * /settings:
+ *   get:
+ *     summary: Get website settings
+ *     tags: [Settings]
+ *     responses:
+ *       200:
+ *         description: Settings retrieved successfully
+ */
 router.get("/", getSettings);
+
+/**
+ * @swagger
+ * /settings:
+ *   put:
+ *     summary: Update website settings
+ *     tags: [Settings]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Settings updated successfully
+ */
 router.put(
   "/",
   protectAdmin,

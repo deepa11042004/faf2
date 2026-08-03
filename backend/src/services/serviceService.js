@@ -1,4 +1,5 @@
 import serviceRepository from "../repositories/serviceRepository.js";
+import { Service } from "../models/index.js";
 
 export class ServiceService {
   async getAllServices(queryParams) {
@@ -20,6 +21,12 @@ export class ServiceService {
   async createService(data) {
     const existing = await serviceRepository.findBySlug(data.slug);
     if (existing) throw new Error("Service with this slug already exists.");
+    
+    if (!data.displayOrder || parseInt(data.displayOrder, 10) === 0) {
+      const maxOrder = await Service.max("displayOrder");
+      data.displayOrder = (maxOrder || 0) + 1;
+    }
+
     return await serviceRepository.create(data);
   }
 
