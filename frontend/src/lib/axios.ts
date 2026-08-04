@@ -1,6 +1,17 @@
 import axios from "axios";
 
+const sanitizeUrl = (rawUrl: string) => {
+  if (!rawUrl) return "";
+  let trimmed = rawUrl.trim();
+  // Strip any repeating protocol prefixes like http://http:// or https://http://
+  const hasHttps = /^https:\/\//i.test(trimmed);
+  trimmed = trimmed.replace(/^(https?:\/\/)+/i, "");
+  return `${hasHttps ? "https://" : "http://"}${trimmed}`;
+};
+
 export const getApiBaseUrl = () => {
+  let url = "";
+
   if (typeof window !== "undefined") {
     const { protocol, hostname, port } = window.location;
     const customUrl = localStorage.getItem("faf_custom_api_url");
@@ -12,20 +23,25 @@ export const getApiBaseUrl = () => {
 
       // On localhost, don't use remote production URL stored in localStorage
       if (!isLocalHost || !isRemoteCustomUrl) {
-        return trimmed;
+        url = trimmed;
       }
     }
 
-    if (process.env.NEXT_PUBLIC_API_URL) {
-      return process.env.NEXT_PUBLIC_API_URL;
+    if (!url && process.env.NEXT_PUBLIC_API_URL) {
+      url = process.env.NEXT_PUBLIC_API_URL;
     }
 
-    if (hostname !== "localhost" && hostname !== "127.0.0.1") {
+    if (!url && hostname !== "localhost" && hostname !== "127.0.0.1") {
       // In production deployment (e.g. Coolify), dynamically construct API endpoint
-      return `${protocol}//${hostname}${port ? `:${port}` : ""}/api/v1`;
+      url = `${protocol}//${hostname}${port ? `:${port}` : ""}/api/v1`;
     }
   }
-  return "http://localhost:5005/api/v1";
+
+  if (!url) {
+    url = "http://localhost:5005/api/v1";
+  }
+
+  return sanitizeUrl(url);
 };
 
 export const getMediaUrl = (imagePath?: string) => {

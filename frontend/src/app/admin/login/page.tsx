@@ -30,15 +30,17 @@ export default function LoginPage() {
   const handleSaveApiUrl = (e: React.FormEvent) => {
     e.preventDefault();
     if (apiUrl.trim()) {
-      let cleaned = apiUrl.trim();
-      // Fix duplicate protocols like http://http://
-      cleaned = cleaned.replace(/^(https?:\/\/)+/i, "http://");
+      let raw = apiUrl.trim();
+      const hasHttps = /^https:\/\//i.test(raw);
+      // Remove all duplicate protocols at start
+      let domain = raw.replace(/^(https?:\/\/)+/i, "");
       // Strip trailing slashes
-      cleaned = cleaned.replace(/\/+$/, "");
+      domain = domain.replace(/\/+$/, "");
       // Ensure /api/v1 suffix is present
-      if (!cleaned.endsWith("/api/v1")) {
-        cleaned = `${cleaned}/api/v1`;
+      if (!domain.endsWith("/api/v1")) {
+        domain = `${domain}/api/v1`;
       }
+      const cleaned = `${hasHttps ? "https://" : "http://"}${domain}`;
       setApiUrl(cleaned);
       localStorage.setItem("faf_custom_api_url", cleaned);
       setSavedSuccess(true);
