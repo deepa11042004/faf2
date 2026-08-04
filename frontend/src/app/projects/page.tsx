@@ -358,7 +358,7 @@ export default function ProjectsPage() {
                         Services Delivered:
                       </span>
                       <div className="grid grid-cols-2 gap-1.5 font-inter text-xs text-slate-700 font-semibold">
-                        {proj.servicesDelivered.map((sd, sIdx) => (
+                        {proj.servicesDelivered.map((sd: string, sIdx: number) => (
                           <div key={sIdx} className="flex items-center gap-1.5 bg-sky-50/80 p-1.5 rounded-lg border border-sky-100">
                             <Check className="w-3.5 h-3.5 text-[#0284C7] shrink-0" />
                             <span className="truncate">{sd}</span>
@@ -638,7 +638,7 @@ export default function ProjectsPage() {
               {/* All Project Images Showcase Grid inside Pop-up Window */}
               <div className="p-6 md:p-8 flex-1 overflow-y-auto max-h-[70vh] bg-black">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {selectedProject.images.map((imgUrl, iIdx) => (
+                  {selectedProject.images.map((imgUrl: string, iIdx: number) => (
                     <div key={iIdx} className="group relative rounded-2xl overflow-hidden bg-slate-900 border-2 border-zinc-800 shadow-xl">
                       <img
                         src={imgUrl}

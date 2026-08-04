@@ -13,7 +13,7 @@ export default function AdminApplicationsPage() {
   const [deleteId, setDeleteId] = useState<number | null>(null);
   const [viewApp, setViewApp] = useState<CareerApplicationItem | null>(null);
 
-  const parseDetails = (msg: string | null) => {
+  const parseDetails = (msg?: string | null) => {
     if (!msg) return null;
     try {
       return JSON.parse(msg);
@@ -159,14 +159,14 @@ export default function AdminApplicationsPage() {
                   if (details) {
                     return (
                       <div className="grid grid-cols-2 gap-4">
-                        {Object.entries(details).map(([key, value]) => (
-                          value && String(value).trim() !== "" && (
+                        {Object.entries(details)
+                          .filter(([_, value]) => value && String(value).trim() !== "")
+                          .map(([key, value]) => (
                             <div key={key} className="bg-slate-950/50 rounded-xl p-4 border border-slate-800/60 shadow-inner">
                               <span className="block text-xs text-slate-500 mb-1.5 font-medium">{key}</span>
                               <div className="text-sm text-slate-200 font-semibold">{String(value)}</div>
                             </div>
-                          )
-                        ))}
+                          ))}
                       </div>
                     );
                   }

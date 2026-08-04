@@ -128,7 +128,7 @@ function GuardCardSlider({ images, cardIndex, categoryTitle, dbImages }: { image
       </AnimatePresence>
 
       {/* Prev / Next Control Arrows */}
-      {images.length > 1 && (
+      {finalImages.length > 1 && (
         <>
           <button
             onClick={prevImage}
@@ -149,9 +149,9 @@ function GuardCardSlider({ images, cardIndex, categoryTitle, dbImages }: { image
       )}
 
       {/* Slide Indicators */}
-      {images.length > 1 && (
+      {finalImages.length > 1 && (
         <div className="absolute bottom-3 right-4 z-30 flex items-center gap-1.5 bg-slate-900/60 px-3 py-1.5 rounded-full backdrop-blur-sm">
-          {images.map((_, idx) => (
+          {finalImages.map((_, idx) => (
             <button
               key={idx}
               onClick={() => setCurrent(idx)}
@@ -169,7 +169,7 @@ function GuardCardSlider({ images, cardIndex, categoryTitle, dbImages }: { image
       </div>
 
       <div className="absolute bottom-3 left-4 z-20 text-xs text-slate-800 font-inter bg-sky-50 border border-sky-200 px-3 py-1 rounded-md shadow-sm font-semibold">
-        {categoryTitle} • {current + 1} / {images.length}
+        {categoryTitle} • {current + 1} / {finalImages.length}
       </div>
     </div>
   );
