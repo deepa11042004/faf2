@@ -3,8 +3,7 @@
 import { useEffect, useState } from "react";
 import { settingsApi } from "@/services/api/settingsApi";
 import { WebsiteSettingItem } from "@/types/admin";
-import { getMediaUrl } from "@/lib/axios";
-import { Save, Building, Mail, Phone, MapPin, Globe, CheckCircle2, AlertCircle, Upload, Image as ImageIcon, Loader2 } from "lucide-react";
+import { Save, Building, Globe, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 
 export default function AdminSettingsPage() {
   const [loading, setLoading] = useState(true);
@@ -23,11 +22,6 @@ export default function AdminSettingsPage() {
   const [linkedin, setLinkedin] = useState("");
   const [twitter, setTwitter] = useState("");
 
-  const [currentLogo, setCurrentLogo] = useState<string | null>(null);
-  const [currentFavicon, setCurrentFavicon] = useState<string | null>(null);
-  const [logoFile, setLogoFile] = useState<File | null>(null);
-  const [faviconFile, setFaviconFile] = useState<File | null>(null);
-
   const fetchSettings = async () => {
     try {
       setLoading(true);
@@ -45,8 +39,6 @@ export default function AdminSettingsPage() {
         setInstagram(d.instagram || "");
         setLinkedin(d.linkedin || "");
         setTwitter(d.twitter || "");
-        setCurrentLogo(d.logo || null);
-        setCurrentFavicon(d.favicon || null);
       }
     } catch (error: any) {
       console.error("Failed to fetch settings:", error);
@@ -67,48 +59,22 @@ export default function AdminSettingsPage() {
     setErrorMsg("");
 
     try {
-      let payload: FormData | Record<string, any>;
-
-      if (logoFile || faviconFile) {
-        const formData = new FormData();
-        formData.append("companyName", companyName);
-        formData.append("email", email);
-        formData.append("phone", phone);
-        formData.append("whatsapp", whatsapp);
-        formData.append("address", address);
-        formData.append("workingHours", workingHours);
-        formData.append("facebook", facebook);
-        formData.append("instagram", instagram);
-        formData.append("linkedin", linkedin);
-        formData.append("twitter", twitter);
-
-        if (logoFile) formData.append("logo", logoFile);
-        if (faviconFile) formData.append("favicon", faviconFile);
-        payload = formData;
-      } else {
-        payload = {
-          companyName,
-          email,
-          phone,
-          whatsapp,
-          address,
-          workingHours,
-          facebook,
-          instagram,
-          linkedin,
-          twitter
-        };
-      }
+      const payload = {
+        companyName,
+        email,
+        phone,
+        whatsapp,
+        address,
+        workingHours,
+        facebook,
+        instagram,
+        linkedin,
+        twitter
+      };
 
       const res = await settingsApi.updateSettings(payload);
       if (res.success) {
         setSuccessMsg(res.message || "Website settings updated successfully!");
-        setLogoFile(null);
-        setFaviconFile(null);
-        if (res.data) {
-          if (res.data.logo) setCurrentLogo(res.data.logo);
-          if (res.data.favicon) setCurrentFavicon(res.data.favicon);
-        }
         setTimeout(() => setSuccessMsg(""), 4000);
       } else {
         setErrorMsg(res.message || "Failed to save settings.");
@@ -127,8 +93,8 @@ export default function AdminSettingsPage() {
   return (
     <div className="space-y-6 font-inter max-w-4xl pb-12">
       <div>
-        <h1 className="text-3xl font-bebas tracking-wide text-white">Website & Branding Settings</h1>
-        <p className="text-slate-400 text-sm">Configure corporate contact information, social links, working hours, and branding logos.</p>
+        <h1 className="text-3xl font-bebas tracking-wide text-white">Website Settings</h1>
+        <p className="text-slate-400 text-sm">Configure corporate contact information, social profiles, and working hours.</p>
       </div>
 
       {successMsg && (
@@ -217,44 +183,6 @@ export default function AdminSettingsPage() {
           </div>
         </div>
 
-        {/* Branding & Uploads */}
-        <div className="space-y-4 pt-4 border-t border-slate-800">
-          <h2 className="text-lg font-bold text-white border-b border-slate-800 pb-2 flex items-center gap-2">
-            <ImageIcon className="w-5 h-5 text-[#38BDF8]" /> Website Logos & Branding
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Company Logo</label>
-              {currentLogo && (
-                <div className="mb-3 p-3 bg-slate-950 rounded-xl border border-slate-800 inline-block">
-                  <img src={getMediaUrl(currentLogo)} alt="Current Logo" className="h-12 w-auto object-contain" />
-                </div>
-              )}
-              <input 
-                type="file" 
-                accept="image/*"
-                onChange={(e) => setLogoFile(e.target.files?.[0] || null)}
-                className="w-full text-xs text-slate-400 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-sky-500/10 file:text-sky-400 hover:file:bg-sky-500/20 file:cursor-pointer"
-              />
-            </div>
-
-            <div>
-              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Website Favicon</label>
-              {currentFavicon && (
-                <div className="mb-3 p-3 bg-slate-950 rounded-xl border border-slate-800 inline-block">
-                  <img src={getMediaUrl(currentFavicon)} alt="Current Favicon" className="h-8 w-8 object-contain" />
-                </div>
-              )}
-              <input 
-                type="file" 
-                accept="image/*"
-                onChange={(e) => setFaviconFile(e.target.files?.[0] || null)}
-                className="w-full text-xs text-slate-400 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-sky-500/10 file:text-sky-400 hover:file:bg-sky-500/20 file:cursor-pointer"
-              />
-            </div>
-          </div>
-        </div>
-
         {/* Social Profiles */}
         <div className="space-y-4 pt-4 border-t border-slate-800">
           <h2 className="text-lg font-bold text-white border-b border-slate-800 pb-2 flex items-center gap-2">
@@ -312,7 +240,7 @@ export default function AdminSettingsPage() {
           <button 
             type="submit" 
             disabled={saving} 
-            className="px-8 py-3.5 rounded-xl bg-[#0284C7] hover:bg-[#0369a1] active:scale-95 text-white font-bebas text-lg tracking-wider uppercase flex items-center gap-2.5 shadow-xl transition-all disabled:opacity-50"
+            className="px-8 py-3.5 rounded-xl bg-[#0284C7] hover:bg-[#0369a1] active:scale-95 text-white font-bebas text-lg tracking-wider uppercase flex items-center gap-2.5 shadow-xl transition-all disabled:opacity-50 cursor-pointer"
           >
             {saving ? (
               <>
