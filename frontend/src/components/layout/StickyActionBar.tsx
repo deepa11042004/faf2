@@ -2,8 +2,15 @@
 
 import { Phone } from "lucide-react";
 import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 export function StickyActionBar() {
+  const pathname = usePathname();
+
+  // Hide floating action buttons on admin panel pages
+  if (pathname?.startsWith("/admin")) {
+    return null;
+  }
   return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
