@@ -2263,7 +2263,7 @@ export const seedAllData = async (isStandalone = false) => {
     }
     console.log(`✔ Media Gallery Assets Synced: ${galleryData.length} items.`);
 
-    // 6. Career Job Openings
+    // 6. Career Job Openings (Purge old placeholder jobs not present in local DB)
     const jobsData = [
   {
     "jobTitle": "Security Guard",
@@ -2364,15 +2364,22 @@ export const seedAllData = async (isStandalone = false) => {
     "lastDate": null
   }
 ];
+    const activeJobTitles = jobsData.map(j => j.jobTitle);
+    const existingJobs = await CareerJob.findAll();
+    for (const job of existingJobs) {
+      if (!activeJobTitles.includes(job.jobTitle)) {
+        await job.destroy();
+      }
+    }
     for (const item of jobsData) {
       await CareerJob.findOrCreate({
         where: { jobTitle: item.jobTitle },
         defaults: item
       });
     }
-    console.log(`✔ Career Job Openings Synced: ${jobsData.length} items.`);
+    console.log(`✔ Career Job Openings Synced: ${jobsData.length} active jobs.`);
 
-    // 7. Team Members
+    // 7. Team Members (Purge obsolete placeholder team members)
     const teamData = [
   {
     "name": "john doe",
@@ -2391,6 +2398,13 @@ export const seedAllData = async (isStandalone = false) => {
     "displayOrder": 0
   }
 ];
+    const activeTeamNames = teamData.map(t => t.name);
+    const existingTeam = await TeamMember.findAll();
+    for (const member of existingTeam) {
+      if (!activeTeamNames.includes(member.name)) {
+        await member.destroy();
+      }
+    }
     for (const item of teamData) {
       await TeamMember.findOrCreate({
         where: { name: item.name },
