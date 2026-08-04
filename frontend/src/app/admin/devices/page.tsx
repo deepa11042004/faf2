@@ -353,8 +353,18 @@ function AdminCardSlider({ primaryImage, dbImages, itemTitle }: { primaryImage?:
   );
 }
 
+const DEFAULT_CATEGORIES = [
+  "Security Guard Services",
+  "CCTV Surveillance",
+  "Access Control",
+  "Fire Safety",
+  "PA System",
+  "Housekeeping & Facility Management Services"
+];
+
 export default function AdminServiceCategoriesPage() {
   const [devices, setDevices] = useState<DeviceItem[]>([]);
+  const [allCategories, setAllCategories] = useState<string[]>(DEFAULT_CATEGORIES);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
@@ -416,6 +426,15 @@ export default function AdminServiceCategoriesPage() {
       const res = await devicesApi.getDevices({ search, category, limit: 100 });
       if (res.success && res.data) {
         setDevices(res.data.devices);
+
+        // Dynamically update allCategories while preserving defaults
+        if (Array.isArray(res.data.devices)) {
+          const fetchedCats = res.data.devices.map((d: DeviceItem) => d.category).filter(Boolean);
+          setAllCategories((prev) => {
+            const combined = Array.from(new Set([...prev, ...fetchedCats]));
+            return combined;
+          });
+        }
       }
     } catch (error) {
       console.error("Failed to fetch service categories:", error);
@@ -600,9 +619,7 @@ export default function AdminServiceCategoriesPage() {
             className="bg-slate-950 border border-slate-800 rounded-xl py-2 px-3 text-xs text-white focus:outline-none"
           >
             <option value="">All Categories</option>
-            {Array.from(
-              new Set(devices.map((d) => d.category).filter(Boolean))
-            ).map((catName) => (
+            {allCategories.map((catName) => (
               <option key={catName} value={catName}>
                 {catName}
               </option>
