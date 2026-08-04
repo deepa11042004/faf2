@@ -2,16 +2,24 @@ import axios from "axios";
 
 export const getApiBaseUrl = () => {
   if (typeof window !== "undefined") {
-    const customUrl = localStorage.getItem("faf_custom_api_url");
-    if (customUrl && customUrl.trim() !== "") {
-      return customUrl.trim();
-    }
-  }
-  if (process.env.NEXT_PUBLIC_API_URL) {
-    return process.env.NEXT_PUBLIC_API_URL;
-  }
-  if (typeof window !== "undefined") {
     const { protocol, hostname, port } = window.location;
+    const customUrl = localStorage.getItem("faf_custom_api_url");
+    
+    if (customUrl && customUrl.trim() !== "") {
+      const trimmed = customUrl.trim();
+      const isLocalHost = hostname === "localhost" || hostname === "127.0.0.1";
+      const isRemoteCustomUrl = trimmed.includes("sslip.io") || trimmed.includes("187.127.177.77");
+
+      // On localhost, don't use remote production URL stored in localStorage
+      if (!isLocalHost || !isRemoteCustomUrl) {
+        return trimmed;
+      }
+    }
+
+    if (process.env.NEXT_PUBLIC_API_URL) {
+      return process.env.NEXT_PUBLIC_API_URL;
+    }
+
     if (hostname !== "localhost" && hostname !== "127.0.0.1") {
       // In production deployment (e.g. Coolify), dynamically construct API endpoint
       return `${protocol}//${hostname}${port ? `:${port}` : ""}/api/v1`;
