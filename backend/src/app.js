@@ -55,8 +55,9 @@ app.get(["/", "/health"], (req, res) => {
   return res.json({ status: "OK", message: "FAF Security Backend API is running successfully." });
 });
 
-// API Version 1 Routes
+// API Version 1 Routes & Fallback Aliases
 app.use("/api/v1", routes);
+app.use("/api", routes);
 
 // 404 Route Handler
 app.use((req, res) => {

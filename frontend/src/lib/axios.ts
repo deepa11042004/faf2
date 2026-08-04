@@ -7,6 +7,17 @@ export const cleanUrlProtocol = (inputUrl?: string | null): string => {
   // Completely strip ALL leading protocol patterns (http://, https://, http:/, etc.) repeatedly
   str = str.replace(/^(https?:\/\/+|https?:+|http:\/\/+)+/gi, "");
   str = str.replace(/^\/+/, "");
+  str = str.replace(/\/+$/, "");
+
+  // Guarantee /api/v1 suffix is present
+  if (!str.endsWith("/api/v1")) {
+    if (str.endsWith("/api")) {
+      str = `${str}/v1`;
+    } else {
+      str = `${str}/api/v1`;
+    }
+  }
+
   return `${isHttps ? "https://" : "http://"}${str}`;
 };
 
