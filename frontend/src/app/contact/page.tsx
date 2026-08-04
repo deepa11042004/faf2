@@ -390,8 +390,13 @@ export default function ContactPage() {
                       <Phone className="w-5 h-5" />
                     </div>
                     <div>
-                      <strong className="block text-slate-900 font-bold mb-0.5">Phone Number</strong>
-                      <a href={`tel:${siteSettings?.phone || "8826632363"}`} className="hover:text-[#0284C7] transition-colors">{siteSettings?.phone || "+91 8826632363"}</a>
+                      <strong className="block text-slate-900 font-bold mb-0.5">Phone Numbers</strong>
+                      <div className="flex flex-col">
+                        <a href={`tel:${siteSettings?.phone || "8826632363"}`} className="hover:text-[#0284C7] transition-colors">{siteSettings?.phone || "+91 8826632363"}</a>
+                        {siteSettings?.alternatePhone && (
+                          <a href={`tel:${siteSettings.alternatePhone}`} className="hover:text-[#0284C7] transition-colors text-xs text-slate-600 font-medium">{siteSettings.alternatePhone} (Alt)</a>
+                        )}
+                      </div>
                     </div>
                   </div>
 

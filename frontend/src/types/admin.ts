@@ -141,6 +141,7 @@ export interface WebsiteSettingItem {
   address?: string;
   email?: string;
   phone?: string;
+  alternatePhone?: string;
   whatsapp?: string;
   googleMap?: string;
   logo?: string;

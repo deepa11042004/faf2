@@ -85,7 +85,12 @@ export function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-bebas text-xl tracking-wide text-white mb-0.5">Phone</h4>
-                  <a href={`tel:${siteSettings?.phone || "8826632363"}`} className="text-blue-100 text-lg font-inter hover:underline">{siteSettings?.phone || "+91 8826632363"}</a>
+                  <div className="flex flex-col">
+                    <a href={`tel:${siteSettings?.phone || "8826632363"}`} className="text-blue-100 text-lg font-inter hover:underline">{siteSettings?.phone || "+91 8826632363"}</a>
+                    {siteSettings?.alternatePhone && (
+                      <a href={`tel:${siteSettings.alternatePhone}`} className="text-blue-200/80 text-sm font-inter hover:underline">{siteSettings.alternatePhone} (Alt)</a>
+                    )}
+                  </div>
                 </div>
               </div>
 

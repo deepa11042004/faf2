@@ -14,6 +14,7 @@ export default function AdminSettingsPage() {
   const [companyName, setCompanyName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [alternatePhone, setAlternatePhone] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
   const [address, setAddress] = useState("");
   const [workingHours, setWorkingHours] = useState("");
@@ -32,6 +33,7 @@ export default function AdminSettingsPage() {
         setCompanyName(d.companyName || "Family Anchor Facilities Pvt. Ltd.");
         setEmail(d.email || "info@familyanchor.in");
         setPhone(d.phone || "+91 9386126258");
+        setAlternatePhone(d.alternatePhone || "");
         setWhatsapp(d.whatsapp || "+91 9386126258");
         setAddress(d.address || "");
         setWorkingHours(d.workingHours || "24/7 Operations");
@@ -63,6 +65,7 @@ export default function AdminSettingsPage() {
         companyName,
         email,
         phone,
+        alternatePhone,
         whatsapp,
         address,
         workingHours,
@@ -140,7 +143,7 @@ export default function AdminSettingsPage() {
               />
             </div>
             <div>
-              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Phone Number *</label>
+              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Primary Phone Number *</label>
               <input 
                 type="text" 
                 required 
@@ -151,7 +154,17 @@ export default function AdminSettingsPage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Alternate Mobile Number</label>
+              <input 
+                type="text" 
+                value={alternatePhone} 
+                onChange={(e) => setAlternatePhone(e.target.value)} 
+                placeholder="e.g. +91 9876543210"
+                className="w-full bg-slate-950 border border-slate-800 rounded-xl py-3 px-4 text-white text-sm focus:outline-none focus:border-[#0284C7]" 
+              />
+            </div>
             <div>
               <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">WhatsApp Hotline</label>
               <input 

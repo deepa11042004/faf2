@@ -25,6 +25,10 @@ const WebsiteSetting = sequelize.define(
       type: DataTypes.STRING(50),
       allowNull: true
     },
+    alternatePhone: {
+      type: DataTypes.STRING(50),
+      allowNull: true
+    },
     whatsapp: {
       type: DataTypes.STRING(50),
       allowNull: true
