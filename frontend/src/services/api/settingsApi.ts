@@ -7,8 +7,8 @@ export const settingsApi = {
     return res.data;
   },
 
-  updateSettings: async (formData: FormData) => {
-    const res = await apiClient.put<ApiResponse<WebsiteSettingItem>>("/settings", formData);
+  updateSettings: async (data: FormData | Record<string, any>) => {
+    const res = await apiClient.put<ApiResponse<WebsiteSettingItem>>("/settings", data);
     return res.data;
   }
 };
