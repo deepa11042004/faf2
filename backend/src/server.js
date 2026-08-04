@@ -1,5 +1,5 @@
 import app from "./app.js";
-import config from "./config/database.js";
+import { connectDB } from "./config/database.js";
 // Server entry point - updated ordering
 import { sequelize } from "./models/index.js";
 import { seedAllData } from "./seeders/adminSeeder.js";
