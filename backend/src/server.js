@@ -24,6 +24,17 @@ const initDatabase = async () => {
     await sequelize.sync({ force: false });
     console.log("✔ Sequelize Models Synchronized Successfully.");
 
+    // Auto-migration check for newly added columns
+    try {
+      const [cols] = await sequelize.query("SHOW COLUMNS FROM website_settings LIKE 'alternate_phone'");
+      if (cols.length === 0) {
+        await sequelize.query("ALTER TABLE website_settings ADD COLUMN alternate_phone VARCHAR(50) NULL AFTER phone");
+        console.log("✔ Auto-migration: alternate_phone column added to website_settings.");
+      }
+    } catch (migErr) {
+      console.error("Auto-migration check notice:", migErr.message);
+    }
+
     try {
       await seedAllData(false);
       console.log("✔ Database seeding check completed.");
