@@ -7,7 +7,7 @@ import { useAuthStore } from "@/store/authStore";
 import { Shield, Lock, Mail, AlertCircle, ArrowRight, Settings, Server, Check, Eye, EyeOff } from "lucide-react";
 import Image from "next/image";
 
-import { getApiBaseUrl } from "@/lib/axios";
+import { getApiBaseUrl, cleanUrlProtocol } from "@/lib/axios";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("admin@familyanchor.in");
@@ -31,17 +31,12 @@ export default function LoginPage() {
   const handleSaveApiUrl = (e: React.FormEvent) => {
     e.preventDefault();
     if (apiUrl.trim()) {
-      let raw = apiUrl.trim();
-      const hasHttps = /^https:\/\//i.test(raw);
-      // Remove all duplicate protocols at start
-      let domain = raw.replace(/^(https?:\/\/)+/i, "");
-      // Strip trailing slashes
-      domain = domain.replace(/\/+$/, "");
-      // Ensure /api/v1 suffix is present
-      if (!domain.endsWith("/api/v1")) {
-        domain = `${domain}/api/v1`;
+      let cleaned = cleanUrlProtocol(apiUrl.trim());
+      cleaned = cleaned.replace(/\/+$/, "");
+      if (!cleaned.endsWith("/api/v1")) {
+        cleaned = `${cleaned}/api/v1`;
       }
-      const cleaned = `${hasHttps ? "https://" : "http://"}${domain}`;
+      cleaned = cleanUrlProtocol(cleaned);
       setApiUrl(cleaned);
       localStorage.setItem("faf_custom_api_url", cleaned);
       setSavedSuccess(true);

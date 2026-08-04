@@ -1,15 +1,16 @@
 import axios from "axios";
 
-const sanitizeUrl = (rawUrl: string) => {
-  if (!rawUrl) return "";
-  let trimmed = rawUrl.trim();
-  // Strip any repeating protocol prefixes like http://http:// or https://http://
-  const hasHttps = /^https:\/\//i.test(trimmed);
-  trimmed = trimmed.replace(/^(https?:\/\/)+/i, "");
-  return `${hasHttps ? "https://" : "http://"}${trimmed}`;
+export const cleanUrlProtocol = (inputUrl?: string | null): string => {
+  if (!inputUrl) return "";
+  let str = inputUrl.trim();
+  const isHttps = /^https:/i.test(str);
+  // Completely strip ALL leading protocol patterns (http://, https://, http:/, etc.) repeatedly
+  str = str.replace(/^(https?:\/\/+|https?:+|http:\/\/+)+/gi, "");
+  str = str.replace(/^\/+/, "");
+  return `${isHttps ? "https://" : "http://"}${str}`;
 };
 
-export const getApiBaseUrl = () => {
+export const getApiBaseUrl = (): string => {
   let url = "";
 
   if (typeof window !== "undefined") {
@@ -17,18 +18,23 @@ export const getApiBaseUrl = () => {
     const customUrl = localStorage.getItem("faf_custom_api_url");
     
     if (customUrl && customUrl.trim() !== "") {
-      const trimmed = customUrl.trim();
+      const cleanedCustom = cleanUrlProtocol(customUrl);
+      if (cleanedCustom !== customUrl) {
+        // Auto-fix any contaminated entry stored in localStorage
+        localStorage.setItem("faf_custom_api_url", cleanedCustom);
+      }
+
       const isLocalHost = hostname === "localhost" || hostname === "127.0.0.1";
-      const isRemoteCustomUrl = trimmed.includes("sslip.io") || trimmed.includes("187.127.177.77");
+      const isRemoteCustomUrl = cleanedCustom.includes("sslip.io") || cleanedCustom.includes("187.127.177.77");
 
       // On localhost, don't use remote production URL stored in localStorage
       if (!isLocalHost || !isRemoteCustomUrl) {
-        url = trimmed;
+        url = cleanedCustom;
       }
     }
 
     if (!url && process.env.NEXT_PUBLIC_API_URL) {
-      url = process.env.NEXT_PUBLIC_API_URL;
+      url = cleanUrlProtocol(process.env.NEXT_PUBLIC_API_URL);
     }
 
     if (!url && hostname !== "localhost" && hostname !== "127.0.0.1") {
@@ -41,13 +47,13 @@ export const getApiBaseUrl = () => {
     url = "http://localhost:5005/api/v1";
   }
 
-  return sanitizeUrl(url);
+  return cleanUrlProtocol(url);
 };
 
-export const getMediaUrl = (imagePath?: string) => {
+export const getMediaUrl = (imagePath?: string): string => {
   if (!imagePath) return "";
   if (imagePath.startsWith("http://") || imagePath.startsWith("https://")) {
-    return imagePath;
+    return cleanUrlProtocol(imagePath);
   }
   const apiBase = getApiBaseUrl();
   const rootServerUrl = apiBase.replace(/\/api\/v1\/?$/, "");
