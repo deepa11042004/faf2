@@ -15,6 +15,7 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  const [isNetworkError, setIsNetworkError] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showApiConfig, setShowApiConfig] = useState(false);
   const [apiUrl, setApiUrl] = useState("");
@@ -60,6 +61,8 @@ export default function LoginPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+    setIsNetworkError(false);
+    setShowApiConfig(false);
     setLoading(true);
 
     try {
@@ -72,9 +75,12 @@ export default function LoginPage() {
       }
     } catch (err: any) {
       if (!err.response) {
+        setIsNetworkError(true);
         setError(`Network Error: Unable to reach backend server at ${getApiBaseUrl()}. Please verify your backend container URL.`);
         setShowApiConfig(true);
       } else {
+        setIsNetworkError(false);
+        setShowApiConfig(false);
         setError(err.response?.data?.message || "Invalid email or password.");
       }
     } finally {
@@ -112,13 +118,15 @@ export default function LoginPage() {
                 <AlertCircle className="w-5 h-5 shrink-0" />
                 <span>{error}</span>
               </div>
-              <button
-                type="button"
-                onClick={() => setShowApiConfig(!showApiConfig)}
-                className="text-xs text-sky-400 hover:underline block pt-1 font-semibold"
-              >
-                {showApiConfig ? "Hide Backend Server Configuration" : "Configure Backend Server URL"}
-              </button>
+              {isNetworkError && (
+                <button
+                  type="button"
+                  onClick={() => setShowApiConfig(!showApiConfig)}
+                  className="text-xs text-sky-400 hover:underline block pt-1 font-semibold"
+                >
+                  {showApiConfig ? "Hide Backend Server Configuration" : "Configure Backend Server URL"}
+                </button>
+              )}
             </div>
           )}
 
