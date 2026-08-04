@@ -16,7 +16,7 @@ coverage/
 backend/.env
 
 # uploads
-backend/public/uploads/
+backend/public/uploads/resumes/
 
 # misc
 .DS_Store
