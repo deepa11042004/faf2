@@ -1,6 +1,12 @@
 import axios from "axios";
 
 export const getApiBaseUrl = () => {
+  if (typeof window !== "undefined") {
+    const customUrl = localStorage.getItem("faf_custom_api_url");
+    if (customUrl && customUrl.trim() !== "") {
+      return customUrl.trim();
+    }
+  }
   if (process.env.NEXT_PUBLIC_API_URL) {
     return process.env.NEXT_PUBLIC_API_URL;
   }
