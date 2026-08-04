@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { 
@@ -21,6 +21,8 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
 import { contactApi } from "@/services/api/contactApi";
+import { settingsApi } from "@/services/api/settingsApi";
+import { WebsiteSettingItem } from "@/types/admin";
 
 const SERVICES_OPTIONS = [
   "CCTV Installation",
@@ -68,6 +70,18 @@ const MAP_FEATURES = [
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [siteSettings, setSiteSettings] = useState<WebsiteSettingItem | null>(null);
+
+  useEffect(() => {
+    settingsApi.getSettings()
+      .then((res) => {
+        if (res.success && res.data) {
+          setSiteSettings(res.data);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
   const [formData, setFormData] = useState({
     fullName: "",
     companyName: "",
@@ -357,7 +371,7 @@ export default function ContactPage() {
               {/* Company Details Card */}
               <div className="bg-white/95 backdrop-blur-xl text-slate-900 rounded-[32px] p-8 md:p-10 border-4 border-sky-300 shadow-2xl">
                 <span className="text-[#0284C7] font-bebas text-lg tracking-widest uppercase block mb-1">Corporate Details</span>
-                <h3 className="text-3xl font-bebas tracking-wide text-slate-900 mb-1">Family Anchor Facilities Pvt. Ltd.</h3>
+                <h3 className="text-3xl font-bebas tracking-wide text-slate-900 mb-1">{siteSettings?.companyName || "Family Anchor Facilities Pvt. Ltd."}</h3>
                 <p className="text-xs text-slate-500 font-inter font-medium mb-6">Your Trusted Security & Facility Management Partner</p>
 
                 <div className="space-y-5 font-inter text-sm text-slate-700">
@@ -367,7 +381,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <strong className="block text-slate-900 font-bold mb-0.5">Office Address</strong>
-                      <span>HIG DDA JASOLA, DELHI</span>
+                      <span>{siteSettings?.address || "A-8A & A-8B, First Floor, Vishwakarma Colony, Pul Pehladpur, M.B Road, New Delhi 110044, India"}</span>
                     </div>
                   </div>
 
@@ -377,7 +391,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <strong className="block text-slate-900 font-bold mb-0.5">Phone Number</strong>
-                      <a href="tel:9386126258" className="hover:text-[#0284C7] transition-colors">9386126258</a>
+                      <a href={`tel:${siteSettings?.phone || "8826632363"}`} className="hover:text-[#0284C7] transition-colors">{siteSettings?.phone || "+91 8826632363"}</a>
                     </div>
                   </div>
 
@@ -387,7 +401,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <strong className="block text-slate-900 font-bold mb-0.5">Email Address</strong>
-                      <a href="mailto:familyanchorfacilities@gmail.com" className="hover:text-[#0284C7] transition-colors">familyanchorfacilities@gmail.com</a>
+                      <a href={`mailto:${siteSettings?.email || "familyanchorfacilities@gmail.com"}`} className="hover:text-[#0284C7] transition-colors">{siteSettings?.email || "familyanchorfacilities@gmail.com"}</a>
                     </div>
                   </div>
 
@@ -407,8 +421,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <strong className="block text-slate-900 font-bold mb-0.5">Business Hours</strong>
-                      <p className="text-xs">Monday – Saturday: 9:00 AM – 6:00 PM</p>
-                      <p className="text-xs text-slate-500">Sunday: Closed</p>
+                      <p className="text-xs">{siteSettings?.workingHours || "24/7 Active Operations & Customer Support"}</p>
                     </div>
                   </div>
                 </div>

@@ -1,11 +1,25 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ShieldCheck, Mail, Phone, MapPin, Globe, ArrowLeft } from "lucide-react";
+import { settingsApi } from "@/services/api/settingsApi";
+import { WebsiteSettingItem } from "@/types/admin";
 
 export default function PrivacyPolicyPage() {
+  const [siteSettings, setSiteSettings] = useState<WebsiteSettingItem | null>(null);
+
+  useEffect(() => {
+    settingsApi.getSettings()
+      .then((res) => {
+        if (res.success && res.data) {
+          setSiteSettings(res.data);
+        }
+      })
+      .catch(() => {});
+  }, []);
   return (
     <div className="min-h-screen bg-slate-950 text-white selection:bg-[#0284C7] selection:text-white">
       <Navbar />
@@ -249,27 +263,27 @@ export default function PrivacyPolicyPage() {
               </p>
 
               <div className="bg-slate-800/80 rounded-2xl p-6 border border-slate-700 space-y-4">
-                <h3 className="font-bebas text-xl text-white tracking-wide">Family Anchor Facilities Pvt. Ltd.</h3>
+                <h3 className="font-bebas text-xl text-white tracking-wide">{siteSettings?.companyName || "Family Anchor Facilities Pvt. Ltd."}</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-300">
                   <div className="flex items-start gap-3">
                     <MapPin className="w-5 h-5 text-[#38BDF8] shrink-0 mt-0.5" />
                     <div>
                       <strong className="block text-white text-xs uppercase tracking-wider">Address</strong>
-                      HIG DDA JASOLA, DELHI
+                      {siteSettings?.address || "A-8A & A-8B, First Floor, Vishwakarma Colony, Pul Pehladpur, M.B Road, New Delhi 110044, India"}
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <Phone className="w-5 h-5 text-[#38BDF8] shrink-0 mt-0.5" />
                     <div>
                       <strong className="block text-white text-xs uppercase tracking-wider">Phone</strong>
-                      <a href="tel:9386126258" className="hover:text-[#38BDF8] transition-colors">+91 9386126258</a>
+                      <a href={`tel:${siteSettings?.phone || "8826632363"}`} className="hover:text-[#38BDF8] transition-colors">{siteSettings?.phone || "+91 8826632363"}</a>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <Mail className="w-5 h-5 text-[#38BDF8] shrink-0 mt-0.5" />
                     <div>
                       <strong className="block text-white text-xs uppercase tracking-wider">Email</strong>
-                      <a href="mailto:familyanchorfacilities@gmail.com" className="hover:text-[#38BDF8] transition-colors">familyanchorfacilities@gmail.com</a>
+                      <a href={`mailto:${siteSettings?.email || "familyanchorfacilities@gmail.com"}`} className="hover:text-[#38BDF8] transition-colors">{siteSettings?.email || "familyanchorfacilities@gmail.com"}</a>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">

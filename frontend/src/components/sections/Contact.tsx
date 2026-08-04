@@ -4,14 +4,27 @@ import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Send, CheckCircle2 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { contactApi } from "@/services/api/contactApi";
+import { settingsApi } from "@/services/api/settingsApi";
+import { WebsiteSettingItem } from "@/types/admin";
 
 export function ContactSection() {
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+  const [siteSettings, setSiteSettings] = useState<WebsiteSettingItem | null>(null);
+
+  useEffect(() => {
+    settingsApi.getSettings()
+      .then((res) => {
+        if (res.success && res.data) {
+          setSiteSettings(res.data);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   const onSubmit = async (data: any) => {
     try {
@@ -72,7 +85,7 @@ export function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-bebas text-xl tracking-wide text-white mb-0.5">Phone</h4>
-                  <a href="tel:9386126258" className="text-blue-100 text-lg font-inter hover:underline">9386126258</a>
+                  <a href={`tel:${siteSettings?.phone || "8826632363"}`} className="text-blue-100 text-lg font-inter hover:underline">{siteSettings?.phone || "+91 8826632363"}</a>
                 </div>
               </div>
 
@@ -82,7 +95,7 @@ export function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-bebas text-xl tracking-wide text-white mb-0.5">Email</h4>
-                  <a href="mailto:familyanchorfacilities@gmail.com" className="text-blue-100 text-lg font-inter hover:underline">familyanchorfacilities@gmail.com</a>
+                  <a href={`mailto:${siteSettings?.email || "familyanchorfacilities@gmail.com"}`} className="text-blue-100 text-lg font-inter hover:underline">{siteSettings?.email || "familyanchorfacilities@gmail.com"}</a>
                 </div>
               </div>
 
@@ -93,7 +106,7 @@ export function ContactSection() {
                 <div>
                   <h4 className="font-bebas text-xl tracking-wide text-white mb-0.5">Headquarters Address</h4>
                   <p className="text-blue-100 text-lg font-inter leading-relaxed">
-                    HIG DDA JASOLA, DELHI
+                    {siteSettings?.address || "A-8A & A-8B, First Floor, Vishwakarma Colony, Pul Pehladpur, M.B Road, New Delhi 110044, India"}
                   </p>
                 </div>
               </div>
