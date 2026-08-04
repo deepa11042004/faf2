@@ -8,9 +8,7 @@ export const settingsApi = {
   },
 
   updateSettings: async (formData: FormData) => {
-    const res = await apiClient.put<ApiResponse<WebsiteSettingItem>>("/settings", formData, {
-      headers: { "Content-Type": "multipart/form-data" }
-    });
+    const res = await apiClient.put<ApiResponse<WebsiteSettingItem>>("/settings", formData);
     return res.data;
   }
 };

@@ -13,16 +13,12 @@ export const projectsApi = {
   },
 
   createProject: async (formData: FormData) => {
-    const res = await apiClient.post<ApiResponse<ProjectItem>>("/projects", formData, {
-      headers: { "Content-Type": "multipart/form-data" }
-    });
+    const res = await apiClient.post<ApiResponse<ProjectItem>>("/projects", formData);
     return res.data;
   },
 
   updateProject: async (id: number | string, formData: FormData) => {
-    const res = await apiClient.put<ApiResponse<ProjectItem>>(`/projects/${id}`, formData, {
-      headers: { "Content-Type": "multipart/form-data" }
-    });
+    const res = await apiClient.put<ApiResponse<ProjectItem>>(`/projects/${id}`, formData);
     return res.data;
   },
 

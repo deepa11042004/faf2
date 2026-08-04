@@ -70,8 +70,10 @@ export default function AdminSettingsPage() {
       await settingsApi.updateSettings(formData);
       setSuccess(true);
       setTimeout(() => setSuccess(false), 3000);
-    } catch (error) {
-      alert("Failed to update settings.");
+    } catch (error: any) {
+      console.error("Failed to update settings:", error);
+      const msg = error?.response?.data?.message || error?.message || "Failed to update settings.";
+      alert(`Save Failed: ${msg}`);
     } finally {
       setSaving(false);
     }

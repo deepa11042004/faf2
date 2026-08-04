@@ -26,16 +26,12 @@ export const teamApi = {
   },
 
   createMember: async (formData: FormData) => {
-    const res = await apiClient.post<ApiResponse<TeamMember>>("/team", formData, {
-      headers: { "Content-Type": "multipart/form-data" }
-    });
+    const res = await apiClient.post<ApiResponse<TeamMember>>("/team", formData);
     return res.data;
   },
 
   updateMember: async (id: number | string, formData: FormData) => {
-    const res = await apiClient.put<ApiResponse<TeamMember>>(`/team/${id}`, formData, {
-      headers: { "Content-Type": "multipart/form-data" }
-    });
+    const res = await apiClient.put<ApiResponse<TeamMember>>(`/team/${id}`, formData);
     return res.data;
   },
 

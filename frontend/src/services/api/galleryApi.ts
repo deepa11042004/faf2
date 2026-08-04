@@ -8,16 +8,12 @@ export const galleryApi = {
   },
 
   createGalleryItem: async (formData: FormData) => {
-    const res = await apiClient.post<ApiResponse<GalleryItem>>("/gallery", formData, {
-      headers: { "Content-Type": "multipart/form-data" }
-    });
+    const res = await apiClient.post<ApiResponse<GalleryItem>>("/gallery", formData);
     return res.data;
   },
 
   updateGalleryItem: async (id: number | string, formData: FormData) => {
-    const res = await apiClient.put<ApiResponse<GalleryItem>>(`/gallery/${id}`, formData, {
-      headers: { "Content-Type": "multipart/form-data" }
-    });
+    const res = await apiClient.put<ApiResponse<GalleryItem>>(`/gallery/${id}`, formData);
     return res.data;
   },
 

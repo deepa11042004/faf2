@@ -18,11 +18,7 @@ export const applicationsApi = {
   },
 
   submitApplication: async (formData: FormData) => {
-    const res = await apiClient.post<ApiResponse>("/applications", formData, {
-      headers: {
-        "Content-Type": "multipart/form-data"
-      }
-    });
+    const res = await apiClient.post<ApiResponse>("/applications", formData);
     return res.data;
   }
 };

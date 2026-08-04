@@ -13,16 +13,12 @@ export const servicesApi = {
   },
 
   createService: async (formData: FormData) => {
-    const res = await apiClient.post<ApiResponse<ServiceItem>>("/services", formData, {
-      headers: { "Content-Type": "multipart/form-data" }
-    });
+    const res = await apiClient.post<ApiResponse<ServiceItem>>("/services", formData);
     return res.data;
   },
 
   updateService: async (id: number | string, formData: FormData) => {
-    const res = await apiClient.put<ApiResponse<ServiceItem>>(`/services/${id}`, formData, {
-      headers: { "Content-Type": "multipart/form-data" }
-    });
+    const res = await apiClient.put<ApiResponse<ServiceItem>>(`/services/${id}`, formData);
     return res.data;
   },
 
