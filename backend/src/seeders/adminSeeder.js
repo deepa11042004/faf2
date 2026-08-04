@@ -2399,7 +2399,57 @@ export const seedAllData = async (isStandalone = false) => {
     }
     console.log(`✔ Team Members Synced: ${teamData.length} items.`);
 
-    // 8. Website Settings
+    // 8. Career Applications
+    const appsData = [
+  {
+    "applicantName": "Mohammad Asif",
+    "email": "nidaparveen@bserc.org",
+    "phone": "+917042880241",
+    "resumePath": "/uploads/resumes/1785411487171-172408865.pdf",
+    "appliedJob": "Security Guard",
+    "message": "City: delhi\r\nDOB: 2000-02-01\r\nExperience: 2\r\nCurrent Employer: utes\r\nCurrent Salary: \r\nExpected Salary: \r\nNotice Period: 7 days\r\nHighest Qual: 12th\r\nInstitution: cbse\r\nPassing Year: 2021\r\nSkills: \r\nCertifications: \r\nCover Letter: ",
+    "applicationStatus": "pending"
+  },
+  {
+    "applicantName": "Nida Parveen Nida Parveen",
+    "email": "nidaparveen@bserc.org",
+    "phone": "+917042880241",
+    "resumePath": "/uploads/resumes/1785756094702-312539048.pdf",
+    "appliedJob": "Security Guard",
+    "message": "{\"City\":\"New Delhi\",\"Date of Birth\":\"2001-12-12\",\"Total Experience\":\"2\",\"Current Employer\":\"--\",\"Notice Period\":\"--\",\"Highest Qualification\":\"12th\",\"Institution\":\"cbse\",\"Passing Year\":\"2012\"}",
+    "applicationStatus": "pending"
+  }
+];
+    for (const item of appsData) {
+      await CareerApplication.findOrCreate({
+        where: { applicantName: item.applicantName, email: item.email },
+        defaults: item
+      });
+    }
+    console.log(`✔ Career Applications Synced: ${appsData.length} items.`);
+
+    // 9. Contact Enquiries
+    const enquiriesData = [
+  {
+    "name": "vikas",
+    "email": "vikas@gmail.com",
+    "phone": "07042880241",
+    "company": null,
+    "interestedService": "CCTV Installation & Live Surveillance",
+    "message": "uytrewgf hgfd",
+    "status": "new",
+    "adminNotes": null
+  }
+];
+    for (const item of enquiriesData) {
+      await ContactEnquiry.findOrCreate({
+        where: { name: item.name, email: item.email },
+        defaults: item
+      });
+    }
+    console.log(`✔ Contact Enquiries Synced: ${enquiriesData.length} items.`);
+
+    // 10. Website Settings
     const settingCount = await WebsiteSetting.count();
     if (settingCount === 0) {
       await WebsiteSetting.create({
