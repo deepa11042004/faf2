@@ -19,8 +19,8 @@ export function Hero() {
         >
           <source src="/videos/header-video.mp4" type="video/mp4" />
         </video>
-        {/* Transparent White Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white/75 via-white/35 to-transparent pointer-events-none" />
+        {/* Subtle Dark Overlay for high contrast without white blur */}
+        <div className="absolute inset-0 bg-slate-950/45 pointer-events-none" />
       </div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center pt-36 lg:pt-40 pb-20">
@@ -35,23 +35,23 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 border border-slate-200/80 backdrop-blur-md shadow-md w-fit"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 border border-white/20 backdrop-blur-md shadow-md w-fit"
           >
             <Shield className="text-[#0284C7] w-4 h-4" />
-            <span className="font-bebas text-sm tracking-widest uppercase text-slate-900">
+            <span className="font-bebas text-sm tracking-widest uppercase text-slate-900 font-semibold">
               Top Rated Security Agency
             </span>
           </motion.div>
 
-          <h1 className="text-5xl md:text-7xl font-poppins font-extrabold text-slate-900 leading-tight">
+          <h1 className="text-5xl md:text-7xl font-poppins font-extrabold text-white leading-tight drop-shadow-md">
             Protecting <br />
             What <br />
-            <span className="text-[#0284C7] drop-shadow-sm">
+            <span className="text-[#38BDF8] drop-shadow-md">
               Matters Most
             </span>
           </h1>
 
-          <p className="text-lg md:text-xl text-slate-800 max-w-xl font-inter leading-relaxed font-medium">
+          <p className="text-lg md:text-xl text-slate-100 max-w-xl font-inter leading-relaxed font-medium drop-shadow-sm">
             Delivering advanced surveillance systems, fire safety solutions,
             access control and professional security services for homes, businesses,
             industries and institutions.
