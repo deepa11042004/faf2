@@ -80,13 +80,13 @@ export default function DashboardPage() {
         </div>
 
         <div className="flex flex-wrap items-center gap-3">
-          <Link
+          {/* <Link
             href="/admin/services"
             className="px-4 py-2.5 rounded-xl bg-[#0284C7] hover:bg-[#0369a1] text-white text-xs font-semibold uppercase tracking-wider flex items-center gap-2 shadow-lg transition-all"
           >
             <Plus className="w-4 h-4" />
             <span>Add Service</span>
-          </Link>
+          </Link> */}
           <Link
             href="/admin/projects"
             className="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold uppercase tracking-wider flex items-center gap-2 border border-slate-700 transition-all"

@@ -155,13 +155,13 @@ export default function AdminServicesPage() {
           <p className="text-slate-400 text-sm">Create, edit and manage corporate security offerings.</p>
         </div>
 
-        <button
+        {/* <button
           onClick={() => handleOpenModal()}
           className="px-4 py-2.5 rounded-xl bg-[#0284C7] hover:bg-[#0369a1] text-white text-sm font-semibold flex items-center gap-2 shadow-lg transition-all"
         >
           <Plus className="w-4 h-4" />
           <span>Add New Service</span>
-        </button>
+        </button> */}
       </div>
 
       {/* Filter & Search Bar */}
@@ -205,7 +205,7 @@ export default function AdminServicesPage() {
               ) : services.length === 0 ? (
                 <tr>
                   <td colSpan={5} className="p-8 text-center text-slate-500">
-                    No services found. Click "Add New Service" to create one.
+                    No services found.
                   </td>
                 </tr>
               ) : (
