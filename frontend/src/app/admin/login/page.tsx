@@ -1,63 +1,26 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { authApi } from "@/services/api/authApi";
 import { useAuthStore } from "@/store/authStore";
-import { Shield, Lock, Mail, AlertCircle, ArrowRight, Settings, Server, Check, Eye, EyeOff } from "lucide-react";
-import Image from "next/image";
+import { Shield, Lock, Mail, AlertCircle, ArrowRight, Eye, EyeOff } from "lucide-react";
 
-import { getApiBaseUrl, cleanUrlProtocol } from "@/lib/axios";
+import { getApiBaseUrl } from "@/lib/axios";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("admin@familyanchor.in");
   const [password, setPassword] = useState("AdminPassword123!");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-
-  const [isNetworkError, setIsNetworkError] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const [showApiConfig, setShowApiConfig] = useState(false);
-  const [apiUrl, setApiUrl] = useState("");
-  const [savedSuccess, setSavedSuccess] = useState(false);
 
   const router = useRouter();
   const setAuth = useAuthStore((state) => state.setAuth);
 
-  useEffect(() => {
-    setApiUrl(getApiBaseUrl());
-  }, []);
-
-  const handleSaveApiUrl = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (apiUrl.trim()) {
-      let cleaned = cleanUrlProtocol(apiUrl.trim());
-      cleaned = cleaned.replace(/\/+$/, "");
-      if (!cleaned.endsWith("/api/v1")) {
-        cleaned = `${cleaned}/api/v1`;
-      }
-      cleaned = cleanUrlProtocol(cleaned);
-      setApiUrl(cleaned);
-      localStorage.setItem("faf_custom_api_url", cleaned);
-      setSavedSuccess(true);
-      setError("");
-      setTimeout(() => setSavedSuccess(false), 3000);
-    }
-  };
-
-  const handleResetApiUrl = () => {
-    localStorage.removeItem("faf_custom_api_url");
-    setApiUrl(getApiBaseUrl());
-    setError("");
-    setSavedSuccess(true);
-    setTimeout(() => setSavedSuccess(false), 3000);
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
-    setIsNetworkError(false);
-    setShowApiConfig(false);
     setLoading(true);
 
     try {
@@ -70,12 +33,8 @@ export default function LoginPage() {
       }
     } catch (err: any) {
       if (!err.response) {
-        setIsNetworkError(true);
-        setError(`Network Error: Unable to reach backend server at ${getApiBaseUrl()}. Please verify your backend container URL.`);
-        setShowApiConfig(true);
+        setError(`Network Error: Unable to reach backend server at ${getApiBaseUrl()}.`);
       } else {
-        setIsNetworkError(false);
-        setShowApiConfig(false);
         setError(err.response?.data?.message || "Invalid email or password.");
       }
     } finally {
@@ -113,59 +72,6 @@ export default function LoginPage() {
                 <AlertCircle className="w-5 h-5 shrink-0" />
                 <span>{error}</span>
               </div>
-              {isNetworkError && (
-                <button
-                  type="button"
-                  onClick={() => setShowApiConfig(!showApiConfig)}
-                  className="text-xs text-sky-400 hover:underline block pt-1 font-semibold"
-                >
-                  {showApiConfig ? "Hide Backend Server Configuration" : "Configure Backend Server URL"}
-                </button>
-              )}
-            </div>
-          )}
-
-          {/* Backend API Configuration Panel */}
-          {showApiConfig && (
-            <div className="mb-6 p-4 bg-slate-950/80 border border-sky-500/30 rounded-2xl space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="text-xs text-sky-400 font-bold uppercase tracking-wider flex items-center gap-1.5">
-                  <Server className="w-4 h-4" /> Backend Server Endpoint
-                </span>
-                {savedSuccess && (
-                  <span className="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full flex items-center gap-1">
-                    <Check className="w-3 h-3" /> Saved
-                  </span>
-                )}
-              </div>
-              <p className="text-[11px] text-slate-400 leading-relaxed">
-                If Coolify assigned a new URL to your backend container, paste it below (ending with <code className="text-sky-300">/api/v1</code>).
-              </p>
-              <form onSubmit={handleSaveApiUrl} className="space-y-2">
-                <input
-                  type="url"
-                  required
-                  value={apiUrl}
-                  onChange={(e) => setApiUrl(e.target.value)}
-                  placeholder="http://backend-domain.sslip.io/api/v1"
-                  className="w-full bg-slate-900 border border-slate-700 rounded-xl py-2 px-3 text-xs text-white focus:outline-none focus:border-[#0284C7]"
-                />
-                <div className="flex items-center justify-end gap-2 pt-1">
-                  <button
-                    type="button"
-                    onClick={handleResetApiUrl}
-                    className="text-[10px] text-slate-400 hover:text-slate-200 px-2 py-1"
-                  >
-                    Reset Default
-                  </button>
-                  <button
-                    type="submit"
-                    className="px-3 py-1.5 bg-[#0284C7] text-white text-xs font-semibold rounded-lg hover:bg-[#0369a1] transition-all"
-                  >
-                    Save & Retry
-                  </button>
-                </div>
-              </form>
             </div>
           )}
 
@@ -233,16 +139,8 @@ export default function LoginPage() {
             </button>
           </form>
 
-          <div className="mt-8 flex items-center justify-between text-xs text-slate-500">
+          <div className="mt-8 text-center text-xs text-slate-500">
             <span>Protected & Encrypted Corporate Console &copy; {new Date().getFullYear()}</span>
-            <button
-              type="button"
-              onClick={() => setShowApiConfig(!showApiConfig)}
-              className="hover:text-slate-300 transition-colors flex items-center gap-1"
-              title="Backend Server Configuration"
-            >
-              <Settings className="w-3.5 h-3.5" />
-            </button>
           </div>
         </div>
       </div>
