@@ -35,6 +35,7 @@ export default function AdminTeamPage() {
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState<"active" | "inactive">("active");
   const [displayOrder, setDisplayOrder] = useState<number>(0);
+  const [category, setCategory] = useState("general");
   const [photoFile, setPhotoFile] = useState<File | null>(null);
   const [removePhoto, setRemovePhoto] = useState(false);
 
@@ -64,6 +65,7 @@ export default function AdminTeamPage() {
       setDescription(item.description || "");
       setStatus(item.status);
       setDisplayOrder(item.displayOrder);
+      setCategory(item.category || "general");
     } else {
       setEditingItem(null);
       setName("");
@@ -71,6 +73,7 @@ export default function AdminTeamPage() {
       setDescription("");
       setStatus("active");
       setDisplayOrder(0);
+      setCategory("general");
     }
     setPhotoFile(null);
     setRemovePhoto(false);
@@ -88,6 +91,7 @@ export default function AdminTeamPage() {
       formData.append("description", description);
       formData.append("status", status);
       formData.append("displayOrder", displayOrder.toString());
+      formData.append("category", category);
       if (photoFile) {
         formData.append("photo", photoFile);
       }
@@ -166,6 +170,7 @@ export default function AdminTeamPage() {
               <tr>
                 <th className="p-4">Photo</th>
                 <th className="p-4">Name & Role</th>
+                <th className="p-4">Category</th>
                 <th className="p-4">Status</th>
                 <th className="p-4 text-right">Actions</th>
               </tr>
@@ -173,7 +178,7 @@ export default function AdminTeamPage() {
             <tbody className="divide-y divide-slate-800/60">
               {loading ? (
                 <tr>
-                  <td colSpan={4} className="p-8 text-center text-slate-500">
+                  <td colSpan={5} className="p-8 text-center text-slate-500">
                     <div className="flex items-center justify-center gap-3">
                       <div className="w-5 h-5 border-2 border-[#0284C7] border-t-transparent rounded-full animate-spin" />
                       Loading team members...
@@ -182,7 +187,7 @@ export default function AdminTeamPage() {
                 </tr>
               ) : members.length === 0 ? (
                 <tr>
-                  <td colSpan={4} className="p-8 text-center text-slate-500">
+                  <td colSpan={5} className="p-8 text-center text-slate-500">
                     No team members found. Click "Add Member" to create one.
                   </td>
                 </tr>
@@ -207,6 +212,19 @@ export default function AdminTeamPage() {
                     <td className="p-4">
                       <div className="font-semibold text-white">{item.name}</div>
                       <div className="text-xs text-slate-400 mt-0.5">{item.role}</div>
+                    </td>
+                    <td className="p-4">
+                      <span className={`inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium border ${
+                        item.category === "leadership" ? "bg-blue-500/10 text-blue-400 border-blue-500/20" :
+                        item.category === "security" ? "bg-amber-500/10 text-amber-400 border-amber-500/20" :
+                        item.category === "facility" ? "bg-purple-500/10 text-purple-400 border-purple-500/20" :
+                        "bg-slate-500/10 text-slate-400 border-slate-500/20"
+                      }`}>
+                        {item.category === "general" ? "General" :
+                         item.category === "leadership" ? "Leadership" :
+                         item.category === "security" ? "Security" :
+                         item.category === "facility" ? "Facility Services" : item.category || "General"}
+                      </span>
                     </td>
                     <td className="p-4">
                       {item.status === "active" ? (
@@ -291,7 +309,20 @@ export default function AdminTeamPage() {
                 />
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div>
+                  <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Category</label>
+                  <select
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+                    className="w-full bg-slate-950 border border-slate-800 rounded-xl py-2.5 px-4 text-white text-sm focus:outline-none focus:border-[#0284C7]"
+                  >
+                    <option value="general">General</option>
+                    <option value="leadership">Leadership</option>
+                    <option value="security">Security Professional</option>
+                    <option value="facility">Facility Services</option>
+                  </select>
+                </div>
                 <div>
                   <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Display Order</label>
                   <input

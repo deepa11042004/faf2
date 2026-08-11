@@ -38,6 +38,11 @@ const TeamMember = sequelize.define(
     displayOrder: {
       type: DataTypes.INTEGER,
       defaultValue: 0
+    },
+    category: {
+      type: DataTypes.STRING(50),
+      defaultValue: "general",
+      allowNull: false
     }
   },
   {

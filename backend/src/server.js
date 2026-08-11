@@ -36,6 +36,16 @@ const initDatabase = async () => {
     }
 
     try {
+      const [cols] = await sequelize.query("SHOW COLUMNS FROM team_members LIKE 'category'");
+      if (cols.length === 0) {
+        await sequelize.query("ALTER TABLE team_members ADD COLUMN category VARCHAR(50) NOT NULL DEFAULT 'general'");
+        console.log("✔ Auto-migration: category column added to team_members.");
+      }
+    } catch (migErr) {
+      console.error("Auto-migration check notice (team_members.category):", migErr.message);
+    }
+
+    try {
       await seedAllData(false);
       console.log("✔ Database seeding check completed.");
     } catch (seedError) {

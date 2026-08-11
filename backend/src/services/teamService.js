@@ -1,10 +1,11 @@
 import { TeamMember } from "../models/index.js";
 
 const getAllMembers = async (query = {}) => {
-  const { page = 1, limit = 100, search, status } = query;
+  const { page = 1, limit = 100, search, status, category } = query;
   const where = {};
   
   if (status) where.status = status;
+  if (category) where.category = category;
   // simplified search without Op for now
 
   return await TeamMember.findAndCountAll({

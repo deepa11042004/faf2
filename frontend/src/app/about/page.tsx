@@ -20,7 +20,6 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { StatsSection } from "@/components/sections/Stats";
 import { IndustriesSection } from "@/components/sections/Industries";
-import { TeamSection } from "@/components/sections/TeamSection";
 
 const CORE_VALUES = [
   {
@@ -275,91 +274,36 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Our Team & Company Strength */}
-      <section className="py-24 bg-black text-white relative overflow-hidden">
+      {/* Why Choose Us Section */}
+      <section className="py-24 bg-black text-white relative overflow-hidden border-b border-zinc-800">
         <div className="absolute inset-0 bg-[url('/images/backgrounds/dark-waves.png')] bg-cover bg-center bg-no-repeat opacity-45 pointer-events-none z-0" />
         <div className="container mx-auto px-4 md:px-6 relative z-10">
-          
-          {/* Team Block */}
-          <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-            >
-              <span className="text-[#38BDF8] font-bebas text-xl tracking-widest uppercase block mb-2">
-                Dedicated Professionals
-              </span>
-              <h2 className="text-4xl md:text-5xl font-bebas tracking-wide text-white leading-tight mb-6">
-                Our Team Strength
-              </h2>
-              <p className="text-slate-300 text-lg leading-relaxed font-inter mb-4">
-                At Family Anchor Facilities Pvt. Ltd., our strength lies in our experienced and dedicated team of security professionals, technicians, supervisors, and support staff. Every team member is selected based on professional competence, integrity, and commitment to excellence.
-              </p>
-              <p className="text-slate-300 text-lg leading-relaxed font-inter mb-4">
-                Our technical experts are skilled in the installation, configuration, and maintenance of advanced security systems, while our trained security personnel ensure the highest standards of vigilance and discipline in the field.
-              </p>
-              <p className="text-slate-300 text-lg leading-relaxed font-inter">
-                By combining technical expertise with practical experience, our team delivers customized security solutions that meet the highest industry standards and exceed client expectations.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-              className="relative h-[480px] rounded-[32px] overflow-hidden border border-zinc-800 shadow-2xl"
-            >
-              <img 
-                src="/images/hero/hero-guard.jpg" 
-                alt="Family Anchor Security Team" 
-                className="w-full h-full object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-              <div className="absolute bottom-8 left-8">
-                <span className="text-[#38BDF8] font-bebas text-2xl tracking-wider uppercase block">Trained & Disciplined</span>
-                <p className="text-white font-bebas text-xl">Field Guards, Supervisors & Technical Engineers</p>
-              </div>
-            </motion.div>
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-[#38BDF8] font-bebas text-xl tracking-widest uppercase mb-2 block">
+              Competitive Edge
+            </span>
+            <h2 className="text-4xl md:text-6xl font-bebas tracking-wide text-white leading-tight">
+              Why Choose Family Anchor Facilities Pvt. Ltd.?
+            </h2>
           </div>
 
-          {/* Team Portfolio */}
-          <div className="mb-24">
-            <TeamSection />
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {WHY_CHOOSE_POINTS.map((pt, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.05, duration: 0.4 }}
+                className="bg-zinc-900/80 border border-zinc-800 backdrop-blur-md p-6 rounded-2xl flex items-center gap-4 hover:border-[#38BDF8]/40 transition-all"
+              >
+                <div className="w-10 h-10 rounded-xl bg-[#38BDF8]/20 border border-[#38BDF8]/30 flex items-center justify-center text-[#38BDF8] shrink-0 font-bebas text-lg">
+                  {idx + 1}
+                </div>
+                <p className="text-slate-200 font-inter text-base leading-relaxed">{pt}</p>
+              </motion.div>
+            ))}
           </div>
-
-          {/* Why Choose Us Block */}
-          <div>
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="text-[#38BDF8] font-bebas text-xl tracking-widest uppercase mb-2 block">
-                Competitive Edge
-              </span>
-              <h2 className="text-4xl md:text-6xl font-bebas tracking-wide text-white leading-tight">
-                Why Choose Family Anchor Facilities Pvt. Ltd.?
-              </h2>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-              {WHY_CHOOSE_POINTS.map((pt, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.05, duration: 0.4 }}
-                  className="bg-zinc-900/80 border border-zinc-800 backdrop-blur-md p-6 rounded-2xl flex items-center gap-4 hover:border-[#38BDF8]/40 transition-all"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-[#38BDF8]/20 border border-[#38BDF8]/30 flex items-center justify-center text-[#38BDF8] shrink-0 font-bebas text-lg">
-                    {idx + 1}
-                  </div>
-                  <p className="text-slate-200 font-inter text-base leading-relaxed">{pt}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
         </div>
       </section>
 

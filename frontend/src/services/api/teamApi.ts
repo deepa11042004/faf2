@@ -10,6 +10,7 @@ export interface TeamMember {
   photo: string | null;
   status: "active" | "inactive";
   displayOrder: number;
+  category: string;
   createdAt: string;
   updatedAt: string;
 }

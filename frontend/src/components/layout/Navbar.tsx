@@ -11,11 +11,12 @@ import { servicesApi } from "@/services/api/servicesApi";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
   { label: "Services", href: "/services", hasDropdown: true },
   { label: "Industries", href: "/industries" },
   { label: "Projects", href: "/projects" },
   { label: "Gallery", href: "/gallery" },
+  { label: "About", href: "/about" },
+  { label: "Our Team", href: "/our-team" },
   { label: "Careers", href: "/careers" },
   { label: "Contact", href: "/contact" },
 ];
