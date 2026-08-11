@@ -94,11 +94,11 @@ export function Navbar() {
               className="h-10 md:h-12 lg:h-14 w-auto object-contain transition-transform group-hover:scale-105"
               priority
             />
-            <div className="hidden sm:flex flex-col mt-1">
-              <span className="font-bebas text-xl md:text-2xl tracking-widest leading-none text-white drop-shadow-sm">
+            <div className="flex flex-col mt-1">
+              <span className="font-bebas text-lg sm:text-xl md:text-2xl tracking-widest leading-none text-white drop-shadow-sm">
                 FAMILY ANCHOR
               </span>
-              <span className="font-bebas text-sm md:text-base tracking-[0.15em] leading-none mt-0.5 text-[#38BDF8] drop-shadow-sm">
+              <span className="font-bebas text-xs sm:text-sm md:text-base tracking-[0.15em] leading-none mt-0.5 text-[#38BDF8] drop-shadow-sm">
                 FACILITIES
               </span>
             </div>
@@ -220,10 +220,7 @@ export function Navbar() {
 
           {/* Mobile Menu Toggle */}
           <button
-            className={cn(
-              "lg:hidden p-2 transition-colors",
-              isScrolled ? "text-white hover:text-[#38BDF8]" : "text-slate-900 hover:text-[#0284C7]"
-            )}
+            className="lg:hidden p-2 text-white hover:text-[#38BDF8] transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X /> : <Menu />}
