@@ -1,5 +1,10 @@
 node_modules/
 .env
-public/uploads/resumes/*
-!public/uploads/.gitkeep
-npm-debug.log*
+server_out.log
+server_err.log
+
+# Exclude all runtime-uploaded user content from git.
+# These files are persisted via a Docker volume on the server and must
+# never be committed — doing so causes repo bloat and confusion.
+public/uploads/**/*
+!public/uploads/**/.gitkeep
