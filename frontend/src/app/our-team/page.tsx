@@ -25,6 +25,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { teamApi, TeamMember } from "@/services/api/teamApi";
+import { settingsApi } from "@/services/api/settingsApi";
 import { getMediaUrl } from "@/lib/axios";
 
 const LEADERSHIP_RESPONSIBILITIES = [
@@ -111,6 +112,17 @@ const WHY_OUR_TEAM = [
 export default function OurTeamPage() {
   const [members, setMembers] = useState<TeamMember[]>([]);
   const [loading, setLoading] = useState(true);
+  const [settings, setSettings] = useState<any>(null);
+
+  useEffect(() => {
+    settingsApi.getSettings()
+      .then((res: any) => {
+        if (res?.data) {
+          setSettings(res.data);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   useEffect(() => {
     const fetchTeam = async () => {
@@ -521,15 +533,23 @@ export default function OurTeamPage() {
           </div>
           
           <div className="pt-4 flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="https://wa.me/919386126258?text=Hello%20Family%20Anchor%20Facilities,%20I%20would%20like%20to%20inquire%20about%20your%20security%20services." 
-              target="_blank" 
-              rel="noopener noreferrer"
-            >
-              <Button className="bg-white hover:bg-slate-100 text-[#0284C7] font-bebas text-lg tracking-wider uppercase px-8 py-6 rounded-2xl shadow-xl transition-all">
-                Contact Our Team
-              </Button>
-            </a>
+            {(() => {
+              const rawWhatsapp = settings?.whatsapp || settings?.phone || "9324831576";
+              const cleanWhatsapp = rawWhatsapp.replace(/\D/g, "");
+              const formattedWhatsapp = cleanWhatsapp.length === 10 ? `91${cleanWhatsapp}` : cleanWhatsapp;
+
+              return (
+                <a 
+                  href={`https://wa.me/${formattedWhatsapp}?text=Hello%20Family%20Anchor%20Facilities,%20I%20would%20like%20to%20inquire%20about%20your%20security%20services.`} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
+                  <Button className="bg-white hover:bg-slate-100 text-[#0284C7] font-bebas text-lg tracking-wider uppercase px-8 py-6 rounded-2xl shadow-xl transition-all">
+                    Contact Our Team
+                  </Button>
+                </a>
+              );
+            })()}
             <Link href="/contact">
               <Button variant="ghost" className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-[#0284C7] font-bebas text-lg tracking-wider uppercase px-8 py-6 rounded-2xl transition-all">
                 Submit Inquiry

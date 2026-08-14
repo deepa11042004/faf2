@@ -1,16 +1,37 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { Phone } from "lucide-react";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
+import { settingsApi } from "@/services/api/settingsApi";
 
 export function StickyActionBar() {
   const pathname = usePathname();
+  const [settings, setSettings] = useState<any>(null);
+
+  useEffect(() => {
+    settingsApi.getSettings()
+      .then((res: any) => {
+        if (res?.data) {
+          setSettings(res.data);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   // Hide floating action buttons on admin panel pages
   if (pathname?.startsWith("/admin")) {
     return null;
   }
+
+  const rawWhatsapp = settings?.whatsapp || settings?.phone || "9324831576";
+  const cleanWhatsapp = rawWhatsapp.replace(/\D/g, "");
+  const formattedWhatsapp = cleanWhatsapp.length === 10 ? `91${cleanWhatsapp}` : cleanWhatsapp;
+
+  const rawPhone = settings?.phone || "9324831576";
+  const cleanPhone = rawPhone.replace(/[^\d+]/g, "");
+
   return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
@@ -20,7 +41,7 @@ export function StickyActionBar() {
     >
       {/* WhatsApp Blue Circular Button */}
       <a
-        href="https://wa.me/919386126258?text=Hello%20Family%20Anchor%20Facilities,%20I%20would%20like%20to%20inquire%20about%20your%20security%20services."
+        href={`https://wa.me/${formattedWhatsapp}?text=Hello%20Family%20Anchor%20Facilities,%20I%20would%20like%20to%20inquire%20about%20your%20security%20services.`}
         target="_blank"
         rel="noopener noreferrer"
         className="w-14 h-14 rounded-full bg-[#0284C7] hover:bg-[#0369a1] text-white flex items-center justify-center shadow-2xl hover:scale-110 transition-all border-2 border-white/40 group"
@@ -36,7 +57,7 @@ export function StickyActionBar() {
 
       {/* Phone Call Blue Circular Button */}
       <a
-        href="tel:9386126258"
+        href={`tel:${cleanPhone}`}
         className="w-14 h-14 rounded-full bg-[#0284C7] hover:bg-[#0369a1] text-white flex items-center justify-center shadow-2xl hover:scale-110 transition-all border-2 border-white/40 group"
         aria-label="Call Direct"
       >

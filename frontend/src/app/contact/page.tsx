@@ -549,13 +549,20 @@ export default function ContactPage() {
             Whether you're planning a new security installation, upgrading an existing system, or require professional security personnel, our team is just a call or message away.
           </p>
           <div className="flex justify-center">
-            <a 
-              href="tel:9386126258" 
-              className="inline-flex items-center gap-3 bg-[#0284C7] hover:bg-[#0369a1] text-white font-bebas text-xl tracking-wider uppercase px-10 py-4 rounded-full shadow-xl hover:scale-105 transition-all"
-            >
-              <Phone className="w-5 h-5" />
-              <span>Call 9386126258</span>
-            </a>
+            {(() => {
+              const rawPhone = siteSettings?.phone || "+91 9324831576";
+              const cleanPhone = rawPhone.replace(/[^\d+]/g, "");
+
+              return (
+                <a 
+                  href={`tel:${cleanPhone}`} 
+                  className="inline-flex items-center gap-3 bg-[#0284C7] hover:bg-[#0369a1] text-white font-bebas text-xl tracking-wider uppercase px-10 py-4 rounded-full shadow-xl hover:scale-105 transition-all"
+                >
+                  <Phone className="w-5 h-5" />
+                  <span>Call {rawPhone}</span>
+                </a>
+              );
+            })()}
           </div>
         </div>
       </section>

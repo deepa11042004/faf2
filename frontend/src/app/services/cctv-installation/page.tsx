@@ -39,6 +39,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { getMediaUrl } from "@/lib/axios";
 import { devicesApi } from "@/services/api/devicesApi";
+import { settingsApi } from "@/services/api/settingsApi";
 
 // 1. Key Benefits
 const KEY_BENEFITS = [
@@ -452,6 +453,17 @@ export default function CctvInstallationPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [selectedIndustry, setSelectedIndustry] = useState<number>(0);
   const [dbDevices, setDbDevices] = useState<any[]>([]);
+  const [siteSettings, setSiteSettings] = useState<any>(null);
+
+  useEffect(() => {
+    settingsApi.getSettings()
+      .then((res: any) => {
+        if (res?.data) {
+          setSiteSettings(res.data);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   useEffect(() => {
     devicesApi.getDevices({ serviceSlug: "cctv-installation", limit: 100 })
@@ -948,13 +960,19 @@ export default function CctvInstallationPage() {
             >
               <span>Get a Custom Quote</span>
             </Link>
-            <a 
-              href="tel:9386126258"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bebas text-xl tracking-wider uppercase px-8 py-4 rounded-full shadow-xl transition-all"
-            >
-              <Phone className="w-5 h-5" />
-              <span>Call Our Security Experts</span>
-            </a>
+            {(() => {
+              const rawPhone = siteSettings?.phone || "+91 9324831576";
+              const cleanPhone = rawPhone.replace(/[^\d+]/g, "");
+              return (
+                <a 
+                  href={`tel:${cleanPhone}`}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bebas text-xl tracking-wider uppercase px-8 py-4 rounded-full shadow-xl transition-all"
+                >
+                  <Phone className="w-5 h-5" />
+                  <span>Call Our Security Experts ({rawPhone})</span>
+                </a>
+              );
+            })()}
           </div>
         </div>
       </section>

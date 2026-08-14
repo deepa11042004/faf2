@@ -1,8 +1,10 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { Menu, User, Bell, ExternalLink, Phone } from "lucide-react";
 import Link from "next/link";
 import { useAuthStore } from "@/store/authStore";
+import { settingsApi } from "@/services/api/settingsApi";
 
 interface AdminHeaderProps {
   setIsMobileOpen: (value: boolean) => void;
@@ -10,6 +12,24 @@ interface AdminHeaderProps {
 
 export function AdminHeader({ setIsMobileOpen }: AdminHeaderProps) {
   const user = useAuthStore((state) => state.user);
+  const [settings, setSettings] = useState<any>(null);
+
+  useEffect(() => {
+    settingsApi.getSettings()
+      .then((res: any) => {
+        if (res?.data) {
+          setSettings(res.data);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  const rawWhatsapp = settings?.whatsapp || settings?.phone || "9324831576";
+  const cleanWhatsapp = rawWhatsapp.replace(/\D/g, "");
+  const formattedWhatsapp = cleanWhatsapp.length === 10 ? `91${cleanWhatsapp}` : cleanWhatsapp;
+
+  const rawPhone = settings?.phone || "9324831576";
+  const cleanPhone = rawPhone.replace(/[^\d+]/g, "");
 
   return (
     <header className="h-16 bg-slate-900 border-b border-slate-800 text-slate-100 px-4 md:px-6 flex items-center justify-between sticky top-0 z-40 shadow-md">
@@ -31,10 +51,10 @@ export function AdminHeader({ setIsMobileOpen }: AdminHeaderProps) {
       <div className="flex items-center gap-2 sm:gap-3">
         {/* WhatsApp Button */}
         <a
-          href="https://wa.me/919386126258?text=Hello%20Family%20Anchor%20Facilities,%20I%20would%20like%20to%20inquire%20about%20your%20security%20services."
+          href={`https://wa.me/${formattedWhatsapp}?text=Hello%20Family%20Anchor%20Facilities,%20I%20would%20like%20to%20inquire%20about%20your%20security%20services.`}
           target="_blank"
           rel="noopener noreferrer"
-          title="Contact on WhatsApp (+91 9386126258)"
+          title={`Contact on WhatsApp (${rawWhatsapp})`}
           className="p-2 rounded-lg bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-400 border border-emerald-500/30 transition-all flex items-center justify-center"
         >
           <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -44,8 +64,8 @@ export function AdminHeader({ setIsMobileOpen }: AdminHeaderProps) {
 
         {/* Phone Call Button */}
         <a
-          href="tel:9386126258"
-          title="Direct Phone Call (+91 9386126258)"
+          href={`tel:${cleanPhone}`}
+          title={`Direct Phone Call (${rawPhone})`}
           className="p-2 rounded-lg bg-sky-600/20 hover:bg-sky-600/30 text-sky-400 border border-sky-500/30 transition-all flex items-center justify-center"
         >
           <Phone className="w-4 h-4" />

@@ -1,11 +1,29 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { settingsApi } from "@/services/api/settingsApi";
 
 export function Hero() {
+  const [settings, setSettings] = useState<any>(null);
+
+  useEffect(() => {
+    settingsApi.getSettings()
+      .then((res: any) => {
+        if (res?.data) {
+          setSettings(res.data);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  const rawWhatsapp = settings?.whatsapp || settings?.phone || "9324831576";
+  const cleanWhatsapp = rawWhatsapp.replace(/\D/g, "");
+  const formattedWhatsapp = cleanWhatsapp.length === 10 ? `91${cleanWhatsapp}` : cleanWhatsapp;
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden text-slate-900 bg-white">
       {/* Full Header Background Video */}
@@ -59,7 +77,7 @@ export function Hero() {
 
           <div className="flex flex-col sm:flex-row gap-4 mt-6">
             <a 
-              href="https://wa.me/919386126258?text=Hello%20Family%20Anchor%20Facilities,%20I%20would%20like%20to%20get%20a%20free%20quote%20for%20security%20services."
+              href={`https://wa.me/${formattedWhatsapp}?text=Hello%20Family%20Anchor%20Facilities,%20I%20would%20like%20to%20get%20a%20free%20quote%20for%20security%20services.`}
               target="_blank"
               rel="noopener noreferrer"
             >

@@ -32,9 +32,9 @@ export default function AdminSettingsPage() {
         const d = res.data;
         setCompanyName(d.companyName || "Family Anchor Facilities Pvt. Ltd.");
         setEmail(d.email || "info@familyanchor.in");
-        setPhone(d.phone || "+91 9386126258");
+        setPhone(d.phone || "+91 9324831576");
         setAlternatePhone(d.alternatePhone || "");
-        setWhatsapp(d.whatsapp || "+91 9386126258");
+        setWhatsapp(d.whatsapp || "+91 9324831576");
         setAddress(d.address || "");
         setWorkingHours(d.workingHours || "24/7 Operations");
         setFacebook(d.facebook || "");

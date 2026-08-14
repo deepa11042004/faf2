@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { servicesApi } from "@/services/api/servicesApi";
+import { settingsApi } from "@/services/api/settingsApi";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
@@ -33,6 +34,17 @@ export function Navbar() {
   const [isServicesHovered, setIsServicesHovered] = useState(false);
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
   const [serviceItems, setServiceItems] = useState<{ label: string; href: string; desc: string }[]>([]);
+  const [siteSettings, setSiteSettings] = useState<any>(null);
+
+  useEffect(() => {
+    settingsApi.getSettings()
+      .then((res: any) => {
+        if (res?.data) {
+          setSiteSettings(res.data);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -194,29 +206,38 @@ export function Navbar() {
           </nav>
 
           {/* CTAs */}
-          <div className="hidden lg:flex items-center gap-4">
-            <a 
-              href="https://wa.me/919386126258?text=Hello%20Family%20Anchor%20Facilities,%20I%20would%20like%20to%20inquire%20about%20your%20security%20services." 
-              target="_blank" 
-              rel="noopener noreferrer"
-            >
-              <Button variant="outline" className={cn(
-                "font-bebas text-base tracking-wider uppercase transition-colors",
-                isScrolled ? "border-slate-700 bg-slate-800/80 text-white hover:bg-slate-700" : "border-slate-300 bg-white/90 text-slate-900 hover:bg-white"
-              )}>
-                Call Now
-              </Button>
-            </a>
-            <a 
-              href="https://wa.me/919386126258?text=Hello%20Family%20Anchor%20Facilities,%20I%20would%20like%20to%20get%20a%20quote%20for%20security%20services." 
-              target="_blank" 
-              rel="noopener noreferrer"
-            >
-              <Button className="bg-[#0284C7] hover:bg-[#0369a1] text-white font-bebas text-base tracking-wider uppercase px-5 shadow-lg">
-                Get Quote
-              </Button>
-            </a>
-          </div>
+          {(() => {
+            const rawWhatsapp = siteSettings?.whatsapp || siteSettings?.phone || "9324831576";
+            const cleanWhatsapp = rawWhatsapp.replace(/\D/g, "");
+            const formattedWhatsapp = cleanWhatsapp.length === 10 ? `91${cleanWhatsapp}` : cleanWhatsapp;
+            const rawPhone = siteSettings?.phone || "9324831576";
+            const cleanPhone = rawPhone.replace(/[^\d+]/g, "");
+
+            return (
+              <div className="hidden lg:flex items-center gap-4">
+                <a 
+                  href={`tel:${cleanPhone}`}
+                  title={`Call ${rawPhone}`}
+                >
+                  <Button variant="outline" className={cn(
+                    "font-bebas text-base tracking-wider uppercase transition-colors",
+                    isScrolled ? "border-slate-700 bg-slate-800/80 text-white hover:bg-slate-700" : "border-slate-300 bg-white/90 text-slate-900 hover:bg-white"
+                  )}>
+                    Call Now
+                  </Button>
+                </a>
+                <a 
+                  href={`https://wa.me/${formattedWhatsapp}?text=Hello%20Family%20Anchor%20Facilities,%20I%20would%20like%20to%20get%20a%20quote%20for%20security%20services.`}
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
+                  <Button className="bg-[#0284C7] hover:bg-[#0369a1] text-white font-bebas text-base tracking-wider uppercase px-5 shadow-lg">
+                    Get Quote
+                  </Button>
+                </a>
+              </div>
+            );
+          })()}
 
           {/* Mobile Menu Toggle */}
           <button
@@ -300,28 +321,36 @@ export function Navbar() {
                 );
               })}
             </ul>
-            <div className="flex flex-col gap-3 mt-6">
-              <a 
-                href="https://wa.me/919386126258?text=Hello%20Family%20Anchor%20Facilities,%20I%20would%20like%20to%20inquire%20about%20your%20security%20services." 
-                target="_blank" 
-                rel="noopener noreferrer"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                <Button variant="outline" className="w-full border-slate-700 bg-slate-800 text-white hover:bg-slate-700 font-bebas text-lg">
-                  Call Now
-                </Button>
-              </a>
-              <a 
-                href="https://wa.me/919386126258?text=Hello%20Family%20Anchor%20Facilities,%20I%20would%20like%20to%20get%20a%20quote%20for%20security%20services." 
-                target="_blank" 
-                rel="noopener noreferrer"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                <Button className="w-full bg-[#0284C7] hover:bg-[#0369a1] text-white font-bebas text-lg">
-                  Get Quote
-                </Button>
-              </a>
-            </div>
+            {(() => {
+              const rawWhatsapp = siteSettings?.whatsapp || siteSettings?.phone || "9324831576";
+              const cleanWhatsapp = rawWhatsapp.replace(/\D/g, "");
+              const formattedWhatsapp = cleanWhatsapp.length === 10 ? `91${cleanWhatsapp}` : cleanWhatsapp;
+              const rawPhone = siteSettings?.phone || "9324831576";
+              const cleanPhone = rawPhone.replace(/[^\d+]/g, "");
+
+              return (
+                <div className="flex flex-col gap-3 mt-6">
+                  <a 
+                    href={`tel:${cleanPhone}`}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <Button variant="outline" className="w-full border-slate-700 bg-slate-800 text-white hover:bg-slate-700 font-bebas text-lg">
+                      Call Now ({rawPhone})
+                    </Button>
+                  </a>
+                  <a 
+                    href={`https://wa.me/${formattedWhatsapp}?text=Hello%20Family%20Anchor%20Facilities,%20I%20would%20like%20to%20get%20a%20quote%20for%20security%20services.`}
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <Button className="w-full bg-[#0284C7] hover:bg-[#0369a1] text-white font-bebas text-lg">
+                      Get Quote
+                    </Button>
+                  </a>
+                </div>
+              );
+            })()}
           </motion.div>
         )}
       </AnimatePresence>
