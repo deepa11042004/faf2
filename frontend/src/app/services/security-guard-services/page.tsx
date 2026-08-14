@@ -534,6 +534,9 @@ export default function SecurityGuardsServicePage() {
         features: Array.isArray(device.keyFeatures) ? device.keyFeatures : [],
         ...(dbImgs.length > 0 ? { dbImages: dbImgs } : {})
       } as any);
+    }
+  });
+
   const getSectorImages = (sectorIdx: number) => {
     const sector = SECTOR_COVERAGE[sectorIdx];
     if (!sector) return [];
