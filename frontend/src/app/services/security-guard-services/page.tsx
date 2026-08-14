@@ -117,7 +117,10 @@ function GuardCardSlider({ images, cardIndex, categoryTitle, dbImages }: { image
       <AnimatePresence mode="wait">
         <motion.img 
           key={current}
-          src={getMediaUrl(finalImages[current])} 
+          src={(() => {
+            const url = getMediaUrl(finalImages[current]);
+            return url ? (url.includes("?") ? `${url}&v=2` : `${url}?v=2`) : "";
+          })()} 
           alt={`${categoryTitle} - Image ${current + 1}`}
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -531,8 +534,26 @@ export default function SecurityGuardsServicePage() {
         features: Array.isArray(device.keyFeatures) ? device.keyFeatures : [],
         ...(dbImgs.length > 0 ? { dbImages: dbImgs } : {})
       } as any);
+  const getSectorImages = (sectorIdx: number) => {
+    const sector = SECTOR_COVERAGE[sectorIdx];
+    if (!sector) return [];
+    
+    // Check if any matching dbDevice has uploaded images
+    const matchingDevice = dbDevices.find(d => 
+      sector.recommendedServices.some(rec => rec.toLowerCase().trim() === d.name?.toLowerCase().trim()) ||
+      d.name?.toLowerCase().includes(sector.title.toLowerCase().split(' ')[0])
+    );
+    
+    const dbImgs = (matchingDevice && Array.isArray(matchingDevice.images) && matchingDevice.images.length > 0)
+      ? matchingDevice.images
+      : (matchingDevice?.imagePath ? [matchingDevice.imagePath] : []);
+      
+    if (dbImgs.length > 0) {
+      return dbImgs;
     }
-  });
+    
+    return sector.images || [];
+  };
 
   return (
     <main className="min-h-screen bg-black text-white selection:bg-[#0284C7] selection:text-white">
@@ -857,22 +878,26 @@ export default function SecurityGuardsServicePage() {
               
               {/* Photo Showcase Grid */}
               <div className="grid sm:grid-cols-2 gap-6 pt-2">
-                {SECTOR_COVERAGE[selectedSector].images.map((imgUrl, imgIdx) => (
-                  <div 
-                    key={imgIdx} 
-                    className="group relative h-64 rounded-2xl overflow-hidden bg-slate-900 border-2 border-slate-200 shadow-md hover:shadow-xl transition-all"
-                  >
-                    <img 
-                      src={imgUrl} 
-                      alt={`${SECTOR_COVERAGE[selectedSector].title} Photo ${imgIdx + 1}`}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                    <div className="absolute bottom-3 left-3 right-3 text-white text-xs font-inter opacity-0 group-hover:opacity-100 transition-opacity font-medium">
-                      {SECTOR_COVERAGE[selectedSector].recommendedServices[imgIdx % SECTOR_COVERAGE[selectedSector].recommendedServices.length]} Deployment
+                {getSectorImages(selectedSector).map((imgUrl: string, imgIdx: number) => {
+                  const mediaUrl = getMediaUrl(imgUrl);
+                  const cacheBustedUrl = mediaUrl ? (mediaUrl.includes('?') ? `${mediaUrl}&v=2` : `${mediaUrl}?v=2`) : '';
+                  return (
+                    <div 
+                      key={imgIdx} 
+                      className="group relative h-64 rounded-2xl overflow-hidden bg-slate-900 border-2 border-slate-200 shadow-md hover:shadow-xl transition-all"
+                    >
+                      <img 
+                        src={cacheBustedUrl || imgUrl} 
+                        alt={`${SECTOR_COVERAGE[selectedSector].title} Photo ${imgIdx + 1}`}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <div className="absolute bottom-3 left-3 right-3 text-white text-xs font-inter opacity-0 group-hover:opacity-100 transition-opacity font-medium">
+                        {SECTOR_COVERAGE[selectedSector].recommendedServices[imgIdx % SECTOR_COVERAGE[selectedSector].recommendedServices.length]} Deployment
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </motion.div>
           </AnimatePresence>
