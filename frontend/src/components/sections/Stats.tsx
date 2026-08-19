@@ -6,7 +6,7 @@ import { Users, Building, ShieldCheck, Clock } from "lucide-react";
 
 const stats = [
   { icon: <Building size={32} />, value: 100, suffix: "+", label: "Running Projects" },
-  { icon: <Users size={32} />, value: 100, suffix: "+", label: "Clients" },
+  { icon: <Users size={32} />, value: 100, suffix: "+", label: "Happy Clients" },
   { icon: <ShieldCheck size={32} />, value: 300, suffix: "+", label: "Security & Technician" },
   { icon: <Clock size={32} />, value: 24, suffix: "x7", label: "Command Support" },
 ];

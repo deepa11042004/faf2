@@ -129,7 +129,6 @@ const INDUSTRIES_DATA = [
     image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
     solutions: [
       "Hotel CCTV Surveillance",
-      "Guest Access Management",
       "Reception Security",
       "Fire Alarm Systems",
       "Public Address Systems",

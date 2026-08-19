@@ -34,8 +34,8 @@ import { projectsApi } from "@/services/api/projectsApi";
 
 // 1. Project Statistics Data
 const PROJECT_STATS = [
-  { value: "100+", label: "Projects Completed", icon: <Briefcase className="w-7 h-7 text-[#0284C7]" /> },
-  { value: "50+", label: "Happy Clients", icon: <Users className="w-7 h-7 text-[#0284C7]" /> },
+  { value: "100+", label: "Running Projects", icon: <Briefcase className="w-7 h-7 text-[#0284C7]" /> },
+  { value: "100+", label: "Happy Clients", icon: <Users className="w-7 h-7 text-[#0284C7]" /> },
   { value: "10+", label: "Industries Served", icon: <Building2 className="w-7 h-7 text-[#0284C7]" /> },
   { value: "24×7", label: "Support & Maintenance", icon: <Clock className="w-7 h-7 text-[#0284C7]" /> },
   { value: "100%", label: "Satisfaction Focus", icon: <ThumbsUp className="w-7 h-7 text-[#0284C7]" /> }
@@ -320,11 +320,7 @@ export default function ProjectsPage() {
                     </div>
                   </div>
 
-                  {/* Status Badge */}
-                  <div className="absolute top-4 left-4 z-20 bg-emerald-600 text-white font-bebas text-xs tracking-wider uppercase px-3 py-1 rounded-md shadow-lg flex items-center gap-1.5 pointer-events-none">
-                    <CheckCircle2 className="w-3.5 h-3.5" />
-                    <span>{proj.status}</span>
-                  </div>
+
 
                   <div className="absolute bottom-4 right-4 z-20 bg-black/80 backdrop-blur-md text-white font-bebas text-xs tracking-wider uppercase px-3 py-1 rounded-md border border-white/20">
                     Click to Open Project Gallery
@@ -352,20 +348,7 @@ export default function ProjectsPage() {
                       {proj.desc}
                     </p>
 
-                    {/* Services Delivered */}
-                    <div className="mb-5">
-                      <span className="font-bebas text-xs tracking-wider uppercase text-[#0284C7] block mb-2 font-bold">
-                        Services Delivered:
-                      </span>
-                      <div className="grid grid-cols-2 gap-1.5 font-inter text-xs text-slate-700 font-semibold">
-                        {proj.servicesDelivered.map((sd: string, sIdx: number) => (
-                          <div key={sIdx} className="flex items-center gap-1.5 bg-sky-50/80 p-1.5 rounded-lg border border-sky-100">
-                            <Check className="w-3.5 h-3.5 text-[#0284C7] shrink-0" />
-                            <span className="truncate">{sd}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
+
                   </div>
                 </div>
 

@@ -130,22 +130,7 @@ export function AboutSection() {
                 ))}
               </div>
 
-              {/* Floating Badge */}
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4, duration: 0.6 }}
-                className="absolute bottom-10 left-10 z-20 bg-zinc-900/90 backdrop-blur-md p-6 rounded-2xl shadow-2xl border border-zinc-800 max-w-[250px] hidden sm:block"
-              >
-                <div className="flex items-center gap-4 text-[#38BDF8] mb-2">
-                  <ShieldCheck className="w-10 h-10" />
-                  <span className="text-3xl font-bold font-bebas text-white tracking-wide">10+</span>
-                </div>
-                <p className="text-sm font-medium text-slate-300">
-                  Years of excellence in security and facility management
-                </p>
-              </motion.div>
+
             </div>
             
             {/* Decorative Elements */}
