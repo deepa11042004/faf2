@@ -29,10 +29,10 @@ export function TrustedBrandsSection() {
     <section className="py-20 bg-sky-50/90 border-y border-sky-200 overflow-hidden relative">
       <div className="container mx-auto px-4 md:px-6 text-center mb-12">
         <span className="text-[#0284C7] font-bebas text-xl tracking-widest uppercase mb-2 block">
-          Authorized Technology Partners
+          BRANDS WE TRUST
         </span>
         <h2 className="text-4xl md:text-5xl font-bebas tracking-wide text-slate-900 leading-tight">
-          Trusted Brands We Work With
+          SECURITY EQUIPMENT BRANDS WE USE
         </h2>
       </div>
 

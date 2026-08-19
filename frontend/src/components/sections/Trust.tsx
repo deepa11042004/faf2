@@ -19,6 +19,7 @@ export function TrustSection() {
     <section className="py-12 md:py-16 bg-[#F8FAFC] border-y border-slate-200/80 overflow-hidden">
       {/* ISO & Authority Compliance Badge Bar */}
       <div className="container mx-auto px-4 mb-10">
+        {/* 
         <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8 mb-10 pb-8 border-b border-slate-200/80">
           <div className="flex items-center gap-2.5 px-4 py-2 bg-white rounded-full border border-sky-200 shadow-sm">
             <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
@@ -45,6 +46,7 @@ export function TrustSection() {
             </span>
           </div>
         </div>
+        */}
 
         <h2 className="font-bebas text-3xl md:text-5xl tracking-widest text-[#0F172A] uppercase text-center">
           Trusted By Industry Leaders Across Sectors

@@ -5,9 +5,9 @@ import CountUp from "react-countup";
 import { Users, Building, ShieldCheck, Clock } from "lucide-react";
 
 const stats = [
-  { icon: <Building size={32} />, value: 500, suffix: "+", label: "Projects Completed" },
-  { icon: <Users size={32} />, value: 150, suffix: "+", label: "Corporate Clients" },
-  { icon: <ShieldCheck size={32} />, value: 300, suffix: "+", label: "Security Personnel" },
+  { icon: <Building size={32} />, value: 100, suffix: "+", label: "Running Projects" },
+  { icon: <Users size={32} />, value: 100, suffix: "+", label: "Clients" },
+  { icon: <ShieldCheck size={32} />, value: 300, suffix: "+", label: "Security & Technician" },
   { icon: <Clock size={32} />, value: 24, suffix: "x7", label: "Command Support" },
 ];
 

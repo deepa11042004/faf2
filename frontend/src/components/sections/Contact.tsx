@@ -88,7 +88,7 @@ export function ContactSection() {
                   <div className="flex flex-col">
                     <a href={`tel:${siteSettings?.phone || "8826632363"}`} className="text-blue-100 text-lg font-inter hover:underline">{siteSettings?.phone || "+91 8826632363"}</a>
                     {siteSettings?.alternatePhone && (
-                      <a href={`tel:${siteSettings.alternatePhone}`} className="text-blue-200/80 text-sm font-inter hover:underline">{siteSettings.alternatePhone} (Alt)</a>
+                      <a href={`tel:${siteSettings.alternatePhone}`} className="text-blue-200/80 text-sm font-inter hover:underline">{siteSettings.alternatePhone}</a>
                     )}
                   </div>
                 </div>

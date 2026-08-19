@@ -24,7 +24,7 @@ const faqs = [
   },
   {
     question: "What is your response time for technical support?",
-    answer: "For critical technical issues, our Rapid Response Team aims to be on-site within 2-4 hours. We also provide instant remote troubleshooting for software and configuration issues.",
+    answer: "For critical technical issues, our Rapid Response Team aims to be on-site in few hours. We also provide instant remote troubleshooting for software and configuration issues.",
   }
 ];
 

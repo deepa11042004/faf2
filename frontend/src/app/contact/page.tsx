@@ -394,7 +394,7 @@ export default function ContactPage() {
                       <div className="flex flex-col">
                         <a href={`tel:${siteSettings?.phone || "8826632363"}`} className="hover:text-[#0284C7] transition-colors">{siteSettings?.phone || "+91 8826632363"}</a>
                         {siteSettings?.alternatePhone && (
-                          <a href={`tel:${siteSettings.alternatePhone}`} className="hover:text-[#0284C7] transition-colors text-xs text-slate-600 font-medium">{siteSettings.alternatePhone} (Alt)</a>
+                          <a href={`tel:${siteSettings.alternatePhone}`} className="hover:text-[#0284C7] transition-colors text-xs text-slate-600 font-medium">{siteSettings.alternatePhone}</a>
                         )}
                       </div>
                     </div>
