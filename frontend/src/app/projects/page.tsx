@@ -222,7 +222,7 @@ export default function ProjectsPage() {
             </h1>
             
             <p className="text-slate-300 text-base md:text-lg leading-relaxed font-inter max-w-3xl mx-auto mb-8">
-              At <strong>Family Anchor Facilities Pvt. Ltd.</strong>, we take pride in delivering reliable and customized security solutions for residential, commercial, industrial, educational, healthcare, hospitality, and government sectors. Every project is executed with careful planning, professional installation, and strict adherence to quality and safety standards.
+              At <strong>Family Anchor Facilities Pvt. Ltd.</strong>, we take pride in delivering reliable and customized security solutions for residential, commercial, industrial, educational, healthcare, hospitality, government sectors and many more sectors. Every project is executed with careful planning, professional installation, and strict adherence to quality and safety standards.
             </p>
             <p className="text-slate-400 text-sm md:text-base leading-relaxed font-inter max-w-3xl mx-auto mb-8">
               From CCTV surveillance and fire alarm systems to access control, public address systems, and security guard services, our experienced team ensures every solution is designed to meet the unique security requirements of our clients.
