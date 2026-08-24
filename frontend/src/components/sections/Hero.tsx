@@ -43,7 +43,8 @@ export function Hero() {
           playsInline
           className="w-full h-full object-cover"
         >
-          <source src="/videos/header-video.mp4?v=2" type="video/mp4" />
+          <source src="/videos/header-video.mp4?v=3" type="video/mp4" />
+          <source src="/videos/header%20-%20video.mp4?v=3" type="video/mp4" />
         </video>
         {/* Subtle Dark Overlay for high contrast without white blur */}
         <div className="absolute inset-0 bg-slate-950/45 pointer-events-none" />

@@ -144,11 +144,15 @@ export function ServicesSection() {
                     </div>
 
                     {/* Image Preview Container */}
-                    <div className={`relative overflow-hidden rounded-2xl bg-white border border-slate-200/80 p-4 flex items-center justify-center ${service.isLarge ? "h-64" : "h-48"}`}>
+                    <div className={`relative overflow-hidden rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center justify-center ${service.isLarge ? "h-64" : "h-52"}`}>
                       <img 
                         src={service.image} 
                         alt={service.title}
-                        className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700" 
+                        className={`w-full h-full transition-transform duration-700 group-hover:scale-105 ${
+                          service.image.includes('service.png') || service.image.includes('cctv-service') || service.image.includes('access-control-service') || service.image.includes('pa-system-service') || service.image.includes('fire-alarm-service')
+                            ? 'object-contain p-4' 
+                            : 'object-cover p-0'
+                        }`} 
                       />
                     </div>
                   </div>
