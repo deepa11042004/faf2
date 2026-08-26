@@ -5,14 +5,14 @@ import { Star, Quote } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Rajesh Kumar",
-    role: "Facility Manager, TechPark",
+    name: "Mohd firoz Ahmed",
+    role: "Light N Light, Delhi",
     content: "Family Anchor has completely transformed our security operations. Their personnel are highly professional and the tech integration is seamless.",
     rating: 5,
   },
   {
-    name: "Priya Sharma",
-    role: "Resident Association President",
+    name: "Rahul dhir",
+    role: "Filam Company",
     content: "We hired them for our residential complex. The 24/7 support and quick response time give us incredible peace of mind.",
     rating: 5,
   },

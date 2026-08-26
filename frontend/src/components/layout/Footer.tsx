@@ -75,9 +75,9 @@ export function Footer() {
               <Image
                 src="/logo.png"
                 alt="Family Anchor Facilities"
-                width={100}
-                height={100}
-                className="h-16 md:h-20 w-auto object-contain transition-transform group-hover:scale-105"
+                width={140}
+                height={140}
+                className="h-20 md:h-24 lg:h-28 w-auto object-contain transition-transform group-hover:scale-105"
               />
               <div className="flex flex-col">
                 <span className="font-bebas text-2xl md:text-3xl tracking-widest leading-none text-white drop-shadow-sm">

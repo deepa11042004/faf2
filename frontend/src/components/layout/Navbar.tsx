@@ -101,9 +101,9 @@ export function Navbar() {
             <Image
               src="/logo.png"
               alt="Family Anchor Facilities"
-              width={140}
-              height={70}
-              className="h-10 md:h-12 lg:h-14 w-auto object-contain transition-transform group-hover:scale-105"
+              width={180}
+              height={90}
+              className="h-14 md:h-16 lg:h-20 w-auto object-contain transition-transform group-hover:scale-105"
               priority
             />
             <div className="flex flex-col mt-1">
