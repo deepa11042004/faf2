@@ -5,20 +5,20 @@ import { Star, Quote } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Mohd firoz Ahmed",
-    role: "Light N Light, Delhi",
+    name: "TANMAY DAS",
+    role: "WHITE TIGER FILMS",
     content: "Family Anchor has completely transformed our security operations. Their personnel are highly professional and the tech integration is seamless.",
     rating: 5,
   },
   {
-    name: "Rahul dhir",
-    role: "Filam Company",
+    name: "NASIR HUSSAIN SHAIKH",
+    role: "LIGHT N LIGHT",
     content: "We hired them for our residential complex. The 24/7 support and quick response time give us incredible peace of mind.",
     rating: 5,
   },
   {
-    name: "Amit Patel",
-    role: "Operations Director, Manufacturing Corp",
+    name: "Rahul dhir",
+    role: "FILAM COMPANY",
     content: "The fire alarm and access control systems they installed are top-notch. Truly a premium service provider.",
     rating: 5,
   },
